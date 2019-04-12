@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title>3D Paint </title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+
+</div>
+
+<h2>3D Paint </h2>
+
+<p><strong>10/30/16</strong></p>
+
+<p>In 2012 I came across the paper <a href="http://zurich.disneyresearch.com/OverCoat/">OverCoat: An Implicit Canvas for 3D Painting</a>
+which describes a technique for creating 3D models using traditional painting methods. At the time I didn&rsquo;t have sufficient mathematical knowledge
+to understand all of the technical details described, but I picked up the general idea and wrote my own rough implementation.
+This article explains how my program was constructed and some of what I learned in the process.</p>
+
+<p><img src="anim.gif" alt="3d paint gif" /></p>
+
+<p>The basic idea is to paint 3d strokes onto a rough 3D model which acts as a canvas.
+The model is simply rotated to a desired orientation, and drawn upon, as if one was painting ontop of a flat a picture.
+The difference is that the strokes are projected into 3D space giving them their own 3D form.</p>
+
+<p>The model is only a placeholder which is eventually removed, leaving only the painting made up of strokes.
+To position the nodes which define a stroke, my program simply performed a ray-triangle test between the mouse ray and the mesh, and offset the intersection point by the face normal.
+The paper describes a sophisticated optimization method which evenly distributes stroke nodes, even across harshes changes in depth.</p>
+
+<p><img src="screen1.jpg" alt="screen 1" /></p>
+
+<p>The image above shows several strokes projected onto the surface of the model.
+Along with the node positions, information such as a color and brush size are stored for each stroke.</p>
+
+<p>I used the following data structures:</p>
+
+<p>```
+typedef struct
+{
+    Vec4_t color;
+    int brush;
+    float pressure;
+} StrokeInfo_t;</p>
+
+<p>typedef struct
+{
+    Vec3_t pos;
+    float radius;
+} StrokeNode3D_t;</p>
+
+<p>typedef struct
+{
+    int nodeCount;
+    StrokeNode3D_t nodes[MAX_STROKE_NODES];
+    Vec4_t color;
+    // used for depth sorting
+    Vec3_t center;
+    StrokeInfo_t info;
+} Stroke3D_t;</p>
+
+<p>typedef struct
+{
+    int strokeCount;
+    Stroke3D_t strokes[MAX_STROKES];
+    int dirty;
+} Canvas3D_t;
+```</p>
+
+<p><img src="screen2.jpg" alt="screenshot 2" /></p>
+
+<p>To render the strokes, each node position is transformed from 3D onto the 2D screen, using the camera matrix. The brush image is then rendered onto the framebuffer at each of the 2D node positions on the screen. Even though these screenshots show only a few colors and a single brush, the program supports multiple brush types and RGB colors.</p>
+
+<p><img src="screen4.jpg" alt="screenshot 4" /> <img src="screen3.jpg" alt="screenshot 3" /></p>
+
+<p>As the drawing becomes more dense, the strokes begin to resemble their own shape.
+Rendering strokes is a very efficient process because it only involves stamping the brush image in 2D, which is easily parallelized on the GPU.
+For the strokes to be drawn in the correct order they must be sorted by depth. This is by far the most compuational expensive part of the process.
+My program solved this problem by only sorting strokes by their average position, which seemed to be an acceptable alternative to sorting each node.
+The order in which the nodes of a stroke are rendered is still important to ensure proper layering. An offline rendering process should sort each node properly.</p>
+
+<p><img src="screen5.jpg" alt="screenshot 5" /> <img src="screen6.jpg" alt="screenshot 6" /></p>
+
+<p>Although my program cannot produce the beautiful paintings found in the original paper, it can still draw some fun pictures.
+I think the technique itself is very interesting and has great potential. It would be interesting to make a small game, or animation centered around the technique since the artwork is so easy and natural to produce.
+Because it requires no textures, other than the small brushes, its memory usage is also very small, while its vertex requirements are similar to triangle meshes.
+The next natural step would be to bind a painting to a skeleton for animation.</p>
+</body>
+</html>

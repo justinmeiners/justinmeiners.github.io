@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title>Modern OpenGL</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+
+</div>
+
+<h2>Modern OpenGL</h2>
+
+<p><strong>05/01/2017</strong></p>
+
+<p>If you&rsquo;re looking for an easy way to do 3D its probably <a href="https://developer.apple.com/documentation/scenekit">SceneKit</a> or Unity,
+but I assume you want to learn how things work.</p>
+
+<p>Everything you know and love in OpenGL is gone. <code>glTranslate</code>, <code>glLookAt</code>, <code>glRotate</code>, <code>glVertex</code>, <code>glLight</code>, etc.
+The reasoning is that these all describe a specific way of doing things, and OpenGL wanted to be as general as possible so that you can make whatever you want.</p>
+
+<p>For example <code>glLight</code> has a built in algorithm for lighting. What if you want to make your own? You can’t.</p>
+
+<p>The solution is to make everything programmable. Instead of having fixed GPU procedures, the GPU becomes flexible so you can write code which runs on the GPU that replaces the fixed procedures.
+These programs are called shaders.</p>
+
+<h2>Shaders</h2>
+
+<p>There are two kinds of shaders you need to worry about.</p>
+
+<p><strong>Vertex Shader:</strong> takes input data, outputs vertex information (position, color, etc)</p>
+
+<p>The outputs from this vertex shader are interpolated across the triangle (or line) you are drawing, and the results are inputed into the fragment shader.</p>
+
+<p><strong>Fragment Shader:</strong> takes input data, and interpolated vertex information, and outputs a color.</p>
+
+<p>Shaders are written in a C like language and compiled into native GPU code.
+I would say the first thing you need to do is practice writing some shaders, so you can get an idea of what data you need to give them.</p>
+
+<p>The modern OpenGL API has been totally stripped down. It basically consists of creating shaders, providing them with data, and executing them.
+That is it. There is nothing else in OpenGL.</p>
+
+<h2>Data</h2>
+
+<p>So here is the kind of data you need to prepare for OpenGL. This is done in your main code.</p>
+
+<h3>vertex positions, vertex colors, vertex normals.</h3>
+
+<p>You use vertex buffers to upload this data to the GPU. Basically you can make a vertex struct:</p>
+
+<p><code>
+struct vertex
+{
+    Vec3 position, normal, color
+}
+</code></p>
+
+<p>and  then describe its structure, and then upload an array of them. You could make one vertex buffer for your sphere and then reuse it for each ball.</p>
+
+<h3>Textures</h3>
+
+<p>You upload images using <code>glTexImage</code>. This APIs has stayed mostly the same as old OpenGL.</p>
+
+<h3>Matrices</h3>
+
+<p>Since OpenGL has no translate, rotate, etc. You need to create your own transformation matrices for every object in the scene.</p>
+
+<p>This has a few components:</p>
+
+<ul>
+<li><strong>model matrix</strong> - this is the translation/rotation for each individual model.</li>
+<li><strong>view matrix</strong> - this describes the camera in the scene (<code>gluLookAt</code>)</li>
+<li><strong>projection matrix</strong> - this is the “3D lense” which projects 3D coordinates onto the 2D screen.</li>
+</ul>
+
+
+<p>Basically you have to calculate all of these yourself, pass them to your vertex shader, and then use them to translate the vertex positions.</p>
+
+<p>Usually the projection and matrices are constant for one draw of the scene, you create them at the beginning and pass them with everything.
+Then for each model you need to construct a new model matrix, describing its current state.</p>
+
+<h3>Recommended Resources</h3>
+
+<ul>
+<li><a href="https://learnopengl.com/">Learn OpenGL</a></li>
+<li><a href="https://paroj.github.io/gltut/">Learning Modern 3D Graphics Programming</a></li>
+</ul>
+
+</body>
+</html>

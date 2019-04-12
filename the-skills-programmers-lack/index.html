@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title>The Skills Poor Programmers Lack</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+
+</div>
+
+<h2>The Skills Poor Programmers Lack</h2>
+
+<p><strong>02/22/2019</strong></p>
+
+<p>A friend and I had a discussion about the basic skills that are often lacking in experienced programmers. How can a programmer work for ten or twenty years and never learn to write good code? So often they need close supervision to ensure they go down the right path, and they can never be trusted to take technical leadership on larger tasks. It seems they are just good enough to get by in their job, but they never become <em>effective</em>.</p>
+
+<p>We thought about our experiences and came up with three fundamental skills that we find are most often missing. Note that these are not skills which take a considerable amount of talent or unique insight. Nor are they &ldquo;trends&rdquo; or &ldquo;frameworks&rdquo; to help you get a new job. They are basic fundamentals which are prerequisites to being a successful programmer.</p>
+
+<h2>Understand how the language works</h2>
+
+<p>Programmers cannot write good code unless they understand what they are typing. At the most basic level, this means they need to understand the rules of their programming language well. It is obvious when a programmer doesn&rsquo;t because they solve problems in indirect ways and litter the code with unnecessary statements that they are clueless as to what they actually do. Their mental model of the program does not match with the actual behavior of the code.</p>
+
+<p>You may have seen code which misunderstands how expressions work:</p>
+
+<p><code>
+if isDelivered and isNotified:
+    isDone = True
+else:
+    isDone = false;
+</code></p>
+
+<p>Instead of:</p>
+
+<p><code>
+isDone = isDelivered and isNotified
+</code></p>
+
+<p>(There may be some cases where the previous style is preferred. It is just an illustration.)</p>
+
+<p>In JavaScript, this is often indicated by <code>new Promise</code> inside a <code>.then()</code>. In C++, it is attaching <code>virtual</code> to every method and destructor and creating every object with <code>new</code>.</p>
+
+<p>Debugging is also extremely difficult if you don&rsquo;t understand the language. You may add a line of code because it fixes a bug for reasons you don&rsquo;t understand. Bugs are mysteries that seem to appear organically, like dust on the shelves. The code seems to have a mind of its own.</p>
+
+<p>Understand the code you write. Know what every line does and why you put it there.</p>
+
+<p>Once you understand the language well, you also need to understand what is going on <em>inside</em> the actual computer. Do you know how typing text on a screen makes things happen in the real world? Do you know how the call stack works? Do you know what is on the stack and heap? Do you know how assembly language works? Do you know how the code gets to assembly? Do you know how a closure captures variables? Do you know how the garbage collector works?</p>
+
+<p>Ignorance here most often results in sluggish code that is wasteful of system resources. A classic example is using a <code>map&lt;string, map&lt;string, ...&gt;&gt;</code> in C++ (a dictionary of dictionaries). Did you really intend to make a self-balancing tree of self-balancing trees? Choosing a reasonable algorithm or data structure is not premature optimization, it is just picking a good tool for the job.</p>
+
+<p>Of course, no one person can understand <em>everything</em> that goes on in modern computers. I don’t know how  <a href="https://en.wikipedia.org/wiki/Cache_coherence">cache coherence</a> or <a href="https://preshing.com/20120625/memory-ordering-at-compile-time/">instruction reordering</a> algorithms work. However, there is a certain level everyone <em>should</em> know, and every bit beyond that only helps. The minimal level is probably covered by a CS course on <a href="http://opendatastructures.org/ods-python/">data structures</a> and a course on <a href="http://inst.eecs.berkeley.edu/~cs61c/sp15/">assembly and architecture</a>.</p>
+
+<p>A muddy understanding of how things work is typical of beginners, but it is all too often a problem with experienced programmers if they are not curious and do not take time to learn how things work beyond their immediate job’s needs.</p>
+
+<h2>Anticipate problems</h2>
+
+<p>To write reliable code, you must be able to anticipate problems, not just patch individual use cases. I am shocked by the number of times I see code that puts the program in a broken state when a very likely error happens.</p>
+
+<p>I recently reviewed some code that made an HTTP request to notify a server of a state change in which the programmer assumed the HTTP request would always succeed. If it failed, (and we know how often HTTP requests fail), the record was put into an invalid state. The questions they should have asked when writing this code are: What happens if this fails? Is there another opportunity to send the notification? When is the correct time to record the state change? Careful programmers think through the possible states and transitions of their program.</p>
+
+<p>Using <code>sleep()</code>, cron jobs, or <code>setTimeout</code> is almost always wrong because it typically means you are waiting for a task to finish and don’t know how long it will take. What if it takes longer than you expect? What if the scheduler gives resources to another program? Will that break your program? It may take a little bit of effort to rig a proper event, but it is always worth it.</p>
+
+<p>Another common mistake I see is generating a random file or identifier and hoping that collisions will never happen. It is reasonable for an unlikely event to cause an error, but it is not ok if that puts your program in an unusable state. For example, if a successful login generates a session token and it collides with another token, you could reject the login and have the user try again. It is a freak accident that slightly inconveniences the user. On the other hand, what if you generate storage files with random names and you have a collision? You just lost someone’s data! “This probably won’t happen” is not a strategy for writing reliable code.</p>
+
+<p>Unit testing can’t solve this problem either. It can help you stop and think about some inputs to write a test, but more than likely, the cases that you write tests are the ones you anticipated when you wrote the code! Unit testing cannot transform fragile code into reliable code.</p>
+
+<p>Fragile code often results when you lack the experience to know what kinds of things can go wrong, but it can also be the result of a long career of maintaining existing codebases. When working on a large existing system, you typically fix individual bugs and aren’t rewarded by your bosses for improving the system as a whole. You learn that programming is a never-ending patch. Increasing the <code>sleep()</code> time may fix the bug today, but never solve the underlying issue.</p>
+
+<h2>Organize and design systems</h2>
+
+<p>Even when armed with the other two skills, it&rsquo;s hard to be effective unless you can organize code into a system that makes sense. I believe OOP and relational database get a lot of flack because programmers tend to be bad at design, not because they are broken paradigms. You simply can&rsquo;t create rigid classes, schemas, and hierarchies without thinking them through. Design itself is too broad a topic to explore in this article (read <a href="https://en.wikipedia.org/wiki/Fred_Brooks">Fred Brooks</a>), so I want to focus on a few specific attributes that well-designed software tends to have.</p>
+
+<p>Naive programmers think that design means <a href="http://number-none.com/blow/blog/programming/2014/09/26/carmack-on-inlined-code.html">&ldquo;don&rsquo;t make functions or classes too long&rdquo;</a>. However, the real problem is writing code that mixes unrelated ideas. Poorly designed software lacks conceptual integrity. Its concepts and division of responsibilities are not well defined. It usually looks like a giant Rube Goldberg machine that haphazardly sets state and triggers events.</p>
+
+<p>Accordingly, good software is built from well-defined concepts with clear responsibilities. Mathematicians and <a href="https://en.wikipedia.org/wiki/Categories_(Aristotle">philosophers</a>) spend a lot of time discussing definitions because a good definition allows them to capture and understand some truth about the world. Programmers should think similarly and spend a comparable amount of effort grappling with ideas before writing code.</p>
+
+<p>Good programmers ask questions like:
+- &ldquo;What is this function&rsquo;s purpose?&rdquo;
+- &ldquo;What does this data structure represent?&rdquo;
+- &ldquo;Does this function actually represent two separate tasks?&rdquo;
+- &ldquo;What is the responsibility of this portion of code? What shouldn&rsquo;t it &lsquo;know about&rsquo;?&rdquo;
+- &ldquo;What is necessary to be in the public interface?&rdquo;</p>
+
+<p>Luckily the field is ripe with strategies to help you design code. <a href="https://www.oodesign.com">Design patterns</a> and <a href="https://en.wikipedia.org/wiki/SOLID">SOLID</a> can give you guidelines for designing classes. Functional programming encourages writing pure functions (input -> output and no side effects) and maintaining as little state as possible. <a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html">Model view controller</a> aims to separate UI and storage concerns from program logic. On the other hand, React components form conceptual units by combining the HTML, CSS, and JS into a single component. Unix rejects categories and says <a href="https://en.wikipedia.org/wiki/Everything_is_a_file">everything is a file</a>. All of these seemingly contradictory ideas are valid. The important thing is that the concepts make sense and map closely to the problem you are solving.</p>
+
+<p>Software that is well-designed is also software that is easy to change. Of course, it&rsquo;s too much to ask it to satisfy requirements that contradict its original intent. But, it should accommodate changes that are natural evolutions. A common mistake I see is solving a problem for a few cases, instead of N cases. (If you have a variable called <code>button3</code> think again.) Another is treating everything as a special case using <code>switch</code> statements instead of using polymorphism.</p>
+
+<p>I think the best way to learn about design is to write and study a lot of programs. Programmers who work only on old programs never learn to write new ones. The studying part is key too. Programmers who only work on small temporary projects (like an agency) may get by without ever improving how to design programs. Good design comes gradually with experience, but only if you think about it and try to improve.</p>
+
+<p>There are no tricks or rules that you can follow to guarantee you will write good software. As Alex Stepanov said, &ldquo;think, and then the code will be good.&rdquo;</p>
+</body>
+</html>
