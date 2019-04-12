@@ -30,6 +30,7 @@ Most are hosted on my [Github](https://github.com/justinmeiners)
 - [08/20/2013 - C Craft](https://github.com/justinmeiners/c-craft)
 - [07/20/2013 - IOCC Death Star](https://github.com/justinmeiners/ioccc-death-star)
 - [07/02/2013 - Image Sequence Streaming](https://github.com/justinmeiners/image-sequence-streaming)
+- [05/22/2013 - Mode 7](https://github.com/justinmeiners/mode-7)
 - [04/07/2013 - C Foundation](https://github.com/justinmeiners/c-foundation)
 - [01/08/2013 - iOS Color Wheel](https://github.com/justinmeiners/ios-color-wheel)
 
