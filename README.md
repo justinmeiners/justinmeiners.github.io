@@ -15,6 +15,8 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Most are hosted on my [Github](https://github.com/justinmeiners)
 
+
+- [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
 - [02/22/2019 - The Skills Poor Programmers Lack](the-skills-programmers-lack/)
 - [01/13/2019 - McCulloch & Pitts Neural Net Simulator](https://justinmeiners.github.io/neural-nets-sim/)
 - [01/05/2019 - An Adventure in Pre-Rendered Backgrounds](https://justinmeiners.github.io/pre-rendered-backgrounds/)
