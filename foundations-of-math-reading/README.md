@@ -134,7 +134,7 @@ It belongs in this list because it teaches the fundamental concepts of computati
 See the section [data as programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.5)
 for an example.
 
-### Logical Foundations of Mathematics and Computation
+### Logical Foundations of Mathematics and Computational Complexity
 
 By: Pavel Pudlak
 
