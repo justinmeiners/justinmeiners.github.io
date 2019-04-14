@@ -5,14 +5,17 @@ Foundation of Math Reading List
 
 A few years ago I took a philosophy of language class which
 introduced me to the foundations of math project.
-It became one my my favorite subjects
+It became one of my 
 to study and since then I have read many books about it, and discovered
 some of my favorite books of all time.
 
-Since this isn't a popular topic outside of academia,
-it can be hard to find good learning resources.
 I wanted to organize some of the books I read into a list for others
 who are interested in the topic.
+You will notice a theme in my commentary.
+The books I like most are those that don't
+shy away from hard technical knowledge, but also
+explore the philosophical ideas behind them.
+
 Many good books were left out in favor of the very best.
 They are arranged in a logical sequence
 that will help prepare you for the next one.
@@ -114,17 +117,22 @@ By: Gerald Sussman & Hal Abelson
 
 [Read Online](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
 
-This classic book is designed to teach programming to MIT student
+This classic text is designed to teach programming to MIT student
 who have some technical background in another area of math or science.
 It is a hard read, but it assumes no programming knowledge and teaches Scheme (a lisp dialect) and
 its full inter-workings from the ground up.
-Most of the material is mixed in the [excercises](https://github.com/justinmeiners/excercises/tree/master/sicp)
-so don't skip them!
 
 If you want to be a professional programmer,
 this may be the only book you need to study.
 What other book teaches you to write a symbolic differentiator, 
 interpreter, circuit simulator, and compiler?
+Most of the material is mixed in the [excercises](https://github.com/justinmeiners/excercises/tree/master/sicp)
+so don't skip them!
+
+However, this is not just a programming book.
+It belongs in this list because it teaches the fundamental concepts of computation.
+See the section [data as programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.5)
+for an example.
 
 ### Logical Foundations of Mathematics and Computation
 
