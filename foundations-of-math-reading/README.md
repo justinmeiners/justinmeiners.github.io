@@ -140,12 +140,11 @@ By: Pavel Pudlak
 
 ![logical foundations of math](logical_foundations.jpg)
 
-This book covered almost all the concepts I learned about 
-algebra and meta-mathematics in my entire undergraduate degree
-in the first chapter.
 This book is a massive and dense survey of important topics including
 formal systems, set theory, abstract algebra, computability theory, 
 analysis of algorithms, and quantum computing. 
+The first chapter covered almost all the concepts I learned about 
+algebra and meta-mathematics in my entire undergraduate degree.
 
 Pudlak does a fantastic job of balancing technical
 information with philosophical discussion.
