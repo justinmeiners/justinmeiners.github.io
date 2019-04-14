@@ -65,7 +65,7 @@ To render the strokes, each node position is transformed from 3D onto the 2D scr
 
 As the drawing becomes more dense, the strokes begin to resemble their own shape. 
 Rendering strokes is a very efficient process because it only involves stamping the brush image in 2D, which is easily parallelized on the GPU.
-For the strokes to be drawn in the correct order they must be sorted by depth. This is by far the most compuational expensive part of the process.
+For the strokes to be drawn in the correct order they must be sorted by depth. This is by far the most computational expensive part of the process.
 My program solved this problem by only sorting strokes by their average position, which seemed to be an acceptable alternative to sorting each node.
 The order in which the nodes of a stroke are rendered is still important to ensure proper layering. An offline rendering process should sort each node properly.
 
