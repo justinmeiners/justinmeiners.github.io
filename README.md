@@ -5,8 +5,9 @@ About Me
 
 Welcome to my personal site about programming, mathematics, and philosophy!
 
-I currently work at [Pyrofex](https://pyrofex.net) as a Software Engineer.
-Throughout my career have worked in many different areas including iOS, web, computer graphics, and cryptocurrency.
+I currently work at [Pyrofex](https://pyrofex.net) as an Engineering Manager.
+Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
+
 If you are interested in my professional experience, see my [CV](files/cv.pdf).
 
 Feel free to contact me at ![justin's email](mail.gif).
@@ -14,7 +15,6 @@ Feel free to contact me at ![justin's email](mail.gif).
 ## Projects & Articles
 
 Most are hosted on my [Github](https://github.com/justinmeiners)
-
 
 - [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
 - [02/22/2019 - The Skills Poor Programmers Lack](the-skills-programmers-lack/)
