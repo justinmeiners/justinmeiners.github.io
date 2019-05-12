@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title>Notes on Vector Libraries</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+
+</div>
+
+<h1>Notes on Vector Libraries</h1>
+
+<p><strong>05/12/2019</strong></p>
+
+<p>A good vector math library is essential for graphics
+and simulation programming.
+However, implementing one that is flexible, efficient,
+and easy to use is difficult.
+Due to so many choices, experienced
+programmers tend to write their own to accommodate their preference.</p>
+
+<p>In this article I will survey a few of the most popular techniques and offer some design advice.
+I will specifically focus on math theory and C implementations.</p>
+
+<h2>Math</h2>
+
+<p>Before diving into the code.
+It&rsquo;s helpful to review some of the math
+to understand what we are aiming for. One thing to watch for
+is operations that can be defined in terms of each other.
+Rarely do I see libraries take advantage of this.</p>
+
+<p><strong>Vector Operations</strong></p>
+
+<p>On vectors in <code>R^N</code></p>
+
+<ul>
+<li>addition <code>v + w</code></li>
+<li>subtraction <code>v - w</code>. Defined by addition: <code>a - b = a + (-b)</code></li>
+<li>multiplication <code>v * w</code></li>
+<li>scaling <code>a * v</code></li>
+<li>normalization. Defined by length and scaling: <code>1/|v| * v</code></li>
+</ul>
+
+
+<p>From <code>R^N -&gt; R</code></p>
+
+<ul>
+<li>dot product <code>&lt;v, v&gt;</code></li>
+<li>length <code>|v|</code>. Defined by dot product <code>sqrt(&lt;v,v&gt;)</code></li>
+<li>angle. Defined by dot product and length <code>acos(&lt;a,b&gt;/|a||b|)</code></li>
+</ul>
+
+
+<p>Only on specific dimension, such as <code>R^2</code> or <code>R^3</code></p>
+
+<ul>
+<li>cross product <code>a X b</code></li>
+<li>angle (in the plane)</li>
+</ul>
+
+
+<p><strong>Matrix Operations</strong></p>
+
+<p>On all matrices <code>M(n x m)</code></p>
+
+<ul>
+<li>addition <code>A + B</code></li>
+<li>subtraction <code>A - B</code>
+Defined by addition <code>A - B = A + (-B)</code></li>
+<li>scaling <code>bA</code></li>
+<li>multiplication <code>AB</code></li>
+</ul>
+
+
+<p>On square matrices <code>M(n x n)</code></p>
+
+<ul>
+<li>determinant <code>det(A)</code></li>
+<li>inverse <code>A^-1</code></li>
+</ul>
+
+
+<p>Between vectors and matrices</p>
+
+<ul>
+<li>multiplication <code>Ax</code></li>
+</ul>
+
+
+<p>Most programs use 2, 3, and 4
+element vectors, and only a few operations
+are specific to a given dimension.
+So a lot of code can be condensed by writing algorithms
+on N dimensional vectors.</p>
+
+<p>Matrix operations are also very general.
+But a few should be kept to a specific
+dimension (usually 3x3 or 4x4).
+You do not want to implement a
+general inverse or determinant function.</p>
+
+<h2>1. Simple Structs</h2>
+
+<pre><code>typedef struct
+{
+    float x, y, z;
+} vec3;
+
+vec3 vec3_add(vec3 a, b)
+{
+    vec3 r;
+    r.x = a.x + b.x;
+    r.y = a.y + b.y;
+    r.z = a.z + b.z;
+    return r;  
+}
+</code></pre>
+
+<p>This works well for smaller programs.
+The best part is that expressions look nice (<code>a + 2.0*(b-d)</code>):</p>
+
+<pre><code>vec3_add(a, vec3_scale(2.0, vec_sub(b, c)));
+</code></pre>
+
+<p>But, we have to copy this definition for every dimension.
+We also have to avoid any algorithms that use
+index or iteration.
+Matrix vector multiplication gets ugly.</p>
+
+<p>If you only have a few functions that need
+indexing and you can index into a pointer to the first member:</p>
+
+<pre><code>vec3 a;
+float* v = &amp;a.x;
+v[0];
+</code></pre>
+
+<p><strong>Examples</strong></p>
+
+<ul>
+<li><p><a href="https://github.com/justinmeiners/pre-rendered-backgrounds/blob/master/source/engine/core/vec_math.h">vec math</a></p></li>
+<li><p><a href="https://github.com/nothings/obbg/blob/master/src/stb_vec.h">stb vec</a></p></li>
+</ul>
+
+
+<h2>2. Arrays</h2>
+
+<p>For <code>N</code> dimensional vectors
+we might try to write functions which
+operate on arrays of floats.
+This is nice because it does not
+introduce another data structure, so
+other functions and vector libraries play nice with each other.</p>
+
+<p>Unfortunately, C does not allow you to return
+an array from the stack. You can only return a pointer
+which must point to some valid region.
+So either we do something horrible like <code>malloc</code> in each operation,
+or pass in arrays for the return value.
+Passing in arrays works, but it destroys the ability
+to comfortably write simple expressions such as <code>a + 2.0*(b-d)</code>:</p>
+
+<pre><code>void vecn_add(int n, float* a, float* b, float* ret);
+
+// intermediate results everywhere
+float temp[3];
+vecn_sub(3, b, d, temp);
+
+float temp2[3];
+vecn_scale(3, 2.0, temp, temp2);
+
+float final[3];
+vecn_add(3, a, temp2, final);
+</code></pre>
+
+<p>Plain arrays may be appropriate for matrices since they are not typically
+involved in complex expressions.
+Matrices and large vectors, which would be inefficient to copy around
+would also be a good use case.</p>
+
+<p>Depending on the application you may not want
+to sacrifice performance by introducing loops and branching
+into every operation. As long as the dimensions
+are input as a literals or macros, the small loops
+should be unrolled at compile time.</p>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+<li><a href="https://developer.apple.com/documentation/accelerate/vdsp">Accelerate</a></li>
+<li><a href="https://github.com/datenwolf/linmath.h">linmath</a></li>
+</ul>
+
+
+<h2>3. Struct + Union</h2>
+
+<p>A workaround to return an array from a function is to include it in a struct.
+The tradeoff is that the size must be fixed and element access is a bit
+uglier as it requires at least an extra letter.</p>
+
+<pre><code>typedef struct
+{
+    float e[3];
+} vec3;
+
+vec3 v;
+v.e[0] = 1;
+</code></pre>
+
+<p>The access syntax can be cleaned up with a union
+but, <a href="https://gcc.gnu.org/onlinedocs/gcc/Unnamed-Fields.html">anonymous structs/unions</a>
+are a GCC extension and are non-standard.</p>
+
+<pre><code>typedef union
+{
+    float v[3];
+    struct
+    {
+        float x;
+        float y;
+        float z; 
+    }; 
+} vec3;
+</code></pre>
+
+<p>This gives you safe iterative access and nice named members,
+but it is hard to combine with generic functions.
+Either you use functions which operate on the internal arrays
+and deal with the intermediate results.
+Or, define fixed dimension functions which wrap
+the generic ones:</p>
+
+<pre><code>vec3 vec3_add(vec3 a, vec3 b);
+{
+    vec3 temp;
+    vecn_add(3, a.v, b.v, temp.v);
+    return temp;
+}
+</code></pre>
+
+<p>I don&rsquo;t love this option.
+If I need to write wrapper functions I might as well go back to method 1
+and copy implementations around.</p>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+<li><a href="https://github.com/arkanis/single-header-file-c-libs/blob/master/math_3d.h">Math 3D</a> (See Matrices)</li>
+</ul>
+
+
+<h2>4. Macros</h2>
+
+<p>Some clever macros can help you get the best of both worlds, and
+parameterize the scalar types. This can be combined with
+an array or union data structure.
+But, writing multi-line macros isn&rsquo;t very fun.</p>
+
+<pre><code>#define DEFINE_VEC(T, N, SUF) \
+\
+void vec##N####SUF##_add(const T *a, const T *b,  T *r) \
+{ \
+    for (int i = 0; i &lt; N; ++i) \
+        r[i] = a[i] + b[i]; \
+} \
+</code></pre>
+
+<p>Then define the types you need:</p>
+
+<pre><code>DEFINE_VEC(float, 2, f);
+DEFINE_VEC(float, 3, f);
+DEFINE_VEC(float, 4, f);
+</code></pre>
+
+<p>Usage:</p>
+
+<pre><code>vec3f_add(a, b);
+</code></pre>
+
+<p>Functions which only apply to a specific dimension
+can be defined outside of the macro:</p>
+
+<pre><code>void vec3f_cross(const float* a, const float* b, float* r)
+{
+    // ...
+}
+</code></pre>
+
+<p><strong>Examples:</strong></p>
+
+<ul>
+<li><a href="https://github.com/datenwolf/linmath.h">linmath</a></li>
+</ul>
+
+
+<h2>Closing Thoughts</h2>
+
+<p>In typical C fashion, I believe it is misguided to try to write
+the <em>one true</em> vector library to serve all purposes.
+These libraries are bloated and must choose tradeoffs which
+don&rsquo;t fit your use case. Instead use the examples
+above to write to tailor make vector functions as needed.</p>
+
+<p>For further reading, see <a href="http://www.reedbeta.com/blog/2013/12/28/on-vector-math-libraries/">On Vector Math Libraries</a>.
+It focuses on C++ and has a few other handy tips.
+You can also read a <a href="https://github.com/arkanis/single-header-file-c-libs/issues/3">discussion</a>
+which led to these notes.</p>
+</body>
+</html>
