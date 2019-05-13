@@ -33,7 +33,7 @@ On vectors in `R^N`
     
 From `R^N -> R`
 
-- dot product `<v, v>` 
+- dot product `<v, w>`
 - length `|v|`. Defined by dot product `sqrt(<v,v>)`
 - angle. Defined by dot product and length `acos(<a,b>/|a||b|)`
 
@@ -59,7 +59,7 @@ On square matrices `M(n x n)`
 
 Between vectors and matrices
 
-- multiplication `Ax`
+- multiplication `Av`
 
 Most programs use 2, 3, and 4
 element vectors, and only a few operations
