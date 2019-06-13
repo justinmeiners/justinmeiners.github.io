@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title>Think in Math. Write in Code.</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+
+</div>
+
+<h2>Think in Math. Write in Code.</h2>
+
+<p><strong>6/8/19</strong></p>
+
+<p>Programmers love to discuss programming languages.
+Besides debating their own merits, we integrate them into our identities and even infer things about others who use them.
+Some even defend a form of <a href="https://en.wikipedia.org/wiki/Linguistic_determinism">Linguistic Determinism</a> that thinking is limited to what is typable.</p>
+
+<p>Since we spend so much time using languages, an interest in making them better is justified.
+However, the character of these debates suggests that we think of them as something more.
+Perhaps we have forgotten their primary role.
+Programming languages are <em>implementation tools</em>, not <em>thinking tools</em>.
+They are strict formal languages invented to instruct machines in a human-friendly way.
+In contrast, thoughts are best expressed through a medium which is free and flexible.</p>
+
+<h2>Thinking in Math</h2>
+
+<p>The natural language which has been effectively used for thinking about computation, for thousands of years, is mathematics.
+Most people don&rsquo;t think of math as free or flexible.
+Their experience of seeing scary symbols and memorizing steps in school is quite the opposite.
+I hope readers of this article have had a better experience with math, such as in a <a href="https://www.amazon.com/Introduction-Graph-Theory-Dover-Mathematics/dp/0486678709">discrete math</a> or linear algebra course;
+the kind that involves constructing clear definitions and deductions, and is written in prose with a mix of symbols (most symbols weren&rsquo;t even invented until the <a href="https://en.wikipedia.org/wiki/History_of_mathematical_notation#Symbolic_stage">16th century</a>).</p>
+
+<p>Math allows you to reason about logical structures, free from other constraints.
+This is also what programming requires: creating logical systems to solve problems.
+Take a look at the basic pattern for programming:
+1. Identify a problem
+2. Design algorithms and data structures to solve it
+3. Implement and test them</p>
+
+<p>In practice, work is not so well organized as there is interplay between steps.
+You may write code to inform the design.
+Even so, the basic pattern is followed over and over.</p>
+
+<p>Notice that steps 1 and 2 are the ones that take most of our time, ability, and effort.
+At the same time, these steps don&rsquo;t lend themselves to programming languages.
+That doesn&rsquo;t stop programmers from attempting to solve them in their editor, but they end up with code that is muddled, slow, or that solves the wrong problem.
+It&rsquo;s not that programming languages aren&rsquo;t good enough yet.
+It&rsquo;s that <em>no formal language</em> could be good at it.
+Our brains just don&rsquo;t think that way.
+When problems get hard, we draw diagrams and discuss them with collaborators.</p>
+
+<p>Ideally, steps 1 and 2 are solved first, and only then will a programming language be used to solve step 3.
+This has an added benefit of transforming the implementation process.
+With a mathematical solution in hand, you can then focus on choosing the best representation and implementation, and writing better code, knowing what the end goal will be.</p>
+
+<h2>Implementation Concerns</h2>
+
+<p>Why are programming languages burdensome thinking tools?
+One reason is that writing code is inseparably connected with implementation.
+Implementation concerns are necessary for instructing computers and are worth doing well, but they also distract from the problem to be solved.
+Think about all the considerations for writing a simple function:</p>
+
+<ul>
+<li>What inputs should I provide?</li>
+<li>What should they be named?</li>
+<li>What types should they be? (Even dynamically typed languages must consider types, it&rsquo;s just implicit.)</li>
+<li>Should I pass them by value or by reference?</li>
+<li>What file should I put the function in?</li>
+<li>Should the result be reused, or is it fast enough to recalculate it every time?</li>
+</ul>
+
+
+<p>The list can go on. The point is that these considerations have nothing to do with what the function does.
+They distract from the problem the function is trying to solve.</p>
+
+<p>Many languages aim to hide details such as these, which is helpful, especially for mundane tasks.
+However, they cannot transcend their role as an implementation tool.
+SQL is easily one of the most successful examples of this, but it is ultimately concerned with implementation concerns such as tables, rows, indices, and types.
+Because of this, programmers still design complicated queries in informal terms, like what they want to &ldquo;get,&rdquo; before writing a bunch of <code>JOIN</code>s.</p>
+
+<h2>Inflexible Abstractions</h2>
+
+<p>Another limitation of programming languages is that they are poor abstraction tools.
+Typically, when we discuss abstraction in engineering, we mean hiding implementation details.
+A complex operation or process is packaged into a &ldquo;black box&rdquo; with its contents hidden and well-defined inputs and outputs exposed.
+Accompanying the box is a fictional story about what it does, that is easy to understand.</p>
+
+<p><img src="black-box.gif" alt="black box picture" /></p>
+
+<p>Black boxes are essential for engineering large systems since the details are too overwhelming to hold in your head.
+They also have many well-known limitations.
+A black box <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">leaks</a> because its brief description cannot completely determine its behavior.
+The opaque interfaces introduce <a href="https://www.youtube.com/watch?v=lHLpKzUxjGk">inefficiencies</a>, like duplication and fragmented design.</p>
+
+<p>Most importantly for problem-solving, black boxes are rigid.
+They present a fixed level of abstraction which may be too high-level or too low-level for the problem.
+In theory, you can always look inside the box, but in code, the abstraction level at any one time is fixed.
+They also offer only one perspective of abstraction.
+A high-level web server may provide a terrific interface for serving JSON, but be useless if one wants an interface for serving incomplete data streams, such as output from a program.</p>
+
+<p>In contrast, the word abstraction in math is nothing like hiding information.
+Here, abstraction means extracting the essential features or characteristics of something, in relation to a particular context.
+Unlike black boxes, no information is hidden.
+They don&rsquo;t leak in the same way.
+You are encouraged to adjust to the right level of abstraction and quickly jump between perspectives:
+- Is this problem best represented as a table? Or, a function?
+- Can I look at the whole system as a function?
+- Can I treat this collection of things as a single unit?
+- Should I look at the whole system or a single part?
+- What assumptions should I make? Should I make them stronger or weaker?</p>
+
+<p>Just look at the many ways of looking at a function:</p>
+
+<p><a href="https://www.youtube.com/watch?v=ACZDnF8-9Ks"><img src="functions.gif" alt="function representations" /></a></p>
+
+<p>Major branches of math represent commonly useful abstractions:
+- Geometry abstracts fundamental shapes from objects in the world (or <a href="https://en.wikipedia.org/wiki/Felix_Klein#Erlangen_program">transformation invariants</a>, depending on how cosmic you want to get).
+- Topology abstracts surface features from their shapes.
+- Group theory abstracts binary operations to properties about how they are composed and inverted.</p>
+
+<p>However, these fields aren&rsquo;t the limit.
+You can pick the properties that are important to the problem and ignore everything else.
+The example project at the end shows how this is done.</p>
+
+<p>Programming languages are great for building black boxes; they provide functions, classes, and modules, all of which help wrap up code into nice interfaces.
+However, when trying to solve problems and design solutions, what you actually want is the math kind of abstraction.
+If you try to think at the keyboard, the black boxes available to you will warp your view.</p>
+
+<h2>Problem Representation</h2>
+
+<p>Just as programming languages are limited in their ability to abstract, they also are limited in how they represent data.
+The very act of implementing an algorithm or data structure is picking <em>just one</em> of the many possible ways to represent it.
+Typically, this is not a decision you want to make until you understand what is needed.</p>
+
+<p>For example, graphs (sets of vertices and edges) appear in many programming problems such as internet networks, pathfinding, and social networks.
+Despite their simple definition, choosing how to represent them is hard and depends on their use case:</p>
+
+<p><img src="graph.gif" alt="math graph" /></p>
+
+<ul>
+<li><p>The one which most closely matches the definition:<br/>
+<code>vertices: vector&lt;NodeData&gt; edges: vector&lt;pair&lt;Int, Int&gt;&gt;</code>
+The vertices can be removed if you only care about connectivity.</p></li>
+<li><p>If you want to traverse a node&rsquo;s neighbors quickly, then you probably want a node structure:<br/>
+<code>Node { id: Int, neighbors: vector&lt;Node*&gt; }</code></p></li>
+<li><p>You could use an <a href="https://en.wikipedia.org/wiki/Adjacency_matrix">adjacency matrix</a>. Where each row stores the neighbors of a particular node:<br/>
+<code>connectivity: vector&lt;vector&lt;int&gt;&gt;</code></p></li>
+<li><p>Pathfinding algorithms often work on graphs implicitly from a board of cells:<br/>
+<code>walls: vector&lt;vector&lt;bool&gt;&gt;</code></p></li>
+<li><p>In a peer-to-peer network, each computer is a node and each socket is a vertex.
+The entire graph isn&rsquo;t even accessible from one machine!</p></li>
+</ul>
+
+
+<p>Math allows you to reason about the graph itself, solve the problem, and then choose an appropriate representation.
+If you think in a programming language, you cannot delay this decision as your first line of code commits to a particular representation.</p>
+
+<p>Note that the representations are too diverse to conform to a single interface, typeclass, or even program.
+So creating a completely reusable graph library is impractical.
+It can only work on a few types, or force all graphs into an inappropriate representation.
+That doesn&rsquo;t mean libraries aren&rsquo;t useful.
+Similar representations are needed again and again (like <code>std::vector</code>),
+but you cannot write a library which solves a graph problem once and for all.</p>
+
+<p>Some modern programming languages attempt to provide more mathematical abstraction tools.
+For example, Haskell has <code>Ring</code> and <code>Group</code> typeclasses.
+However, the representation issues show that these features must be less useful than their theoretical inspirations.
+It is smart to write an algorithm which relies only on the associative property and document it is as such.
+This is thinking in the language of math.
+But, in practice, it can only reasonably work on a small family of similar types.
+A simple generic with a few types in mind is appropriate.</p>
+
+<p>As a corollary, programming languages should focus primarily on being useful implementation tools, rather than thinking tools.
+C got this right in a big way.
+Modern language features such as C#&rsquo;s async and await provide great improvements for implementing concurrent programs.</p>
+
+<h2>Example Project</h2>
+
+<p>So what does thinking in math look like?
+Recently, I worked on an API at work for pricing cryptocurrency for merchants.
+It takes into account recent price changes and recommends that merchants charge a higher price during volatile times.</p>
+
+<p>Although we did some homework on the theory, we wanted to empirically test it to see how it performed during various market conditions.
+To do so, I designed a bot to simulate a merchant doing business with our API, to see how it performs.</p>
+
+<p><strong>BTC/USD (1 day)</strong></p>
+
+<p><img src="btc-usd.gif" alt="btc usd" /></p>
+
+<h3>Preliminaries</h3>
+
+<p><strong>Definition:</strong> The <strong>exchange rate</strong> <code>r(t)</code> is the market rate of <code>fiat/crypto</code>.</p>
+
+<p><strong>Definition:</strong> The <strong>merchant rate</strong> <code>r'(t)</code> is the modified exchange rate which the merchant is advised to charge customers.</p>
+
+<p><strong>Definition:</strong> When a customer buys an item, we call that event a <strong>purchase</strong>.
+A purchase consists of the price in fiat and a time. <code>p = (f, t)</code>.</p>
+
+<p><strong>Theorem:</strong> The amount of crypto for a purchase is found by applying the modified exchange rate
+<code>t(p) = p(1) / r'(p(2))</code>.</p>
+
+<p><strong>Proof:</strong> <code>p(1) / r'(p(2)) = fiat / (fiat/crypto) = fiat * crypto/fiat = crypto</code></p>
+
+<p><strong>Definition:</strong> When the merchant sells their crypto holdings, we call that event a <strong>sale</strong>.
+A sale consists of an amount in crypto and a timestamp. <code>s = (c, t)</code>.</p>
+
+<p><strong>Theorem:</strong> The amount of fiat the merchant obtained from a sale is found by applying the exchange rate to the sale <code>g(s) = s(1) * r(s(2))</code>.</p>
+
+<p><strong>Proof:</strong> <code>s(1) * r(s(2)) = crypto * (fiat/crypto) = fiat</code></p>
+
+<p><strong>Definition:</strong> The <strong>balance</strong> of a set of purchases and sales is the difference between all purchase crypto amounts and all sale crypto amounts.
+ <code>b(P, S) = sum from i to N of t(p_i) - sum from j to M of s_j(1)</code></p>
+
+<p>Note that <code>b(P, S) &gt;= 0</code> must always hold.</p>
+
+<p><strong>Definition:</strong> The <strong>earnings</strong> of a set of purchases and sales is the difference between sale fiat amounts and purchase fiat amounts.
+<code>e(P, S) = sum from j to M of g(s_j(1)) - sum from i to N of p_i(1) &gt;= 0</code>.</p>
+
+<h3>Objective</h3>
+
+<p><strong>Definition:</strong> We say that the merchant rate is <strong>favorable</strong> iff the earnings are non-negative for <em>most</em> sets of <em>typical</em> purchases and sales.
+<code>r'(t) is favorable iff e(P, S) &gt;= 0</code>.</p>
+
+<p>In a favorable case, the merchant didn&rsquo;t lose any fiat by accepting crypto.</p>
+
+<p><em>most</em> and <em>typical</em> will not be rigorously defined.</p>
+
+<p>As part of <em>typical</em>, we can assume that merchants will sell their crypto in a timely manner.
+So assume <code>s_i(2) - s_j(2) &lt; W</code> for <code>i,j in {1.. M}</code> for some bound <code>W</code>.
+Purchase amounts should be randomly distributed within a reasonable range that commerce is done. Perhaps $10-100.</p>
+
+<p><strong>The goal of the bot is to verify that <code>r'(t)</code> is favorable.</strong></p>
+
+<p>Note that this definition is only one measure of quality.
+Perhaps protecting against the worst case is more important than being favorable.
+In that case, we would be concerned about the ability to construct a set of purchases with very negative earnings.</p>
+
+<h3>Algorithm</h3>
+
+<p>Repeat many times:</p>
+
+<ol>
+<li>Randomly choose a time range <code>[t0, t1]</code>.</li>
+<li><p>Generate a set of <strong>purchases</strong> at random times within <code>[t0, t1]</code>.
+The price should fall within a range <code>[p0, p1</code>] of <em>typical</em> prices.</p></li>
+<li><p>Generate a set of <strong>sales</strong> at evenly spaced times (perhaps with slight random noise) within <code>[t0, t1]</code>.
+Each sale should be for the full <strong>balance</strong> at that time.</p></li>
+<li>Calculate the <strong>earnings</strong> for these sets.</li>
+<li>Record the earnings.</li>
+</ol>
+
+
+<p>After:</p>
+
+<ol>
+<li>Report how many earnings were negative and non-negative. Show a percentage for each.</li>
+<li>Identify the minimum and maximum earnings and report them.</li>
+</ol>
+
+
+<h3>Conclusion</h3>
+
+<p>As you read this example, I think your tendency may be to think that its statements are obvious.
+Certainly, none of these steps are hard.
+However, it was surprising to me how many of my assumptions were corrected and how difficult it was to choose an objective definition of a <strong>favorable</strong> outcome.
+This process helped me become aware of assumptions I would not have even considered if I had started by simply writing code.
+Perhaps the greatest benefit was that after writing it, I was able to quickly review it with a co-worker and make corrections which were easy on paper, but would have been difficult to change in code.</p>
+
+<p>I hope that thinking in the language of math will bring similar benefits to your projects!
+Note that this example is only one style of utilizing mathematical thinking.
+I recommend reading others by <a href="https://lamport.azurewebsites.net/pubs/pubs.html#eatcs">Leslie Lamport</a>, <a href="https://www.amazon.com/Introduction-Algorithms-Creative-Udi-Manber/dp/0201120372">Udi Manber</a>, and <a href="http://stepanovpapers.com/PAM.pdf">Alex Stepanov</a>.</p>
+</body>
+</html>

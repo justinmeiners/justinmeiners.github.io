@@ -16,6 +16,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Most are hosted on my [Github](https://github.com/justinmeiners)
 
+- [06/08/2019 - Think in Math. Write in Code.](think-in-math/)
 - [05/12/2019 - Notes On Vector Libraries](vector-libs/)
 - [04/25/2019 - Tiny Blockchain](https://github.com/justinmeiners/tiny-blockchain)
 - [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
