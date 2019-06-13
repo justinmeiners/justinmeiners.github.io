@@ -138,14 +138,14 @@ Despite their simple definition, choosing how to represent them is hard and depe
 - Pathfinding algorithms often work on graphs implicitly from a board of cells:  
   `walls: vector<vector<bool>>`
 
-- In a peer-to-peer network, each computer is a node and each socket is a vertex.
+- In a peer-to-peer network, each computer is a vertex and each socket is an edge.
   The entire graph isn't even accessible from one machine! 
 
 Math allows you to reason about the graph itself, solve the problem, and then choose an appropriate representation.
 If you think in a programming language, you cannot delay this decision as your first line of code commits to a particular representation.
 
-Note that the representations are too diverse to conform to a single interface, typeclass, or even program.
-So creating a completely reusable graph library is impractical.
+Note that the graph representations are too diverse to conform to a single interface, typeclass, or even program.
+So creating a completely reusable library is impractical.
 It can only work on a few types, or force all graphs into an inappropriate representation.
 That doesn't mean libraries aren't useful.
 Similar representations are needed again and again (like `std::vector`),

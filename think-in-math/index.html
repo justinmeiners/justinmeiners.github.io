@@ -237,7 +237,7 @@ The vertices can be removed if you only care about connectivity.</p></li>
 <code>connectivity: vector&lt;vector&lt;int&gt;&gt;</code></p></li>
 <li><p>Pathfinding algorithms often work on graphs implicitly from a board of cells:<br/>
 <code>walls: vector&lt;vector&lt;bool&gt;&gt;</code></p></li>
-<li><p>In a peer-to-peer network, each computer is a node and each socket is a vertex.
+<li><p>In a peer-to-peer network, each computer is a vertex and each socket is an edge.
 The entire graph isn&rsquo;t even accessible from one machine!</p></li>
 </ul>
 
@@ -245,8 +245,8 @@ The entire graph isn&rsquo;t even accessible from one machine!</p></li>
 <p>Math allows you to reason about the graph itself, solve the problem, and then choose an appropriate representation.
 If you think in a programming language, you cannot delay this decision as your first line of code commits to a particular representation.</p>
 
-<p>Note that the representations are too diverse to conform to a single interface, typeclass, or even program.
-So creating a completely reusable graph library is impractical.
+<p>Note that the graph representations are too diverse to conform to a single interface, typeclass, or even program.
+So creating a completely reusable library is impractical.
 It can only work on a few types, or force all graphs into an inappropriate representation.
 That doesn&rsquo;t mean libraries aren&rsquo;t useful.
 Similar representations are needed again and again (like <code>std::vector</code>),
