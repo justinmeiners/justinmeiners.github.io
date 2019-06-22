@@ -3,15 +3,16 @@ Foundation of Math Reading List
 
 **04/13/2019**
 
-One of my favorite courses in college was a
-a philosophy of language which 
-introduced me to the foundations of math project.
-It has since become one of my 
-favorite subjects to study and led me to discover
-some of my favorite books of all time.
+One of my favorite courses in college was
+philosophy of language.
+Along with interesting philosphy
+it introduced me to the foundations of math project
+which has since become one of my 
+favorite subjects to learn about.
 
-I wanted to organize a few of the most important books I read
-into a list for others who are interested.
+Some of my favorite books of all time come out of this interest.
+I wanted to organize a few of these
+into a list for others who are interested in the topic.
 Note that many good books were left out in favor of the very best.
 
 You will notice a theme in my commentary.
