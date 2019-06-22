@@ -127,7 +127,7 @@ If anyone knows of a place where I can reasonably purchase this book, let me kno
 
 ### Structure and Interpretation of Computer Programs
 
-By: Gerald Sussman & Hal Abelson
+By: [Gerald Sussman][sicp-4] & [Hal Abelson][sicp-5]
 
 ![sicp](sicp.jpg)
 
@@ -153,6 +153,8 @@ See the section [data as programs][sicp-3] for an example.
 [sicp-1]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
 [sicp-2]: https://github.com/justinmeiners/excercises/tree/master/sicp
 [sicp-3]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.5
+[sicp-4]: https://en.wikipedia.org/wiki/Gerald_Jay_Sussman
+[sicp-5]: https://en.wikipedia.org/wiki/Hal_Abelson
 
 ### Logical Foundations of Mathematics and Computational Complexity
 
