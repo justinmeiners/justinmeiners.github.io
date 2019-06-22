@@ -102,7 +102,8 @@ td { vertical-align: top; }
 <p><strong>10/30/16</strong></p>
 
 <p>In 2012 I came across the paper <a href="http://zurich.disneyresearch.com/OverCoat/">OverCoat: An Implicit Canvas for 3D Painting</a>
-which describes a technique for creating 3D models using traditional painting methods. At the time I didn&rsquo;t have sufficient mathematical knowledge
+which describes a technique for creating 3D models using traditional painting methods.
+At the time I didn&rsquo;t have sufficient mathematical knowledge
 to understand all of the technical details described, but I picked up the general idea and wrote my own rough implementation.
 This article explains how my program was constructed and some of what I learned in the process.</p>
 
@@ -123,21 +124,20 @@ Along with the node positions, information such as a color and brush size are st
 
 <p>I used the following data structures:</p>
 
-<p>```
-typedef struct
+<pre><code>typedef struct
 {
     Vec4_t color;
     int brush;
     float pressure;
-} StrokeInfo_t;</p>
+} StrokeInfo_t;
 
-<p>typedef struct
+typedef struct
 {
     Vec3_t pos;
     float radius;
-} StrokeNode3D_t;</p>
+} StrokeNode3D_t;
 
-<p>typedef struct
+typedef struct
 {
     int nodeCount;
     StrokeNode3D_t nodes[MAX_STROKE_NODES];
@@ -145,15 +145,15 @@ typedef struct
     // used for depth sorting
     Vec3_t center;
     StrokeInfo_t info;
-} Stroke3D_t;</p>
+} Stroke3D_t;
 
-<p>typedef struct
+typedef struct
 {
     int strokeCount;
     Stroke3D_t strokes[MAX_STROKES];
     int dirty;
 } Canvas3D_t;
-```</p>
+</code></pre>
 
 <p><img src="screen2.jpg" alt="screenshot 2" /></p>
 
