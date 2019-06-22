@@ -25,7 +25,7 @@ that will help prepare you for the next one.
 
 ### Logicomix
 
-By: Apostolos Doxiadis
+By: [Apostolos Doxiadis][l1]
 
 ![logicomix](logicomix.jpg)
 
@@ -41,9 +41,11 @@ The book also explores how these ideas connect to modern computer science.
 It is an absolute joy to read and will give you a taste
 of whether this is an interesting subject for you.
 
+[l1]: https://www.apostolosdoxiadis.com
+
 ### Gödel, Escher, Bach
 
-By: Douglas Hofstadter
+By: [Douglas Hofstadter][geb-1]
 
 ![godel escher bach](geb.jpg)
 
@@ -57,9 +59,11 @@ Every topic is presented beautifully and with a lot of philosophical discussion.
 In many ways it is an introduction to the big ideas in modern science.
 It is written for a general audience and assumes no mathematical background.
 
+[geb-1]: https://en.wikipedia.org/wiki/Douglas_Hofstadter
+
 ### Gödel's Proof.
 
-By: Newman & Nagel
+By: [Ernest Newman][gp-1] & [Nagel][gp-2]
 
 ![godel's proof](godels_proof.jpg)
 
@@ -71,9 +75,12 @@ This concise book offers another perspective and a clear explanation
 of the mathematics of the proof, its general strategy, and the
 historical context surrounding the incompleteness problem.
 
+[gp-1]: https://en.wikipedia.org/wiki/Ernest_Nagel)
+[gp-2]: https://en.wikipedia.org/wiki/James_R._Newman
+
 ### Descartes Dream
 
-By: Phillip Davis & Reuben Hersch
+By: [Phillip Davis][dd-1] & [Reuben Hersch][dd-2]
 
 ![descartes dream](descartes_dream.jpg)
 
@@ -89,9 +96,12 @@ or technology.
 If you like this book, the authors wrote another called *The Mathematical Experience*
 which is focused more on pure mathematics.
 
+[dd-1]: https://en.wikipedia.org/wiki/Philip_J._Davis
+[dd-2]: https://en.wikipedia.org/wiki/Reuben_Hersh
+
 ### Computation: Finite & Infinite
 
-By: Marvin Minsky
+By: [Marvin Minsky][mm-1]
 
 ![computation finite & infinite](computation.jpg)
 
@@ -101,7 +111,7 @@ for thinking about mechanical machines and develops the
 theory of computation.
 
 This book teaches you all you need to know about Turing machines, finite state, and neural networks.
-My project: [McCulloch & Pitts Neural Net Simulator](https://justinmeiners.github.io/neural-nets-sim/)
+My project: [McCulloch & Pitts Neural Net Simulator][mm-2]
 is based on this book.
 
 To read this book, you should understand some logic and basic set theory
@@ -112,13 +122,16 @@ amount of money).
 I read it from my university's library. If that is not an option, I recommend you *find it online*.
 If anyone knows of a place where I can reasonably purchase this book, let me know.
 
+[mm-1]: https://en.wikipedia.org/wiki/Marvin_Minsky
+[mm-2]: https://justinmeiners.github.io/neural-nets-sim/
+
 ### Structure and Interpretation of Computer Programs
 
 By: Gerald Sussman & Hal Abelson
 
 ![sicp](sicp.jpg)
 
-[Read Online](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
+[Read Online][sicp-1]
 
 This classic text is designed to teach programming to MIT students
 who have some technical background in another areas of math and science.
@@ -130,17 +143,20 @@ this may be the only book you need to study.
 What other book teaches you to write a symbolic differentiator, 
 interpreter, circuit simulator, and compiler?
 
-Most of the material is mixed in the [excercises](https://github.com/justinmeiners/excercises/tree/master/sicp)
+Most of the material is mixed in the [excercises][sicp-2]
 so don't skip them!
 
 But, this is not just a programming book.
 It belongs in this list because it teaches the fundamental concepts of computation.
-See the section [data as programs](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.5)
-for an example.
+See the section [data as programs][sicp-3] for an example.
+
+[sicp-1]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
+[sicp-2]: https://github.com/justinmeiners/excercises/tree/master/sicp
+[sicp-3]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-26.html#%_sec_4.1.5
 
 ### Logical Foundations of Mathematics and Computational Complexity
 
-By: Pavel Pudlak
+By: [Pavel Pudlak][f1]
 
 ![logical foundations of math](logical_foundations.jpg)
 
@@ -161,3 +177,5 @@ and really understand what he means.
 
 If you read through the other books, and have technical knowledge
 you should be well prepared.
+
+[f1]: https://www.apostolosdoxiadis.com
