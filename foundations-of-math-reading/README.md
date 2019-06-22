@@ -63,7 +63,7 @@ It is written for a general audience and assumes no mathematical background.
 
 ### Gödel's Proof.
 
-By: [Ernest Newman][gp-1] & [Nagel][gp-2]
+By: [James Newman][gp-1] & [Ernest Nagel][gp-2]
 
 ![godel's proof](godels_proof.jpg)
 
@@ -178,4 +178,4 @@ and really understand what he means.
 If you read through the other books, and have technical knowledge
 you should be well prepared.
 
-[f1]: https://www.apostolosdoxiadis.com
+[f1]: http://users.math.cas.cz/~pudlak/
