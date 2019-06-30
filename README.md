@@ -16,9 +16,9 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Most are hosted on my [Github](https://github.com/justinmeiners)
 
+- [06/29/2019 - text2image](https://github.com/justinmeiners/text2image)
 - [06/08/2019 - Think in Math. Write in Code.](think-in-math/)
 - [05/12/2019 - Notes On Vector Libraries](vector-libs/)
-- [04/25/2019 - Tiny Blockchain](https://github.com/justinmeiners/tiny-blockchain)
 - [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
 - [02/22/2019 - The Skills Poor Programmers Lack](the-skills-programmers-lack/)
 - [01/13/2019 - McCulloch & Pitts Neural Net Simulator](https://justinmeiners.github.io/neural-nets-sim/)
