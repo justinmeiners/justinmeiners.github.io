@@ -24,6 +24,7 @@ the kind that involves constructing clear definitions and deductions, and is wri
 Math allows you to reason about logical structures, free from other constraints.
 This is also what programming requires: creating logical systems to solve problems.
 Take a look at the basic pattern for programming:
+
 1. Identify a problem
 2. Design algorithms and data structures to solve it
 3. Implement and test them
@@ -51,12 +52,12 @@ One reason is that writing code is inseparably connected with implementation.
 Implementation concerns are necessary for instructing computers and are worth doing well, but they also distract from the problem to be solved.
 Think about all the considerations for writing a simple function:
 
-* What inputs should I provide?
-* What should they be named?
-* What types should they be? (Even dynamically typed languages must consider types, it's just implicit.)
-* Should I pass them by value or by reference?
-* What file should I put the function in?
-* Should the result be reused, or is it fast enough to recalculate it every time?
+- What inputs should I provide?
+- What should they be named?
+- What types should they be? (Even dynamically typed languages must consider types, it's just implicit.)
+- Should I pass them by value or by reference?
+- What file should I put the function in?
+- Should the result be reused, or is it fast enough to recalculate it every time?
 
 The list can go on. The point is that these considerations have nothing to do with what the function does.
 They distract from the problem the function is trying to solve.
@@ -91,6 +92,7 @@ Here, abstraction means extracting the essential features or characteristics of 
 Unlike black boxes, no information is hidden.
 They don't leak in the same way.
 You are encouraged to adjust to the right level of abstraction and quickly jump between perspectives:
+
 - Is this problem best represented as a table? Or, a function?
 - Can I look at the whole system as a function?
 - Can I treat this collection of things as a single unit?
@@ -102,6 +104,7 @@ Just look at the many ways of looking at a function:
 [![function representations](functions.gif)][10]
 
 Major branches of math represent commonly useful abstractions:
+
 - Geometry abstracts fundamental shapes from objects in the world (or [transformation invariants][9], depending on how cosmic you want to get).
 - Topology abstracts surface features from their shapes.
 - Group theory abstracts binary operations to properties about how they are composed and inverted.
