@@ -18,10 +18,10 @@ FEED="feed.xml"
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"  > $FEED
 echo "<rss version=\"2.0\">" >> $FEED
 echo "<channel>" >> $FEED
-
 cat "template/channel.xml" >> $FEED
-cat "template/articles.xml" >> $FEED
+echo "<lastBuildDate>$(date -R)</lastBuildDate>" >> $FEED
 
+cat "template/articles.xml" >> $FEED
 echo "</channel>" >> $FEED
 
 cat "template/articles.xml" | ./template/linkformat.sh 

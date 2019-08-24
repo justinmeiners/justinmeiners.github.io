@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-    <title>Justin Meiners</title>
-    <description>Welcome to my personal site about programming, mathematics, and philosophy!</description>
-    <link>https://justinmeiners.github.io</link>
-    <lastBuildDate>Sat, 24 Aug 2019 14:19:31 -0600</lastBuildDate>
-
-    <item>
-        <title>Write Your Own Proof-of-Work Blockchain</title>
-        <description>This article will teach you how to write a tiny proof-of-work blockchain, focusing on the Bitcoin implementation.</description>
-        <link>https://justinmeiners.github.io/tiny-blockchain/</link>
-        <pubDate>Sat, 24 Aug 2019 14:19:31 -0600</pubDate>
-    </item>
+<title>Justin Meiners</title>
+<description>Welcome to my personal site about programming, mathematics, and philosophy!</description>
+<link>https://justinmeiners.github.io</link>
 
 
-</channel>
-</rss>
+<lastBuildDate>Sat, 24 Aug 2019 15:25:56 -0600</lastBuildDate>
 <item>
     <title>Write Your Own Proof-of-Work Blockchain</title>
     <description>This article will teach you how to write a tiny proof-of-work blockchain, focusing on the Bitcoin implementation.</description>
