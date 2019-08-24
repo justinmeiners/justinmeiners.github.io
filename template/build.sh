@@ -19,7 +19,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"  > $FEED
 echo "<rss version=\"2.0\">" >> $FEED
 echo "<channel>" >> $FEED
 
-cat "templates/channel.xml" >> $FEED
+cat "template/channel.xml" >> $FEED
 cat "template/articles.xml" >> $FEED
 
 echo "</channel>" >> $FEED
