@@ -14,7 +14,7 @@ while read_dom; do
     if [[ $ENTITY = "pubDate" ]]; then
         PUB=$CONTENT
         DATETXT=$(date -j -f "%a, %d %b %Y %T %z" "$PUB" +"%m/%d/%Y")
-        echo "<a href=\"$LINK\">$DATETXT - $TITLE</a>"
+        echo " - [$DATETXT - $TITLE]($LINK)"
     fi
     if [[ $ENTITY = "link" ]]; then
         LINK=$CONTENT
