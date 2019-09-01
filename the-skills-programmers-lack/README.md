@@ -61,9 +61,10 @@ Even when armed with the other two skills, it's hard to be effective unless you 
 
 Naive programmers think that design means ["don't make functions or classes too long"](http://number-none.com/blow/blog/programming/2014/09/26/carmack-on-inlined-code.html). However, the real problem is writing code that mixes unrelated ideas. Poorly designed software lacks conceptual integrity. Its concepts and division of responsibilities are not well defined. It usually looks like a giant Rube Goldberg machine that haphazardly sets state and triggers events.
 
-Accordingly, good software is built from well-defined concepts with clear responsibilities. Mathematicians and [philosophers](https://en.wikipedia.org/wiki/Categories_(Aristotle)) spend a lot of time discussing definitions because a good definition allows them to capture and understand some truth about the world. Programmers should think similarly and spend a comparable amount of effort grappling with ideas before writing code.
+Accordingly, good software is built from well-defined concepts with clear responsibilities. Mathematicians and [philosophers][3] spend a lot of time discussing definitions because a good definition allows them to capture and understand some truth about the world. Programmers should think similarly and spend a comparable amount of effort grappling with ideas before writing code.
 
 Good programmers ask questions like:
+
 - "What is this function's purpose?"
 - "What does this data structure represent?"
 - "Does this function actually represent two separate tasks?"
@@ -77,3 +78,5 @@ Software that is well-designed is also software that is easy to change. Of cours
 I think the best way to learn about design is to write and study a lot of programs. Programmers who work only on old programs never learn to write new ones. The studying part is key too. Programmers who only work on small temporary projects (like an agency) may get by without ever improving how to design programs. Good design comes gradually with experience, but only if you think about it and try to improve.
 
 There are no tricks or rules that you can follow to guarantee you will write good software. As Alex Stepanov said, "think, and then the code will be good."
+
+[3]: https://en.wikipedia.org/wiki/Categories_(Aristotle)
