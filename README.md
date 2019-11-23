@@ -5,7 +5,7 @@ About Me
 
 Welcome to my personal site about programming, mathematics, and philosophy!
 
-I currently work at [Pyrofex](https://pyrofex.net) as an Engineering Manager.
+I am currently a graduate student in mathematics at [BYU](https://math.byu.edu).
 Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
 
 If you are interested in my professional experience, see my [CV](files/cv.pdf).

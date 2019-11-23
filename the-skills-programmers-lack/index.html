@@ -160,14 +160,18 @@ isDone = isDelivered and isNotified
 
 <p>Naive programmers think that design means <a href="http://number-none.com/blow/blog/programming/2014/09/26/carmack-on-inlined-code.html">&ldquo;don&rsquo;t make functions or classes too long&rdquo;</a>. However, the real problem is writing code that mixes unrelated ideas. Poorly designed software lacks conceptual integrity. Its concepts and division of responsibilities are not well defined. It usually looks like a giant Rube Goldberg machine that haphazardly sets state and triggers events.</p>
 
-<p>Accordingly, good software is built from well-defined concepts with clear responsibilities. Mathematicians and <a href="https://en.wikipedia.org/wiki/Categories_(Aristotle">philosophers</a>) spend a lot of time discussing definitions because a good definition allows them to capture and understand some truth about the world. Programmers should think similarly and spend a comparable amount of effort grappling with ideas before writing code.</p>
+<p>Accordingly, good software is built from well-defined concepts with clear responsibilities. Mathematicians and <a href="https://en.wikipedia.org/wiki/Categories_(Aristotle)">philosophers</a> spend a lot of time discussing definitions because a good definition allows them to capture and understand some truth about the world. Programmers should think similarly and spend a comparable amount of effort grappling with ideas before writing code.</p>
 
-<p>Good programmers ask questions like:
-- &ldquo;What is this function&rsquo;s purpose?&rdquo;
-- &ldquo;What does this data structure represent?&rdquo;
-- &ldquo;Does this function actually represent two separate tasks?&rdquo;
-- &ldquo;What is the responsibility of this portion of code? What shouldn&rsquo;t it &lsquo;know about&rsquo;?&rdquo;
-- &ldquo;What is necessary to be in the public interface?&rdquo;</p>
+<p>Good programmers ask questions like:</p>
+
+<ul>
+<li>&ldquo;What is this function&rsquo;s purpose?&rdquo;</li>
+<li>&ldquo;What does this data structure represent?&rdquo;</li>
+<li>&ldquo;Does this function actually represent two separate tasks?&rdquo;</li>
+<li>&ldquo;What is the responsibility of this portion of code? What shouldn&rsquo;t it &lsquo;know about&rsquo;?&rdquo;</li>
+<li>&ldquo;What is necessary to be in the public interface?&rdquo;</li>
+</ul>
+
 
 <p>Luckily the field is ripe with strategies to help you design code. <a href="https://www.oodesign.com">Design patterns</a> and <a href="https://en.wikipedia.org/wiki/SOLID">SOLID</a> can give you guidelines for designing classes. Functional programming encourages writing pure functions (input -> output and no side effects) and maintaining as little state as possible. <a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html">Model view controller</a> aims to separate UI and storage concerns from program logic. On the other hand, React components form conceptual units by combining the HTML, CSS, and JS into a single component. Unix rejects categories and says <a href="https://en.wikipedia.org/wiki/Everything_is_a_file">everything is a file</a>. All of these seemingly contradictory ideas are valid. The important thing is that the concepts make sense and map closely to the problem you are solving.</p>
 
