@@ -6,7 +6,7 @@
 <link>https://justinmeiners.github.io</link>
 
 
-<lastBuildDate>Sat, 24 Aug 2019 15:25:56 -0600</lastBuildDate>
+<lastBuildDate>Mon, 26 Aug 2019 10:00:22 -0600</lastBuildDate>
 <item>
     <title>Write Your Own Proof-of-Work Blockchain</title>
     <description>This article will teach you how to write a tiny proof-of-work blockchain, focusing on the Bitcoin implementation.</description>
@@ -59,3 +59,4 @@
 
 
 </channel>
+</rss>
