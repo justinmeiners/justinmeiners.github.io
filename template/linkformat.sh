@@ -7,7 +7,8 @@ TITLE=""
 LINK=""
 PUB=""
 
-while read_dom; do
+while read_dom
+do
     if [[ $ENTITY = "title" ]]; then
         TITLE=$CONTENT
     fi

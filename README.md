@@ -5,16 +5,15 @@ About Me
 
 Welcome to my personal site about programming, mathematics, and philosophy!
 
-I am currently a graduate student in mathematics at [BYU](https://math.byu.edu).
 Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
+I am currently a graduate student in mathematics at [BYU](https://math.byu.edu) and
+work as a consultant for various software projects.
 
 If you are interested in my professional experience, see my [CV](files/cv.pdf).
-
+Find more of my projects at [Github](https://github.com/justinmeiners).
 Feel free to contact me at ![justin's email](mail.gif).
 
 ## Projects & Articles
-
-Most are hosted on my [Github](https://github.com/justinmeiners).
 
 - [12/18/2019 - Shamans: A 3D Turn-based Strategy Game for iPad](https://justinmeiners.github.io/shamans/)
 - [07/28/2019 - Write Your Own Proof-of-Work Blockchain](https://justinmeiners.github.io/tiny-blockchain/)

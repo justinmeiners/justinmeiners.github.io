@@ -25,5 +25,5 @@ cat "template/articles.xml" >> $FEED
 echo "</channel>" >> $FEED
 echo "</rss>" >> $FEED
 
-cat "template/articles.xml" | ./template/linkformat.sh 
+#cat "template/articles.xml" | ./template/linkformat.sh 
 
