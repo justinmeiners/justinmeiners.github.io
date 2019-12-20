@@ -1,5 +1,9 @@
 Modern OpenGL
 -------------
+
+These are notes sent to a friend, not a formal article.
+I thought they might be useful for others as well.
+
 **05/01/2017**
 
 If you're looking for an easy way to do 3D its probably [SceneKit](https://developer.apple.com/documentation/scenekit) or Unity,
