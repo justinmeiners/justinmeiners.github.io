@@ -58,7 +58,7 @@ do
             else
                 echo "<guid isPermaLink=\"true\">$SITE/$PART</guid>" >> $FEED
 
-                CONTENTS=$(cat $PART/README.md)
+                CONTENTS=$(cat $PART/README.md | markdown)
                 echo "<description><![CDATA[ \n $CONTENTS \n ]]></description>" >> $FEED
             fi
             echo -n "($PART)"
