@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title># 10 Hard Decisions: A Model for Programmer Productivity</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+</div>
+
+<h1>10 Hard Decisions: A Model for Programmer Productivity</h1>
+
+<p>How do you ensure that programmers are using time effectively?
+What can you do to help them be productive?
+Managers think a lot about these questions.
+But too often they get the answers wrong despite being very earnest and smart.
+This is because they have an unexamined mental model of how programming work is actually done.
+With an inaccurate model, managers optimize the wrong things and make bad decisions
+which would otherwise be good decisions in other work environments.</p>
+
+<p>To understand the idea, let&rsquo;s look at a few examples of how productivity varies between jobs.
+Simple manual labor, like digging holes, is easy to understand.
+Productivity comes down to moving as much dirt per minutes as possible.
+Progress is very measurable, and it easy to think about how to improve it.
+As a manager, you might ensure there is a rotation of workers digging at all time,
+and that everyone has the best tools possible.
+However that looks very different than the working model for a professional baseball scout.
+A scout can take a few years of evaluating players just to find one great pro.
+There aren&rsquo;t simple metrics you can use to measure their progress.
+It&rsquo;s hard to tell exactly what productive work should look like.
+Exposure to a lot of players can help, but ultimately it comes down to a few big choices.</p>
+
+<p>What kind of work is programming most like?
+In my experience (especially in agencies), the typical
+model of a programmer is an expensive factory machine.
+This is the kind of machine that occupies a lot of space and attention in the factory.
+It&rsquo;s operation is fragile, so it needs to be constantly checked on and maintained.
+But most importantly, every minute that it is not working on jobs is expensive money wasted.
+The primary metric for ensuring it stays productive is utilization time, even if that means spending time
+on throw away jobs.</p>
+
+<p>Managers understand this work model very well, perhaps they read &ldquo;The Goal&rdquo; in school.
+They look for metrics to identify throughput and bottlenecks and do lots of shuffling of programmers
+around to ensure maximum utilization.
+In it&rsquo;s most exaggerated form this led managers to obsess over metrics &ldquo;lines of code per week&rdquo;.
+Although we have moved beyond that.
+The underlying thinking about what&rsquo;s going on has changed much.
+We just think about programmers as feature producers.
+The task the programmer needs to finish programmer needs to sit at the computer and type in the project.</p>
+
+<p>Here is a common example of this thinking: Bob is busy finishing task 1 and then will start project 2.
+Alice has a bit of downtime before she starts project 3.
+Let&rsquo;s have Alice get started on project 2, then we can
+have her hand off the incomplete work to Bob.
+In a few weeks when he is ready, Alice can move on to project 3 and leave Bob with a head start.</p>
+
+<p><img src="timeline.png" alt="sample timeline" /></p>
+
+<p>This seems like smart move.
+We made sure that Alice and Bob&rsquo;s valuable time was well used, right?</p>
+
+<h2>A better Model</h2>
+
+<p>To see why this decision may actually waste time, we need
+a better understand what programming is like.
+The model I will describe is not perfect, it&rsquo;s a great simplification, but
+its a rough estimation that&rsquo;s far more accurate than the factory machine one.
+That better model is the following:
+<strong>each project consists of making 5-15 difficult software decisions</strong>.
+All of these decisions are of course somewhat dependent on one another.
+Each of those decisions that is made well, will lead to shipping the project,
+Each decision made wrong, will cause delays and waste time, now or down the road.
+That&rsquo;s all. That&rsquo;s the description of the job programmers need to do,
+and how they occupy their time.
+If programmers knew what to write beforehand, they could type it in no time!
+The time they spend fiddling at the keyboard is actually gather information
+through experiment and observation, in order to make decisions.</p>
+
+<p>As a manager, the way to improve productivity
+is to simply think about what would help you make hard decisions.
+Here are some simple ideas that become immediately obvious, given this clearer model:</p>
+
+<ul>
+<li><p>Give programmers as much possible information about the project as early as possible.
+It&rsquo;s difficult to make decisions with incomplete information.
+When you get ideas early they can sit in the back of your mind and get some sleep
+time.  Organize information so its easy to process.</p></li>
+<li><p>Protect programmer time from interruptions.
+Design large blocks of uninterrupted time.
+Have quiet working environments.
+It&rsquo;s hard to make good decisions without focus.
+Other writers have written extensively about the cost of &ldquo;<a href="http://www.paulgraham.com/makersschedule.html">context switching</a>&rdquo;
+when you have to forget about what you were thinking and start thinking about something new.</p></li>
+<li><p>Ensure programmers have a clear understanding of project priorities and goals.
+Clearly communicate expectations and requirements.
+Making good decisions requires making trade-offs.
+Unclear priorities will lead to programmers making bad decisions.
+Changing priorities will invalidate previously good decisions.</p></li>
+<li><p>It&rsquo;s OK if a programmer is not at their keyboard writing code.
+Taking a walk or a rest is often productive time.
+Distracting activities like watching a lot YouTube are not.</p></li>
+<li><p>Don&rsquo;t treat programmers interchangeably.
+Give them ownership of specific project pieces so they can make long term decisions and build on previous ones.
+Would you hire a separate architect to design each room of a house?</p></li>
+<li><p>Ensure your incentive structure rewards good decision making.
+Do you reward band-aid approaches? Are programmers just trying to get it &ldquo;over the fence&rdquo;
+so someone else has to deal with it? Are programmers are the receiving side of the fence?</p></li>
+<li><p>Going through a crunch? <a href="https://en.wikipedia.org/wiki/Brooks%27s_law">Don&rsquo;t add people</a> to a late project. Throw more money and effort at building an focused environment to making decisions. Can you pay someone to errands at home so the programmer doesn&rsquo;t have to think about them? Can you bring their family to the office for a lunch? (1)</p></li>
+</ul>
+
+
+<p>This is just a short list of suggestions and you can probably can come up with even better
+ideas.
+What&rsquo;s important is that as we think deeper about this model common productivity mistakes become apparent. (2)</p>
+
+<p>Let&rsquo;s analyze the Bob and Alice example again using this model.
+Did we help Alice and Bob make decisions or hurt them?
+Recall, Alice starts working on task 2 for a few weeks, to get it started for Bob.
+Then Bob picks it up, and Alice moves elsewhere.
+In our rough model we can assume that when Alice finishes, she has made 2 of the 15 decisions, and has some vague ideas about 5 others.
+The manager arranges a meeting for Alice to inform Bob of her work and she is swept off to task 3.
+Now Bob has to start thinking about task 2 from scratch, but not only that,
+he has to figure out what Alice was up to, whether the decisions she made were right,
+and what direction she was heading to address the other 13 decisions.
+This added information causes Bob to take more time than if he had started on his own.
+In practice, its even worse because Alice and Bob will need to continue to take time from each other to coordinate about what Alice had in mind. (3)</p>
+
+<h2>Smarter Alternatives</h2>
+
+<p>You might say, &ldquo;that makes sense, but what am I supposed to do? Let Alice sit around for a week, wasting that time with an urgent project?&rdquo;. Let&rsquo;s use the model to work through better options.
+In this scenario Alice is scheduled to eventually own project 3.
+A better option would be to just let task 2 sit until Bob is ready, and get her stated on her project, even though it may be less urgent.
+Alice will be able to spend more time thinking about her project, and leave Bob with a fresh slate.</p>
+
+<p>&ldquo;But this is really urgent, I don&rsquo;t even want to think about project 3 yet&rdquo;.
+The next alternative would be to identify decisions which Alice can make which have the least impact on the other work Bob needs to do.
+One would be having Alice better define the requirements and organize resources for this project.
+This will only help Bob make his decisions.
+Another idea is to have Alice work on &ldquo;black boxes&rdquo; that Bob doesn&rsquo;t need to know how they work.
+Maybe Alice has some special knowledge and can write a hard function he expects to use.
+What you absolutely don&rsquo;t want to do is interrupt Bob and have him start thinking about what decisions Alice could be making, while he is making his decisions.
+That doesn&rsquo;t make any sense!</p>
+
+<h2>Notes</h2>
+
+<ol>
+<li><p>I don&rsquo;t think programmers <em>deserve</em> any of these special treatments over other jobs.
+I in no way to suggest that programmers should have special privileges or are somehow more important than other kinds of work. It&rsquo;s all about the productivity model for the kind of work they do.</p></li>
+<li><p>In video game production, art tends to be easy to outsource while programming is notoriously difficult and often unsuccessful. Perhaps this is because 3D art production can be better fit into a factory production productivity model.</p></li>
+<li><p>One reason &ldquo;just write it from scratch&rdquo; is so appealing for programmers is that
+they get to make their own decisions, instead of figuring out why others made (often bad) decisions.
+Who wants to live with someone elses choices?
+For large existing codebases this represents a lot of invested knowledge, so its usually bad,
+but for a new task, Why would you rob a programmer of this opportunity by playing
+musical chairs?</p></li>
+</ol>
+
+</body>
+</html>

@@ -30,7 +30,6 @@ echo "<link>https://justinmeiners.github.io</link>" >> $FEED
 echo "<lastBuildDate>$(date +"%a, %d %b %Y %T %z")</lastBuildDate>" >> $FEED
 
 
-
 IFS=,
 
 while read LINE
