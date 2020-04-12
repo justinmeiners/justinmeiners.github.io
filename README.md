@@ -15,6 +15,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 ## Projects & Articles
 
+- [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
 - [01/23/2020 - Keeping Up-to-Date](keeping-up-to-date/)
 - [12/18/2019 - Shamans: A 3D Turn-based Strategy Game for iPad](https://justinmeiners.github.io/shamans/)
 - [07/28/2019 - Write Your Own Proof-of-Work Blockchain](https://justinmeiners.github.io/tiny-blockchain/)
