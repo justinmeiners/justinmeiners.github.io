@@ -1,4 +1,5 @@
-# 10 Hard Decisions: A Model for Programmer Productivity
+10 Hard Decisions: A Model for Programmer Productivity
+======================================================
 
 How do you ensure that programmers are using time effectively?
 What can you do to help them be productive?
@@ -142,7 +143,8 @@ That doesn't make any sense!
 ## Notes
 
 1. I don't think programmers *deserve* any of these special treatments over other jobs.
-I in no way to suggest that programmers should have special privileges or are somehow more important than other kinds of work. It's all about the productivity model for the kind of work they do.
+I am not suggesting that programmers should have special privileges or are somehow more important than other kinds of work.
+It's all about the productivity model for the kind of work they do.
 
 2. In video game production, art tends to be easy to outsource while programming is notoriously difficult and often unsuccessful. Perhaps this is because 3D art production can be better fit into a factory production productivity model.
 
