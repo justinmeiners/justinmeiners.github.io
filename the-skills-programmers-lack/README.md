@@ -35,7 +35,7 @@ Modern software and computers are too complex to know everything (2).
 The idea is not not to be too clever, but to avoid doing silly things.
 Silly mistakes result in sluggish code that is wasteful of system resources, or just does unexpected things.
 Removing an item from the front of a C++ `vector` requires copying the entire vector which is worth thinking about in large cases.
-Writing `map<string, map<string, ...>>` in C++ (a dictionary of dictionaries) creates a a self-balancing tree in which every node is a self-balancing treea; a data structure nobody would design. (2)
+Writing `map<string, map<string, ...>>` in C++ (a dictionary of dictionaries) creates a a self-balancing tree in which every node is a self-balancing tree, a data structure nobody would intentionally design. (3)
 
 A muddy understanding of how things work is typical of beginners, but it is all too often a problem with experienced programmers if they are not curious and do not take time to learn how things work beyond their immediate job’s needs.
 Learn just a bit more about the stuff you use most works.

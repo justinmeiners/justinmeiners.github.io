@@ -1,8 +1,5 @@
 #!/bin/sh
 
-
-cd ../
-
 MD=$(find * -type f -name '*.md')
 
 for FN in $MD
