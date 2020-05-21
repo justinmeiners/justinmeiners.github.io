@@ -23,14 +23,15 @@ In contrast, thoughts are best expressed through a medium which is free and flex
 The natural language which has been effectively used for thinking about computation, for thousands of years, is mathematics.
 Most people don't think of math as free or flexible.
 They think of scary symbols and memorizing steps to regurgitate on tests.
-I hope readers of this article have had a better experience regarding what math is about, such as a graph theory or linear algebra course;
-the kind that involves logic and theorems, and is written in prose with a mix of symbols (most symbols weren't even invented until the [16th century][7]).
+Others hear math and think category theory, lambda calculus, or other 
+methods of formalizing computation itself, but these are hardly
+necessary for programming itself.
 
-Others hear math and think category theory or other esoteric ways of formalizing computation itself.
-But this doesn't directly apply to engineering everyday programs.
-The kind of math referred to here is creating logical models of problems through careful
-definitions and deductions, just like an algorithms class, or was done by Euclid
-or Eulder. If you still don't have a clear idea of what this looks like, I recommend [Trudea][1],
+I hope readers of this article have had a better experience regarding what math is about, such as a graph theory, algorithms, or linear algebra course;
+the kind that involves logic and theorems, and is written in prose with a mix of symbols (most symbols weren't even invented until the [16th century][7]).
+This kind of math is about creating logical models to understand real world problems, through careful
+definitions and deductions.
+If you don't have a clear idea of what this looks like I recommend [Trudeau][1],
 [Stepanov][4], or [Manber][3].
 
 Math allows you to reason about logical structures, free from other constraints.
