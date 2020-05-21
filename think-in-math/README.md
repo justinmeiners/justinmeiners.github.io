@@ -15,7 +15,7 @@ and have perhaps forgotten their primary role.
 Programming languages are *implementation tools* for instructing machines, not *thinking tools* 
 for expressing ideas.
 They are strict formal systems riddled with design compromises and practical limitations.
-We hope to use them to make controlling computers bearable for humans.
+At the end of the day, we hope they make controlling computers bearable for humans.
 In contrast, thoughts are best expressed through a medium which is free and flexible.
 
 ## Thinking in Math
