@@ -121,11 +121,12 @@ Just look at the many ways of looking at a function:
 [![function representations](functions.gif)][10]
 
 Thinking in math allows one to use whichever brings the most clarity at any moment.
-It turns out most abstract concepts like functions can be understood from many perspectives.
-Studying math expands ones toolbox of perspectives and abstractions.
-Simple concepts like logarithms and exponentials help us understand rates of growth in algorithms.
-You might analyze the [geometric][9] considerations of network traffic,
-or realize that your data structure operates as a group, and gain insights from abstract algebra.
+
+It turns out most abstract concepts can be understood from many perspectives, just like functions.
+Studying math provides one with a versatile toolbox of perspectives for studying all kinds of problems.
+You might first describe a problem with a formula, and then switch to understanding it [geometrically][9], 
+then recognize some group theory (abstract algebra) is at play, and
+all of this combines to give insight and understanding.
 
 To summarize, programming languages are great engineering tools for assembling black boxes;
 they provide functions, classes, and modules, all of which help wrap up code into nice interfaces.
