@@ -22,9 +22,16 @@ In contrast, thoughts are best expressed through a medium which is free and flex
 
 The natural language which has been effectively used for thinking about computation, for thousands of years, is mathematics.
 Most people don't think of math as free or flexible.
-Their experience of seeing scary symbols and memorizing steps to regurgitate on tests is quite the opposite.
-I hope readers of this article have had a better experience with math, such as in a [discrete math][1] or linear algebra course;
-the kind that involves constructing clear definitions and deductions, and is written in prose with a mix of symbols (most symbols weren't even invented until the [16th century][7]).
+They think of scary symbols and memorizing steps to regurgitate on tests.
+I hope readers of this article have had a better experience regarding what math is about, such as a graph theory or linear algebra course;
+the kind that involves logic and theorems, and is written in prose with a mix of symbols (most symbols weren't even invented until the [16th century][7]).
+
+Others hear math and think category theory or other esoteric ways of formalizing computation itself.
+But this doesn't directly apply to engineering everyday programs.
+The kind of math referred to here is creating logical models of problems through careful
+definitions and deductions, just like an algorithms class, or was done by Euclid
+or Eulder. If you still don't have a clear idea of what this looks like, I recommend [Trudea][1],
+[Stepanov][4], or [Manber][3].
 
 Math allows you to reason about logical structures, free from other constraints.
 This is also what programming requires: creating logical systems to solve problems.
@@ -264,12 +271,10 @@ Perhaps the greatest benefit was that after writing it, I was able to quickly re
 
 I hope that thinking in the language of math will bring similar benefits to your projects!
 Note that this example is only one style of utilizing mathematical thinking.
-I recommend reading others by [Leslie Lamport][2], [Udi Manber][3], and [Alex Stepanov][4].
 
 [1]: https://www.amazon.com/Introduction-Graph-Theory-Dover-Mathematics/dp/0486678709
-[2]: https://lamport.azurewebsites.net/pubs/pubs.html#eatcs
 [3]: https://www.amazon.com/Introduction-Algorithms-Creative-Udi-Manber/dp/0201120372
-[4]: http://stepanovpapers.com/PAM.pdf
+[4]: https://www.fm2gp.com
 [5]: https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/
 [6]: https://en.wikipedia.org/wiki/Linguistic_determinism
 [7]: https://en.wikipedia.org/wiki/History_of_mathematical_notation#Symbolic_stage
