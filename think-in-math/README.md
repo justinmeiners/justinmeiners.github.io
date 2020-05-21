@@ -62,8 +62,8 @@ With a mathematical solution in hand, you can then focus on choosing the best re
 
 Why are programming languages burdensome thinking tools?
 One reason is that writing code is inseparably connected with implementation concerns.
-A computer is a physical device that must manage all kinds of tasks and is bound by physical
-and logical constraints.
+A computer is a device that must manage all kinds of tasks and while being bound by physical
+and economic constraints.
 Think about all the considerations for writing a simple function:
 
 - What inputs should I provide?
@@ -96,10 +96,11 @@ A black box [leaks][5] because its brief description cannot completely determine
 The opaque interfaces introduce [inefficiencies][8], like duplication and fragmented design.
 
 Most importantly for problem-solving, black boxes are rigid. 
-They must explicitly reveal some dials and knobs, and hide others.
+They must explicitly reveal some dials and knobs, and hide others,
+commiting to a particular view about what it is essential to expose to the user,
+and what is noise.
 In doing so, they present a fixed level of abstraction which may be too high-level or too low-level for the problem,
-as well as commit to perspective of what is signal and what is noise.
-A high-level web server may provide a terrific interface for serving JSON, but be useless if one wants an interface for serving incomplete data streams, such as output from a program.
+As an example, a high-level web server may provide a terrific interface for serving JSON, but be useless if one wants an interface for serving incomplete data streams, such as output from a program.
 In theory, you can always look inside the box, but in code, the abstraction level at any one time is fixed.
 
 In contrast, the word abstraction in math is nothing like hiding information.
