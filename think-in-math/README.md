@@ -3,21 +3,26 @@ Think in Math. Write in Code.
 **6/8/19**
 
 Programmers love to discuss programming languages.
-Besides debating their own merits, we integrate them into our identities and even infer things about others who use them.
-Some even defend a form of [Linguistic Determinism][6] that thinking is limited to what is typable.
+We not only debate their technical merits and aesthetic qualities,
+but they become integrated into our personal identities,
+along with the values and traits that we associate with them.
+Some even defend a form of [Linguistic Determinism][6] that thinking is confined to what the language 
+makes typable.
 
-Since we spend so much time using languages, an interest in making them better is justified.
-However, the character of these debates suggests that we think of them as something more.
-Perhaps we have forgotten their primary role.
-Programming languages are *implementation tools*, not *thinking tools*.
-They are strict formal languages invented to instruct machines in a human-friendly way.
+Since we spend so much time writing code, a keen interest in language design is justified.
+However, the character of these discussions suggests that we think of them as much more, 
+and have perhaps forgotten their primary role.
+Programming languages are *implementation tools* for instructing machines, not *thinking tools* 
+for expressing ideas.
+They are strict formal systems riddled with design compromises and practical limitations.
+We hope to use them to make controlling computers bearable for humans.
 In contrast, thoughts are best expressed through a medium which is free and flexible.
 
 ## Thinking in Math
 
 The natural language which has been effectively used for thinking about computation, for thousands of years, is mathematics.
 Most people don't think of math as free or flexible.
-Their experience of seeing scary symbols and memorizing steps in school is quite the opposite.
+Their experience of seeing scary symbols and memorizing steps to regurgitate on tests is quite the opposite.
 I hope readers of this article have had a better experience with math, such as in a [discrete math][1] or linear algebra course;
 the kind that involves constructing clear definitions and deductions, and is written in prose with a mix of symbols (most symbols weren't even invented until the [16th century][7]).
 
@@ -48,8 +53,9 @@ With a mathematical solution in hand, you can then focus on choosing the best re
 ## Implementation Concerns
 
 Why are programming languages burdensome thinking tools?
-One reason is that writing code is inseparably connected with implementation.
-Implementation concerns are necessary for instructing computers and are worth doing well, but they also distract from the problem to be solved.
+One reason is that writing code is inseparably connected with implementation concerns.
+A computer is a physical device that must manage all kinds of tasks and is bound by physical
+and logical constraints.
 Think about all the considerations for writing a simple function:
 
 - What inputs should I provide?
@@ -64,7 +70,7 @@ They distract from the problem the function is trying to solve.
 
 Many languages aim to hide details such as these, which is helpful, especially for mundane tasks.
 However, they cannot transcend their role as an implementation tool.
-SQL is easily one of the most successful examples of this, but it is ultimately concerned with implementation concerns such as tables, rows, indices, and types.
+SQL is one of the most successful examples of this, but it is ultimately concerned with implementation concerns such as tables, rows, indices, and types.
 Because of this, programmers still design complicated queries in informal terms, like what they want to "get," before writing a bunch of `JOIN`s.
 
 ## Inflexible Abstractions
@@ -72,7 +78,7 @@ Because of this, programmers still design complicated queries in informal terms,
 Another limitation of programming languages is that they are poor abstraction tools.
 Typically, when we discuss abstraction in engineering, we mean hiding implementation details.
 A complex operation or process is packaged into a "black box" with its contents hidden and well-defined inputs and outputs exposed.
-Accompanying the box is a fictional story about what it does, that is easy to understand.
+Accompanying the box is fictional story that explains what it does, in a greatly simplified way.
 
 ![black box picture](black-box.gif)
 
@@ -81,17 +87,19 @@ They also have many well-known limitations.
 A black box [leaks][5] because its brief description cannot completely determine its behavior.
 The opaque interfaces introduce [inefficiencies][8], like duplication and fragmented design.
 
-Most importantly for problem-solving, black boxes are rigid.
-They present a fixed level of abstraction which may be too high-level or too low-level for the problem.
-In theory, you can always look inside the box, but in code, the abstraction level at any one time is fixed.
-They also offer only one perspective of abstraction.
+Most importantly for problem-solving, black boxes are rigid. 
+They must explicitly reveal some dials and knobs, and hide others.
+In doing so, they present a fixed level of abstraction which may be too high-level or too low-level for the problem,
+as well as commit to perspective of what is signal and what is noise.
 A high-level web server may provide a terrific interface for serving JSON, but be useless if one wants an interface for serving incomplete data streams, such as output from a program.
+In theory, you can always look inside the box, but in code, the abstraction level at any one time is fixed.
 
 In contrast, the word abstraction in math is nothing like hiding information.
 Here, abstraction means extracting the essential features or characteristics of something, in relation to a particular context.
 Unlike black boxes, no information is hidden.
 They don't leak in the same way.
-You are encouraged to adjust to the right level of abstraction and quickly jump between perspectives:
+You are encouraged to adjust to the right level of abstraction and quickly jump between perspectives.
+You might ask:
 
 - Is this problem best represented as a table? Or, a function?
 - Can I look at the whole system as a function?
@@ -103,43 +111,42 @@ Just look at the many ways of looking at a function:
 
 [![function representations](functions.gif)][10]
 
-Major branches of math represent commonly useful abstractions:
+Thinking in math allows one to use whichever brings the most clarity at any moment.
+It turns out most abstract concepts like functions can be understood from many perspectives.
+Studying math expands ones toolbox of perspectives and abstractions.
+Simple concepts like logarithms and exponentials help us understand rates of growth in algorithms.
+You might analyze the [geometric][9] considerations of network traffic,
+or realize that your data structure operates as a group, and gain insights from abstract algebra.
 
-- Geometry abstracts fundamental shapes from objects in the world (or [transformation invariants][9], depending on how cosmic you want to get).
-- Topology abstracts surface features from their shapes.
-- Group theory abstracts binary operations to properties about how they are composed and inverted.
-
-However, these fields aren't the limit.
-You can pick the properties that are important to the problem and ignore everything else.
-The example project at the end shows how this is done.
-
-Programming languages are great for building black boxes; they provide functions, classes, and modules, all of which help wrap up code into nice interfaces.
+To summarize, programming languages are great engineering tools for assembling black boxes;
+they provide functions, classes, and modules, all of which help wrap up code into nice interfaces.
 However, when trying to solve problems and design solutions, what you actually want is the math kind of abstraction.
 If you try to think at the keyboard, the black boxes available to you will warp your view.
 
 ## Problem Representation
 
-Just as programming languages are limited in their ability to abstract, they also are limited in how they represent data.
-The very act of implementing an algorithm or data structure is picking *just one* of the many possible ways to represent it.
-Typically, this is not a decision you want to make until you understand what is needed.
+Just as programming languages are rigid in their ability to abstract, they also are rigid in how they represent data.
+The very act of implementing an algorithm or data structure is picking *just one* of the many possible ways to represen
+something; along with all the tradeoffs that come with it.
+It is always easier to make tradeoffs when one has use cases in mind and understand the problem well.
 
 For example, graphs (sets of vertices and edges) appear in many programming problems such as internet networks, pathfinding, and social networks.
-Despite their simple definition, choosing how to represent them is hard and depends on their use case:
+Despite their simple definition, choosing how to represent them is hard and varys greatly depending on use case:
 
 ![math graph](graph.gif)
 
 - The one which most closely matches the definition:  
   `vertices: vector<NodeData> edges: vector<pair<Int, Int>>`
-  The vertices can be removed if you only care about connectivity.
+  (The vertices can be removed if you only care about connectivity.)
 
 - If you want to traverse a node's neighbors quickly, then you probably want a node structure:  
   `Node { id: Int, neighbors: vector<Node*> }`
 
-- You could use an [adjacency matrix][11]. Where each row stores the neighbors of a particular node:  
-  `connectivity: vector<vector<int>>`
+- You could use an [adjacency matrix][11]. Where each row stores the neighbors of a particular node: 
+  `connectivity: vector<vector<int>>` and the nodes themselves are implicit.
 
 - Pathfinding algorithms often work on graphs implicitly from a board of cells:  
-  `walls: vector<vector<bool>>`
+  `walls: vector<vector<bool>>`.
 
 - In a peer-to-peer network, each computer is a vertex and each socket is an edge.
   The entire graph isn't even accessible from one machine! 
@@ -147,28 +154,30 @@ Despite their simple definition, choosing how to represent them is hard and depe
 Math allows you to reason about the graph itself, solve the problem, and then choose an appropriate representation.
 If you think in a programming language, you cannot delay this decision as your first line of code commits to a particular representation.
 
-Note that the graph representations are too diverse to conform to a single interface, typeclass, or even program.
+Note that the graph representations are too diverse to wrapped up in a polymorphic interface.
+(Consider again the graph representing a computer network, like the entire internet.)
 So creating a completely reusable library is impractical.
 It can only work on a few types, or force all graphs into an inappropriate representation.
-That doesn't mean libraries aren't useful.
+That doesn't mean libraries or interfaces aren't useful.
 Similar representations are needed again and again (like `std::vector`),
-but you cannot write a library which solves a graph problem once and for all.
+but you cannot write a library which encapsulates the concept of "graph" once and for all.
+A simple generic or interface with a few types in mind is appropriate.
 
-Some modern programming languages attempt to provide more mathematical abstraction tools.
-For example, Haskell has `Ring` and `Group` typeclasses.
-However, the representation issues show that these features must be less useful than their theoretical inspirations.
-It is smart to write an algorithm which relies only on the associative property and document it is as such.
-This is thinking in the language of math.
-But, in practice, it can only reasonably work on a small family of similar types.
-A simple generic with a few types in mind is appropriate.
+As a corollary, programming languages should focus primarily on being useful implementation tools,
+rather than theoretical tools.
+A good example of modern language feature which does this is async/await.
+It's not hiding away complex details or introducing new conceptual theory.
+It takes a common practical problem and makes it easier to write.
 
-As a corollary, programming languages should focus primarily on being useful implementation tools, rather than thinking tools.
-C got this right in a big way.
-Modern language features such as C#'s async and await provide great improvements for implementing concurrent programs.
+Thinking in math also makes the "C style" of programming more appealing.
+When you understand a problem well, you don't have to build up layers of framework and abstraction
+in anticipation of "what if".
+You can write a program tailor made to the problem, with carefully chosen tradeoffs.
 
 ## Example Project
 
 So what does thinking in math look like?
+For this section you may have to read a bit more slowly and carefully.
 Recently, I worked on an API at work for pricing cryptocurrency for merchants.
 It takes into account recent price changes and recommends that merchants charge a higher price during volatile times.
 
