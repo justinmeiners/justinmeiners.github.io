@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=704">
-<title>About Me</title>
+<title>Boring Benefits of Lisp</title>
 <style>
 /* http://jasonm23.github.io/markdown-css-themes/ */
 html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
@@ -97,52 +97,39 @@ td { vertical-align: top; }
 <a style="margin-left: 16px" href="/feed.xml">Rss</a>
 </div>
 
-<h2>About Me</h2>
+<h1>Boring Benefits of Lisp</h1>
 
-<p><img src="finger_painting.jpg" alt="finger painting" /></p>
+<p>Lisp advocates are famous for having extravagant reasons for why Lisp is their favorite language.
+You might have heard that its the <a href="http://www.paulgraham.com/avg.html">most powerful language</a>,
+due to feature like <a href="http://www.paulgraham.com/onlisp.html">macros</a> or <a href="https://en.wikipedia.org/wiki/Homoiconicity">homioconicty</a>.
+These are certainly interesting, an Common Lisp and Scheme are filled with other beautiful features, but I am interested in it for very simple and practical reasons;</p>
 
-<p>Welcome to my personal site about programming, mathematics, and philosophy!</p>
+<ol>
+<li>Lisp is a fully standardized language. Consequently, it is well understood, cross-platform, and has multiple implementations, including several with free licenses.</li>
+<li>Lisp has great documentation, books, and learning resources. SICP is &ldquo;the book&rdquo; for Scheme. Common Lisp has several good ones.</li>
+<li>Lisp is mature and extremely stable. Code be written once, and run again years later, without modification.</li>
+<li>Lisp implementations are reasonably fast. The true believers say Common Lisp can be as fast as C, in general it&rsquo;s not even close, but for a high-level, dynamic, language, <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html">it&rsquo;s pretty great</a>.</li>
+<li>Lisp is well designed and follows solid computer science principles.
+It has a focused selection of features and an elegant evaluation model which make it easy to
+write and compose functionality.</li>
+</ol>
 
-<p>Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
-I am currently a graduate student in mathematics at <a href="https://math.byu.edu">BYU</a> and
-work as a consultant for various software projects.</p>
 
-<p>If you are interested in my professional experience, see my <a href="files/cv.pdf">CV</a>.
-Find more of my projects at <a href="https://github.com/justinmeiners">Github</a>.
-Feel free to contact me at <img src="mail.gif" alt="justin's email" />.</p>
+<p>These features don&rsquo;t appear that remarkable or unique to Lisp.
+In fact, this pattern of requirements was actually established by ANSI C first, and later adopted by Lisp.
+But, the surprising thing is how few languages since have followed the pattern.
+Of course satisfaction lies on a spectrum; some languages do more than others,
+but very few follow it to a degree that can be asserted with confidence.
+Usually, you can say a language somewhat satisfies it, followed by a list of ugly qualifications.</p>
 
-<h2>Projects &amp; Articles</h2>
+<p>Take Python for example. It&rsquo;s well designed, has great resources, is fairly stable.
+It has an <a href="https://norvig.com/python-lisp.html">elegant design</a> like Lisp.
+But, is it standardized? Kind of, they have a spec, but it has one defacto implementation.
+CPython does whatever they want, and others follow.
+The alternative implementations all have compatibility compromises.
+Neither is it fast, unless you use a JIT implementation which makes it tolerable, but that has its own quirks, and you can&rsquo;t use X library with it.</p>
 
-<ul>
-<li><a href="boring-benefits-of-lisp/">05/24/2020 - Boring Benefits of Lisp</a></li>
-<li><a href="10-hard-decisions/">04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity</a></li>
-<li><a href="keeping-up-to-date/">01/23/2020 - Keeping Up-to-Date</a></li>
-<li><a href="https://justinmeiners.github.io/shamans/">12/18/2019 - Shamans: A 3D Turn-based Strategy Game for iPad</a></li>
-<li><a href="https://justinmeiners.github.io/tiny-blockchain/">07/28/2019 - Write Your Own Proof-of-Work Blockchain</a></li>
-<li><a href="https://github.com/justinmeiners/text2image">06/29/2019 - text2image</a></li>
-<li><a href="think-in-math/">06/08/2019 - Think in Math. Write in Code.</a></li>
-<li><a href="vector-libs/">05/12/2019 - Notes On Vector Libraries</a></li>
-<li><a href="foundations-of-math-reading/">04/14/2019 - Foundations of Math Reading List</a></li>
-<li><a href="the-skills-programmers-lack/">02/22/2019 - The Skills Poor Programmers Lack</a></li>
-<li><a href="https://justinmeiners.github.io/neural-nets-sim/">01/13/2019 - McCulloch &amp; Pitts Neural Net Simulator</a></li>
-<li><a href="https://justinmeiners.github.io/pre-rendered-backgrounds/">01/05/2019 - An Adventure in Pre-Rendered Backgrounds</a></li>
-<li><a href="https://justinmeiners.github.io/lc3-vm/">12/16/2018 - Write your Own Virtual Machine</a></li>
-<li><a href="https://justinmeiners.github.io/sgi-stl-docs/">11/24/2018 - SGI STL Documentation</a></li>
-<li><a href="https://github.com/justinmeiners/lisp-interpreter">04/19/2018 - Lisp Interpreter</a></li>
-<li><a href="https://github.com/justinmeiners/spherical-harmonics">01/27/2018 - Spherical Harmonics</a></li>
-<li><a href="modern-opengl/">05/01/2017 - Modern OpenGL</a></li>
-<li><a href="hololens-impressions/">11/10/2016 - HoloLens Impressions</a></li>
-<li><a href="3d-paint/">10/30/2016 - 3D Paint</a></li>
-<li><a href="https://github.com/justinmeiners/molecule-viewer">12/01/2015 - Molecule Viewer</a></li>
-<li><a href="old-artwork/">10/15/2015 - Old Artwork</a></li>
-<li><a href="old-games/">10/09/2015 - Old Games</a></li>
-<li><a href="https://github.com/justinmeiners/c-craft">08/20/2013 - C Craft</a></li>
-<li><a href="https://github.com/justinmeiners/ioccc-death-star">07/20/2013 - IOCC Death Star</a></li>
-<li><a href="https://github.com/justinmeiners/image-sequence-streaming">07/02/2013 - Image Sequence Streaming</a></li>
-<li><a href="https://github.com/justinmeiners/mode-7">05/22/2013 - Mode 7</a></li>
-<li><a href="https://github.com/justinmeiners/c-foundation">04/07/2013 - C Foundation</a></li>
-<li><a href="https://github.com/justinmeiners/ios-color-wheel">01/08/2013 - iOS Color Wheel</a></li>
-</ul>
-
+<p>So are Lisp and C the only languages that do this? No, but there aren&rsquo;t as many as you think.
+Lisp just happens to be one of them, and it&rsquo;s a design that I enjoy using and learning about.</p>
 </body>
 </html>
