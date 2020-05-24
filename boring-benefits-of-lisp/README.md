@@ -6,7 +6,8 @@ You might have heard that its the [most powerful language][0],
 due to feature like [macros][1] or [homioconicty][2].
 Certainly, Common Lisp and Scheme have no shortage of beautiful ideas,
 but due to their influence, most of their benefits have now been included
-in modern languages.
+in modern languages, and as you may know fancy language abstractions [don't
+appeal to me][5].
 I am now interested in it for very simple and practical reasons;
 
 1. Lisp is a fully standardized language. Consequently, it is well understood, cross-platform, and has multiple implementations, including several with free licenses.
@@ -40,3 +41,4 @@ Lisp just happens to be one of them, and it's a design that I enjoy using and le
 [2]: https://en.wikipedia.org/wiki/Homoiconicity
 [3]: https://norvig.com/python-lisp.html
 [4]: https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html
+[5]: https://justinmeiners.github.io/think-in-math/

@@ -4,7 +4,7 @@
 <title>Justin Meiners</title>
 <description>Welcome to my personal site about programming, mathematics, and philosophy!</description>
 <link>https://justinmeiners.github.io</link>
-<lastBuildDate>Sun, 24 May 2020 14:40:28 -0600</lastBuildDate>
+<lastBuildDate>Sun, 24 May 2020 14:44:36 -0600</lastBuildDate>
 <item>
 <pubDate>Sun, 24 May 2020 00:00:00 -0600</pubDate>
 <title>Boring Benefits of Lisp</title>
@@ -17,7 +17,8 @@ You might have heard that its the <a href="http://www.paulgraham.com/avg.html">m
 due to feature like <a href="http://www.paulgraham.com/onlisp.html">macros</a> or <a href="https://en.wikipedia.org/wiki/Homoiconicity">homioconicty</a>.
 Certainly, Common Lisp and Scheme have no shortage of beautiful ideas,
 but due to their influence, most of their benefits have now been included
-in modern languages.
+in modern languages, and as you may know fancy language abstractions <a href="https://justinmeiners.github.io/think-in-math/">don&rsquo;t
+appeal to me</a>.
 I am now interested in it for very simple and practical reasons;</p>
 
 <ol>
