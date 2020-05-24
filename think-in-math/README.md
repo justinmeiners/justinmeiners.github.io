@@ -97,7 +97,7 @@ The opaque interfaces introduce [inefficiencies][8], like duplication and fragme
 
 Most importantly for problem-solving, black boxes are rigid. 
 They must explicitly reveal some dials and knobs, and hide others,
-commiting to a particular view about what it is essential to expose to the user,
+committing to a particular view about what it is essential to expose to the user,
 and what is noise.
 In doing so, they present a fixed level of abstraction which may be too high-level or too low-level for the problem,
 As an example, a high-level web server may provide a terrific interface for serving JSON, but be useless if one wants an interface for serving incomplete data streams, such as output from a program.
@@ -136,12 +136,12 @@ If you try to think at the keyboard, the black boxes available to you will warp 
 ## Problem Representation
 
 Just as programming languages are rigid in their ability to abstract, they also are rigid in how they represent data.
-The very act of implementing an algorithm or data structure is picking *just one* of the many possible ways to represen
-something; along with all the tradeoffs that come with it.
-It is always easier to make tradeoffs when one has use cases in mind and understand the problem well.
+The very act of implementing an algorithm or data structure is picking *just one* of the many possible ways to represent
+something; along with all the trade-offs that come with it.
+It is always easier to make trade-offs when one has use cases in mind and understand the problem well.
 
 For example, graphs (sets of vertices and edges) appear in many programming problems such as internet networks, pathfinding, and social networks.
-Despite their simple definition, choosing how to represent them is hard and varys greatly depending on use case:
+Despite their simple definition, choosing how to represent them is hard and varies greatly depending on use case:
 
 ![math graph](graph.gif)
 
@@ -182,7 +182,7 @@ It takes a common practical problem and makes it easier to write.
 Thinking in math also makes the "C style" of programming more appealing.
 When you understand a problem well, you don't have to build up layers of framework and abstraction
 in anticipation of "what if".
-You can write a program tailor made to the problem, with carefully chosen tradeoffs.
+You can write a program tailor made to the problem, with carefully chosen trade-offs.
 
 ## Example Project
 

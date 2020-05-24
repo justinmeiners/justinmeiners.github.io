@@ -39,7 +39,7 @@ do
     do
         if [ $COL -eq 0 ]
         then
-            PUB=$(date -j -f "%m/%d/%Y"  "$PART" +"%a, %d %b %Y %T %z")
+            PUB=$(date -j -f "%m/%d/%Y"  "$PART" +"%a, %d %b %Y 00:00:00 -0600")
             echo "<pubDate>$PUB</pubDate>" >> $FEED
             echo -n "$PART - "
         elif [ $COL -eq 1 ]
