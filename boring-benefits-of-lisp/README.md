@@ -4,7 +4,10 @@ Boring Benefits of Lisp
 Lisp advocates are famous for having extravagant reasons for why Lisp is their favorite language.
 You might have heard that its the [most powerful language][0],
 due to feature like [macros][1] or [homioconicty][2].
-These are certainly interesting, an Common Lisp and Scheme are filled with other beautiful features, but I am interested in it for very simple and practical reasons;
+Certainly, Common Lisp and Scheme have no shortage of beautiful ideas,
+but due to their influence, most of their benefits have now been included
+in modern languages.
+I am now interested in it for very simple and practical reasons;
 
 1. Lisp is a fully standardized language. Consequently, it is well understood, cross-platform, and has multiple implementations, including several with free licenses.
 2. Lisp has great documentation, books, and learning resources. SICP is "the book" for Scheme. Common Lisp has several good ones.
