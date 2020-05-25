@@ -4,7 +4,7 @@
 <title>Justin Meiners</title>
 <description>Welcome to my personal site about programming, mathematics, and philosophy!</description>
 <link>https://justinmeiners.github.io</link>
-<lastBuildDate>Sun, 24 May 2020 14:44:36 -0600</lastBuildDate>
+<lastBuildDate>Mon, 25 May 2020 09:40:30 -0600</lastBuildDate>
 <item>
 <pubDate>Sun, 24 May 2020 00:00:00 -0600</pubDate>
 <title>Boring Benefits of Lisp</title>
@@ -25,14 +25,14 @@ I am now interested in it for very simple and practical reasons;</p>
 <li>Lisp is a fully standardized language. Consequently, it is well understood, cross-platform, and has multiple implementations, including several with free licenses.</li>
 <li>Lisp has great documentation, books, and learning resources. SICP is &ldquo;the book&rdquo; for Scheme. Common Lisp has several good ones.</li>
 <li>Lisp is mature and extremely stable. Code be written once, and run again years later, without modification.</li>
-<li>Lisp implementations are reasonably fast. The true believers say Common Lisp can be as fast as C, in general it&rsquo;s not even close, but for a high-level, dynamic, language, <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html">it&rsquo;s pretty great</a>.</li>
+<li>Lisp implementations are reasonably fast. The true believers claim Common Lisp is as fast as C. In general it&rsquo;s not even close, but for a high-level, dynamic, language, <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html">it&rsquo;s pretty fast</a>.</li>
 <li>Lisp is well designed and follows solid computer science principles.
 It has a focused selection of features and an elegant evaluation model which make it easy to
 write and compose functionality.</li>
 </ol>
 
 
-<p>These features don&rsquo;t appear that remarkable or unique to Lisp.
+<p>These features don&rsquo;t appear too remarkable or unique to Lisp.
 In fact, this pattern of requirements was actually established by ANSI C first, and later adopted by Lisp.
 But, the surprising thing is how few languages since have followed the pattern.
 Of course satisfaction lies on a spectrum; some languages do more than others,
@@ -42,9 +42,10 @@ Usually, you can say a language somewhat satisfies it, followed by a list of ugl
 <p>Take Python for example. It&rsquo;s well designed, has great resources, is fairly stable.
 It has an <a href="https://norvig.com/python-lisp.html">elegant design</a> like Lisp.
 But, is it standardized? Kind of, they have a spec, but it has one defacto implementation.
-CPython does whatever they want, and others follow.
+CPython does whatever they want, and others follow along.
 The alternative implementations all have compatibility compromises.
-Neither is it fast, unless you use a JIT implementation which makes it tolerable, but that has its own quirks, and you can&rsquo;t use X library with it.</p>
+Neither is it fast, unless you use a [JIT] implementation which makes it tolerable,
+but that has its own quirks, and you can&rsquo;t use many libraries with it.</p>
 
 <p>So are Lisp and C the only languages that do this? No, but there aren&rsquo;t as many as you think.
 Lisp just happens to be one of them, and it&rsquo;s a design that I enjoy using and learning about.</p> 
