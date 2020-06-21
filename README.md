@@ -48,7 +48,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 Sites I preserves for learning and historical purposes.
 
 - [Calculus on Manifolds Course Site (By: K.K. Kubota)](https://justinmeiners.github.io/calculus-on-manifolds-site/)
-- [Common Lisp Hyperspec (LispWorks)](https://justinmeiners.github.io/clhs/)
+- [Common Lisp Hyperspec (LispWorks)](https://justinmeiners.github.io/clhs/HyperSpec/Front/)
 - [Radiosity (By: Hugo Elias)](https://justinmeiners.github.io/Hugo-Elias-Radiosity)
 - [SGI STL Documentation](https://justinmeiners.github.io/sgi-stl-docs/)
 - [SGI STL Source](https://github.com/justinmeiners/sgi-stl)
