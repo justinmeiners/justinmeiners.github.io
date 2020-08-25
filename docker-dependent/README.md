@@ -27,12 +27,15 @@ In a single day, most things stay the same, to the point of being immeasurably d
 
 ## Does Docker solve this?
 
+Software that is actively developed transforms right along with the glacier, but for old code this is going to become a larger problem, 
+as people use more and more dependencies.
+
+![john carmack tweet](john.png)
+
 Specifying docker images feels really good, and seems like a solution.
 You get all those dependencies wrangled, down to the exact OS version, in a nicely wrapped package which anyone can run anywhere.
 But does this mean your image will always build in exactly the same way?
 Does this remove your project from the glacier?
-
-![john carmack tweet](john.png)
 
 It doesn't take much thought to realize the answer is no.
 All it does is lock down the list of URLs you depend on, the contents of which must still be relied.
