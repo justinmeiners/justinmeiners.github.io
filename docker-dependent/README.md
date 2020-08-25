@@ -6,7 +6,7 @@ If that party fails to act properly, your project breaks (or at least your build
 Good engineers recognize this, and carefully consider the technical qualities of their dependencies
 . Is this good and secure code? Does it support platforms XYZ? Is it actively developed?
 But what is often overlooking is that software dependency is also a social 
-relationship. Any of the following events in another person's life could make it hard to acquire your dependency when you need and have a dramatic effect on your project:
+relationship. Any of the following events in another person's life could make it hard to acquire your dependency and break the build of your project:
 - no longer paying for servers
 - leaving due to a health or family emergency
 - change in business prioerities or budget.
