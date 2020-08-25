@@ -43,12 +43,13 @@ Does this remove your project from the glacier?
 It doesn't take much thought to realize the answer is no.
 Docker locks down the list of URLs you depend on, but the contents must still be acquired through the internet.
 The Docker files and the core pieces may stay exactly the same, but the external internet around it is always transforming.
+Saving a tar may be a good way to archive the built image, but the build itself has nothing locked down at all.
 The fact that these dependencies still exist has not been made explicit, and and Docker leads you to think you no longer have to worry about this.
-In fact, it introduces a few additional parties you need to depend on, like Docker and Docker Hub itself.
 
 ## What Docker doesn't Archive
 
-The following are examples of things  your docker image implicitly relies on to continue building.
+In fact, Docker actually introduces a few additional parties you need to depend on, along with the ones you normally do.
+The following are examples of things your docker image implicitly relies on to continue building.
 
 **Linux Kernel**
 
@@ -71,18 +72,12 @@ Note that even if they host these for a long time, at a certain point the debian
 Many build processes pull directly from GitHub repositories or release tars.
 If your docker file references any external URLs through an `ADD` or a URL is used to add another repostitory to `apt`, then you are dependent on those being accessible.
 
-
 ## What does Docker do?
 
 Docker is useful for developing replicable and automated build processes and provides a formal way of specifying these.
 It allows the entire installation process for an application to be run in a clean environment, and then
 shutdown and thrown away.
 
-But, this has nothing to do with locking down dependencies or creating an archive of the ecosystem necessary to build your app. In short, with docker you are still dependent. Saving a tar may be a good way to archive a container, but the build 
-
-
-(1) Using docker 
-
-1) Saving a tar of a built Docker image may be good way to archive.
+But, this has nothing to do with locking down dependencies or creating an archive of the ecosystem necessary to build your app. In short, with docker you are still dependent.
 
 [1]: https://commons.wikimedia.org/wiki/File:Quelccaya_Glacier.jpg
