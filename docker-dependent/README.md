@@ -9,14 +9,14 @@ But what is often overlooking is that software dependency is also a social
 relationship. Any of the following events in another person's life could make it hard to acquire your dependency and break the build of your project:
 - no longer paying for servers
 - leaving due to a health or family emergency
-- change in business prioerities or budget.
+- change in business priorities or budget.
 - being locked out of a Github account
 - not following version conventions
 - SSL/domain expiration
 - server down for maintainence
 - moving on to new interests
-- rewriting the project,
-Do you trust your dependency authors to handle these well?
+- rewriting the project
+At then end of the day you are trusting people.
 
 These kinds of events become inevitable over decades, so that the internet is constantly changing.
 The state of the interent is often compared to a glacier, slowly melting and transforming overtime.
