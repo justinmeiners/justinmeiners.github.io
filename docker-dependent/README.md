@@ -76,8 +76,7 @@ If your docker file references any external URLs through an `ADD` or a URL is us
 
 Docker is useful for developing replicable and automated build processes and provides a formal way of specifying these.
 It allows the entire installation process for an application to be run in a clean environment, and then
-shutdown and thrown away.
-
-But, this has nothing to do with locking down dependencies or creating an archive of the ecosystem necessary to build your app. In short, with docker you are still dependent.
+shutdown and thrown away. But, this has nothing to do with locking down dependencies or creating an archive of the ecosystem necessary to build your app. In short, with docker you are still dependent.
+If we want our software to last a long time, we ultimately need to depend on parties who will also take care of us for the same period of time.
 
 [1]: https://commons.wikimedia.org/wiki/File:Quelccaya_Glacier.jpg
