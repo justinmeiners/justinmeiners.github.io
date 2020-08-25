@@ -6,7 +6,7 @@ If that party fails to act properly, your project breaks (or at least your build
 Good engineers recognize this, and carefully consider the technical qualities of their dependencies
 . Is this good and secure code? Does it support platforms XYZ? Is it actively developed?
 But what is often overlooking is that software dependency is also a social 
-relationship. At then end of the day you are trusting people.
+relationship. At then end of the day you are trusting people to be there for you.
 Consider what could happen if any of the following events occured to a project you rely on:
 - no longer paying for servers
 - leaving due to a health or family emergency
