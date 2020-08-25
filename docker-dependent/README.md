@@ -30,11 +30,11 @@ Left alone, software projects melt away and can no longer be built from source.
 ## Does Docker solve this?
 
 Of course, we can expect major projects and organizations to be around for a very long time,
-Software that is actively developed can keep up with major updates and changes every few years, along with the rest of glacier, but for old code this is going to become a larger problem, as people use more and more dependencies.
+Software that is actively developed can keep up with major updates and changes every few years, along with the rest of glacier. But for old code this is going to become a larger problem, as people use more and more dependencies.
 
 ![john carmack tweet](john.png)
 
-But, doesn't docker solve this problem?
+Desn't docker solve this problem?
 Specifying docker images feels really good, and seems like a solution.
 You get all those dependencies wrangled, down to the exact OS version, in a nicely wrapped package which anyone can run anywhere.
 But does this mean your image will always build in exactly the same way?
