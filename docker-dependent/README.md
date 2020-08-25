@@ -1,16 +1,26 @@
 # You're Still Dependent with Docker
 
 "Dependencies" are named as such because they make you dependent, in other words
-relient on another party.
+relient, on another party.
 If that party fails to act properly, your project breaks (or at least your build.)
-Consequently, you should think carefully on who and what you choose to become dependent.
-
 Good engineers recognize this, and carefully consider the technical qualities of their dependencies
 . Is this good and secure code? Does it support platforms XYZ? Is it actively developed?
 But what is often overlooking is that software dependency is also a social 
-relationship. You trust another group of people and any of the following events could have a dramatic effect on your project: no longer paying for servers, leaving due to a health or family emergency, not following version conventions, SSL expiration, down for maintainence, moving on to new interests, rewriting the project, etc. 
+relationship. Any of the following events in another person's life could make it hard to acquire your dependency when you need and have a dramatic effect on your project:
+- no longer paying for servers
+- leaving due to a health or family emergency
+- change in business prioerities or budget.
+- being locked out of a Github account
+- not following version conventions
+- SSL/domain expiration
+- server down for maintainence
+- moving on to new interests
+- rewriting the project,
+Do you trust your dependency authors to handle these well?
 
-Of course, software projects are just a part of the larger internet glacier, slowly melting and transforming overtime. In single day, most things stay the same, to the point of being immeasurably different, but overtime little changes result in data being permantly lost or displaced. Left alone, software projects melt away and can no longer be built from source.
+These kinds of events become inevitable over decades, so that the internet is constantly changing.
+The state of the interent is often compared to a glacier, slowly melting and transforming overtime.
+In a single day, most things stay the same, to the point of being immeasurably different, but overtime little changes result in data being permanantly lost or displaced. Open source software is of course living in this glacier. Left alone, software projects melt away and can no longer be built from source.
 
 [![glacier](glacier.jpg)][1]
 
