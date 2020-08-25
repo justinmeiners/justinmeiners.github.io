@@ -16,6 +16,7 @@ relationship. Any of the following events in another person's life could make it
 - server down for maintainence
 - moving on to new interests
 - rewriting the project
+
 At then end of the day you are trusting people.
 
 These kinds of events become inevitable over decades, so that the internet is constantly changing.
