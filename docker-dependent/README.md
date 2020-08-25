@@ -9,7 +9,7 @@ But what is often overlooking is that software dependency is also a social
 relationship. At then end of the day you are trusting people to be there for you.
 Consider what could happen if any of the following events occured to a project you rely on:
 - no longer paying for servers
-- leaving due to a health or family emergency
+- being unavailble due to a health or family emergency
 - change in business priorities or budget.
 - being locked out of a Github account
 - not following version conventions
