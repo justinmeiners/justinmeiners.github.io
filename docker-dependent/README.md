@@ -50,10 +50,12 @@ The fact that these dependencies still exist has not been made explicit, and and
 
 In fact, Docker actually introduces a few additional parties you need to depend on, along with the ones you normally do.
 The following are examples of things your docker image implicitly relies on to continue building.
+Consider them from the perspective of building current docker images at some future date:
 
 **Linux Kernel**
 
 Docker containers share the kernel with the host operating system. They must remain sufficently similar to be compatible.
+(I don't know what specific kernel features would cause issues, but just search "kernel" in the Docker release notes and see how this is already an ongoing process.)
 
 **Docker Hub**
 
@@ -61,16 +63,19 @@ If you didn't specify an exact version of your base image, docker hub may update
 in new unexpected ways. Ditto for the entire inheritence chain.
 If you did specify the exacty image version, docker hub must continue to host that image version.
 
-**Built-in OS Packages (Like Debian)**
+**Built-in OS Packages (Debian as example)**
 
 The packages included in `apt` are hosted by the debian project.
-They must continue to host these for your OS.
-Note that even if they host these for a long time, at a certain point the debian project itself loses the ability to update or build these packages. They pull from URLs and repositories all across the internet to create their packages. For an older release, I suspect a large percentage of them are long gone.
+They must continue to host these for your OS version for all time
+Note that even if they host these for a long time, at a certain point the debian project itself loses the ability to update or build these packages from source.
+They pull from URLs and repositories all across the internet to create their packages.
+For an older release, I suspect a large percentage of them are long gone.
 
-**Direct URL References**
+**Any URL References**
 
-Many build processes pull directly from GitHub repositories or release tars.
-If your docker file references any external URLs through an `ADD` or a URL is used to add another repostitory to `apt`, then you are dependent on those being accessible.
+Most build processes pull directly from GitHub repositories, Github release, or add 3rd party repositories to a package manager like `apt`.
+(Look for `ADD` commands in Dockerfile.)
+Each one of these (including in the images your image inhereits from) represents a point of failure outside of the OS istelf.
 
 ## What does Docker do?
 
