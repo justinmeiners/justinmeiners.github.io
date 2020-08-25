@@ -41,14 +41,14 @@ But does this mean your image will always build in exactly the same way?
 Does this remove your project from the glacier?
 
 It doesn't take much thought to realize the answer is no.
-All Docker does is lock down the list of URLs you depend on, the contents of which must still be acquired through the internet.
-The docker files and the core pieces may stay the same, but the external internet around it is always transforming.
-The fact that you are still dependent ha not been made explicity, and Docker leads you to think you no longer have to worry about this.
+Docker locks down the list of URLs you depend on, but the contents must still be acquired through the internet.
+The Docker files and the core pieces may stay exactly the same, but the external internet around it is always transforming.
+The fact that these dependencies still exist has not been made explicit, and and Docker leads you to think you no longer have to worry about this.
 In fact, it introduces a few additional parties you need to depend on, like Docker and Docker Hub itself.
 
 ## What Docker doesn't Archive
 
-The following are examples of parties that your docker image implicitly relies on to continue building.
+The following are examples of things  your docker image implicitly relies on to continue building.
 
 **Linux Kernel**
 
