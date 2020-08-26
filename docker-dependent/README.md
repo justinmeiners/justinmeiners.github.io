@@ -44,7 +44,7 @@ Does this remove your project from the glacier?
 
 It doesn't take much thought to realize the answer is no.
 Docker locks down a *list of URLs* you depend on, but the contents must still be acquired through the internet, upon each build (ignoring cache).
-Outside the dockerfiles, the surronding internet around is always moving in the glacier described before. (1)
+Outside the dockerfiles, the surrounding internet around is always moving in the glacier described before. (1)
 
 
 ## What Docker doesn't Archive
