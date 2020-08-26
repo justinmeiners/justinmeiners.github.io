@@ -4,12 +4,12 @@
 relient, on another party.
 If that party fails to act properly, your project breaks (or at least your build.)
 Good engineers recognize this, and carefully consider the technical qualities of their dependencies
-. Is this good and secure code? Does it support platforms XYZ? Is it actively developed?
+. Is this robust and secure code? Does it support platforms XYZ? Is it actively developed?
 But what is often overlooking is that software dependency is also a social 
 relationship. At then end of the day you are trusting people to be there for you.
-Consider what could happen if any of the following events occured to a project you rely on:
+Consider what could happen if any of the following events occured to a  project you rely on:
 - no longer paying for servers
-- being unavailble due to a health or family emergency
+- being unavailable due to a health or family emergency
 - change in business priorities or budget.
 - being locked out of a Github account
 - not following version conventions
@@ -19,7 +19,7 @@ Consider what could happen if any of the following events occured to a project y
 - rewriting the project
 
 
-These kinds of events become inevitable over a long enough time, so that the internet is constantly changing.
+Over a long enough period, these kinds of events become inevitable, so that the internet is constantly changing.
 The state of the interent is often compared to a glacier, slowly melting and transforming overtime.
 In a single day, most things stay the same, to the point of being immeasurably different, but overtime little changes result in data being permanantly lost or displaced.
 Modern open source software is of course living in this glacier.
@@ -27,24 +27,25 @@ Left alone, software projects melt away and can no longer be built from source.
 
 [![glacier](glacier.jpg)][1]
 
-## Does Docker solve this?
+## Archiving Software
 
-Of course, we can expect major projects and organizations to be around for a very long time,
-Software that is actively developed can keep up with major updates and changes every few years, along with the rest of glacier. But for old code this is going to become a larger problem, as people use more and more dependencies.
+For actively developed software projects this is probably far down on the list of concerns,
+because we can trust major organizations to support us for a long time,
+and code can be updated to keep up with changes, even major ones.
+But for old code sitting around this is a big problem, and it's only going to get worse as projects use more and more dependencies.
 
 ![john carmack tweet](john.png)
 
-Desn't docker solve this problem?
-Specifying docker images feels really good, and seems like a solution.
-You get all those dependencies wrangled, down to the exact OS version, in a nicely wrapped package which anyone can run anywhere.
+Many commenters online assume that Docker solves this archival problem.
+Docker certainly leads you to think this is the case.
+It feels great to get all those dependencies wrangled, down to the exact OS version, in a nicely wrapped package which anyone can move to another system.
 But does this mean your image will always build in exactly the same way?
 Does this remove your project from the glacier?
 
 It doesn't take much thought to realize the answer is no.
-Docker locks down the list of URLs you depend on, but the contents must still be acquired through the internet.
-The Docker files and the core pieces may stay exactly the same, but the external internet around it is always transforming.
-Saving a tar may be a good way to archive the built image, but the build itself has nothing locked down at all.
-The fact that these dependencies still exist has not been made explicit, and and Docker leads you to think you no longer have to worry about this.
+Docker locks down a *list of URLs* you depend on, but the contents must still be acquired through the internet, upon each build (ignoring cache).
+Outside the dockerfiles, the surronding internet around is always moving in the glacier described before. (!)
+
 
 ## What Docker doesn't Archive
 
@@ -79,9 +80,10 @@ Each one of these (including in the images your image inhereits from) represents
 
 ## What does Docker do?
 
-Docker is useful for developing replicable and automated build processes and provides a formal way of specifying these.
-It allows the entire installation process for an application to be run in a clean environment, and then
-shutdown and thrown away. But, this has nothing to do with locking down dependencies or creating an archive of the ecosystem necessary to build your app. In short, with docker you are still dependent.
 If we want our software to last a long time, we ultimately need to depend on parties who will also take care of us for the same period of time.
+
+1) Even a tar file saved from docker only includes the built container, and not the build environment.
+Perhaps, docker *could* be used for archival purposes by creating a tar of an image containing a build environment for an older piece of software.
+but then of course the build for that container itself might break.
 
 [1]: https://commons.wikimedia.org/wiki/File:Quelccaya_Glacier.jpg
