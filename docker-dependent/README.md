@@ -44,7 +44,7 @@ Does this remove your project from the glacier?
 
 It doesn't take much thought to realize the answer is no.
 Docker locks down a *list of URLs* you depend on, but the contents must still be acquired through the internet, upon each build (ignoring cache).
-Outside the dockerfiles, the surronding internet around is always moving in the glacier described before. (!)
+Outside the dockerfiles, the surronding internet around is always moving in the glacier described before. (1)
 
 
 ## What Docker doesn't Archive
@@ -74,15 +74,15 @@ For an older release, I suspect a large percentage of them are long gone.
 
 **Any URL References**
 
-Most build processes pull directly from GitHub repositories, Github release, or add 3rd party repositories to a package manager like `apt`.
+Most build processes pull directly from GitHub repositories or add 3rd party repositories to the package manager like `apt`.
 (Look for `ADD` commands in Dockerfile.)
-Each one of these (including in the images your image inhereits from) represents a point of failure outside of the OS istelf.
+Each usage, including in the images your image inhereits from, represents a point of failure outside of the OS istelf.
 
 ## What does Docker do?
 
 If we want our software to last a long time, we ultimately need to depend on parties who will also take care of us for the same period of time.
 
-1) Even a tar file saved from docker only includes the built container, and not the build environment.
+1. Even a tar file saved from docker only includes the built container, and not the build environment.
 Perhaps, docker *could* be used for archival purposes by creating a tar of an image containing a build environment for an older piece of software.
 but then of course the build for that container itself might break.
 
