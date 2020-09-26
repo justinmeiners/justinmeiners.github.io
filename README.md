@@ -10,7 +10,6 @@ I am currently a graduate student in mathematics at [BYU](https://math.byu.edu) 
 work as a consultant for various software projects.
 
 If you are interested in my professional experience, see my [CV](files/cv.pdf).
-Find more of my projects at [Github](https://github.com/justinmeiners).
 Feel free to contact me at ![justin's email](mail.gif).
 
 ## Projects & Articles
