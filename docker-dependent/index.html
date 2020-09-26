@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title># You're Still Dependent with Docker</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+</div>
+
+<h1>You&rsquo;re Still Dependent with Docker</h1>
+
+<p>&ldquo;Dependencies&rdquo; are named as such because they make you dependent, in other words
+relient on another party.
+If that party fails to act properly, your project breaks (or at least your build.)
+Consequently, you should think carefully on who and what you choose to become dependent.</p>
+
+<p>Good engineers recognize this, and carefully consider the technical qualities of their dependencies
+. Is this good and secure code? Does it support platforms XYZ? Is it actively developed?
+But what is often overlooking is that software dependency is also a social
+relationship. You trust another group of people and any of the following events could have a dramatic effect on your project: no longer paying for servers, leaving due to a health or family emergency, not following version conventions, SSL expiration, down for maintainence, moving on to new interests, rewriting the project, etc.</p>
+
+<p>Of course, software projects are just a part of the larger internet glacier, slowly melting and transforming overtime. In single day, most things stay the same, to the point of being immeasurably different, but overtime little changes result in data being permantly lost or displaced. Left alone, software projects melt away and can no longer be built from source.</p>
+
+<p><a href="https://commons.wikimedia.org/wiki/File:Quelccaya_Glacier.jpg"><img src="glacier.jpg" alt="glacier" /></a></p>
+
+<h2>Does Docker solve this?</h2>
+
+<p>Specifying docker images feels really good, and seems like a solution.
+You get all those dependencies wrangled, down to the exact OS version, in a nicely wrapped package which anyone can run anywhere.
+But does this mean your image will always build in exactly the same way?
+Does this remove your project from the glacier?</p>
+
+<p><img src="john.png" alt="john carmack tweet" /></p>
+
+<p>It doesn&rsquo;t take much thought to realize the answer is no.
+All it does is lock down the list of URLs you depend on, the contents of which must still be relied.
+This has not been made explicity, and Docker leads you to think you no longer have to worry about this.
+In fact, it introduces a few additional parties you need to depend on, like Docker and Docker Hub itself.</p>
+
+<h2>What Docker doesn&rsquo;t Archive</h2>
+
+<p>The following are examples of parties that your docker image implicitly relies on to continue building.</p>
+
+<p><strong>Linux Kernel</strong></p>
+
+<p>Docker containers share the kernel with the host operating system. They must remain sufficently similar to be compatible.</p>
+
+<p><strong>Docker Hub</strong></p>
+
+<p>If you didn&rsquo;t specify an exact version of your base image, docker hub may update the image, and it may behave
+in new unexpected ways. Ditto for the entire inheritence chain.
+If you did specify the exacty image version, docker hub must continue to host that image version.</p>
+
+<p><strong>Built-in OS Packages (Like Debian)</strong></p>
+
+<p>The packages included in <code>apt</code> are hosted by the debian project.
+They must continue to host these for your OS.
+Note that even if they host these for a long time, at a certain point the debian project itself loses the ability to update or build these packages. They pull from URLs and repositories all across the internet to create their packages. For an older release, I suspect a large percentage of them are long gone.</p>
+
+<p><strong>Direct URL References</strong></p>
+
+<p>Many build processes pull directly from GitHub repositories or release tars.
+If your docker file references any external URLs through an <code>ADD</code> or a URL is used to add another repostitory to <code>apt</code>, then you are dependent on those being accessible.</p>
+
+<p>Of course, we can expect a lot of these projects to be around for a very long time,
+This is not much of a worry if you work on your software regularly, and can keep up with updates.
+But, they won&rsquo;t be around forever. In fact, there are so many parts in modern project it&rsquo;s likely at least one
+of these will have an issue or significant change every year.</p>
+
+<h2>What does Docker do?</h2>
+
+<p>Docker is useful for developing replicable and automated build processes and provides a formal way of specifying these.
+It allows the entire installation process for an application to be run in a clean environment, and then
+shutdown and thrown away.</p>
+
+<p>But, this has nothing to do with locking down dependencies or creating an archive of the ecosystem necessary to build your app. In short, with docker you are still dependent.</p>
+
+<p>(1) Using docker</p>
+
+<p>1) Saving a tar of a built Docker image may be good way to archive.</p>
+</body>
+</html>

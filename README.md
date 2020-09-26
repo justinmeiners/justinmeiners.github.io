@@ -16,6 +16,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 ## Projects & Articles
 
 - [09/26/2020 - Understanding LINQ GroupBy](understanding-groupby/)
+- [09/12/2020 - Gesture Recognition with Line Integrals](https://justinmeiners.github.io/gesture-recognition/)
 - [05/24/2020 - Boring Benefits of Lisp](boring-benefits-of-lisp/)
 - [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
 - [01/23/2020 - Keeping Up-to-Date](keeping-up-to-date/)

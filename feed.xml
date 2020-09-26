@@ -4,9 +4,14 @@
 <title>Justin Meiners</title>
 <description>Welcome to my personal site about programming, mathematics, and philosophy!</description>
 <link>https://justinmeiners.github.io</link>
-<lastBuildDate>Mon, 25 May 2020 09:40:30 -0600</lastBuildDate>
+<lastBuildDate>Sat, 26 Sep 2020 15:51:15 -0600</lastBuildDate>
 <item>
-<pubDate>Sun, 24 May 2020 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
+<title>Gesture Recognition with Line Integrals</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/gesture-recognition/</guid>
+</item>
+<item>
+<pubDate></pubDate>
 <title>Boring Benefits of Lisp</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/boring-benefits-of-lisp/</guid>
 <description><![CDATA[ 
@@ -52,7 +57,7 @@ Lisp just happens to be one of them, and it&rsquo;s a design that I enjoy using 
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 12 Apr 2020 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>10 Hard Decisions: A Model for Programmer Productivity</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/10-hard-decisions/</guid>
 <description><![CDATA[ 
@@ -206,7 +211,7 @@ musical chairs?</p></li>
  ]]></description>
 </item>
 <item>
-<pubDate>Thu, 23 Jan 2020 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>Keeping Up-to-Date</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/keeping-up-to-date/</guid>
 <description><![CDATA[ 
@@ -334,22 +339,22 @@ Expertise is also a subject for another day.</p></li>
  ]]></description>
 </item>
 <item>
-<pubDate>Wed, 18 Dec 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>Shamans: A 3D Turn-based Strategy Game for iPad</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/shamans/</guid>
 </item>
 <item>
-<pubDate>Sun, 28 Jul 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>Write Your Own Proof-of-Work Blockchain</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/tiny-blockchain/</guid>
 </item>
 <item>
-<pubDate>Sat, 29 Jun 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>text2image</title>
 <guid isPermaLink="true">https://github.com/justinmeiners/text2image</guid>
 </item>
 <item>
-<pubDate>Sat, 08 Jun 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>Think in Math. Write in Code.</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/think-in-math/</guid>
 <description><![CDATA[ 
@@ -645,7 +650,7 @@ Note that this example is only one style of utilizing mathematical thinking.</p>
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 12 May 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>Notes On Vector Libraries</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/vector-libs/</guid>
 <description><![CDATA[ 
@@ -950,7 +955,7 @@ which led to these notes.</p>
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 14 Apr 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>Foundations of Math Reading List</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/foundations-of-math-reading/</guid>
 <description><![CDATA[ 
@@ -1118,7 +1123,7 @@ you should be well prepared.</p>
  ]]></description>
 </item>
 <item>
-<pubDate>Fri, 22 Feb 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>The Skills Poor Programmers Lack</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/the-skills-programmers-lack/</guid>
 <description><![CDATA[ 
@@ -1223,7 +1228,7 @@ See his <a href="https://gist.github.com/Dobiasd/fa27e3efb8b08fc81791d7f8e51ac5c
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 13 Jan 2019 00:00:00 -0600</pubDate>
+<pubDate></pubDate>
 <title>McCulloch &amp; Pitts Neural Net Simulator</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/neural-nets-sim/</guid>
 </item>
