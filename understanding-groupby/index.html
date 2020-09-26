@@ -128,7 +128,7 @@ let&rsquo;s examine the method <a href="https://docs.microsoft.com/en-us/dotnet/
 );
 </code></pre>
 
-<p>Let&rsquo;s not think about the types right away, and just look at the 4 functions that must be provided:</p>
+<p>Ignore the generic types and focus on the 4 functions that must be provided:</p>
 
 <ul>
 <li><code>TKey keySelector(TSource item)</code> given an <code>item</code>, return a key which will be used to decide which group to place this <code>item</code>.
@@ -142,7 +142,7 @@ object containing the results. Most often you will just return <code>contents</c
 </ul>
 
 
-<p>With the functions in mind, the meaning of the 4 generic types is now clear:</p>
+<p>With an overview of the functions, the meaning of the 4 generic types is now clear:</p>
 
 <ul>
 <li><code>TSource</code> the items in the collection we will be grouping.</li>
@@ -209,7 +209,8 @@ forgoes the need to translate our bucket values to indices.</p>
 
 <h3>Deep Dive: Implementing GroupBy with Sort and Merge</h3>
 
-<p>That may be all you want about <code>GroupBy</code> now, but you may wonder how it actually works or wonder
+<p>That may be all you want about <code>GroupBy</code> now.
+Keep reading if you are curious about how it actually works or wonder
 about it&rsquo;s performance.
 Grouping elements appears to be an inherently complex task, at first.
 An initial idea might be to loop through each item, and then loop through all the other items to find matches.
@@ -282,9 +283,9 @@ performance code.)</p>
 it&rsquo;s difficult to see how a language with roots in C could be made similarly malleable.
 In fact, a great deal of runtime and compiler infrastructure
 needed to be added to C# in order to support LINQ, including <code>lambdas</code>
-anonymous objects, etc. Jon Skeet suspects the C# team had the idea to completely
+anonymous objects, etc. Jon Skeet suspects the C# team had an idea to completely
 generalize data access,
-and then built up a chain of dependent features to reach the goal.
+and then built up a chain of dependent features to reach this goal.
 To learn more about this process and the ideas behind LINQ
 I recommend Jon Skeet&rsquo;s book <a href="https://www.manning.com/books/c-sharp-in-depth-fourth-edition?utm_source=affiliate&amp;utm_medium=affiliate&amp;a_aid=11033&amp;a_bid=569211b4">C# in Depth</a>.
 I think you will enjoy it even if you are not interested in C# itself, as it is a joyful deep dive into practical language design and theory.</p>

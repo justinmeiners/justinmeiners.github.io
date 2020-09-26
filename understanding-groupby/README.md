@@ -28,7 +28,7 @@ let's examine the method [signature][2], which is a little hairy and intimidatin
         IEqualityComparer<TKey> comparer
     );
 
-Let's not think about the types right away, and just look at the 4 functions that must be provided:
+Ignore the generic types and focus on the 4 functions that must be provided:
 
 - `TKey keySelector(TSource item)` given an `item`, return a key which will be used to decide which group to place this `item`.
   Usually this simply returns a field on `item`, but it can also generate a key, as we will see in a later example.
@@ -39,7 +39,7 @@ this function will be called for each group. The `key` is the identifier for thi
 object containing the results. Most often you will just return `contents`, but you may want to store the result in a new class.
 - `int comparer(..)` provide a function so that keys can be compared. This can be left off for key types like integer and string which are comparable.
 
-With the functions in mind, the meaning of the 4 generic types is now clear:
+With an overview of the functions, the meaning of the 4 generic types is now clear:
 
 - `TSource` the items in the collection we will be grouping.
 - `TKey` from each item a key will be extracted to identity which group it belongs to.
@@ -104,7 +104,8 @@ forgoes the need to translate our bucket values to indices.
   
 ### Deep Dive: Implementing GroupBy with Sort and Merge
 
-That may be all you want about `GroupBy` now, but you may wonder how it actually works or wonder
+That may be all you want about `GroupBy` now.
+Keep reading if you are curious about how it actually works or wonder
 about it's performance.
 Grouping elements appears to be an inherently complex task, at first.
 An initial idea might be to loop through each item, and then loop through all the other items to find matches.
@@ -177,9 +178,9 @@ Although languages like Lisp are built around the idea of [constructing DSLs][5]
 it's difficult to see how a language with roots in C could be made similarly malleable.
 In fact, a great deal of runtime and compiler infrastructure
 needed to be added to C# in order to support LINQ, including `lambdas`
-anonymous objects, etc. Jon Skeet suspects the C# team had the idea to completely
+anonymous objects, etc. Jon Skeet suspects the C# team had an idea to completely
 generalize data access,
-and then built up a chain of dependent features to reach the goal.
+and then built up a chain of dependent features to reach this goal.
 To learn more about this process and the ideas behind LINQ 
 I recommend Jon Skeet's book [C# in Depth][3].
 I think you will enjoy it even if you are not interested in C# itself, as it is a joyful deep dive into practical language design and theory.
