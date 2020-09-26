@@ -1,4 +1,5 @@
-# Understanding LINQ GroupBy
+Understanding LINQ GroupBy
+==========================
 
 C# programmers are typically familiar with  `Select`, `Where`, and `Aggregate`, the LINQ equivalents of the core functional programming
 operations `map`, `filter`, and `reduce`. 
