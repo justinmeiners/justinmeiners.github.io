@@ -4,7 +4,206 @@
 <title>Justin Meiners</title>
 <description>Welcome to my personal site about programming, mathematics, and philosophy!</description>
 <link>https://justinmeiners.github.io</link>
-<lastBuildDate>Sat, 26 Sep 2020 16:00:24 -0600</lastBuildDate>
+<lastBuildDate>Sat, 26 Sep 2020 16:02:12 -0600</lastBuildDate>
+<item>
+<pubDate>Sat, 26 Sep 2020 00:00:00 -0600</pubDate>
+<title>Understanding LINQ GroupBy</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/understanding-groupby/</guid>
+<description><![CDATA[ 
+ <h1>Understanding LINQ GroupBy</h1>
+
+<p>C# programmers are typically familiar with  <code>Select</code>, <code>Where</code>, and <code>Aggregate</code>, the LINQ equivalents of the core functional programming
+operations <code>map</code>, <code>filter</code>, and <code>reduce</code>.
+But the equally important <code>GroupBy</code> isn&rsquo;t as well understood or often used.
+Although you may guess from the name, the problem <code>GroupBy</code> solves is the following:
+Given a list of items, we want to arrange the items so that equal elements are together.</p>
+
+<p>For example, given a list of <code>Student</code> objects,
+we may want to group them by <code>student.teacher</code>, and then obtain a list of <code>student.id</code>
+corresponding to each teacher.</p>
+
+<p><code>GroupBy</code> is a beautiful piece functional programming which allows work to be specified in terms of &ldquo;what&rdquo;
+should happen as opposed to &ldquo;how&rdquo; to do it.
+It combines harmoniously with the other LINQ operations
+leading to cleaner code that can be combined in modular ways.</p>
+
+<h3>How to use GroupBy</h3>
+
+<p>With the brief description above in mind,
+let&rsquo;s examine the method <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.groupby?view=netcore-3.1#definition">signature</a>, which is a little hairy and intimidating:</p>
+
+<pre><code>IEnumerable&lt;TResult&gt; GroupBy&lt;TSource, TKey, TElement, TResult&gt; (
+    IEnumerable&lt;TSource&gt; source,
+    Func&lt;TSource,TKey&gt; keySelector,
+    Func&lt;TSource,TElement&gt; elementSelector,
+    Func&lt;TKey,IEnumerable&lt;TElement&gt;,TResult&gt; resultSelector,
+    IEqualityComparer&lt;TKey&gt; comparer
+);
+</code></pre>
+
+<p>Ignore the generic types and focus on the 4 functions that must be provided:</p>
+
+<ul>
+<li><code>TKey keySelector(TSource item)</code> given an <code>item</code>, return a key which will be used to decide which group to place this <code>item</code>.
+Usually this simply returns a field on <code>item</code>, but it can also generate a key, as we will see in a later example.</li>
+<li><code>TElement elementSelector(TSource item)</code> given an <code>item</code>, return the value that will actually be stored in the group,
+Often this returns the item or a field on the item.</li>
+<li><code>TResult resultSelector(TKey key, IEnumerable&lt;TElement&gt; contents)</code> after elements are grouped together,
+this function will be called for each group. The <code>key</code> is the identifier for this group and the <code>contents</code> is an enumerable
+object containing the results. Most often you will just return <code>contents</code>, but you may want to store the result in a new class.</li>
+<li><code>int comparer(..)</code> provide a function so that keys can be compared. This can be left off for key types like integer and string which are comparable.</li>
+</ul>
+
+
+<p>With an overview of the functions, the meaning of the 4 generic types is now clear:</p>
+
+<ul>
+<li><code>TSource</code> the items in the collection we will be grouping.</li>
+<li><code>TKey</code> from each item a key will be extracted to identity which group it belongs to.</li>
+<li><code>TElement</code> each item has the opportunity to be transformed before being put into a group.
+ This is the type of that transformation.</li>
+<li><code>TResult</code> The type representing each group. Typically a collection, but could be custom class.</li>
+</ul>
+
+
+<h3>Example 1: Each teachers' students.</h3>
+
+<p>Once again, given a list of <code>Student</code> objects,
+we may want to group them by <code>student.teacher</code>, and then obtain a list of <code>student.id</code>
+corresponding to each teacher.</p>
+
+<pre><code>List&lt;Student&gt; students = ...;
+
+students.GroupBy(
+   s =&gt; s.teacher,        // keySelector
+   s =&gt; s.id,             // elementSelector
+   (teacher, ids) =&gt; ids  // resultSelector
+);
+
+// Result: [ [id1, id2, ..], [id1, id2] ] 
+</code></pre>
+
+<h3>Example 2: A Histogram of Purchases</h3>
+
+<p>Let&rsquo;s imagine we are building a personal finance application.
+One report which might be useful is a histogram showing how many purchases
+fall within each price range,
+so $10.75 and $12.37 both fall within then $10-20 range.
+We want to find out the number of purchases, and the total value of these purchases.
+We will use a tuple to store these calculations for each resulting bucket.</p>
+
+<pre><code>struct Purchase {
+   double amount;
+   ...
+}
+
+List&lt;Purchase&gt; purchases = ...;
+
+purchases.GroupBy(
+   p =&gt; (int)Math.Floor(p.amount / 10.0),    // keySelector
+   p =&gt; p.amount,                            // elementSelector
+   (bucket, amounts) =&gt; {                    // resultSelector
+      return Tuple.Create(
+         bucket,
+         amounts.Count(),
+         amounts.Sum()
+      );
+   }
+)
+
+// Result:
+// [ (bucket, number of purchases, total purchase amount), ... ]
+</code></pre>
+
+<p>Assuming the range of buckets was known up front, one could simply allocate an array with the proper
+number of buckets and place each item directly.
+But, this implementation is very robust, especially for sparse data sets, and
+forgoes the need to translate our bucket values to indices.</p>
+
+<h3>Deep Dive: Implementing GroupBy with Sort and Merge</h3>
+
+<p>That may be all you want about <code>GroupBy</code> now.
+Keep reading if you are curious about how it actually works or wonder
+about it&rsquo;s performance.
+Grouping elements appears to be an inherently complex task, at first.
+An initial idea might be to loop through each item, and then loop through all the other items to find matches.
+This works, but is an <code>O(n^2)</code> algorithm so we want to try a little harder.</p>
+
+<p>The next natural implementation is to create
+a dictionary in which each key contains the results of a group. Iterate over each item in the list once,
+and put it in it&rsquo;s proper group.
+This works just fine, but it seems a little kludgy.
+Dictionaries are rarely uniform.
+For each key you must check if a group is there and if not, create it,
+then at the end you have to iterate over a dictionary to put the final groups
+into an appropriate structure.</p>
+
+<p>We can actually do bit better in elegance and often performance (not time complexity) as well.
+The idea is to <code>sort</code> elements by their key (<code>O(n log n)</code>).
+After sorting, all the equal elements that should be grouped together will be next to each other.
+We can then apply a reduce-like operation to merge adjacent neighbors.</p>
+
+<pre><code>public static IEnumerable&lt;TResult&gt; GroupBy&lt;TSource, TKey, TElement, TResult&gt; (
+     IEnumerable&lt;TSource&gt; source,
+     Func&lt;TSource,TKey&gt; keySelector,
+     Func&lt;TSource,TElement&gt; elementSelector,
+     Func&lt;TKey,IEnumerable&lt;TElement&gt;,TResult&gt; resultSelector
+ ) {
+     var sorted = source.Select(item =&gt; ValueTuple.Create(keySelector(item), elementSelector(item)))
+             .OrderBy(tup =&gt; tup.Item1);
+
+     var start = sorted.First();
+     var currentGroup = new List&lt;TElement&gt;()
+     {
+         start.Item2,
+     };
+
+     var groupKey = start.Item1;
+
+     foreach (var x in sorted.Skip(1)) {
+         if (x.Item1.Equals(groupKey)) {
+           currentGroup.Add(x.Item2);
+         } else {
+             yield return resultSelector(groupKey, currentGroup);
+             currentGroup = new List&lt;TElement&gt;()
+             {
+                 x.Item2
+             };
+             groupKey = x.Item1;
+         }
+     };
+
+     yield return resultSelector(groupKey, currentGroup);
+ }
+</code></pre>
+
+<p>This pattern of &ldquo;sorting and merging&rdquo; is a powerful one.
+See <a href="https://github.com/psoberoi/stepanov-conversations-course/blob/master/styles/fortran4.cpp">Stepanov&rsquo;s bigrams</a> for an additional application.
+Note that this is almost certainly not how LINQ is implemented (we don&rsquo;t give it a key comparer, just equality test),
+but is instructive.</p>
+
+<h2>More About LINQ</h2>
+
+<p>LINQ is a fantastic example of the usefulness of domain specific languages (DSL).
+It&rsquo;s a mini language designed for manipulating and transforming data in collections,
+taking advantage of the strong theoretical foundations of functional programming.
+But the benefits of pure functions come with serious constraints.
+With LINQ you can take advantage of them when they make sense and avoid them when they don&rsquo;t. (Common Lisp actually does the reverse,
+the default style is somewhat functional and a &ldquo;<a href="http://clhs.lisp.se/Body/m_prog_.htm#prog">goto style</a>&rdquo; DSL is available for writing
+performance code.)</p>
+
+<p>Although languages like Lisp are built around the idea of <a href="http://www.paulgraham.com/onlisp.html">constructing DSLs</a>,
+it&rsquo;s difficult to see how a language with roots in C could be made similarly malleable.
+In fact, a great deal of runtime and compiler infrastructure
+needed to be added to C# in order to support LINQ, including <code>lambdas</code>
+anonymous objects, etc. Jon Skeet suspects the C# team had an idea to completely
+generalize data access,
+and then built up a chain of dependent features to reach this goal.
+To learn more about this process and the ideas behind LINQ
+I recommend Jon Skeet&rsquo;s book <a href="https://www.manning.com/books/c-sharp-in-depth-fourth-edition?utm_source=affiliate&amp;utm_medium=affiliate&amp;a_aid=11033&amp;a_bid=569211b4">C# in Depth</a>.
+I think you will enjoy it even if you are not interested in C# itself, as it is a joyful deep dive into practical language design and theory.</p> 
+ ]]></description>
+</item>
 <item>
 <pubDate>Sat, 12 Sep 2020 00:00:00 -0600</pubDate>
 <title>Gesture Recognition with Line Integrals</title>
