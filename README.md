@@ -3,29 +3,27 @@ About Me
 
 ![finger painting](finger_painting.jpg)
 
-Welcome to my personal site about programming, mathematics, and philosophy!
+Welcome to my personal site!
+I am currently a graduate student in mathematics at [BYU](https://math.byu.edu) studying
+Topology.
+I also work as a consultant for various software projects.
 
 Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
-I am currently a graduate student in mathematics at [BYU](https://math.byu.edu) and
-work as a consultant for various software projects.
-
 If you are interested in my professional experience, see my [CV](files/cv.pdf).
+
 Feel free to contact me at ![justin's email](mail.gif).
 
-## Projects & Articles
+## Projects
 
+Computer stuff I made and tutorials teaching you how to make cool stuff.
+
+- [10/07/2020 - Derivative Map Tool](https://github.com/justinmeiners/derivative-map-tool)
 - [09/26/2020 - Understanding LINQ GroupBy](understanding-groupby/)
 - [09/12/2020 - Gesture Recognition with Line Integrals](https://justinmeiners.github.io/gesture-recognition/)
-- [05/24/2020 - Boring Benefits of Lisp](boring-benefits-of-lisp/)
-- [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
-- [01/23/2020 - Keeping Up-to-Date](keeping-up-to-date/)
 - [12/18/2019 - Shamans: A 3D Turn-based Strategy Game for iPad](https://justinmeiners.github.io/shamans/)
 - [07/28/2019 - Write Your Own Proof-of-Work Blockchain](https://justinmeiners.github.io/tiny-blockchain/)
 - [06/29/2019 - text2image](https://github.com/justinmeiners/text2image)
-- [06/08/2019 - Think in Math. Write in Code.](think-in-math/)
 - [05/12/2019 - Notes On Vector Libraries](vector-libs/)
-- [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
-- [02/22/2019 - The Skills Poor Programmers Lack](the-skills-programmers-lack/)
 - [01/13/2019 - McCulloch & Pitts Neural Net Simulator](https://justinmeiners.github.io/neural-nets-sim/)
 - [01/05/2019 - An Adventure in Pre-Rendered Backgrounds](https://justinmeiners.github.io/pre-rendered-backgrounds/)
 - [12/16/2018 - Write your Own Virtual Machine](https://justinmeiners.github.io/lc3-vm/)
@@ -43,6 +41,18 @@ Feel free to contact me at ![justin's email](mail.gif).
 - [05/22/2013 - Mode 7](https://github.com/justinmeiners/mode-7)
 - [04/07/2013 - C Foundation](https://github.com/justinmeiners/c-foundation)
 - [01/08/2013 - iOS Color Wheel](https://github.com/justinmeiners/ios-color-wheel)
+
+## Essays
+
+Opinions, typically about philosophy, math, and computers.
+
+- [05/24/2020 - Boring Benefits of Lisp](boring-benefits-of-lisp/)
+- [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
+- [01/23/2020 - Keeping Up-to-Date](keeping-up-to-date/)
+- [06/08/2019 - Think in Math. Write in Code.](think-in-math/)
+- [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
+- [02/22/2019 - The Skills Poor Programmers Lack](the-skills-programmers-lack/)
+
 
 ## Preserved Sites
 
