@@ -46,6 +46,7 @@ Computer stuff I made and tutorials teaching you how to make cool stuff.
 
 Opinions, typically about philosophy, math, and computers.
 
+- [10/08/2020 - Questioning Probablity](questioning-probability/)
 - [05/24/2020 - Boring Benefits of Lisp](boring-benefits-of-lisp/)
 - [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
 - [01/23/2020 - Keeping Up-to-Date](keeping-up-to-date/)

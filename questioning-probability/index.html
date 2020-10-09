@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title>Questioning Probability</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+<a style="margin-left: 16px" href="https://github.com/justinmeiners">GitHub</a>
+</div>
+
+<h1>Questioning Probability</h1>
+
+<h3>Are Elections Actually Random?</h3>
+
+<p>A popular narrative explaining the outcome of the 2016 election is that the odds were in Clinton&rsquo;s favor.
+She just got unlucky.
+That election night, dice were cast, and she unfortunately rolled snake eyes.
+The comforting messages implied by this interpretation probably explains it&rsquo;s popularity;
+it was nobody&rsquo;s fault,
+we still have the popular ideas,
+we don&rsquo;t even have to change our strategy to win next time.
+The alternatives are much harder to look at.
+But, the critical, yet unquestioned assumption that this narrative
+depends on is that elections are random events.
+But how similar is winning election to winning roulette?</p>
+
+<p>Let&rsquo;s briefly relate what actually happens on voting day.
+People wake up in the morning and make a decision whether to make their way to vote or not.
+They physically walk or drive to a voting location, and then choose who&rsquo;s name to record, either by pushing a button or writing it in.
+Later, the votes are tallied and grouped by region and a winner is announced.</p>
+
+<p>Where is the randomness?
+It&rsquo;s hard to even find where variables might be changing rapidly.
+The media framework and campaign context is a product of months of effort.
+Each individuals broad political views are slow moving.
+They are driven by countless deeply rooted influences such as family upbringing, income, ethnicity, religion, education, culture.
+Undoubtedly all of this is very complex, much if it is unconscious and affected by PR and marketing,
+ but nowhere do we see anything that looks like a random occurrence.
+It&rsquo;s always cause and effect, and it&rsquo;s not all that mysterious as you can probably make a good guess of how
+an acquaintance will vote.</p>
+
+<p>You might argue this isn&rsquo;t what is really meant when &ldquo;chance&rdquo; is talked about in elections.
+Journalists aren&rsquo;t implying they function like a lottery.
+The percentages they throw around are confidence intervals.
+Pollsters can&rsquo;t talk to everyone in the country, so they talk to a
+sample, and then use probability to guess how likely it is that
+this sample represents the whole population.
+It&rsquo;s basic statistics.</p>
+
+<p>But, even if the numbers come from such methods,
+this is not how they are presented by journalists and
+otherwise intelligent and &ldquo;scientific&rdquo; people don&rsquo;t understand them that way either.
+If so, they would be much more concerned about finding specific gaps between the sample and population
+instead of wondering what the odds look like on their bet.
+Just look at how prevelant the random model is in these examples:</p>
+
+<p><strong>Election as a Pachinko Machine (1)</strong></p>
+
+<p><img src="pachinko.png" alt="pachinko machine" /></p>
+
+<p>Let&rsquo;s hope the people making these promotions
+aren&rsquo;t the same as those making the models.</p>
+
+<p><strong>Election as an Unlucky Dice Roll</strong></p>
+
+<p><img src="random_roll.png" alt="random roll" /></p>
+
+<p>Unlucky again?</p>
+
+<p><strong>A Small Probability is still a Possibility</strong></p>
+
+<p><img src="math.png" alt="math" /></p>
+
+<p>Perhaps students need fewer stats classes and more critical thinking.</p>
+
+<h3>Our Cultural of Randomness</h3>
+
+<p>Questionable applications of random thinking aren&rsquo;t confined to politics.
+This reflects an underlying cultural trust and belief in the power of statistics.
+At first glance it appear to fit with our love of science and intelligence.
+Just look at all the numbers, equations, and graph.
+Everyone knows smart people use data to make decisions and
+it overcomes biases.
+Didn&rsquo;t you watch Money Ball?</p>
+
+<p>But this belief actually begins with our our basic physical view;
+the world is atoms crashing into each other in the void,
+and at the atomic level quantum events are happening which we don&rsquo;t understand.
+Fundamentally, the  future is indefinite, uncertain, and hazy.
+We can&rsquo;t really plan or predict it.
+Sometimes we can setup Fleming or Darwinian-like projects to tip chance
+in our favor,
+but the best thing to do is leave all your options open to respond to unforeseen conditions.
+This indefinite attitude permeates our world with &ldquo;lean startups&rdquo;,
+index funds, zero interest, zero savings, extracurricular, and no planning. (2)</p>
+
+<p>But let&rsquo;s examine this views underyling underlying premise.
+How many things in our world are actually random?
+If you believe basic physics, it doesn&rsquo;t appear anything at the scale of everyday life is really random.
+Every physical action is driven by cause and effect, which can be described
+at the human scale can be accurately using deterministic Newtonian relationships.</p>
+
+<p>In computer programs it&rsquo;s not even possible to obtain data which is truly random.
+Usually it&rsquo;s just a <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">function</a> which is hard to predict, and uses varying
+inputs like time of data.
+Better sources sample from physical motion, like air vibrations.
+When random functions aren&rsquo;t random enough,
+hackers can break <a href="https://en.wikipedia.org/wiki/Random_number_generator_attack">encryption</a>.</p>
+
+<p>Just like the 2016 election, it doesn&rsquo;t take scrutiny to realize that most subjects of statistical study
+are not actually driven by chance.</p>
+
+<h3>When is Probability Useful?</h3>
+
+<p>That is not to suggest that the entire field is misguided.
+Probability itself is a sound mathematical model, central
+to scientific inquiry.
+But, if the required axiom of having a random variable
+is virtually always false, then why should we ever hope to apply it
+in the real world?</p>
+
+<p>We have already talked about one use case.
+Reasoning about a population from a sample.
+Ignoring the missing principle of uniformity in nature, and whether
+distributions are correct, this is still a helpful way to study
+large groups.</p>
+
+<p>Another use case is when there are just too many variables to understand.
+When we have a cause and effect theory, but too many input variables,
+it&rsquo;s overwhelming to use, so we settle for partial information.
+Consider a dice roll.
+Through classical mechanics we can understand gravity, the force of the throw, the friction in the air,
+the impact on the table,
+and with all this make an accurate description of the outcome.
+But no human can capture all those parameters in a split second and apply them.
+Without a controlled environment for study probability is a good model.</p>
+
+<p>However, statistical physical models don&rsquo;t just making random assignments.
+They tightly constrain the probability with deterministic mathematics,
+such as using regular formulas for area and force. (3)
+Furthermore, they never imply an underlying law of randomness.
+Rather they are useful compromises with tolerable inaccuracies.</p>
+
+<p>The most common use case for statistics,
+and the one that needs to be scrutinized the most,
+is when you don&rsquo;t really
+understand cause and effect relationships.
+Without a workable theory of nature, stats act as an adhoc placeholder.
+Data gets mapped to distributions, and patterns get correlated,
+without considering how the underlying objects works.</p>
+
+<p>When this is your only option, it&rsquo;s probably better than nothing.
+But, you have to be honest about the limitations.
+You definitely shouldn&rsquo;t be surprised to find &ldquo;black swans&rdquo;
+when all you did is plot a bell curve,
+and hope everything else follows uniformly.</p>
+
+<p>Consider two fields almost synonymous with stats; economics and psychology.
+Does anyone have a clear picture of how markets function,
+or the causes of inflation?
+Can anyone give an account of why people think and believe what they do?
+Of course not, and the popular theories change rapidly and dramatically.
+There are are a lot of variables in these domains
+too, so perhaps probability models are unavoidable.
+But clearly they are lacking in explanatory theories.
+Maybe a scientific theory isn&rsquo;t even possible.</p>
+
+<h3>A Universal Way of Understanding</h3>
+
+<p>In <a href="http://classics.mit.edu/Plato/republic.11.x.html">The Republic X</a>, Plato observes a related attitude in painting and poetry.
+He describes their practice as giving an appearance of understanding through shallow, and quickly made presentations:</p>
+
+<blockquote><p>The imitator, I said, is a long way off the truth, and can do all things because he lightly touches on a small part of them, and that part an image.
+For example: A painter will paint a cobbler, carpenter, or any other artist, though he knows nothing of their arts; and, if he is a good artist, he may deceive children or simple persons, when he shows them his picture of a carpenter from a distance, and they will fancy that they are looking at a real carpenter.</p>
+
+<p> And whenever any one informs us that he has found a man knows all the arts, and all things else that anybody knows [&hellip;] I think that we can only imagine to be a simple creature who is likely to have been deceived by some wizard or actor whom he met, and whom he thought all-knowing, because he himself was unable to analyze the nature of knowledge and ignorance and imitation.</p>
+
+<p>And so, when we hear persons saying that the tragedians, and Homer, who is at their head, know all the arts and all things human, virtue as well as vice, and divine things too, for that the good poet cannot compose well unless he knows his subject, and that he who has not this knowledge can never be a poet, we ought to consider whether here also there may not be a similar illusion. Perhaps they may have come across imitators and been deceived by them</p></blockquote>
+
+<p>Statistics students and professionals hold the same remarkable belief about their own field today.
+They don&rsquo;t need to study any subject or &ldquo;applications&rdquo;, besides statistics itself.
+Their statistical knowledge is immediately transferable to
+understanding any problem thrown their way, whether in tech, business, politics, finance, or healthcare.
+It&rsquo;s a universal framework for understanding.
+This makes it the perfect career in the culture of randomness, and ironically
+minimize the need to make predictions about the future.</p>
+
+<p>But can you understand business without running one?
+Can you understand voting patterns without understanding what
+is happening in people&rsquo;s lives?
+Can you understand psychology without thinking, observing, and talking to people?
+Lack of basic knowledge and experience leave a lot to be desired.
+In these areas, as in politics, we can conclude that probability and statistics are poor substitutes
+for explanatory theory.</p>
+
+<p><strong>Notes</strong></p>
+
+<p>(1) Pachinko might be a good model to predict whether an INDIVIDUAL voter will make it to the voting
+location, as intended. Each peg represents an event encouraging or discouraging them (medical emergencies, flat tires, relationship trouble).
+But these don&rsquo;t happen very often and the vast majority of those determined follow through with their intentions.</p>
+
+<p>(2) For an exploration of these ideas see Zero To One by Peter Thiel.</p>
+
+<p>(3) For a specific examples see the derivations for the equations of <a href="https://en.wikipedia.org/wiki/Kinetic_theory_of_gases">motion of gasses</a>
+or how probability is used to <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">estimating integrals</a>.</p>
+</body>
+</html>
