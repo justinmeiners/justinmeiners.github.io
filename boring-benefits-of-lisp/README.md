@@ -1,6 +1,8 @@
 Boring Benefits of Lisp
 =======================
 
+**10/07/20**
+
 Lisp (both Common Lisp and Scheme) advocates are famous for having extravagant reasons for why Lisp is their favorite language.
 You might have heard claims that it's the [most powerful language][0],
 due to feature like [macros][1] or [homioconicty][2].

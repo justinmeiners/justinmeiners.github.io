@@ -1,6 +1,8 @@
 Questioning Probability
 =======================
 
+**10/8/20**
+
 ### Are Elections Actually Random?
 
 A popular narrative explaining the outcome of the 2016 election is that the odds were in Clinton's favor.
