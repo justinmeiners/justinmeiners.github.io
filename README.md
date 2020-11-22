@@ -65,3 +65,10 @@ Sites I preserves for learning and historical purposes.
 - [SGI STL Source](https://github.com/justinmeiners/sgi-stl)
 
 
+
+This site does not use tracking or analytics.
+I occasionally use affiliate links for books.
+These are always books I have read and recommend.
+I try to offer free alternatives when I am familiar with them.
+
+
