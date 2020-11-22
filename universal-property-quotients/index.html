@@ -115,14 +115,14 @@ why it must always be there, revealing patterns hidden in the construction.</p>
 the first example of a commutative diagram I encountered.
 If you are familiar with topology, this property
 applies to quotient maps.
-But we will focus on quotients induced by equivalence relation on sets and ignorea
+But we will focus on quotients induced by equivalence relation on sets and ignored
 additional structure.</p>
 
-<p>An equivalence relation <code>~</code> is a binary relation satisfying the following propertys:</p>
+<p>An equivalence relation <code>~</code> is a binary relation satisfying the following properties:</p>
 
 <ul>
 <li>reflexive: <code>x ~ x</code></li>
-<li>symmetrix: <code>x ~ y &lt;=&gt; y ~ z</code></li>
+<li>symmetric: <code>x ~ y &lt;=&gt; y ~ z</code></li>
 <li>transitive:  <code>x ~ y and y ~ z implies x ~ z</code>.</li>
 </ul>
 
@@ -130,11 +130,11 @@ additional structure.</p>
 <p>Examples include equality of real numbers, whether numbers are both even or odd (parity),
 matrix similarity, isomorphism, etc.</p>
 
-<p><strong>Excercise:</strong> Prove matrix similarity is an equivalence relation.</p>
+<p><strong>Exercise:</strong> Prove matrix similarity is an equivalence relation.</p>
 
-<p>Given an equivalance relation ~ and an element <code>x</code> we can form it&rsquo;s equivalence
+<p>Given an equivalence relation ~ and an element <code>x</code> we can form it&rsquo;s equivalence
 class <code>[x]</code> which is the set of things equivalent to it.
-The set of a equivalence classes form a new set <code>X/~</code> with an analagous
+The set of a equivalence classes form a new set <code>X/~</code> with an analogous
 structure to the original, but with portions &ldquo;grouped up&rdquo; or &ldquo;collapsed&rdquo;</p>
 
 <p><strong>Exercise:</strong> Prove distinct equivalence classes are disjoint.</p>
@@ -170,7 +170,7 @@ One such property is their distance from the center.
 Define <code>x ~ y</code> whenever <code>||x|| ~ ||y||</code>.
 What does the quotient space <code>X/~</code> look like under this relation?
 Each class is a ring at a particular radius <code>L</code>, so denote it <code>[L]</code>.
-The radii of course vary contiuously so we get set of classes isomorphic
+The radii of course vary continuously so we get set of classes isomorphic
 to a closed interval <code>[0, 1]</code>.</p>
 
 <p><img src="4.png" alt="disc radii classes" /></p>
@@ -201,7 +201,7 @@ Can you figure out what it is?</p>
 <p>The missing function is of course <code>h([L]) = L^2</code>.
 It&rsquo;s graph is a parabola in 2D which carves out the same range as <code>f</code> in the real numbers.</p>
 
-<p><img src="6.png" alt="graph parabaol" /></p>
+<p><img src="6.png" alt="graph parabola" /></p>
 
 <p>To check commutativity take a point <code>(x, y)</code> and apply <code>f(x, y) = x^2 + y^2</code>.
 Now send it to it&rsquo;s equivalence class <code>q(x, y) = [L]</code> where <code>L = sqrt(x^2 + y^2)</code>.
@@ -218,27 +218,28 @@ to figure out what basic idea it is telling you.</p>
 
 <h2>Further Reading</h2>
 
-<p>Commutative diagrams are the central focus of category theory which attempst to understand
-such properties at a higher level of abstrcation than set theory.
-From a category theory perspective the quotient set <code>X/~</code> is the co-equilizer
+<p>Commutative diagrams are the central focus of category theory which attempts to understand
+such properties at a higher level of abstraction than set theory.
+From a category theory perspective the quotient set <code>X/~</code> is the co-equalizer
 or co-limit of the diagram projecting and equivalent pair to it&rsquo;s parts.</p>
 
 <p>You can read more about category theory from Topoi by Robert Goldblatt.</p>
 
-<p><a href="https://www.amazon.com/gp/product/B00DP7UMC6/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00DP7UMC6&amp;linkCode=as2&amp;tag=jmeiners-20&amp;linkId=c7f03020c8207f7d6ba3dc63bb0be29f"><img src="topoi.jpg" alt="Topoi GoldBlatt" /></a></p>
+<p><a href="https://www.amazon.com/gp/product/B00DP7UMC6/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00DP7UMC6&amp;linkCode=as2&amp;tag=jmeiners-20&amp;linkId=c7f03020c8207f7d6ba3dc63bb0be29f"><img src="topoi.jpg" alt="Topoi Goldblatt" /></a></p>
 
 <p>Free groups provide another elementary example of universal properties.
 You can read about them in chapter 6.3 of Abstract Algebra by Dummit and Foote.</p>
 
 <p><a href="https://www.amazon.com/gp/product/0471433349/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0471433349&amp;linkCode=as2&amp;tag=jmeiners-20&amp;linkId=4295d44052521c73c93e090190c032f0"><img src="dummit_and_foote.jpg" alt="Dummit and Foote" /></a></p>
 
-<p>Quotient spaces are studied in depth in Toplogy by Munkres.</p>
+<p>Quotient spaces are studied in depth in Topology by Munkres.</p>
 
 <p><a href="https://www.amazon.com/gp/product/0134689518/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0134689518&amp;linkCode=as2&amp;tag=jmeiners-20&amp;linkId=a1ca862d48cd664489c7179c1f7bfdaf"><img src="munkres.jpg" alt="Munkres Topology" /></a></p>
 
-<p> The later chapter on Algebraic Topology
-force you to get really familiar with them in order to use constructions like <a href="https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem">Seifert-Van Kampen&rsquo;s</a>
-theorem.</p>
+<p> The later chapter on Algebraic Topology have
+More elaborate constructions.
+These gave me a lot of practice with commutative diagrams,
+such as the chapter on <a href="https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem">Seifert-Van Kampen&rsquo;s</a> theorem.</p>
 
 <p><img src="van-kampen.png" alt="van-kampen" /></p>
 </body>
