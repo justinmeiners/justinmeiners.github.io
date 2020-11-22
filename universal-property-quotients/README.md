@@ -132,17 +132,16 @@ You can read about them in chapter 6.3 of Abstract Algebra by Dummit and Foote.
 
 [![Dummit and Foote](dummit_and_foote.jpg)][2]
 
-
-Quotient spaces are studied in depth in Toplogy by Munkres.
+Quotient spaces are studied in depth in Topology by Munkres.
 
 [![Munkres Topology](munkres.jpg)][3]
 
- The later chapter on Algebraic Topology
-force you to get really familiar with them in order to use constructions like [Seifert-Van Kampen's][1]
-theorem.
+ The later chapter on Algebraic Topology have
+mroe elaborate constructions.
+These gave me a lot of practice with commutative diagrams,
+such as the chapter on [Seifert-Van Kampen's][1] theorem.
 
 ![van-kampen](van-kampen.png)
-
 
 
 [1]: https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem
