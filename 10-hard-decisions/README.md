@@ -1,6 +1,8 @@
 10 Hard Decisions: A Model for Programmer Productivity
 ======================================================
 
+**09/26/20**
+
 How do you ensure that programmers are using time effectively?
 What can you do to help them be productive?
 Managers think a lot about these questions.
