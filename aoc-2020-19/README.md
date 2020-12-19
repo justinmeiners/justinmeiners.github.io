@@ -1,6 +1,8 @@
 Advent of Code 2020 Day 19: An Easy way to do Part 2
 ==========================================================
 
+**12/19/20**
+
 A fun mechanic in [AOC][1] is that the problem is divided
 into two parts, with the second only revealed after completion of
 the first.
@@ -11,7 +13,12 @@ the requirements.
 It may seem you have to rethink everything from scratch,
 but there is actually a tiny change to part 1 which solves the problem
 
-**Spoilers Ahead**
+My personal ranking wasn't great, but you can see I still
+managed to catch up a bit on part 2 as others got stuck.
+
+![personal stats aoc 2020](personal_stats.png)
+
+**SPOILERS AHEAD**
 
 ## Part 1
 
@@ -145,6 +152,9 @@ Remember, changing branches never introduces false positives, only false negativ
 So if it matches even one time, then we know it works.
 It works!
 
+Want to learn more? Checkout [chapter 4.3][3] of SICP
+on non-deterministic computing.
 
 [1]: https://adventofcode.com/2020
 [2]: https://adventofcode.com/2020/day/1
+[3]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3
