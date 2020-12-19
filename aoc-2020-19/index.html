@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=704">
+<title>Advent of Code 2020 Day 19: An Easy way to do Part 2</title>
+<style>
+/* http://jasonm23.github.io/markdown-css-themes/ */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+body{
+    color:#444;
+        font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif;
+            font-size:12px;
+                line-height:1.5em;
+                    padding:1em;
+                        margin:auto;
+                            max-width:42em;
+                                background:#fefefe;
+}
+a{ color: #0645ad; text-decoration:none;}
+a:visited{ color: #0b0080; }
+a:hover{ color: #06e; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+::-moz-selection{background:rgba(255,255,0,0.3);color:#000}
+::selection{background:rgba(255,255,0,0.3);color:#000}
+a::-moz-selection{background:rgba(255,255,0,0.3);color:#0645ad}
+a::selection{background:rgba(255,255,0,0.3);color:#0645ad}
+p{
+    margin:1em 0;
+}
+img{
+    max-width:100%;
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:normal;
+        color:#111;
+            line-height:1em;
+}
+h4,h5,h6{ font-weight: bold; }
+h1{ font-size:2.5em; }
+h2{ font-size:2em; }
+h3{ font-size:1.5em; }
+h4{ font-size:1.2em; }
+h5{ font-size:1em; }
+h6{ font-size:0.9em; }
+blockquote{
+    color:#666666;
+        margin:0;
+            padding-left: 3em;
+                border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+pre, code, kbd, samp { color: #000; font-family: monospace, monospace; _font-family: 'courier new', monospace; font-size: 0.98em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+b, strong { font-weight: bold; }
+dfn { font-style: italic; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 2em; }
+li p:last-child { margin:0 }
+dd { margin: 0 0 0 2em; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+@media only screen and (min-width: 480px) {
+    body{font-size:14px;}
+}
+@media only screen and (min-width: 768px) {
+    body{font-size:16px;}
+}
+@media print {
+      * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+        body{font-size:12pt; max-width:100%;}
+          a, a:visited { text-decoration: underline; }
+            hr { height: 1px; border:0; border-bottom:1px solid black; }
+              a[href]:after { content: " (" attr(href) ")"; }
+                abbr[title]:after { content: " (" attr(title) ")"; }
+                  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+                    pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+                      tr, img { page-break-inside: avoid; }
+                        img { max-width: 100% !important; }
+                          @page :left { margin: 15mm 20mm 15mm 10mm; }
+                            @page :right { margin: 15mm 10mm 15mm 20mm; }
+                              p, h2, h3 { orphans: 3; widows: 3; }
+                                h2, h3 { page-break-after: avoid; }
+}
+</style>
+</head>
+<body>
+<div>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+<a style="margin-left: 16px" href="https://github.com/justinmeiners">GitHub</a>
+</div>
+
+<h1>Advent of Code 2020 Day 19: An Easy way to do Part 2</h1>
+
+<p>A fun mechanic in <a href="https://adventofcode.com/2020">AOC</a> is that the problem is divided
+into two parts, with the second only revealed after completion of
+the first.
+This challenges you to adapt an initial solution to new requirements,
+encouraging flexibility of design.
+In the case of <a href="https://adventofcode.com/2020/day/1">problem 19</a>, a seemingly minor change, completely transforms
+the requirements.
+It may seem you have to rethink everything from scratch,
+but there is actually a tiny change to part 1 which solves the problem</p>
+
+<p><strong>Spoilers Ahead</strong></p>
+
+<h2>Part 1</h2>
+
+<p>Let&rsquo;s outline a standard solution to part 1.
+We will stick to psuedocode, but at then end I will show some of my Common Lisp snippets.</p>
+
+<p><strong>Parsing</strong></p>
+
+<p>We need to parse the rules and turn them into a structure we can work with
+I chose to transform them into an expression tree.
+A rule such as:</p>
+
+<pre><code>3 4 | "a" "b"
+</code></pre>
+
+<p>Becomes</p>
+
+<pre><code>(or (3 4) ("a" "b"))
+</code></pre>
+
+<p>All the rules are stored in an array,
+with their index corresponding to rule number.</p>
+
+<p>Lisp makes it easy to parse.
+I first replace the <code>|</code> with <code>^</code> because pie has special
+semantics for the lisp reader.
+Whenever a rule contains a <code>^</code> I split it&rsquo;s components
+into a left side and right side and wrap them in an &ldquo;or&rdquo;.</p>
+
+<p><strong>Evaluation</strong></p>
+
+<p>Now we need a recursive evaluation function to handle the rule.
+As an input, it takes a rule and a string.
+It returns `FAIL if it cannot match,
+or the modified string location if it did match.
+For example when the rule &ldquo;a&rdquo; is applied to the following string:</p>
+
+<pre><code>"abc"
+</code></pre>
+
+<p>It returns &ldquo;bc&rdquo; indicating successful matching.</p>
+
+<p>The evaluation recursively handles the following cases:</p>
+
+<ul>
+<li>evaluate a char: check that the first character agrees</li>
+<li>evaluate a number: lookup the rule at that index and evaluate it.</li>
+<li>evaluate a or form: evaluate both options. If one succeeded, return that. Otherwise fail.</li>
+<li>evaluate a list: evaluate each rule in the list in order. Stop early if there is a fail.
+                 If the string ends before the list ends, the match failed.</li>
+</ul>
+
+
+<p>Success is indicated by returning an empty string.
+This means we used everything up and it matched.
+Test how many entries pass and you&rsquo;re done.</p>
+
+<h2>Part 2</h2>
+
+<p><strong>What is going on?</strong></p>
+
+<p>Part 2 makes two changes to the rules list.</p>
+
+<pre><code>8: 42        -&gt;    8: 42 | 42 8
+11: 42 31    -&gt;    11: 42 31 | 42 11 31
+</code></pre>
+
+<p>It&rsquo;s not immediately clear why this breaks our recursive evaluation.
+In fact, if you run it, it will not crash and still give you an (incorrect) answer.
+So what is going on?</p>
+
+<p>Imagine the following rule:</p>
+
+<pre><code>"a" | "a" "b"
+</code></pre>
+
+<p>The string &ldquo;ab&rdquo; now matches <em>BOTH</em> possible choices. How do we know which one to pick?
+Logically, a disjunction (or) operation shouldn&rsquo;t care.
+But whatever choice
+is made will actually have an effect on whether the remaining rules in the pattern
+match.</p>
+
+<p>Here is an example of what can go wrong.
+Suppose our string is &ldquo;abc&rdquo;.</p>
+
+<pre><code>0: 1 2
+1: "a" | "a" "b"
+2: "c"
+</code></pre>
+
+<p>Starting with rule 0, we try rule 1.
+<code>"abc"</code> matches both <code>"a"</code> and <code>"a" "b"</code>.
+So let&rsquo;s pick the first rule.
+Now onto rule &ldquo;c&rdquo; which does not match &ldquo;b c&rdquo;.
+The match fails.</p>
+
+<p>If we had chosen &ldquo;a&rdquo; &ldquo;b&rdquo; then we move
+to rule 2 &ldquo;c&rdquo; matches the remainder &ldquo;c&rdquo;.
+We have a successful match.</p>
+
+<p><strong>The Hard Solution</strong></p>
+
+<p>Every time we an encounter an <code>OR</code> and both cases
+match, we no longer know which one to pick.
+The global success of a match can no longer be determined locally.</p>
+
+<p>We aren&rsquo;t going to get false positives, but we may get false negatives
+if we choose the wrong path to take.</p>
+
+<p>A proper solution must diverge at every or, creating branching possible evaluations.
+This can certainly be implemented, but is going to look very different than part 1,
+and be more complicated.</p>
+
+<p><strong>An Easy Solution</strong></p>
+
+<p>What we really want to know is whether there is <em>SOME</em> set of choices for each OR that will cause the pattern to match.
+Since we don&rsquo;t know what they are, we can just try a whole bunch, and see if we can find a set that does.
+The easiest way to do this is by introducing probability.
+Randomly pick a branch at each or.
+We can then run the matcher a bunch of times and see if it finds a set of choices that match.</p>
+
+<p>Let&rsquo;s work through the details.
+Here is our original OR form.</p>
+
+<ul>
+<li>evaluate a or form: evaluate both options. If one succeeded, return that. Otherwise fail.</li>
+</ul>
+
+
+<p>Let&rsquo;s change it to a randomized choice when we don&rsquo;t have a better option:</p>
+
+<ul>
+<li>evaluate a or form: evaluate both options. If either one failed, return the other.
+  Otherwise both succeeded, randomly pick which one to return.</li>
+</ul>
+
+
+<p>Now for each string run the pattern matcher a few hundred times.
+Each time it will (hopefully) try different choices for each OR.
+With enough tries, it should get lucky and find the best path
+if there is one.</p>
+
+<p>Remember, changing branches never introduces false positives, only false negatives.
+So if it matches even one time, then we know it works.
+It works!</p>
+</body>
+</html>
