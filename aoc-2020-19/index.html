@@ -165,8 +165,8 @@ For example when the rule &ldquo;a&rdquo; is applied to the following string:</p
 <ul>
 <li>evaluate a char: check that the first character agrees</li>
 <li>evaluate a number: lookup the rule at that index and evaluate it.</li>
-<li>evaluate a or form: evaluate both options. If one succeeded, return that. Otherwise fail.</li>
-<li>evaluate a list: evaluate each rule in the list in order. Stop early if there is a fail.
+<li>evaluate an or form <code>(OR r1 r2)</code>: evaluate both options. If one succeeded, return that. Otherwise fail.</li>
+<li>evaluate a list <code>(r1, ... ,rn)</code>: evaluate each rule in the list in order. Stop early if there is a fail.
                  If the string ends before the list ends, the match failed.</li>
 </ul>
 
@@ -240,17 +240,18 @@ Randomly pick a branch at each or.
 We can then run the matcher a bunch of times and see if it finds a set of choices that match.</p>
 
 <p>Let&rsquo;s work through the details.
-Here is our original OR form.</p>
+We want to replace the code for &ldquo;evaluate an or form <code>(OR R1 R2)</code>&rdquo;.
+The original descrpition was:</p>
 
 <ul>
-<li>evaluate a or form: evaluate both options. If one succeeded, return that. Otherwise fail.</li>
+<li>If one succeeded, return that. Otherwise fail.</li>
 </ul>
 
 
 <p>Let&rsquo;s change it to a randomized choice when we don&rsquo;t have a better option:</p>
 
 <ul>
-<li>evaluate a or form: evaluate both options. If either one failed, return the other.
+<li>evaluate both options. If either one failed, return the other.
   Otherwise both succeeded, randomly pick which one to return.</li>
 </ul>
 

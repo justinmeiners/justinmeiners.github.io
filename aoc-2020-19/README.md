@@ -62,8 +62,8 @@ The evaluation recursively handles the following cases:
 
 - evaluate a char: check that the first character agrees
 - evaluate a number: lookup the rule at that index and evaluate it.
-- evaluate a or form: evaluate both options. If one succeeded, return that. Otherwise fail.
-- evaluate a list: evaluate each rule in the list in order. Stop early if there is a fail.
+- evaluate an or form `(OR r1 r2)`: evaluate both options. If one succeeded, return that. Otherwise fail.
+- evaluate a list `(r1, ... ,rn)`: evaluate each rule in the list in order. Stop early if there is a fail.
                    If the string ends before the list ends, the match failed.
 
 Success is indicated by returning an empty string.
@@ -133,15 +133,15 @@ Randomly pick a branch at each or.
 We can then run the matcher a bunch of times and see if it finds a set of choices that match.
 
 Let's work through the details.
-Here is our original OR form.
+We want to replace the code for "evaluate an or form `(OR R1 R2)`".
+The original descrpition was:
 
-- evaluate a or form: evaluate both options. If one succeeded, return that. Otherwise fail.
+- If one succeeded, return that. Otherwise fail.
 
 Let's change it to a randomized choice when we don't have a better option:
 
-- evaluate a or form: evaluate both options. If either one failed, return the other.
+- evaluate both options. If either one failed, return the other.
     Otherwise both succeeded, randomly pick which one to return.
-
 
 Now for each string run the pattern matcher a few hundred times.
 Each time it will (hopefully) try different choices for each OR.
