@@ -18,6 +18,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 Computer stuff I made and tutorials teaching you how to make cool stuff.
 
 - [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19)
+- [11/15/2020 - The Universal Property of Quotients](universal-property-quotients/)
 - [10/07/2020 - Derivative Map Tool](https://github.com/justinmeiners/derivative-map-tool)
 - [09/26/2020 - Understanding LINQ GroupBy](understanding-groupby/)
 - [09/12/2020 - Gesture Recognition with Line Integrals](https://justinmeiners.github.io/gesture-recognition/)
@@ -31,7 +32,6 @@ Computer stuff I made and tutorials teaching you how to make cool stuff.
 - [01/27/2018 - Spherical Harmonics](https://github.com/justinmeiners/spherical-harmonics)
 - [06/01/2017 - Shamans: A 3D Turn-based Strategy Game for iPad](https://justinmeiners.github.io/shamans/)
 - [05/01/2017 - Modern OpenGL](modern-opengl/)
-- [11/10/2016 - HoloLens Impressions](hololens-impressions/)
 - [10/30/2016 - 3D Paint](3d-paint/)
 - [12/01/2015 - Molecule Viewer](https://github.com/justinmeiners/molecule-viewer)
 - [10/15/2015 - Old Artwork](old-artwork/)
@@ -54,6 +54,7 @@ Opinions, typically about philosophy, math, and computers.
 - [06/08/2019 - Think in Math. Write in Code.](think-in-math/)
 - [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
 - [02/22/2019 - The Skills Poor Programmers Lack](the-skills-programmers-lack/)
+- [11/10/2016 - HoloLens Impressions](hololens-impressions/)
 
 
 ## Preserved Sites
@@ -65,7 +66,6 @@ Sites I preserves for learning and historical purposes.
 - [Radiosity (By: Hugo Elias)](https://justinmeiners.github.io/Hugo-Elias-Radiosity)
 - [SGI STL Documentation](https://justinmeiners.github.io/sgi-stl-docs/)
 - [SGI STL Source](https://github.com/justinmeiners/sgi-stl)
-
 
 
 This site does not use tracking or analytics.

@@ -16,23 +16,23 @@ Let's see how this works by studying the universal property of quotients, which 
 the first example of a commutative diagram I encountered.
 If you are familiar with topology, this property
 applies to quotient maps.
-But we will focus on quotients induced by equivalence relation on sets and ignorea
+But we will focus on quotients induced by equivalence relation on sets and ignored
 additional structure.
 
-An equivalence relation `~` is a binary relation satisfying the following propertys:
+An equivalence relation `~` is a binary relation satisfying the following properties:
 
 - reflexive: `x ~ x`
-- symmetrix: `x ~ y <=> y ~ z`
+- symmetric: `x ~ y <=> y ~ z`
 - transitive:  `x ~ y and y ~ z implies x ~ z`.
 
 Examples include equality of real numbers, whether numbers are both even or odd (parity),
 matrix similarity, isomorphism, etc.
 
-**Excercise:** Prove matrix similarity is an equivalence relation.
+**Exercise:** Prove matrix similarity is an equivalence relation.
 
-Given an equivalance relation ~ and an element `x` we can form it's equivalence
+Given an equivalence relation ~ and an element `x` we can form it's equivalence
 class `[x]` which is the set of things equivalent to it.
-The set of a equivalence classes form a new set `X/~` with an analagous
+The set of a equivalence classes form a new set `X/~` with an analogous
 structure to the original, but with portions "grouped up" or "collapsed"
 
 **Exercise:** Prove distinct equivalence classes are disjoint.
@@ -68,7 +68,7 @@ One such property is their distance from the center.
 Define `x ~ y` whenever `||x|| ~ ||y||`.
 What does the quotient space `X/~` look like under this relation?
 Each class is a ring at a particular radius `L`, so denote it `[L]`.
-The radii of course vary contiuously so we get set of classes isomorphic
+The radii of course vary continuously so we get set of classes isomorphic
 to a closed interval `[0, 1]`.
 
 ![disc radii classes](4.png)
@@ -99,7 +99,7 @@ Can you figure out what it is?
 The missing function is of course `h([L]) = L^2`.
 It's graph is a parabola in 2D which carves out the same range as `f` in the real numbers.
 
-![graph parabaol](6.png)
+![graph parabola](6.png)
 
 To check commutativity take a point `(x, y)` and apply `f(x, y) = x^2 + y^2`.
 Now send it to it's equivalence class `q(x, y) = [L]` where `L = sqrt(x^2 + y^2)`.
@@ -117,14 +117,14 @@ to figure out what basic idea it is telling you.
 
 ## Further Reading
 
-Commutative diagrams are the central focus of category theory which attempst to understand
-such properties at a higher level of abstrcation than set theory.
-From a category theory perspective the quotient set `X/~` is the co-equilizer
+Commutative diagrams are the central focus of category theory which attempts to understand
+such properties at a higher level of abstraction than set theory.
+From a category theory perspective the quotient set `X/~` is the co-equalizer
 or co-limit of the diagram projecting and equivalent pair to it's parts.
 
 You can read more about category theory from Topoi by Robert Goldblatt.
 
-[![Topoi GoldBlatt](topoi.jpg)][4]
+[![Topoi Goldblatt](topoi.jpg)][4]
 
 
 Free groups provide another elementary example of universal properties.
@@ -137,7 +137,7 @@ Quotient spaces are studied in depth in Topology by Munkres.
 [![Munkres Topology](munkres.jpg)][3]
 
  The later chapter on Algebraic Topology have
-mroe elaborate constructions.
+More elaborate constructions.
 These gave me a lot of practice with commutative diagrams,
 such as the chapter on [Seifert-Van Kampen's][1] theorem.
 
