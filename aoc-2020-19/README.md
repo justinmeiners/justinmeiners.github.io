@@ -141,7 +141,7 @@ The original descrpition was:
 Let's change it to a randomized choice when we don't have a better option:
 
 - evaluate both options. If either one failed, return the other.
-    Otherwise both succeeded, randomly pick which one to return.
+    Otherwise both succeeded, so randomly pick which one to return.
 
 Now for each string run the pattern matcher a few hundred times.
 Each time it will (hopefully) try different choices for each OR.
