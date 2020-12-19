@@ -148,13 +148,15 @@ Each time it will (hopefully) try different choices for each OR.
 With enough tries, it should get lucky and find the best path
 if there is one.
 
-Remember, changing branches never introduces false positives, only false negatives.
+Remember, changing branch directions never introduces false positives, only false negatives.
 So if it matches even one time, then we know it works.
+Experiment with different numbers of times until you get a match rate that stabilizes.
+If you don't run it enough times, then you will get changing answers each time you run it.
 It works!
 
 Want to learn more? Checkout [chapter 4.3][3] of SICP
 on non-deterministic computing.
 
 [1]: https://adventofcode.com/2020
-[2]: https://adventofcode.com/2020/day/1
+[2]: https://adventofcode.com/2020/day/19
 [3]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3

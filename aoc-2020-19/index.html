@@ -107,7 +107,7 @@ into two parts, with the second only revealed after completion of
 the first.
 This challenges you to adapt an initial solution to new requirements,
 encouraging flexibility of design.
-In the case of <a href="https://adventofcode.com/2020/day/1">problem 19</a>, a seemingly minor change, completely transforms
+In the case of <a href="https://adventofcode.com/2020/day/19">problem 19</a>, a seemingly minor change, completely transforms
 the requirements.
 It may seem you have to rethink everything from scratch,
 but there is actually a tiny change to part 1 which solves the problem</p>
@@ -261,8 +261,10 @@ Each time it will (hopefully) try different choices for each OR.
 With enough tries, it should get lucky and find the best path
 if there is one.</p>
 
-<p>Remember, changing branches never introduces false positives, only false negatives.
+<p>Remember, changing branch directions never introduces false positives, only false negatives.
 So if it matches even one time, then we know it works.
+Experiment with different numbers of times until you get a match rate that stabilizes.
+If you don&rsquo;t run it enough times, then you will get changing answers each time you run it.
 It works!</p>
 
 <p>Want to learn more? Checkout <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3">chapter 4.3</a> of SICP
