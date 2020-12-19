@@ -14,7 +14,7 @@ It may seem you have to rethink everything from scratch,
 but there is actually a tiny change to part 1 which solves the problem
 
 My personal ranking wasn't great, but you can see I still
-managed to catch up a bit on part 2 as others got stuck.
+managed to catch up a bit on part 2 (even taking an additional hour!) as others got stuck.
 
 ![personal stats aoc 2020](personal_stats.png)
 
@@ -82,7 +82,7 @@ Part 2 makes two changes to the rules list.
 
 It's not immediately clear why this breaks our recursive evaluation.
 In fact, if you run it, it will not crash and still give you an (incorrect) answer.
-So what is going on?
+So what is going on? (This question took most of my time!)
 
 Imagine the following rule:
 
