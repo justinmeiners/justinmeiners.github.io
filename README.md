@@ -17,6 +17,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Computer stuff I made and tutorials teaching you how to make cool stuff.
 
+- [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19)
 - [10/07/2020 - Derivative Map Tool](https://github.com/justinmeiners/derivative-map-tool)
 - [09/26/2020 - Understanding LINQ GroupBy](understanding-groupby/)
 - [09/12/2020 - Gesture Recognition with Line Integrals](https://justinmeiners.github.io/gesture-recognition/)
