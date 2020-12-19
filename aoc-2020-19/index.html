@@ -179,7 +179,7 @@ Test how many entries pass and you&rsquo;re done.</p>
 
 <p><strong>What is going on?</strong></p>
 
-<p>Part 2 makes two changes to the rules list.</p>
+<p>Part 2 makes two substitutions to the rules list.</p>
 
 <pre><code>8: 42        -&gt;    8: 42 | 42 8
 11: 42 31    -&gt;    11: 42 31 | 42 11 31
@@ -189,7 +189,7 @@ Test how many entries pass and you&rsquo;re done.</p>
 In fact, if you run it, it will not crash and still give you an (incorrect) answer.
 So what is going on? (This question took most of my time!)</p>
 
-<p>Imagine the following rule:</p>
+<p>Consider the following rule:</p>
 
 <pre><code>"a" | "a" "b"
 </code></pre>

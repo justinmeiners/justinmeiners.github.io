@@ -75,7 +75,7 @@ Test how many entries pass and you're done.
 
 **What is going on?**
 
-Part 2 makes two changes to the rules list.
+Part 2 makes two substitutions to the rules list.
 
     8: 42        ->    8: 42 | 42 8
     11: 42 31    ->    11: 42 31 | 42 11 31
@@ -84,7 +84,7 @@ It's not immediately clear why this breaks our recursive evaluation.
 In fact, if you run it, it will not crash and still give you an (incorrect) answer.
 So what is going on? (This question took most of my time!)
 
-Imagine the following rule:
+Consider the following rule:
 
     "a" | "a" "b"
 
