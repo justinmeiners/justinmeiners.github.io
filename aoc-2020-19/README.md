@@ -23,7 +23,7 @@ managed to catch up a bit on part 2 (even taking an additional hour!) as others 
 ## Part 1
 
 Let's outline a standard solution to part 1.
-We will stick to psuedocode, but at then end I will show some of my Common Lisp snippets.
+We will stick to psuedocode, but at then end I will show some of my  Common Lisp code.
 
 **Parsing**
 
@@ -156,6 +156,62 @@ It works!
 
 Want to learn more? Checkout [chapter 4.3][3] of SICP
 on non-deterministic computing.
+
+## My Code
+
+Here are the key snippets, 
+some of it is a little ugly.
+
+**Eval (With Random)**
+
+    (defun eval-rule (str rule all-rules)
+      (cond ((stringp rule) (if (char= (car str) (char rule 0))
+                                (cdr str)
+                                'FAIL))
+
+            ((numberp rule) (eval-rule str (aref all-rules rule) all-rules))
+            ((and (listp rule) (eq 'or (car rule))) 
+             (let ((first (eval-rule str (nth 1 rule) all-rules))
+                   (second (eval-rule str (nth 2 rule) all-rules)))
+               (if (eq 'FAIL first)
+                   second
+                   (if (eq 'FAIL second)
+                       first
+                       (if (= (random 2) 1) 
+                           first
+                           second
+                           )))))
+            ((listp rule)
+             (prog ((s str)
+                    (l rule)
+                    (result nil))
+
+                   step
+                   (setf result (eval-rule s (car l) all-rules))
+
+                   (if (eq result 'FAIL)
+                       (return result))
+
+                   (setf s result)
+                   (setf l (cdr l))
+
+                   (if (consp l)
+                       (if (consp s)
+                            (go step)
+                            (return 'FAIL))
+                       (return s))
+                  ))
+            (t (error "unknown rule "))))
+
+**Solve Part 2**
+
+    (defun solve-2 (all-rules inputs)
+      (remove-if-not 
+        (lambda (string)
+          ; use probablity!
+          (some #'identity (loop for i from 1 to 500 collect
+                                 (not (eval-rule (coerce string 'list) (aref all-rules 0) all-rules)))))
+          inputs))
 
 [1]: https://adventofcode.com/2020
 [2]: https://adventofcode.com/2020/day/19
