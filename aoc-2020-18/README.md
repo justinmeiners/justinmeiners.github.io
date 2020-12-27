@@ -107,7 +107,7 @@ the list itself.
 
 The algorithm for evaluation looks like the following:
 
-- To evaluate a number or symbol, just return it. (base case)
+- To evaluate a number or operator symbol, just return it. (base case)
 - To evaluate a list:
 
   1. evaluate every entry in the list. (take care of parenthesis)
