@@ -32,7 +32,7 @@ for e in entries:
     description = None
 
     if not e[2].startswith('http'):
-        url = e[2]
+        url = SITE + e[2]
         with open(e[2] + '/README.html', 'r') as cf:
             description = cf.read()
 
