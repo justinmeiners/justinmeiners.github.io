@@ -4,7 +4,154 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sun, 27 Dec 2020 11:44:37 </lastBuildDate>
+<lastBuildDate>Sun, 27 Dec 2020 13:13:38 </lastBuildDate>
+<item>
+<pubDate>Sun, 27 Dec 2020 00:00:00 </pubDate>
+<title>Advent of Code 2020 Day 18: Rethinking Operator Precedence</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/aoc-2020-18</guid>
+<description><![CDATA[ 
+<h1>Advent of Code 2020 Day 18: Rethinking Operator Precendence</h1>
+
+<p><strong>12/27/20</strong></p>
+
+<p>Part 2 of  <a href="https://adventofcode.com/2020/day/18">AOC Day 18</a> asks
+you to evaluate some math expressions, but with a twist.
+<code>+</code> has a greater operator precendence than <code>*</code>.
+(This is opposite of how we typically read math):</p>
+
+<pre><code>2 * 3 + (4 * 5)
+2 * 3 + 20
+2 * 23
+46
+</code></pre>
+
+<p>The standard method for expression evaluation is the <a href="https://en.wikipedia.org/wiki/Shunting-yard_algorithm">shunting yard</a> algorithm.
+This is the <em>right</em> and efficient way to solve this problem.
+But, it&rsquo;s also not very obvious or natural.
+It&rsquo;s hard to imagine how you would think if it yourself,
+and doesn&rsquo;t really match how people actually see mathematical expressions.</p>
+
+<p>I want to show off an alternative solution demonstrating
+how you could think of it yourself.
+This approach is quite &ldquo;lispy&rdquo;, making heavy use of a symbol/expression
+tree manipulation and would be harder in some languages than others.</p>
+
+<p><strong>Thinking about Precendence</strong></p>
+
+<p>What does operator precedence actually mean?
+It tells us the <em>order in which to evaluate operators</em>.
+So naively we should just do all the additions first, and then the multiplications.
+Can we program that?
+We certainly can, but doing just one operation at a time,
+means at each step we produce an intermediate result which is itself a math expression, just simplified a bit.
+For example given the expression:</p>
+
+<pre><code> (1 + 2 * 3 + 4)
+</code></pre>
+
+<p>We first evaluate all the <code>+</code> to produce:</p>
+
+<pre><code>(3 * 7)
+</code></pre>
+
+<p>And then we evaluate all the &lsquo;*&rsquo; to produce:</p>
+
+<pre><code>(21)
+</code></pre>
+
+<p>After evaluting every operator, we should get a list containing a single number.</p>
+
+<p>Below is some code which does just that.
+The input <code>chain</code> is an expression (list of numbers and operators)
+and <code>allowed</code> is the operator we want to evaluate.</p>
+
+<pre><code>(defun simplify-chain (chain allowed)
+  (prog ((result '())
+         (op nil)
+         (l nil)
+         (r nil))
+
+        (setf l (car chain))
+        (setf chain (cdr chain))
+
+        loop
+        (setf op (car chain))
+        (setf chain (cdr chain))
+
+        (setf r (car chain))
+        (setf chain (cdr chain))
+
+        (if (eq op allowed)
+
+            ; evaluate the operation.
+            ; put the result back in the expression
+
+            (setf l (funcall op l r))
+
+            ; not an operation we want to evaluate right now.
+            ; put it's symbols back in an the expression
+            (progn (push l result)
+                   (push op result)
+                   (setf l r)))
+
+        (if (consp chain)
+            (go loop))
+
+        (push l result)
+        (return (reverse result))))
+</code></pre>
+
+<p><strong>Handling Parenthesis</strong></p>
+
+<p>That is quite straightforward!
+All the trickiness is fiddling with infix.
+But, there is one problem.
+Due to paranthesis the operands may not be &ldquo;ready&rdquo; to evaluate.
+If we have:</p>
+
+<pre><code>3 + (2 * 4)
+</code></pre>
+
+<p>We can&rsquo;t apply the <code>+</code> operation until the <code>(2 * 4)</code> is taken care of.
+But evaulating <code>(2 * 4)</code> is something we could do directly.
+There are only finitely many nested
+statements, so eventually following paranthesis must end with a list containing only numbers and operators.
+This is clearly a recursive problem!
+We need to evaluate all the paranthesized statements in a list, before we can evaulate
+the list itself.</p>
+
+<p>The algorithm for evaulation looks like the following:</p>
+
+<ul>
+<li>To evaluate a number or symbol, just return it. (base case)</li>
+<li><p>To evaluate a list:</p>
+
+<ol>
+<li>evaluate every entry in the list. (take care of paranthesis)</li>
+<li>simplfy the expression by appyling each operator in order. (simplify chain)</li>
+<li>Return the only item left in the list.</li>
+</ol>
+</li>
+</ul>
+
+
+<p>Let&rsquo;s write an eval function which does this, building upon simplify chain:</p>
+
+<pre><code>(defun eval-expr (expr)
+  (if (listp expr)
+        (car (reduce #'simplify-chain 
+                     '(+ *)
+                     :initial-value (mapcar #'eval-expr expr)))
+        expr))
+</code></pre>
+
+<p>To summarize <code>simplify-chain</code> takes mathematical expressions
+and returns expressions that are simpler, while <code>eval-expr</code> always returns a number.
+Note that this works for any number of operators and adjusting
+precendence is as simple as changing the order of the <code>'(+ *)</code> list.</p>
+
+ ]]></description>
+</item>
 <item>
 <pubDate>Sat, 19 Dec 2020 00:00:00 </pubDate>
 <title>Advent of Code 2020 Day 19: An Easy way to do Part 2</title>
