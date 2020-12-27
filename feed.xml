@@ -4,19 +4,19 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sun, 27 Dec 2020 13:13:38 </lastBuildDate>
+<lastBuildDate>Sun, 27 Dec 2020 13:17:39 </lastBuildDate>
 <item>
 <pubDate>Sun, 27 Dec 2020 00:00:00 </pubDate>
 <title>Advent of Code 2020 Day 18: Rethinking Operator Precedence</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/aoc-2020-18</guid>
 <description><![CDATA[ 
-<h1>Advent of Code 2020 Day 18: Rethinking Operator Precendence</h1>
+<h1>Advent of Code 2020 Day 18: Rethinking Operator Precedence</h1>
 
 <p><strong>12/27/20</strong></p>
 
 <p>Part 2 of  <a href="https://adventofcode.com/2020/day/18">AOC Day 18</a> asks
 you to evaluate some math expressions, but with a twist.
-<code>+</code> has a greater operator precendence than <code>*</code>.
+<code>+</code> has a greater operator precedence than <code>*</code>.
 (This is opposite of how we typically read math):</p>
 
 <pre><code>2 * 3 + (4 * 5)
@@ -33,10 +33,11 @@ and doesn&rsquo;t really match how people actually see mathematical expressions.
 
 <p>I want to show off an alternative solution demonstrating
 how you could think of it yourself.
-This approach is quite &ldquo;lispy&rdquo;, making heavy use of a symbol/expression
-tree manipulation and would be harder in some languages than others.</p>
+My code is written in Common Lisp.
+For this particular problem this choice goes a bit deeper than just syntax
+as the solution makes heavy use of a symbolic expression manipulation which is harder to do in most languages.</p>
 
-<p><strong>Thinking about Precendence</strong></p>
+<p><strong>Thinking about Precedence</strong></p>
 
 <p>What does operator precedence actually mean?
 It tells us the <em>order in which to evaluate operators</em>.
@@ -59,7 +60,7 @@ For example given the expression:</p>
 <pre><code>(21)
 </code></pre>
 
-<p>After evaluting every operator, we should get a list containing a single number.</p>
+<p>After evaluating every operator, we should get a list containing a single number.</p>
 
 <p>Below is some code which does just that.
 The input <code>chain</code> is an expression (list of numbers and operators)
@@ -106,29 +107,29 @@ and <code>allowed</code> is the operator we want to evaluate.</p>
 <p>That is quite straightforward!
 All the trickiness is fiddling with infix.
 But, there is one problem.
-Due to paranthesis the operands may not be &ldquo;ready&rdquo; to evaluate.
+Due to parenthesis the operands may not be &ldquo;ready&rdquo; to evaluate.
 If we have:</p>
 
 <pre><code>3 + (2 * 4)
 </code></pre>
 
 <p>We can&rsquo;t apply the <code>+</code> operation until the <code>(2 * 4)</code> is taken care of.
-But evaulating <code>(2 * 4)</code> is something we could do directly.
+But evaluating <code>(2 * 4)</code> is something we could do directly.
 There are only finitely many nested
-statements, so eventually following paranthesis must end with a list containing only numbers and operators.
+statements, so eventually following parenthesis must end with a list containing only numbers and operators.
 This is clearly a recursive problem!
-We need to evaluate all the paranthesized statements in a list, before we can evaulate
+We need to evaluate all the parenthesized statements in a list, before we can evaluate
 the list itself.</p>
 
-<p>The algorithm for evaulation looks like the following:</p>
+<p>The algorithm for evaluation looks like the following:</p>
 
 <ul>
 <li>To evaluate a number or symbol, just return it. (base case)</li>
 <li><p>To evaluate a list:</p>
 
 <ol>
-<li>evaluate every entry in the list. (take care of paranthesis)</li>
-<li>simplfy the expression by appyling each operator in order. (simplify chain)</li>
+<li>evaluate every entry in the list. (take care of parenthesis)</li>
+<li>simplify the expression by applying each operator in order. (simplify chain)</li>
 <li>Return the only item left in the list.</li>
 </ol>
 </li>
@@ -148,7 +149,7 @@ the list itself.</p>
 <p>To summarize <code>simplify-chain</code> takes mathematical expressions
 and returns expressions that are simpler, while <code>eval-expr</code> always returns a number.
 Note that this works for any number of operators and adjusting
-precendence is as simple as changing the order of the <code>'(+ *)</code> list.</p>
+precedence is as simple as changing the order of the <code>'(+ *)</code> list.</p>
 
  ]]></description>
 </item>
