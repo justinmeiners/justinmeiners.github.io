@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sun, 27 Dec 2020 13:19:30 </lastBuildDate>
+<lastBuildDate>Sun, 27 Dec 2020 13:28:16 </lastBuildDate>
 <item>
 <pubDate>Sun, 27 Dec 2020 00:00:00 </pubDate>
 <title>Advent of Code 2020 Day 18: Rethinking Operator Precedence</title>
@@ -2192,7 +2192,7 @@ See his <a href="https://gist.github.com/Dobiasd/fa27e3efb8b08fc81791d7f8e51ac5c
 </item>
 <item>
 <pubDate>Sun, 13 Jan 2019 00:00:00 </pubDate>
-<title>McCulloch & Pitts Neural Net Simulator</title>
+<title>McCulloch &amp; Pitts Neural Net Simulator</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/neural-nets-sim/</guid>
 </item>
 <item>

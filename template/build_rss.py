@@ -1,5 +1,6 @@
 import sys
 import re
+import html
 from datetime import datetime
 from operator import itemgetter
 
@@ -27,7 +28,8 @@ w('<lastBuildDate>{0}</lastBuildDate>\n'.format(datetime.now().strftime(RFC_FORM
 
 for e in entries:
     w('<item>\n')
-    w('<pubDate>{0}</pubDate>\n<title>{1}</title>\n'.format(e[0].strftime(RFC_FORMAT), e[1]))
+    w('<pubDate>{0}</pubDate>\n'.format(e[0].strftime(RFC_FORMAT)))
+    w('<title>{0}</title>\n'.format(html.escape(e[1])))
 
     url = e[2]
     description = None
