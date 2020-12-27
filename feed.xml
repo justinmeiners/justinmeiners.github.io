@@ -1,16 +1,194 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
-<channel>
-<title>Justin Meiners</title>
-<description>Welcome to my personal site about programming, mathematics, and philosophy!</description>
-<link>https://justinmeiners.github.io</link>
-<lastBuildDate>Sun, 22 Nov 2020 10:26:33 -0700</lastBuildDate>
+<title>Justin Meiners Site</title>
+<description>Welcome to my personal site about programming, math, and philosophy!</description>
+<link>https://justinmeiners.github.io/</link>
+<lastBuildDate>Sun, 27 Dec 2020 11:38:47 </lastBuildDate>
 <item>
-<pubDate>Sun, 15 Nov 2020 00:00:00 -0600</pubDate>
-<title>The Universal Property of Quotients</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/universal-property-quotients/</guid>
+<pubDate>Sat, 19 Dec 2020 00:00:00 </pubDate>
+<title>Advent of Code 2020 Day 19: An Easy way to do Part 2</title>
+<guid isPermaLink="true">aoc-2020-19</guid>
 <description><![CDATA[ 
- <h1>The Universal Property of Quotients</h1>
+<h1>Advent of Code 2020 Day 19: An Easy way to do Part 2</h1>
+
+<p><strong>12/19/20</strong></p>
+
+<p>A fun mechanic in <a href="https://adventofcode.com/2020">AOC</a> is that the problem is divided
+into two parts, with the second only revealed after completion of
+the first.
+This challenges you to adapt an initial solution to new requirements,
+encouraging flexibility of design.
+In the case of <a href="https://adventofcode.com/2020/day/19">problem 19</a>, a seemingly minor change, completely transforms
+the requirements.
+It may seem you have to rethink everything from scratch,
+but there is actually a tiny change to part 1 which solves the problem</p>
+
+<p>My personal ranking wasn&rsquo;t great, but you can see I still
+managed to catch up a bit on part 2 (even taking an additional hour!) as others got stuck.</p>
+
+<p><img src="personal_stats.png" alt="personal stats aoc 2020" /></p>
+
+<p><strong>SPOILERS AHEAD</strong></p>
+
+<h2>Part 1</h2>
+
+<p>Let&rsquo;s outline a standard solution to part 1.
+We will stick to psuedocode, but at then end I will show some of my Common Lisp snippets.</p>
+
+<p><strong>Parsing</strong></p>
+
+<p>We need to parse the rules and turn them into a structure we can work with
+I chose to transform them into an expression tree.
+A rule such as:</p>
+
+<pre><code>3 4 | "a" "b"
+</code></pre>
+
+<p>Becomes</p>
+
+<pre><code>(or (3 4) ("a" "b"))
+</code></pre>
+
+<p>All the rules are stored in an array,
+with their index corresponding to rule number.</p>
+
+<p>Lisp makes it easy to parse.
+I first replace the <code>|</code> with <code>^</code> because pie has special
+semantics for the lisp reader.
+Whenever a rule contains a <code>^</code> I split it&rsquo;s components
+into a left side and right side and wrap them in an &ldquo;or&rdquo;.</p>
+
+<p><strong>Evaluation</strong></p>
+
+<p>Now we need a recursive evaluation function to handle the rule.
+As an input, it takes a rule and a string.
+It returns `FAIL if it cannot match,
+or the modified string location if it did match.
+For example when the rule &ldquo;a&rdquo; is applied to the following string:</p>
+
+<pre><code>"abc"
+</code></pre>
+
+<p>It returns &ldquo;bc&rdquo; indicating successful matching.</p>
+
+<p>The evaluation recursively handles the following cases:</p>
+
+<ul>
+<li>evaluate a char: check that the first character agrees</li>
+<li>evaluate a number: lookup the rule at that index and evaluate it.</li>
+<li>evaluate an or form <code>(OR r1 r2)</code>: evaluate both options. If one succeeded, return that. Otherwise fail.</li>
+<li>evaluate a list <code>(r1, ... ,rn)</code>: evaluate each rule in the list in order. Stop early if there is a fail.
+                 If the string ends before the list ends, the match failed.</li>
+</ul>
+
+
+<p>Success is indicated by returning an empty string.
+This means we used everything up and it matched.
+Test how many entries pass and you&rsquo;re done.</p>
+
+<h2>Part 2</h2>
+
+<p><strong>What is going on?</strong></p>
+
+<p>Part 2 makes two substitutions to the rules list.</p>
+
+<pre><code>8: 42        -&gt;    8: 42 | 42 8
+11: 42 31    -&gt;    11: 42 31 | 42 11 31
+</code></pre>
+
+<p>It&rsquo;s not immediately clear why this breaks our recursive evaluation.
+In fact, if you run it, it will not crash and still give you an (incorrect) answer.
+So what is going on? (This question took most of my time!)</p>
+
+<p>Consider the following rule:</p>
+
+<pre><code>"a" | "a" "b"
+</code></pre>
+
+<p>The string &ldquo;ab&rdquo; now matches <em>BOTH</em> possible choices. How do we know which one to pick?
+Logically, a disjunction (or) operation shouldn&rsquo;t care.
+But whatever choice
+is made will actually have an effect on whether the remaining rules in the pattern
+match.</p>
+
+<p>Here is an example of what can go wrong.
+Suppose our string is &ldquo;abc&rdquo;.</p>
+
+<pre><code>0: 1 2
+1: "a" | "a" "b"
+2: "c"
+</code></pre>
+
+<p>Starting with rule 0, we try rule 1.
+<code>"abc"</code> matches both <code>"a"</code> and <code>"a" "b"</code>.
+So let&rsquo;s pick the first rule.
+Now onto rule &ldquo;c&rdquo; which does not match &ldquo;b c&rdquo;.
+The match fails.</p>
+
+<p>If we had chosen &ldquo;a&rdquo; &ldquo;b&rdquo; then we move
+to rule 2 &ldquo;c&rdquo; matches the remainder &ldquo;c&rdquo;.
+We have a successful match.</p>
+
+<p><strong>The Hard Solution</strong></p>
+
+<p>Every time we an encounter an <code>OR</code> and both cases
+match, we no longer know which one to pick.
+The global success of a match can no longer be determined locally.</p>
+
+<p>We aren&rsquo;t going to get false positives, but we may get false negatives
+if we choose the wrong path to take.</p>
+
+<p>A proper solution must diverge at every or, creating branching possible evaluations.
+This can certainly be implemented, but is going to look very different than part 1,
+and be more complicated.</p>
+
+<p><strong>An Easy Solution</strong></p>
+
+<p>What we really want to know is whether there is <em>SOME</em> set of choices for each OR that will cause the pattern to match.
+Since we don&rsquo;t know what they are, we can just try a whole bunch, and see if we can find a set that does.
+The easiest way to do this is by introducing probability.
+Randomly pick a branch at each or.
+We can then run the matcher a bunch of times and see if it finds a set of choices that match.</p>
+
+<p>Let&rsquo;s work through the details.
+We want to replace the code for &ldquo;evaluate an or form <code>(OR R1 R2)</code>&rdquo;.
+The original descrpition was:</p>
+
+<ul>
+<li>If one succeeded, return that. Otherwise fail.</li>
+</ul>
+
+
+<p>Let&rsquo;s change it to a randomized choice when we don&rsquo;t have a better option:</p>
+
+<ul>
+<li>evaluate both options. If either one failed, return the other.
+  Otherwise both succeeded, so randomly pick which one to return.</li>
+</ul>
+
+
+<p>Now for each string run the pattern matcher a few hundred times.
+Each time it will (hopefully) try different choices for each OR.
+With enough tries, it should get lucky and find the best path
+if there is one.</p>
+
+<p>Remember, changing branch directions never introduces false positives, only false negatives.
+So if it matches even one time, then we know it works.
+Experiment with different numbers of times until you get a match rate that stabilizes.
+If you don&rsquo;t run it enough times, then you will get changing answers each time you run it.
+It works!</p>
+
+<p>Want to learn more? Checkout <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book-Z-H-28.html#%_sec_4.3">chapter 4.3</a> of SICP
+on non-deterministic computing.</p>
+
+ ]]></description>
+</item>
+<item>
+<pubDate>Sun, 15 Nov 2020 00:00:00 </pubDate>
+<title>The Universal Property of Quotients</title>
+<guid isPermaLink="true">universal-property-quotients/</guid>
+<description><![CDATA[ 
+<h1>The Universal Property of Quotients</h1>
 
 <p><strong>11/15/20</strong></p>
 
@@ -153,15 +331,226 @@ More elaborate constructions.
 These gave me a lot of practice with commutative diagrams,
 such as the chapter on <a href="https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem">Seifert-Van Kampen&rsquo;s</a> theorem.</p>
 
-<p><img src="van-kampen.png" alt="van-kampen" /></p> 
+<p><img src="van-kampen.png" alt="van-kampen" /></p>
+
  ]]></description>
 </item>
 <item>
-<pubDate>Sat, 26 Sep 2020 00:00:00 -0600</pubDate>
-<title>Understanding LINQ GroupBy</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/understanding-groupby/</guid>
+<pubDate>Thu, 08 Oct 2020 00:00:00 </pubDate>
+<title>Questioning Probablity</title>
+<guid isPermaLink="true">questioning-probability/</guid>
 <description><![CDATA[ 
- <h1>Understanding LINQ GroupBy</h1>
+<h1>Questioning Probability</h1>
+
+<p><strong>10/8/20</strong></p>
+
+<h3>Are Elections Actually Random?</h3>
+
+<p>A popular narrative explaining the outcome of the 2016 election is that the odds were in Clinton&rsquo;s favor.
+She just got unlucky.
+That election night, dice were cast, and she unfortunately rolled snake eyes.
+The comforting messages implied by this interpretation probably explains it&rsquo;s popularity;
+it was nobody&rsquo;s fault,
+we still have the popular ideas,
+we don&rsquo;t even have to change our strategy to win next time.
+The alternatives are much harder to look at.
+But, the critical, yet unquestioned assumption that this narrative
+depends on is that elections are random events.
+But how similar is winning election to winning roulette?</p>
+
+<p>Let&rsquo;s briefly relate what actually happens on voting day.
+People wake up in the morning and make a decision whether to make their way to vote or not.
+They physically walk or drive to a voting location, and then choose who&rsquo;s name to record, either by pushing a button or writing it in.
+Later, the votes are tallied and grouped by region and a winner is announced.</p>
+
+<p>Where is the randomness?
+It&rsquo;s hard to even find where variables might be changing rapidly.
+The media framework and campaign context is a product of months of effort.
+Each individuals broad political views are slow moving.
+They are driven by countless deeply rooted influences such as family upbringing, income, ethnicity, religion, education, culture.
+Undoubtedly all of this is very complex, much if it is unconscious and affected by PR and marketing,
+ but nowhere do we see anything that looks like a random occurrence.
+It&rsquo;s always cause and effect, and it&rsquo;s not all that mysterious as you can probably make a good guess of how
+an acquaintance will vote.</p>
+
+<p>You might argue this isn&rsquo;t what is really meant when &ldquo;chance&rdquo; is talked about in elections.
+Journalists aren&rsquo;t implying they function like a lottery.
+The percentages they throw around are confidence intervals.
+Pollsters can&rsquo;t talk to everyone in the country, so they talk to a
+sample, and then use probability to guess how likely it is that
+this sample represents the whole population.
+It&rsquo;s basic statistics.</p>
+
+<p>But, even if the numbers come from such methods,
+this is not how they are presented by journalists and
+otherwise intelligent and &ldquo;scientific&rdquo; people don&rsquo;t understand them that way either.
+If so, they would be much more concerned about finding specific gaps between the sample and population
+instead of wondering what the odds look like on their bet.
+Just look at how prevalent the random model is in these examples:</p>
+
+<p><strong>Election as a Pachinko Machine (1)</strong></p>
+
+<p><img src="pachinko.png" alt="pachinko machine" /></p>
+
+<p>Let&rsquo;s hope the people making these promotions
+aren&rsquo;t the same as those making the models.</p>
+
+<p><strong>Election as an Unlucky Dice Roll</strong></p>
+
+<p><img src="random_roll.png" alt="random roll" /></p>
+
+<p>Unlucky again?</p>
+
+<p><strong>A Small Probability is still a Possibility</strong></p>
+
+<p><img src="math.png" alt="math" /></p>
+
+<p>Perhaps students need fewer stats classes and more critical thinking.</p>
+
+<h3>Our Cultural of Randomness</h3>
+
+<p>Questionable applications of random thinking aren&rsquo;t confined to politics.
+This reflects an underlying cultural trust and belief in the power of statistics.
+At first glance it appear to fit with our love of science and intelligence.
+Just look at all the numbers, equations, and graph.
+Everyone knows smart people use data to make decisions and
+it overcomes biases.
+Didn&rsquo;t you watch Money Ball?</p>
+
+<p>But this belief actually begins with our our basic physical view;
+the world is atoms crashing into each other in the void,
+and at the atomic level quantum events are happening which we don&rsquo;t understand.
+Fundamentally, the  future is indefinite, uncertain, and hazy.
+We can&rsquo;t really plan or predict it.
+Sometimes we can setup Fleming or Darwinian-like projects to tip chance
+in our favor,
+but the best thing to do is leave all your options open to respond to unforeseen conditions.
+This indefinite attitude permeates our world with &ldquo;lean startups&rdquo;,
+index funds, zero interest, zero savings, extracurricular, and no planning. (2)</p>
+
+<p>But let&rsquo;s examine this views underlying underlying premise.
+How many things in our world are actually random?
+If you believe basic physics, it doesn&rsquo;t appear anything at the scale of everyday life is really random.
+Every physical action is driven by cause and effect, which can be described
+at the human scale can be accurately using deterministic Newtonian relationships.</p>
+
+<p>In computer programs it&rsquo;s not even possible to obtain data which is truly random.
+Usually it&rsquo;s just a <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">function</a> which is hard to predict, and uses varying
+inputs like time of data.
+Better sources sample from physical motion, like air vibrations.
+When random functions aren&rsquo;t random enough,
+hackers can break <a href="https://en.wikipedia.org/wiki/Random_number_generator_attack">encryption</a>.</p>
+
+<p>Just like the 2016 election, it doesn&rsquo;t take scrutiny to realize that most subjects of statistical study
+are not actually driven by chance.</p>
+
+<h3>When is Probability Useful?</h3>
+
+<p>That is not to suggest that the entire field is misguided.
+Probability itself is a sound mathematical model, central
+to scientific inquiry.
+But, if the required axiom of having a random variable
+is virtually always false, then why should we ever hope to apply it
+in the real world?</p>
+
+<p>We have already talked about one use case.
+Reasoning about a population from a sample.
+Ignoring the missing principle of uniformity in nature, and whether
+distributions are correct, this is still a helpful way to study
+large groups.</p>
+
+<p>Another use case is when there are just too many variables to understand.
+When we have a cause and effect theory, but too many input variables,
+it&rsquo;s overwhelming to use, so we settle for partial information.
+Consider a dice roll.
+Through classical mechanics we can understand gravity, the force of the throw, the friction in the air,
+the impact on the table,
+and with all this make an accurate description of the outcome.
+But no human can capture all those parameters in a split second and apply them.
+Without a controlled environment for study probability is a good model.</p>
+
+<p>However, statistical physical models don&rsquo;t just making random assignments.
+They tightly constrain the probability with deterministic mathematics,
+such as using regular formulas for area and force. (3)
+Furthermore, they never imply an underlying law of randomness.
+Rather they are useful compromises with tolerable inaccuracies.</p>
+
+<p>The most common use case for statistics,
+and the one that needs to be scrutinized the most,
+is when you don&rsquo;t really
+understand cause and effect relationships.
+Without a workable theory of nature, stats act as an adhoc placeholder.
+Data gets mapped to distributions, and patterns get correlated,
+without considering how the underlying objects works.</p>
+
+<p>When this is your only option, it&rsquo;s probably better than nothing.
+But, you have to be honest about the limitations.
+You definitely shouldn&rsquo;t be surprised to find &ldquo;black swans&rdquo;
+when all you did is plot a bell curve,
+and hope everything else follows uniformly.</p>
+
+<p>Consider two fields almost synonymous with stats; economics and psychology.
+Does anyone have a clear picture of how markets function,
+or the causes of inflation?
+Can anyone give an account of why people think and believe what they do?
+Of course not, and the popular theories change rapidly and dramatically.
+There are are a lot of variables in these domains
+too, so perhaps probability models are unavoidable.
+But clearly they are lacking in explanatory theories.
+Maybe a scientific theory isn&rsquo;t even possible.</p>
+
+<h3>A Universal Way of Understanding</h3>
+
+<p>In <a href="http://classics.mit.edu/Plato/republic.11.x.html">The Republic X</a>, Plato observes a related attitude in painting and poetry.
+He describes their practice as giving an appearance of understanding through shallow, and quickly made presentations:</p>
+
+<blockquote><p>The imitator, I said, is a long way off the truth, and can do all things because he lightly touches on a small part of them, and that part an image.
+For example: A painter will paint a cobbler, carpenter, or any other artist, though he knows nothing of their arts; and, if he is a good artist, he may deceive children or simple persons, when he shows them his picture of a carpenter from a distance, and they will fancy that they are looking at a real carpenter.</p>
+
+<p> And whenever any one informs us that he has found a man knows all the arts, and all things else that anybody knows [&hellip;] I think that we can only imagine to be a simple creature who is likely to have been deceived by some wizard or actor whom he met, and whom he thought all-knowing, because he himself was unable to analyze the nature of knowledge and ignorance and imitation.</p>
+
+<p>And so, when we hear persons saying that the tragedians, and Homer, who is at their head, know all the arts and all things human, virtue as well as vice, and divine things too, for that the good poet cannot compose well unless he knows his subject, and that he who has not this knowledge can never be a poet, we ought to consider whether here also there may not be a similar illusion. Perhaps they may have come across imitators and been deceived by them</p></blockquote>
+
+<p>Statistics students and professionals hold the same remarkable belief about their own field today.
+They don&rsquo;t need to study any subject or &ldquo;applications&rdquo;, besides statistics itself.
+Their statistical knowledge is immediately transferable to
+understanding any problem thrown their way, whether in tech, business, politics, finance, or healthcare.
+It&rsquo;s a universal framework for understanding.
+This makes it the perfect career in the culture of randomness, and ironically
+minimize the need to make predictions about the future.</p>
+
+<p>But can you understand business without running one?
+Can you understand voting patterns without understanding what
+is happening in people&rsquo;s lives?
+Can you understand psychology without thinking, observing, and talking to people?
+Lack of basic knowledge and experience leave a lot to be desired.
+In these areas, as in politics, we can conclude that probability and statistics are poor substitutes
+for explanatory theory.</p>
+
+<p><strong>Notes</strong></p>
+
+<p>(1) Pachinko might be a good model to predict whether an INDIVIDUAL voter will make it to the voting
+location, as intended. Each peg represents an event encouraging or discouraging them (medical emergencies, flat tires, relationship trouble).
+But these don&rsquo;t happen very often and the vast majority of those determined follow through with their intentions.</p>
+
+<p>(2) For an exploration of these ideas see Zero To One by Peter Thiel.</p>
+
+<p>(3) For a specific examples see the derivations for the equations of <a href="https://en.wikipedia.org/wiki/Kinetic_theory_of_gases">motion of gasses</a>
+or how probability is used to <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">estimating integrals</a>.</p>
+
+ ]]></description>
+</item>
+<item>
+<pubDate>Wed, 07 Oct 2020 00:00:00 </pubDate>
+<title>Derivative Map Tool</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/derivative-map-tool</guid>
+</item>
+<item>
+<pubDate>Sat, 26 Sep 2020 00:00:00 </pubDate>
+<title>Understanding LINQ GroupBy</title>
+<guid isPermaLink="true">understanding-groupby/</guid>
+<description><![CDATA[ 
+<h1>Understanding LINQ GroupBy</h1>
 
 <p><strong>09/26/20</strong></p>
 
@@ -354,20 +743,21 @@ generalize data access,
 and then built up a chain of dependent features to reach this goal.
 To learn more about this process and the ideas behind LINQ
 I recommend Jon Skeet&rsquo;s book <a href="https://www.manning.com/books/c-sharp-in-depth-fourth-edition?utm_source=affiliate&amp;utm_medium=affiliate&amp;a_aid=11033&amp;a_bid=569211b4">C# in Depth</a>.
-I think you will enjoy it even if you are not interested in C# itself, as it is a joyful deep dive into practical language design and theory.</p> 
+I think you will enjoy it even if you are not interested in C# itself, as it is a joyful deep dive into practical language design and theory.</p>
+
  ]]></description>
 </item>
 <item>
-<pubDate>Sat, 12 Sep 2020 00:00:00 -0600</pubDate>
+<pubDate>Sat, 12 Sep 2020 00:00:00 </pubDate>
 <title>Gesture Recognition with Line Integrals</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/gesture-recognition/</guid>
 </item>
 <item>
-<pubDate>Sun, 24 May 2020 00:00:00 -0600</pubDate>
+<pubDate>Sun, 24 May 2020 00:00:00 </pubDate>
 <title>Boring Benefits of Lisp</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/boring-benefits-of-lisp/</guid>
+<guid isPermaLink="true">boring-benefits-of-lisp/</guid>
 <description><![CDATA[ 
- <h1>Boring Benefits of Lisp</h1>
+<h1>Boring Benefits of Lisp</h1>
 
 <p><strong>10/07/20</strong></p>
 
@@ -412,15 +802,16 @@ but that has its own quirks, and you can&rsquo;t use many libraries with it.</p>
 
 <p>So are Lisp and C the only languages that are based on performance, robust standards, and free software?
 No, but there aren&rsquo;t as many as you think.
-Lisp just happens to be one of them, and it&rsquo;s a design that I enjoy using and learning about.</p> 
+Lisp just happens to be one of them, and it&rsquo;s a design that I enjoy using and learning about.</p>
+
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 12 Apr 2020 00:00:00 -0600</pubDate>
+<pubDate>Sun, 12 Apr 2020 00:00:00 </pubDate>
 <title>10 Hard Decisions: A Model for Programmer Productivity</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/10-hard-decisions/</guid>
+<guid isPermaLink="true">10-hard-decisions/</guid>
 <description><![CDATA[ 
- <h1>10 Hard Decisions: A Model for Programmer Productivity</h1>
+<h1>10 Hard Decisions: A Model for Programmer Productivity</h1>
 
 <p><strong>09/26/20</strong></p>
 
@@ -568,15 +959,17 @@ Who wants to live with someone elses choices?
 For large existing codebases this represents a lot of invested knowledge, so its usually bad,
 but for a new task, Why would you rob a programmer of this opportunity by playing
 musical chairs?</p></li>
-</ol> 
+</ol>
+
+
  ]]></description>
 </item>
 <item>
-<pubDate>Thu, 23 Jan 2020 00:00:00 -0600</pubDate>
+<pubDate>Thu, 23 Jan 2020 00:00:00 </pubDate>
 <title>Keeping Up-to-Date</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/keeping-up-to-date/</guid>
+<guid isPermaLink="true">keeping-up-to-date/</guid>
 <description><![CDATA[ 
- <h2>Keeping Up-to-date</h2>
+<h2>Keeping Up-to-date</h2>
 
 <p><strong>1/23/2020</strong></p>
 
@@ -696,30 +1089,27 @@ area of math or science as an MIT student would have.</p></li>
 But, most of them only get that level of depth with a solid
 understanding of fundamental computer science.
 Expertise is also a subject for another day.</p></li>
-</ol> 
+</ol>
+
+
  ]]></description>
 </item>
 <item>
-<pubDate>Wed, 18 Dec 2019 00:00:00 -0600</pubDate>
-<title>Shamans: A 3D Turn-based Strategy Game for iPad</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/shamans/</guid>
-</item>
-<item>
-<pubDate>Sun, 28 Jul 2019 00:00:00 -0600</pubDate>
+<pubDate>Sun, 28 Jul 2019 00:00:00 </pubDate>
 <title>Write Your Own Proof-of-Work Blockchain</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/tiny-blockchain/</guid>
 </item>
 <item>
-<pubDate>Sat, 29 Jun 2019 00:00:00 -0600</pubDate>
+<pubDate>Sat, 29 Jun 2019 00:00:00 </pubDate>
 <title>text2image</title>
 <guid isPermaLink="true">https://github.com/justinmeiners/text2image</guid>
 </item>
 <item>
-<pubDate>Sat, 08 Jun 2019 00:00:00 -0600</pubDate>
+<pubDate>Sat, 08 Jun 2019 00:00:00 </pubDate>
 <title>Think in Math. Write in Code.</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/think-in-math/</guid>
+<guid isPermaLink="true">think-in-math/</guid>
 <description><![CDATA[ 
- <h2>Think in Math. Write in Code.</h2>
+<h2>Think in Math. Write in Code.</h2>
 
 <p><strong>6/8/19</strong></p>
 
@@ -1007,15 +1397,16 @@ This process helped me become aware of assumptions I would not have even conside
 Perhaps the greatest benefit was that after writing it, I was able to quickly review it with a co-worker and make corrections which were easy on paper, but would have been difficult to change in code.</p>
 
 <p>I hope that thinking in the language of math will bring similar benefits to your projects!
-Note that this example is only one style of utilizing mathematical thinking.</p> 
+Note that this example is only one style of utilizing mathematical thinking.</p>
+
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 12 May 2019 00:00:00 -0600</pubDate>
+<pubDate>Sun, 12 May 2019 00:00:00 </pubDate>
 <title>Notes On Vector Libraries</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/vector-libs/</guid>
+<guid isPermaLink="true">vector-libs/</guid>
 <description><![CDATA[ 
- <h1>Notes on Vector Libraries</h1>
+<h1>Notes on Vector Libraries</h1>
 
 <p><strong>05/12/2019</strong></p>
 
@@ -1312,15 +1703,16 @@ above to write to tailor make vector functions as needed.</p>
 <p>For further reading, see <a href="http://www.reedbeta.com/blog/2013/12/28/on-vector-math-libraries/">On Vector Math Libraries</a>.
 It focuses on C++ and has a few other handy tips.
 You can also read a <a href="https://github.com/arkanis/single-header-file-c-libs/issues/3">discussion</a>
-which led to these notes.</p> 
+which led to these notes.</p>
+
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 14 Apr 2019 00:00:00 -0600</pubDate>
+<pubDate>Sun, 14 Apr 2019 00:00:00 </pubDate>
 <title>Foundations of Math Reading List</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/foundations-of-math-reading/</guid>
+<guid isPermaLink="true">foundations-of-math-reading/</guid>
 <description><![CDATA[ 
- <h2>Foundation of Math Reading List</h2>
+<h2>Foundation of Math Reading List</h2>
 
 <p><strong>04/13/2019</strong></p>
 
@@ -1480,15 +1872,16 @@ but it would be hard for me to read about a &ldquo;group&rdquo; for the first ti
 and really understand what he means.</p>
 
 <p>If you read through the other books, and have technical knowledge
-you should be well prepared.</p> 
+you should be well prepared.</p>
+
  ]]></description>
 </item>
 <item>
-<pubDate>Fri, 22 Feb 2019 00:00:00 -0600</pubDate>
+<pubDate>Fri, 22 Feb 2019 00:00:00 </pubDate>
 <title>The Skills Poor Programmers Lack</title>
-<guid isPermaLink="true">https://justinmeiners.github.io/the-skills-programmers-lack/</guid>
+<guid isPermaLink="true">the-skills-programmers-lack/</guid>
 <description><![CDATA[ 
- <h2>The Skills Poor Programmers Lack</h2>
+<h2>The Skills Poor Programmers Lack</h2>
 
 <p><strong>02/22/2019</strong></p>
 
@@ -1585,13 +1978,369 @@ but perhaps I am doing a bit too much early optimization :)
 See his <a href="https://gist.github.com/Dobiasd/fa27e3efb8b08fc81791d7f8e51ac5ca">benchmark</a>.</p></li>
 <li><p>There are ways to do this sort of thing correctly using cryptographic hashes.</p></li>
 <li><p>Once again, this is just an example. Switching on type may be perfectly appropriate.</p></li>
-</ol> 
+</ol>
+
+
  ]]></description>
 </item>
 <item>
-<pubDate>Sun, 13 Jan 2019 00:00:00 -0600</pubDate>
-<title>McCulloch &amp; Pitts Neural Net Simulator</title>
+<pubDate>Sun, 13 Jan 2019 00:00:00 </pubDate>
+<title>McCulloch & Pitts Neural Net Simulator</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/neural-nets-sim/</guid>
 </item>
-</channel>
-</rss>
+<item>
+<pubDate>Sat, 05 Jan 2019 00:00:00 </pubDate>
+<title>An Adventure in Pre-Rendered Backgrounds</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/pre-rendered-backgrounds/</guid>
+</item>
+<item>
+<pubDate>Sun, 16 Dec 2018 00:00:00 </pubDate>
+<title>Write your Own Virtual Machine</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/lc3-vm/</guid>
+</item>
+<item>
+<pubDate>Thu, 19 Apr 2018 00:00:00 </pubDate>
+<title>Lisp Interpreter</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/lisp-interpreter</guid>
+</item>
+<item>
+<pubDate>Sat, 27 Jan 2018 00:00:00 </pubDate>
+<title>Spherical Harmonics</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/spherical-harmonics</guid>
+</item>
+<item>
+<pubDate>Thu, 01 Jun 2017 00:00:00 </pubDate>
+<title>Shamans: A 3D Turn-based Strategy Game for iPad</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/shamans/</guid>
+</item>
+<item>
+<pubDate>Mon, 01 May 2017 00:00:00 </pubDate>
+<title>Modern OpenGL</title>
+<guid isPermaLink="true">modern-opengl/</guid>
+<description><![CDATA[ 
+<h2>Modern OpenGL</h2>
+
+<p>These are notes sent to a friend, not a formal article.
+I thought they might be useful for others as well.</p>
+
+<p><strong>05/01/2017</strong></p>
+
+<p>If you&rsquo;re looking for an easy way to do 3D its probably <a href="https://developer.apple.com/documentation/scenekit">SceneKit</a> or Unity,
+but I assume you want to learn how things work.</p>
+
+<p>Everything you know and love in OpenGL is gone. <code>glTranslate</code>, <code>glLookAt</code>, <code>glRotate</code>, <code>glVertex</code>, <code>glLight</code>, etc.
+The reasoning is that these all describe a specific way of doing things, and OpenGL wanted to be as general as possible so that you can make whatever you want.</p>
+
+<p>For example <code>glLight</code> has a built in algorithm for lighting. What if you want to make your own? You can’t.</p>
+
+<p>The solution is to make everything programmable. Instead of having fixed GPU procedures, the GPU becomes flexible so you can write code which runs on the GPU that replaces the fixed procedures.
+These programs are called shaders.</p>
+
+<h2>Shaders</h2>
+
+<p>There are two kinds of shaders you need to worry about.</p>
+
+<p><strong>Vertex Shader:</strong> takes input data, outputs vertex information (position, color, etc)</p>
+
+<p>The outputs from this vertex shader are interpolated across the triangle (or line) you are drawing, and the results are inputed into the fragment shader.</p>
+
+<p><strong>Fragment Shader:</strong> takes input data, and interpolated vertex information, and outputs a color.</p>
+
+<p>Shaders are written in a C like language and compiled into native GPU code.
+I would say the first thing you need to do is practice writing some shaders, so you can get an idea of what data you need to give them.</p>
+
+<p>The modern OpenGL API has been totally stripped down. It basically consists of creating shaders, providing them with data, and executing them.
+That is it. There is nothing else in OpenGL.</p>
+
+<h2>Data</h2>
+
+<p>So here is the kind of data you need to prepare for OpenGL. This is done in your main code.</p>
+
+<h3>vertex positions, vertex colors, vertex normals.</h3>
+
+<p>You use vertex buffers to upload this data to the GPU. Basically you can make a vertex struct:</p>
+
+<p><code>
+struct vertex
+{
+    Vec3 position, normal, color
+}
+</code></p>
+
+<p>and  then describe its structure, and then upload an array of them. You could make one vertex buffer for your sphere and then reuse it for each ball.</p>
+
+<h3>Textures</h3>
+
+<p>You upload images using <code>glTexImage</code>. This APIs has stayed mostly the same as old OpenGL.</p>
+
+<h3>Matrices</h3>
+
+<p>Since OpenGL has no translate, rotate, etc. You need to create your own transformation matrices for every object in the scene.</p>
+
+<p>This has a few components:</p>
+
+<ul>
+<li><strong>model matrix</strong> - this is the translation/rotation for each individual model.</li>
+<li><strong>view matrix</strong> - this describes the camera in the scene (<code>gluLookAt</code>)</li>
+<li><strong>projection matrix</strong> - this is the “3D lense” which projects 3D coordinates onto the 2D screen.</li>
+</ul>
+
+
+<p>Basically you have to calculate all of these yourself, pass them to your vertex shader, and then use them to translate the vertex positions.</p>
+
+<p>Usually the projection and matrices are constant for one draw of the scene, you create them at the beginning and pass them with everything.
+Then for each model you need to construct a new model matrix, describing its current state.</p>
+
+<h3>Recommended Resources</h3>
+
+<ul>
+<li><a href="https://learnopengl.com/">Learn OpenGL</a></li>
+<li><a href="https://paroj.github.io/gltut/">Learning Modern 3D Graphics Programming</a></li>
+</ul>
+
+
+ ]]></description>
+</item>
+<item>
+<pubDate>Thu, 10 Nov 2016 00:00:00 </pubDate>
+<title>HoloLens Impressions</title>
+<guid isPermaLink="true">hololens-impressions/</guid>
+<description><![CDATA[ 
+<h2>HoloLens First Impressions</h2>
+
+<p><strong>11/10/2016</strong></p>
+
+<p><img src="hl_2.jpg" alt="HoloLens" /></p>
+
+<p>At work, I recently started on a new medical application for the <a href="https://www.microsoft.com/microsoft-hololens/en-us">Microsoft HoloLens</a>. I don&rsquo;t follow popular technology news, and rarely get excited about new gadgets, but I feel that the HoloLens is a robust platform, with real substance beyond the usual VR gimmicks. In this article I will talk a little bit about my experience with the hardware and development environment, as well as outline some its shortcomings. As the current release is a &ldquo;Developer Edition&rdquo; I hope some of the items will be addressed in the consumer release.</p>
+
+<p>Where the HoloLens succeeds most, is in offering an entirely distinct experience from VR headsets such as the Vive and Occulus. Everyone I have spoken to, who has tried both, immediately agrees the two are like apples and oranges. There is no question that the HTC Vive offers the most immersive graphical experience, but I get the feeling I could actually use the HoloLens for work, education, and other tasks beyond entertainment. The crisp display, is clear and readable, and since it doesn&rsquo;t overwhelm your vision it doesn&rsquo;t feel nauseating. The likelihood, of me setting up a full Vive room setup, to look at a piece of anatomy or the solar system is small, but quickly putting on the HoloLens to view a models from a true 3D perspective is helpful.</p>
+
+<p>Microsoft recommends using Unity to get started with HoloLens development, while also providing native C++ and Direct 3D. Initially. using Unity didn&rsquo;t excite me, but the it ends up working fairly well. Unity has a specific version of its engine adapted for HoloLens. This includes APIs and components for accessing the room scanning, world anchors, gestures, and voice controls. Once a build is exported from Unity, you can run, debug, and write code all in Visual Studio, until you need to modify the scene. The HoloLens can connect directly through USB or the WiFi for debugging. Microsoft has solid <a href="https://developer.microsoft.com/en-us/windows/holographic/documentation">documentation</a> and tutorials to help you figure everything out.</p>
+
+<p>The voice controls are excellent, and easy to develop for. While in my quiet office, I have never had it mistake me for simple commands such as &ldquo;back&rdquo; and &ldquo;select&rdquo;. I&rsquo;ll even admit to working with food stuffed in my mouth, and it still recognized my commands about half the time. Speaking commands to yourself is still as embarrassing as it sounds (less so than shouting at your phone), but the technology is solid, and I believe there is potential here. Development for voice controls is a pleasant process as well. In Unity you can simply register phrases you would like to listen for, and receive callbacks when they are spoken.</p>
+
+<p>The most noticeable limitation is the small field of view. Even though the glasses surround almost your whole vision, the displayable portion takes up only a small rectangular box at the front of your vision. This means that any objects larger than a basketball get chopped off while standing only a few feet away. This ugliness is most noticeable when a large model fills the whole viewing rectangle, leaving everything outside blank. It looks as if you are looking at the world through an open cereal box. Unfortunately, I can&rsquo;t show you what this looks like in a screenshot.</p>
+
+<p><img src="cutoff_screen.jpg" alt="viewport" /></p>
+
+<p>The gesture controls aren&rsquo;t terrible, but still feel clunky. It takes a little bit of time to master, and then it&rsquo;s sort of like having a mouse that fails to click every tenth time. They are made worse when other people are nearby to distract the sensor.</p>
+
+<p>Since the entire system is contained within the headset, its GPU is more comparable to a mobile phone than a desktop machine. While not weak, the hardware feels a bit under powered. The frame rate cuts to about 30 frames, with roughly 50k triangles across 25 draw calls. I don&rsquo;t expect a ton here, but a bit faster would be nice. In my experience an iPad 2 has better GPU performance, but probably does a lot less background work. Given that I only tested in Unity, it is possible that using native C++ and Direct X would be a dramatic improvement. If you are using Unity be sure to use the optimized shaders found in <a href="https://github.com/Microsoft/HoloToolkit-Unity">Microsoft&rsquo;s Holokit</a>, and be conscious of batches.</p>
+
+<p>The shortcomings above can hopefully be addressed in future iterations of the hardware. In its current form, it is still a fundamentally innovative platform and I am excited to continue developing for it.</p>
+
+ ]]></description>
+</item>
+<item>
+<pubDate>Sun, 30 Oct 2016 00:00:00 </pubDate>
+<title>3D Paint</title>
+<guid isPermaLink="true">3d-paint/</guid>
+<description><![CDATA[ 
+<h2>3D Paint </h2>
+
+<p><strong>10/30/16</strong></p>
+
+<p>In 2012 I came across the paper <a href="http://zurich.disneyresearch.com/OverCoat/">OverCoat: An Implicit Canvas for 3D Painting</a>
+which describes a technique for creating 3D models using traditional painting methods.
+At the time I didn&rsquo;t have sufficient mathematical knowledge
+to understand all of the technical details described, but I picked up the general idea and wrote my own rough implementation.
+This article explains how my program was constructed and some of what I learned in the process.</p>
+
+<p><img src="anim.gif" alt="3d paint gif" /></p>
+
+<p>The basic idea is to paint 3d strokes onto a rough 3D model which acts as a canvas.
+The model is simply rotated to a desired orientation, and drawn upon, as if one was painting ontop of a flat a picture.
+The difference is that the strokes are projected into 3D space giving them their own 3D form.</p>
+
+<p>The model is only a placeholder which is eventually removed, leaving only the painting made up of strokes.
+To position the nodes which define a stroke, my program simply performed a ray-triangle test between the mouse ray and the mesh, and offset the intersection point by the face normal.
+The paper describes a sophisticated optimization method which evenly distributes stroke nodes, even across harshes changes in depth.</p>
+
+<p><img src="screen1.jpg" alt="screen 1" /></p>
+
+<p>The image above shows several strokes projected onto the surface of the model.
+Along with the node positions, information such as a color and brush size are stored for each stroke.</p>
+
+<p>I used the following data structures:</p>
+
+<pre><code>typedef struct
+{
+    Vec4_t color;
+    int brush;
+    float pressure;
+} StrokeInfo_t;
+
+typedef struct
+{
+    Vec3_t pos;
+    float radius;
+} StrokeNode3D_t;
+
+typedef struct
+{
+    int nodeCount;
+    StrokeNode3D_t nodes[MAX_STROKE_NODES];
+    Vec4_t color;
+    // used for depth sorting
+    Vec3_t center;
+    StrokeInfo_t info;
+} Stroke3D_t;
+
+typedef struct
+{
+    int strokeCount;
+    Stroke3D_t strokes[MAX_STROKES];
+    int dirty;
+} Canvas3D_t;
+</code></pre>
+
+<p><img src="screen2.jpg" alt="screenshot 2" /></p>
+
+<p>To render the strokes, each node position is transformed from 3D onto the 2D screen, using the camera matrix. The brush image is then rendered onto the framebuffer at each of the 2D node positions on the screen. Even though these screenshots show only a few colors and a single brush, the program supports multiple brush types and RGB colors.</p>
+
+<p><img src="screen4.jpg" alt="screenshot 4" /> <img src="screen3.jpg" alt="screenshot 3" /></p>
+
+<p>As the drawing becomes more dense, the strokes begin to resemble their own shape.
+Rendering strokes is a very efficient process because it only involves stamping the brush image in 2D, which is easily parallelized on the GPU.
+For the strokes to be drawn in the correct order they must be sorted by depth. This is by far the most computational expensive part of the process.
+My program solved this problem by only sorting strokes by their average position, which seemed to be an acceptable alternative to sorting each node.
+The order in which the nodes of a stroke are rendered is still important to ensure proper layering. An offline rendering process should sort each node properly.</p>
+
+<p><img src="screen5.jpg" alt="screenshot 5" /> <img src="screen6.jpg" alt="screenshot 6" /></p>
+
+<p>Although my program cannot produce the beautiful paintings found in the original paper, it can still draw some fun pictures.
+I think the technique itself is very interesting and has great potential. It would be interesting to make a small game, or animation centered around the technique since the artwork is so easy and natural to produce.
+Because it requires no textures, other than the small brushes, its memory usage is also very small, while its vertex requirements are similar to triangle meshes.
+The next natural step would be to bind a painting to a skeleton for animation.</p>
+
+ ]]></description>
+</item>
+<item>
+<pubDate>Tue, 01 Dec 2015 00:00:00 </pubDate>
+<title>Molecule Viewer</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/molecule-viewer</guid>
+</item>
+<item>
+<pubDate>Thu, 15 Oct 2015 00:00:00 </pubDate>
+<title>Old Artwork</title>
+<guid isPermaLink="true">old-artwork/</guid>
+<description><![CDATA[ 
+<h2>Old Artwork</h2>
+
+<p><strong>10/15/2015</strong></p>
+
+<p>I am not much of a visual artist, but I still enjoy 3D modeling and animation. This page contains pictures of some of my older models I have worked on.</p>
+
+<h3>Moon Rover</h3>
+
+<p><img src="rover1.png" alt="moon rover 1" /> <img src="rover2.png" alt="moon rover 2" /></p>
+
+<h3>Low-poly Cargo Ship</h3>
+
+<p><img src="cargo_ship1.png" alt="cargo ship 1" /> <img src="cargo_ship2.png" alt="cargo ship 2" /></p>
+
+<p><img src="cargo_ship4.png" alt="cargo ship 4" /> <img src="cargo_ship3.png" alt="cargo ship 3" /></p>
+
+<h3>Space Invader Sculpt</h3>
+
+<p>While working at Infuse Medical, I taught a course on 3D programming with OpenGL. As part of my course we created a small space invaders clone. Another developer created the low-poly model for the alien, which I use to create the high resolution sculpt shown below. Occlusion maps were generated from the sculpt for the game.</p>
+
+<p><img src="space_invaders1.png" alt="alien 1" /> <img src="space_invaders2.png" alt="alien 2" />
+<img src="space_invaders_ipad1.png" alt="space invaders ipad" /> <img src="space_invaders_ipad2.png" alt="space invaders ipad" /></p>
+
+<h3>Low-poly Radio</h3>
+
+<p><img src="radio1.png" alt="radio 1" /> <img src="radio2.png" alt="radio 2" /> <img src="radio3.png" alt="radio 4" /></p>
+
+<h3>Pixel Art</h3>
+
+<p><em>
+<img alt="knight pixel art" src="knight_pixel.png" class="pixel-art"/>
+<img alt="alien pixel art" src="alien_pixel.png" class="pixel-art"/>
+<img alt="rocket pixel art" src="rocket_pixel.png" class="pixel-art"/>
+<img alt="owl pixel art" src="owl.png" class="pixel-art"/>
+</em></p>
+
+<h3>Another Ship</h3>
+
+<p><img src="another_ship.png" alt="another ship" /></p>
+
+ ]]></description>
+</item>
+<item>
+<pubDate>Fri, 09 Oct 2015 00:00:00 </pubDate>
+<title>Old Games</title>
+<guid isPermaLink="true">old-games/</guid>
+<description><![CDATA[ 
+<h2>Old Games</h2>
+
+<p><strong>10/09/2015</strong></p>
+
+<p>I spent quite a bit of time experimenting with game technology when I was first learning how to program. I played with tons of ideas, many of which turned out to be no good, but I learned a ton about graphics and development in the process.</p>
+
+<p><img src="minecraft.jpg" alt="minecraft clone screenshot" /></p>
+
+<p>An extremely fast minecraft clone. Written in C and OpenGL.</p>
+
+<p><img src="lightmap.jpg" alt="lightmap screenshot" /></p>
+
+<p>I wrote my own lightmapper and UV unwrapper in Objective-C.</p>
+
+<p><img src="asteroids.jpg" alt="asteroids screenshot" /></p>
+
+<p>A small demo for a sci-fi adventure game engine. Written in C and OpenGL.</p>
+
+<p><img src="ocean.jpg" alt="ocean screenshot" /></p>
+
+<p>An adventure game in which players explore the ocean. One feature I like allows the player to take a picture and store it in an album. The game recognizes which fish are in the picture so it can reward them for collecting them all.</p>
+
+<p><img src="platform.jpg" alt="platform screenshot" /></p>
+
+<p>An action platform game where players avoid obstacles by jumping and running up walls.</p>
+
+<p><img src="restock.jpg" alt="restock screenshot" /></p>
+
+<p>A puzzle game I created for a school competition. Written in C++ and OpenGL.</p>
+
+<p><img src="shooter.jpg" alt="shooter screenshot" /></p>
+
+<p>A platform shooter game.</p>
+
+<p><img src="strategy.jpg" alt="strategy screenshot" /></p>
+
+<p>A prototype of a strategy game for iOS.</p>
+
+ ]]></description>
+</item>
+<item>
+<pubDate>Tue, 20 Aug 2013 00:00:00 </pubDate>
+<title>C Craft</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/c-craft</guid>
+</item>
+<item>
+<pubDate>Sat, 20 Jul 2013 00:00:00 </pubDate>
+<title>IOCC Death Star</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/ioccc-death-star</guid>
+</item>
+<item>
+<pubDate>Tue, 02 Jul 2013 00:00:00 </pubDate>
+<title>Image Sequence Streaming</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/image-sequence-streaming</guid>
+</item>
+<item>
+<pubDate>Wed, 22 May 2013 00:00:00 </pubDate>
+<title>Mode 7</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/mode-7</guid>
+</item>
+<item>
+<pubDate>Sun, 07 Apr 2013 00:00:00 </pubDate>
+<title>C Foundation</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/c-foundation</guid>
+</item>
+<item>
+<pubDate>Tue, 08 Jan 2013 00:00:00 </pubDate>
+<title>iOS Color Wheel</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/ios-color-wheel</guid>
+</item>
+</channel></rss>
