@@ -39,7 +39,7 @@ for e in entries:
     w('<guid isPermaLink="true">{0}</guid>\n'.format(url))
 
     if description:
-        sys.stdout.write('<description><![CDATA[ \n{0}\n ]]></description>\n'.format(description))
+        w('<description><![CDATA[ \n{0}\n ]]></description>\n'.format(description))
 
     w('</item>\n')
 
