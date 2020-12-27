@@ -19,6 +19,7 @@ w = sys.stdout.write
 
 w('<?xml version="1.0" encoding="UTF-8" ?>\n')
 w('<rss version="2.0">\n')
+w('<channel>\n')
 w('<title>Justin Meiners Site</title>\n')
 w('<description>Welcome to my personal site about programming, math, and philosophy!</description>\n')
 w('<link>{0}</link>\n'.format(SITE))

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
+<channel>
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sun, 27 Dec 2020 11:42:15 </lastBuildDate>
+<lastBuildDate>Sun, 27 Dec 2020 11:44:37 </lastBuildDate>
 <item>
 <pubDate>Sat, 19 Dec 2020 00:00:00 </pubDate>
 <title>Advent of Code 2020 Day 19: An Easy way to do Part 2</title>
