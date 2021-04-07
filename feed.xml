@@ -4,7 +4,12 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sun, 27 Dec 2020 13:28:16 </lastBuildDate>
+<lastBuildDate>Tue, 06 Apr 2021 21:24:28 </lastBuildDate>
+<item>
+<pubDate>Sun, 06 Jun 2021 00:00:00 </pubDate>
+<title>Master&#x27;s Thesis: Computing the Rank of Braids</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/braid-rank-thesis</guid>
+</item>
 <item>
 <pubDate>Sun, 27 Dec 2020 00:00:00 </pubDate>
 <title>Advent of Code 2020 Day 18: Rethinking Operator Precedence</title>

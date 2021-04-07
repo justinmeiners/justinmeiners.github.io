@@ -4,11 +4,10 @@ About Me
 ![finger painting](finger_painting.jpg)
 
 Welcome to my personal site!
-I am currently a graduate student in mathematics at [BYU](https://math.byu.edu) studying
-Topology.
-I also work as a consultant for various software projects.
+I am currently a Software Engineer at [PassiveLogic](https://passive-logic.com/).
 
 Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
+I also have a Master's degree in math where I studied topology.
 If you are interested in my professional experience, see my [CV](files/cv.pdf).
 
 Feel free to contact me at ![justin's email](mail.gif).
@@ -17,6 +16,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Computer stuff I made and tutorials teaching you how to make cool stuff.
 
+- [06/06/2021 - Master's Thesis: Computing the Rank of Braids](https://github.com/justinmeiners/braid-rank-thesis)
 - [12/27/2020 - Advent of Code 2020 Day 18: Rethinking Operator Precedence](aoc-2020-18)
 - [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19)
 - [11/15/2020 - The Universal Property of Quotients](universal-property-quotients/)
