@@ -44,6 +44,10 @@ No, but there aren't as many as you think.
 Lisp just happens to be one of them, and it's a design that I enjoy using and learning about.
 
 
+**Update: 4/30/31**: I recommend the article ["Tips for stable and portable software"][7] which  discusses principles of stability, not only at the language level, but in the whole stack. It shows
+practical examples of things to look for in programming languages and Unix environments.
+
+
 [0]: http://www.paulgraham.com/avg.html
 [1]: http://gigamonkeys.com/book/macros-defining-your-own.html
 [2]: https://en.wikipedia.org/wiki/Homoiconicity
@@ -51,3 +55,4 @@ Lisp just happens to be one of them, and it's a design that I enjoy using and le
 [4]: https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html
 [5]: https://justinmeiners.github.io/think-in-math/
 [6]: https://www.pypy.org
+[7]: https://begriffs.com/posts/2020-08-31-portable-stable-software.html
