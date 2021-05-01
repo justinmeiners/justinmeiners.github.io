@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Fri, 30 Apr 2021 23:20:34 </lastBuildDate>
+<lastBuildDate>Fri, 30 Apr 2021 23:22:27 </lastBuildDate>
 <item>
 <pubDate>Tue, 06 Apr 2021 00:00:00 </pubDate>
 <title>Master&#x27;s Thesis: Computing the Rank of Braids</title>
@@ -1016,7 +1016,7 @@ but that has its own quirks, and you can&rsquo;t use many libraries with it.</p>
 No, but there aren&rsquo;t as many as you think.
 Lisp just happens to be one of them, and it&rsquo;s a design that I enjoy using and learning about.</p>
 
-<p><strong>Update: 4/30/31</strong>: I recommend the article <a href="https://begriffs.com/posts/2020-08-31-portable-stable-software.html">&ldquo;Tips for stable and portable software&rdquo;</a> which  discusses principles of stability, not only at the language level, but in the whole stack. It shows
+<p><strong>Update: 4/30/21</strong>: I recommend the article <a href="https://begriffs.com/posts/2020-08-31-portable-stable-software.html">&ldquo;Tips for stable and portable software&rdquo;</a> which  discusses principles of stability, not only at the language level, but in the whole stack. It shows
 practical examples of things to look for in programming languages and Unix environments.</p>
 
  ]]></description>

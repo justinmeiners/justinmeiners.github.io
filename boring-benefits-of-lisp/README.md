@@ -44,7 +44,7 @@ No, but there aren't as many as you think.
 Lisp just happens to be one of them, and it's a design that I enjoy using and learning about.
 
 
-**Update: 4/30/31**: I recommend the article ["Tips for stable and portable software"][7] which  discusses principles of stability, not only at the language level, but in the whole stack. It shows
+**Update: 4/30/21**: I recommend the article ["Tips for stable and portable software"][7] which  discusses principles of stability, not only at the language level, but in the whole stack. It shows
 practical examples of things to look for in programming languages and Unix environments.
 
 
