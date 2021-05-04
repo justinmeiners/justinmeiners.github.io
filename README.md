@@ -48,6 +48,7 @@ Computer stuff I made and tutorials teaching you how to make cool stuff.
 
 Opinions, typically about philosophy, math, and computers.
 
+- [05/03/2021 - Three Myths About Passive Investing](three-myths-passive-investing/)
 - [10/08/2020 - Questioning Probablity](questioning-probability/)
 - [05/24/2020 - Boring Benefits of Lisp](boring-benefits-of-lisp/)
 - [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
