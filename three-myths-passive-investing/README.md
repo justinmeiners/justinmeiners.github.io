@@ -24,6 +24,7 @@ or acquiring less volatile assets.
 Buying when others are fearful is the adage,
 but if everyone is buying, the consensus is actually optimistic.
 Either:
+
 1. Investors didn't really believe economic effects would be that bad. 
 2. Investors discounted the negative effects years into the future and rebalanced out of cash.
 3. Investors believed stocks would go up, regardless of negative economic effects.
