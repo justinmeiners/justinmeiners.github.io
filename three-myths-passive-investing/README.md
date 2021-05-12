@@ -1,6 +1,8 @@
 Three Myths about Passive Investing
 ====================================
 
+**5/3/2021**
+
 Stock markets are at tremendous highs, not only in absolute price, but also in terms of [earnings yield][1].
 At the same time we see [unsophisticated participants][2] taking incredible risks in Robinhood, Gamestop, Dogecoin, and Tesla, indicating a public excitement alongside the financial metrics.
 So is the top in?
