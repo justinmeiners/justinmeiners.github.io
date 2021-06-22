@@ -22,36 +22,35 @@ managed to catch up a bit on part 2 (even taking an additional hour!) as others 
 
 ## Part 1
 
-Let's outline a standard solution to part 1.
-We will stick to psuedocode, but at then end I will show some of my  Common Lisp code.
+Let's outline a fairly standard solution to part 1.
+We will stick to psuedocode, but at then end I will show some of my Common Lisp code.
 
 **Parsing**
 
-We need to parse the rules and turn them into a structure we can work with
+We need to parse the rules and turn them into a structure we can work with.
 I chose to transform them into an expression tree.
 A rule such as:
 
     3 4 | "a" "b"
 
-Becomes
+Becomes:
 
     (or (3 4) ("a" "b"))
 
 All the rules are stored in an array,
-with their index corresponding to rule number.
+with their index corresponding to their rule number.
 
 Lisp makes it easy to parse.
-I first replace the `|` with `^` because pie has special
-semantics for the lisp reader. 
+I first replace the `|` with `^` because pipe has special semantics for the lisp reader. 
 Whenever a rule contains a `^` I split it's components
-into a left side and right side and wrap them in an "or".
+into a left side and right side and wrap them in an `or`.
 
 **Evaluation**
 
 Now we need a recursive evaluation function to handle the rule.
-As an input, it takes a rule and a string.
-It returns `FAIL if it cannot match,
-or the modified string location if it did match.
+It takes a rule and a string as input.
+It returns `FAIL` if it cannot match,
+or the modified string location, if it did match.
 For example when the rule "a" is applied to the following string:
 
     "abc"
@@ -63,7 +62,7 @@ The evaluation recursively handles the following cases:
 - evaluate a char: check that the first character agrees
 - evaluate a number: lookup the rule at that index and evaluate it.
 - evaluate an or form `(OR r1 r2)`: evaluate both options. If one succeeded, return that. Otherwise fail.
-- evaluate a list `(r1, ... ,rn)`: evaluate each rule in the list in order. Stop early if there is a fail.
+- evaluate a list `(r1, ... ,rn)`: evaluate each rule in the list in order. Stop early if there is a failure.
                    If the string ends before the list ends, the match failed.
 
 Success is indicated by returning an empty string.
