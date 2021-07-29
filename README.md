@@ -16,6 +16,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Computer stuff I made and tutorials teaching you how to make cool stuff.
 
+- [07/28/2021 - Almost Solving the Halting Problem](almost-solving-the-halting-problem/halting-problem.pdf)
 - [04/06/2021 - Master's Thesis: Computing the Rank of Braids](https://github.com/justinmeiners/braid-rank-thesis)
 - [12/27/2020 - Advent of Code 2020 Day 18: Rethinking Operator Precedence](aoc-2020-18)
 - [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19)

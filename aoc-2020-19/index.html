@@ -121,38 +121,37 @@ managed to catch up a bit on part 2 (even taking an additional hour!) as others 
 
 <h2>Part 1</h2>
 
-<p>Let&rsquo;s outline a standard solution to part 1.
-We will stick to psuedocode, but at then end I will show some of my  Common Lisp code.</p>
+<p>Let&rsquo;s outline a fairly standard solution to part 1.
+We will stick to psuedocode, but at then end I will show some of my Common Lisp code.</p>
 
 <p><strong>Parsing</strong></p>
 
-<p>We need to parse the rules and turn them into a structure we can work with
+<p>We need to parse the rules and turn them into a structure we can work with.
 I chose to transform them into an expression tree.
 A rule such as:</p>
 
 <pre><code>3 4 | "a" "b"
 </code></pre>
 
-<p>Becomes</p>
+<p>Becomes:</p>
 
 <pre><code>(or (3 4) ("a" "b"))
 </code></pre>
 
 <p>All the rules are stored in an array,
-with their index corresponding to rule number.</p>
+with their index corresponding to their rule number.</p>
 
 <p>Lisp makes it easy to parse.
-I first replace the <code>|</code> with <code>^</code> because pie has special
-semantics for the lisp reader.
+I first replace the <code>|</code> with <code>^</code> because pipe has special semantics for the lisp reader.
 Whenever a rule contains a <code>^</code> I split it&rsquo;s components
-into a left side and right side and wrap them in an &ldquo;or&rdquo;.</p>
+into a left side and right side and wrap them in an <code>or</code>.</p>
 
 <p><strong>Evaluation</strong></p>
 
 <p>Now we need a recursive evaluation function to handle the rule.
-As an input, it takes a rule and a string.
-It returns `FAIL if it cannot match,
-or the modified string location if it did match.
+It takes a rule and a string as input.
+It returns <code>FAIL</code> if it cannot match,
+or the modified string location, if it did match.
 For example when the rule &ldquo;a&rdquo; is applied to the following string:</p>
 
 <pre><code>"abc"
@@ -166,7 +165,7 @@ For example when the rule &ldquo;a&rdquo; is applied to the following string:</p
 <li>evaluate a char: check that the first character agrees</li>
 <li>evaluate a number: lookup the rule at that index and evaluate it.</li>
 <li>evaluate an or form <code>(OR r1 r2)</code>: evaluate both options. If one succeeded, return that. Otherwise fail.</li>
-<li>evaluate a list <code>(r1, ... ,rn)</code>: evaluate each rule in the list in order. Stop early if there is a fail.
+<li>evaluate a list <code>(r1, ... ,rn)</code>: evaluate each rule in the list in order. Stop early if there is a failure.
                  If the string ends before the list ends, the match failed.</li>
 </ul>
 

@@ -1,6 +1,7 @@
 import sys
 import re
 import html
+import os
 from datetime import datetime
 from operator import itemgetter
 
@@ -36,8 +37,10 @@ for e in entries:
 
     if not e[2].startswith('http'):
         url = SITE + e[2]
-        with open(e[2] + '/README.html', 'r') as cf:
-            description = cf.read()
+        html_doc = e[2] + '/README.html'
+        if os.path.exists(html_doc):
+            with open(html_doc, 'r') as cf:
+                description = cf.read()
 
     w('<guid isPermaLink="true">{0}</guid>\n'.format(url))
 
