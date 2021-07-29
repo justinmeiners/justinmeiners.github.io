@@ -12,15 +12,12 @@ If you are interested in my professional experience, see my [CV](files/cv.pdf).
 
 Feel free to contact me at ![justin's email](mail.gif).
 
-## Projects
+## Computers
 
-Computer stuff I made and tutorials teaching you how to make cool stuff.
+Project I made and tutorials teaching you how to make cool stuff.
 
-- [07/28/2021 - Almost Solving the Halting Problem](almost-solving-the-halting-problem/halting-problem.pdf)
-- [04/06/2021 - Master's Thesis: Computing the Rank of Braids](https://github.com/justinmeiners/braid-rank-thesis)
 - [12/27/2020 - Advent of Code 2020 Day 18: Rethinking Operator Precedence](aoc-2020-18)
 - [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19)
-- [11/15/2020 - The Universal Property of Quotients](universal-property-quotients/)
 - [10/07/2020 - Derivative Map Tool](https://github.com/justinmeiners/derivative-map-tool)
 - [09/26/2020 - Understanding LINQ GroupBy](understanding-groupby/)
 - [09/12/2020 - Gesture Recognition with Line Integrals](https://justinmeiners.github.io/gesture-recognition/)
@@ -31,7 +28,6 @@ Computer stuff I made and tutorials teaching you how to make cool stuff.
 - [01/05/2019 - An Adventure in Pre-Rendered Backgrounds](https://justinmeiners.github.io/pre-rendered-backgrounds/)
 - [12/16/2018 - Write your Own Virtual Machine](https://justinmeiners.github.io/lc3-vm/)
 - [04/19/2018 - Lisp Interpreter](https://github.com/justinmeiners/lisp-interpreter)
-- [01/27/2018 - Spherical Harmonics](https://github.com/justinmeiners/spherical-harmonics)
 - [06/01/2017 - Shamans: A 3D Turn-based Strategy Game for iPad](https://justinmeiners.github.io/shamans/)
 - [05/01/2017 - Modern OpenGL](modern-opengl/)
 - [10/30/2016 - 3D Paint](3d-paint/)
@@ -45,6 +41,17 @@ Computer stuff I made and tutorials teaching you how to make cool stuff.
 - [04/07/2013 - C Foundation](https://github.com/justinmeiners/c-foundation)
 - [01/08/2013 - iOS Color Wheel](https://github.com/justinmeiners/ios-color-wheel)
 
+## Math and Theoretical CS
+
+Most of my programs use a bit of math, but this section is for those who like proofs
+and are curious beyond getting things to work.
+
+- [07/28/2021 - Almost Solving the Halting Problem](almost-solving-the-halting-problem/halting-problem.pdf)
+- [04/06/2021 - Master's Thesis: Computing the Rank of Braids](https://github.com/justinmeiners/braid-rank-thesis)
+- [11/15/2020 - The Universal Property of Quotients](universal-property-quotients/)
+- [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
+- [01/27/2018 - Spherical Harmonics](https://github.com/justinmeiners/spherical-harmonics)
+
 ## Essays
 
 Opinions, typically about philosophy, math, and computers.
@@ -55,7 +62,6 @@ Opinions, typically about philosophy, math, and computers.
 - [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
 - [01/23/2020 - Keeping Up-to-Date](keeping-up-to-date/)
 - [06/08/2019 - Think in Math. Write in Code.](think-in-math/)
-- [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
 - [02/22/2019 - The Skills Poor Programmers Lack](the-skills-programmers-lack/)
 - [11/10/2016 - HoloLens Impressions](hololens-impressions/)
 
