@@ -4,7 +4,12 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Wed, 28 Jul 2021 21:32:33 </lastBuildDate>
+<lastBuildDate>Sat, 31 Jul 2021 17:09:46 </lastBuildDate>
+<item>
+<pubDate>Sat, 31 Jul 2021 00:00:00 </pubDate>
+<title>Efficient Programming with Components</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/efficient-programming-with-components/</guid>
+</item>
 <item>
 <pubDate>Wed, 28 Jul 2021 00:00:00 </pubDate>
 <title>Almost Solving the Halting Problem</title>
