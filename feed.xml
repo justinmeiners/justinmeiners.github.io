@@ -4,7 +4,12 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sat, 31 Jul 2021 17:09:46 </lastBuildDate>
+<lastBuildDate>Sun, 19 Sep 2021 16:11:52 </lastBuildDate>
+<item>
+<pubDate>Sun, 19 Sep 2021 00:00:00 </pubDate>
+<title>Classic Colors</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/classic-colors</guid>
+</item>
 <item>
 <pubDate>Sat, 31 Jul 2021 00:00:00 </pubDate>
 <title>Efficient Programming with Components</title>
