@@ -5,103 +5,113 @@ Questioning Probability
 
 ### Are Elections Actually Random?
 
-A popular narrative explaining the outcome of the 2016 election is that the odds were in Clinton's favor.
-She just got unlucky.
-That election night, dice were cast, and she unfortunately rolled snake eyes.
-The comforting messages implied by this interpretation probably explains it's popularity;
+A popular narrative explaining the outcome of the 2016 election is Hilary Clinton just got unlucky.
+On election night, the odds were in her favor.
+But when the dice were cast she unfortunately rolled snake eyes.
+The comforting message implied by this interpretation explains it's popularity; 
 it was nobody's fault, 
 we still have the popular ideas,
 we don't even have to change our strategy to win next time.
 The alternatives are much harder to look at.
-But, the critical, yet unquestioned assumption that this narrative
-depends on is that elections are random events.
-But how similar is winning election to winning roulette?
+But, the behind this narrative is the underlying assumption
+that elections are some kind of random event.
+But, how similar is winning election to winning roulette?
 
 Let's briefly relate what actually happens on voting day.
-People wake up in the morning and make a decision whether to make their way to vote or not.
-They physically walk or drive to a voting location, and then choose who's name to record, either by pushing a button or writing it in.
+People wake up in the morning and decide to vote or not.
+Those who choose to transport themselves to a voting location,
+and then choose who's name to record, either by pushing a button or writing it in.
 Later, the votes are tallied and grouped by region and a winner is announced.
-
 Where is the randomness?
-It's hard to even find where variables might be changing rapidly.
-The media framework and campaign context is a product of months of effort.
-Each individuals broad political views are slow moving.
-They are driven by countless deeply rooted influences such as family upbringing, income, ethnicity, religion, education, culture.
-Undoubtedly all of this is very complex, much if it is unconscious and affected by PR and marketing,
- but nowhere do we see anything that looks like a random occurrence.
-It's always cause and effect, and it's not all that mysterious as you can probably make a good guess of how
-an acquaintance will vote.
+An individual might have an unexpected accident interrupting their plans 
+but this is a tiny population and should be no different than
+any other day. 
+At each step of the process it's simple cause and effect.
 
-You might argue this isn't what is really meant when "chance" is talked about in elections.
-Journalists aren't implying they function like a lottery.
-The percentages they throw around are confidence intervals.
+It's even difficult to detect rapidly changing variables that might appear random.
+The cultural and econcomic context have been slowly evolving over years.
+The media environment has been carefully constructed over months leading up to it.
+Each individuals broad political views are slow moving as 
+they are a product of deeply rooted
+influences, including family upbringing, income, ethnicity, religion, and education.
+
+Hold on a minute.
+Perhaps this is all a misunderstanding.
+Journalists don't actually believe elections function like a lottery.
+The percentages they throw around are simply confidence intervals related
+to polling (See this [Pew Research article][pew-research]).
 Pollsters can't talk to everyone in the country, so they talk to a
 sample, and then use probability to guess how likely it is that
 this sample represents the whole population.
 It's basic statistics.
 
-But, even if the numbers come from such methods,
-this is not how they are presented by journalists and
-otherwise intelligent and "scientific" people don't understand them that way either.
-If so, they would be much more concerned about finding specific gaps between the sample and population
-instead of wondering what the odds look like on their bet.
-Just look at how prevalent the random model is in these examples: 
+This may correctly describe where the numbers come from.
+Perhaps in a back office somewhere, there is a Ph.D
+in Statistics cooly measuring demographic models.
+But this is clearly not how these figures
+are presented by journalists and otherwise intelligent or
+scientific people.
+If it was, they  would be much more concerned with finding gaps
+between the sample and population, than determining their odds in the bet.
+Look at how randomness and chance is implied in the following popular media:
 
-**Election as a Pachinko Machine (1)**
+[pew-research]: https://www.pewresearch.org/fact-tank/2016/11/09/why-2016-election-polls-missed-their-mark/
+
+**Election as a Pachinko Machine**
 
 ![pachinko machine](pachinko.png)
-
-Let's hope the people making these promotions
-aren't the same as those making the models.
 
 **Election as an Unlucky Dice Roll**
 
 ![random roll](random_roll.png)
 
-Unlucky again?
-
-**A Small Probability is still a Possibility**
+**20% is still 1 in 5**
 
 ![math](math.png)
 
-Perhaps students need fewer stats classes and more critical thinking.
+**The unlikely combination**
+
+![reuters](reuters.png)
+
 
 ### Our Cultural of Randomness
 
-Questionable applications of random thinking aren't confined to politics.
-This reflects an underlying cultural trust and belief in the power of statistics.
-At first glance it appear to fit with our love of science and intelligence.
-Just look at all the numbers, equations, and graph.
-Everyone knows smart people use data to make decisions and
-it overcomes biases.
+Explanations which defer to randomness aren't confined to politics.
+Culturally, we have an underlying trust in the power of probability.
+This is perhaps driven by similar motivations as the election; avoiding assigning blame
+and considering difficult alternatives.
+Nobody knows what businesses will be succesful, just try a bunch of them.
+Don't plan too far into the future, it's going to be a different world.
+Smart people use data to make decisions and overcomes biases.
 Didn't you watch Money Ball?
- 
-But this belief actually begins with our our basic physical view;
-the world is atoms crashing into each other in the void,
+
+At a first glance, our love for randomness seems
+to be an extension of our love of science, logic, and intelligence.
+Just look at all the numbers, equations, and graphs!
+But, more fundamentally, it comes from our beliefs about the physical world; 
+the world is made up of atoms crashing into each other in the void,
 and at the atomic level quantum events are happening which we don't understand.
 Fundamentally, the  future is indefinite, uncertain, and hazy.
 We can't really plan or predict it.
 Sometimes we can setup Fleming or Darwinian-like projects to tip chance
 in our favor,
 but the best thing to do is leave all your options open to respond to unforeseen conditions.
-This indefinite attitude permeates our world with "lean startups",
-index funds, zero interest, zero savings, extracurricular, and no planning. (2)
+(See "Zero to One" for an exploration of these ideas.)
 
-But let's examine this views underlying underlying premise.
+But just like with elections, randomness as in everyday life seems a lot less
+convincing after asking a few basic questions.
 How many things in our world are actually random?
-If you believe basic physics, it doesn't appear anything at the scale of everyday life is really random.
-Every physical action is driven by cause and effect, which can be described
-at the human scale can be accurately using deterministic Newtonian relationships.
+Science and engineering are predicated on the idea that 
+the world behaves predictiably and is driven by cause and effect.
+Even if, the underlying quantum mechanics are best described
+with probabilistic models, 
+every event at the human scale can
+be accurately described using deterministic Newtonian relationships.
 
 In computer programs it's not even possible to obtain data which is truly random.
 Usually it's just a [function][5] which is hard to predict, and uses varying
 inputs like time of data.
 Better sources sample from physical motion, like air vibrations.
-When random functions aren't random enough,
-hackers can break [encryption][1].
-
-Just like the 2016 election, it doesn't take scrutiny to realize that most subjects of statistical study
-are not actually driven by chance.
 
 ### When is Probability Useful?
 
@@ -188,16 +198,9 @@ for explanatory theory.
 
 **Notes**
 
-(1) Pachinko might be a good model to predict whether an INDIVIDUAL voter will make it to the voting
-location, as intended. Each peg represents an event encouraging or discouraging them (medical emergencies, flat tires, relationship trouble).
-But these don't happen very often and the vast majority of those determined follow through with their intentions.
-
-(2) For an exploration of these ideas see Zero To One by Peter Thiel.
-
 (3) For a specific examples see the derivations for the equations of [motion of gasses][3]
 or how probability is used to [estimating integrals][2].
 
-[1]: https://en.wikipedia.org/wiki/Random_number_generator_attack
 [2]: https://en.wikipedia.org/wiki/Monte_Carlo_method
 [3]: https://en.wikipedia.org/wiki/Kinetic_theory_of_gases
 [4]: http://classics.mit.edu/Plato/republic.11.x.html
