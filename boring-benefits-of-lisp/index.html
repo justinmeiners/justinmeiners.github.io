@@ -102,50 +102,66 @@ td { vertical-align: top; }
 
 <p><strong>10/07/20</strong></p>
 
-<p>Lisp (both Common Lisp and Scheme) advocates are famous for having extravagant reasons for why Lisp is their favorite language.
-You might have heard claims that it&rsquo;s the <a href="http://www.paulgraham.com/avg.html">most powerful language</a>,
-due to feature like <a href="http://gigamonkeys.com/book/macros-defining-your-own.html">macros</a> or <a href="https://en.wikipedia.org/wiki/Homoiconicity">homioconicty</a>.
-Certainly, Lisp has no shortage of beautiful and thought provoking ideas,
-but due to it&rsquo;s influence, most of its benefits have now been included
-in modern languages.
-But, fancy language abstractions <a href="https://justinmeiners.github.io/think-in-math/">don&rsquo;t appeal to me</a>,
-so the whole meta-programming thing isn&rsquo;t compelling.
-I am now interested in it for very simple and practical reasons;</p>
+<p>Lisp advocates are famous for having elaborate reasons for why Lisp is their favorite language.
+You might have heard that it&rsquo;s the <a href="http://www.paulgraham.com/avg.html">most powerful language</a>,
+thanks to features like <a href="http://gigamonkeys.com/book/macros-defining-your-own.html">macros</a>, first class functions, and <a href="https://en.wikipedia.org/wiki/Homoiconicity">homioconicity</a>.
+Certainly, Lisp has no shortage of beautiful and influential ideas.
+But, almost every modern language has copied it&rsquo;s most productive features.
+Are there still compelling reasons to use it in production?</p>
 
-<ol>
-<li>Common Lisp and Scheme are both fully standardized language with specifications.
-Consequently, they are well understood, cross-platform, and has multiple implementations, including several with free licenses.</li>
-<li>Lisp has great documentation, books, and learning resources. SICP is &ldquo;the book&rdquo; for Scheme.
-Common Lisp has several good ones.</li>
-<li>Lisp is mature and extremely stable. Code be written once, and run again years later, without modification.</li>
-<li>Lisp implementations are reasonably fast. The true believers claim Common Lisp is as fast as C. In general it&rsquo;s not even close, but for a high-level, dynamic, language, <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html">it&rsquo;s pretty fast</a>.</li>
-<li>Lisp is well designed and follows solid computer science principles.
+<p>For me there are. But, my interest is much more boring and practical.
+Fancy language abstractions <a href="https://justinmeiners.github.io/think-in-math/">don&rsquo;t appeal to me</a>,
+so the whole meta-programming isn&rsquo;t as important.
+What I do care about is a reliable and stable ecosystem which
+allows me to write quality code that can last for a long time.
+Consider the following features:</p>
+
+<ul>
+<li><strong>Standards:</strong> Common Lisp and Scheme are both fully standardized language with specifications.
+ Consequently, they are well understood, cross-platform, and have diverse implementations,
+  including several with free licenses.</li>
+<li><strong>Documentation:</strong>  <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">SICP</a> is &ldquo;the book&rdquo; for Scheme and computer science.
+  Common Lisp has several great books worth reading even if you don&rsquo;t care about Lisp (see <a href="https://github.com/norvig/paip-lisp/">PAIP</a>).
+  The <a href="http://www.lispworks.com/documentation/lw50/CLHS/Front/index.htm">CLHS</a> is as reliable and thorough as any languae.</li>
+<li><strong>Stability:</strong> Lisp has been around since the 60s and the ANSI standard about 30 years.
+  It is extremely stable. Code be written once, and run again years later, without modification.</li>
+<li><strong>Efficiency:</strong> Lisp implementations are reasonably fast.
+  The true believers claim Common Lisp is as fast as C,
+  it&rsquo;s probably much closer to Java.
+  But, for a high-level, dynamic, language, <a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html">it&rsquo;s pretty fast</a>.</li>
+<li><strong>Design:</strong> Lisp is well designed and founded on solid computer science principles.
 It has a focused selection of features and an elegant evaluation model which make it easy to
 write and compose functionality.</li>
-</ol>
+</ul>
 
 
-<p>You might think, this list of features isn&rsquo;t remarkable or unique to Lisp,
-and you would be correct.
-In fact, this pattern was actually established by ANSI C first, and later adopted by Lisp.
-But, the surprising thing is how few languages since have followed it&rsquo;s lead.
+<p>You might think this list of features isn&rsquo;t remarkable or unique to Lisp.
+That&rsquo;s certainly true.
+C did them first, and established them as the recipe for releasing a succesful language.
+Languages since have followed various steps, but the suprising thing
+is how few of them actually ended up with all the ingredients.
 Of course each item in this list is somewhat of a spectrum; some languages do more than others,
-but very few follow it to a degree that can be asserted with confidence.
+but very few langauges follow it to a degree that can be asserted with confidence.
 Usually, you can say a language somewhat satisfies it, followed by a list of ugly qualifications.</p>
 
-<p>Take Python for example. It&rsquo;s well designed, has great resources, is fairly stable.
+<p>Take Python for example. It&rsquo;s well designed, has great books and documentation, is fairly stable.
 It has an <a href="https://norvig.com/python-lisp.html">elegant design</a> inspired by Lisp.
-But, is it standardized? Kind of, they have a spec, but it has one defacto implementation.
-The CPython project does whatever they want, and this defines what the language is, forcing others to follow along.
+But, is it standardized? Not really. They have a spec, but it only has one defacto implementation
+and changes all the time.
+Whatever the CPython project choses to do defines the language.
 Alternative implementations exist, but they all have compatibility compromises.
-Python is also not very fast. You can use a <a href="https://www.pypy.org">JIT</a> implementation which makes it tolerable,
+Python is also not very efficient.
+You can use a <a href="https://www.pypy.org">JIT</a> implementation which makes it tolerable,
 but that has its own quirks, and you can&rsquo;t use many libraries with it.</p>
 
-<p>So are Lisp and C the only languages that are based on performance, robust standards, and free software?
-No, but there aren&rsquo;t as many as you think.
-Lisp just happens to be one of them, and it&rsquo;s a design that I enjoy using and learning about.</p>
+<p>Lisp and C aren&rsquo;t the only languages with all these benefits,
+but there aren&rsquo;t as many as you think.
+Since Lisp has these great features and a design I enjoy using and studying
+it&rsquo;s become my go-to language.</p>
 
-<p><strong>Update: 4/30/21</strong>: I recommend the article <a href="https://begriffs.com/posts/2020-08-31-portable-stable-software.html">&ldquo;Tips for stable and portable software&rdquo;</a> which  discusses principles of stability, not only at the language level, but in the whole stack. It shows
-practical examples of things to look for in programming languages and Unix environments.</p>
+<p><strong>Update: 4/30/21</strong>: I recommend the article <a href="https://begriffs.com/posts/2020-08-31-portable-stable-software.html">&ldquo;Tips for stable and portable software&rdquo;</a> which discusses principles of stability at the language level, as well as the entire OS stack. It offers
+specific advice for reliable unix software.</p>
+
+<p><strong>Update: 09/23/21</strong>: Edited to clarify intended message.</p>
 </body>
 </html>
