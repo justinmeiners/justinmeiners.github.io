@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Thu, 23 Sep 2021 23:43:46 </lastBuildDate>
+<lastBuildDate>Thu, 23 Sep 2021 23:45:06 </lastBuildDate>
 <item>
 <pubDate>Sun, 19 Sep 2021 00:00:00 </pubDate>
 <title>Classic Colors</title>
@@ -1177,7 +1177,7 @@ Consider the following features:</p>
   including several with free licenses.</li>
 <li><strong>Documentation:</strong>  <a href="https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html">SICP</a> is &ldquo;the book&rdquo; for Scheme and computer science.
   Common Lisp has several great books worth reading even if you don&rsquo;t care about Lisp (see <a href="https://github.com/norvig/paip-lisp/">PAIP</a>).
-  The <a href="http://www.lispworks.com/documentation/lw50/CLHS/Front/index.htm">CLHS</a> is as reliable and thorough as any languae.</li>
+  The <a href="http://www.lispworks.com/documentation/lw50/CLHS/Front/index.htm">CLHS</a> is as reliable and thorough as any language.</li>
 <li><strong>Stability:</strong> Lisp has been around since the 60s and the ANSI standard about 30 years.
   It is extremely stable. Code be written once, and run again years later, without modification.</li>
 <li><strong>Efficiency:</strong> Lisp implementations are reasonably fast.
@@ -1192,18 +1192,18 @@ write and compose functionality.</li>
 
 <p>You might think this list of features isn&rsquo;t remarkable or unique to Lisp.
 That&rsquo;s certainly true.
-C did them first, and established them as the recipe for releasing a succesful language.
-Languages since have followed various steps, but the suprising thing
+C did them first, and established them as the recipe for releasing a successful language.
+Languages since have followed various steps, but the surprising thing
 is how few of them actually ended up with all the ingredients.
 Of course each item in this list is somewhat of a spectrum; some languages do more than others,
-but very few langauges follow it to a degree that can be asserted with confidence.
+but very few languages follow it to a degree that can be asserted with confidence.
 Usually, you can say a language somewhat satisfies it, followed by a list of ugly qualifications.</p>
 
 <p>Take Python for example. It&rsquo;s well designed, has great books and documentation, is fairly stable.
 It has an <a href="https://norvig.com/python-lisp.html">elegant design</a> inspired by Lisp.
 But, is it standardized? Not really. They have a spec, but it only has one defacto implementation
 and changes all the time.
-Whatever the CPython project choses to do defines the language.
+Whatever the CPython project chooses to do defines the language.
 Alternative implementations exist, but they all have compatibility compromises.
 Python is also not very efficient.
 You can use a <a href="https://www.pypy.org">JIT</a> implementation which makes it tolerable,

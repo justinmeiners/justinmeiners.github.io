@@ -22,7 +22,7 @@ Consider the following features:
     including several with free licenses.
 - **Documentation:**  [SICP][sicp] is "the book" for Scheme and computer science.
     Common Lisp has several great books worth reading even if you don't care about Lisp (see [PAIP][paip]).
-    The [CLHS][clhs] is as reliable and thorough as any languae.
+    The [CLHS][clhs] is as reliable and thorough as any language.
 - **Stability:** Lisp has been around since the 60s and the ANSI standard about 30 years.
     It is extremely stable. Code be written once, and run again years later, without modification.
 - **Efficiency:** Lisp implementations are reasonably fast.
@@ -35,18 +35,18 @@ Consider the following features:
   
 You might think this list of features isn't remarkable or unique to Lisp.
 That's certainly true.
-C did them first, and established them as the recipe for releasing a succesful language.
-Languages since have followed various steps, but the suprising thing
+C did them first, and established them as the recipe for releasing a successful language.
+Languages since have followed various steps, but the surprising thing
 is how few of them actually ended up with all the ingredients.
 Of course each item in this list is somewhat of a spectrum; some languages do more than others,
-but very few langauges follow it to a degree that can be asserted with confidence.
+but very few languages follow it to a degree that can be asserted with confidence.
 Usually, you can say a language somewhat satisfies it, followed by a list of ugly qualifications.
 
 Take Python for example. It's well designed, has great books and documentation, is fairly stable.
 It has an [elegant design][norvig-python] inspired by Lisp.
 But, is it standardized? Not really. They have a spec, but it only has one defacto implementation
 and changes all the time.
-Whatever the CPython project choses to do defines the language. 
+Whatever the CPython project chooses to do defines the language. 
 Alternative implementations exist, but they all have compatibility compromises.
 Python is also not very efficient.
 You can use a [JIT][pypy] implementation which makes it tolerable,
