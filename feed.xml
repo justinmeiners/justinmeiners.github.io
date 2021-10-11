@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sat, 31 Jul 2021 17:09:46 </lastBuildDate>
+<lastBuildDate>Sun, 10 Oct 2021 20:49:13 </lastBuildDate>
 <item>
 <pubDate>Sat, 31 Jul 2021 00:00:00 </pubDate>
 <title>Efficient Programming with Components</title>
@@ -737,163 +737,186 @@ such as the chapter on <a href="https://en.wikipedia.org/wiki/Seifert%E2%80%93va
 
 <h3>Are Elections Actually Random?</h3>
 
-<p>A popular narrative explaining the outcome of the 2016 election is that the odds were in Clinton&rsquo;s favor.
-She just got unlucky.
-That election night, dice were cast, and she unfortunately rolled snake eyes.
-The comforting messages implied by this interpretation probably explains it&rsquo;s popularity;
-it was nobody&rsquo;s fault,
-we still have the popular ideas,
-we don&rsquo;t even have to change our strategy to win next time.
-The alternatives are much harder to look at.
-But, the critical, yet unquestioned assumption that this narrative
-depends on is that elections are random events.
-But how similar is winning election to winning roulette?</p>
+<p>A popular narrative explaining the outcome of the 2016 election is Hilary Clinton was just unlucky.
+On election night, the odds were in her favor.
+But when the dice were cast she unfortunately rolled snake eyes.
+If the election were just run another day, she would win.</p>
 
-<p>Let&rsquo;s briefly relate what actually happens on voting day.
-People wake up in the morning and make a decision whether to make their way to vote or not.
-They physically walk or drive to a voting location, and then choose who&rsquo;s name to record, either by pushing a button or writing it in.
-Later, the votes are tallied and grouped by region and a winner is announced.</p>
+<p>The underlying assumption is that elections are sort of random.
+But, how similar is winning an election to playing roulette?
+Let&rsquo;s briefly relate what actually happens on voting day.
+People who wish to vote, visit a voting location.
+They select a name either by pushing a button or writing it in.
+Later, the votes are tallied and grouped by region and a winner is announced.
+Where is the randomness?
+At each step of the process it&rsquo;s observable cause and effect.</p>
 
-<p>Where is the randomness?
-It&rsquo;s hard to even find where variables might be changing rapidly.
-The media framework and campaign context is a product of months of effort.
-Each individuals broad political views are slow moving.
-They are driven by countless deeply rooted influences such as family upbringing, income, ethnicity, religion, education, culture.
-Undoubtedly all of this is very complex, much if it is unconscious and affected by PR and marketing,
- but nowhere do we see anything that looks like a random occurrence.
-It&rsquo;s always cause and effect, and it&rsquo;s not all that mysterious as you can probably make a good guess of how
-an acquaintance will vote.</p>
+<p>An individual might have an unexpected accident, preventing them
+from voting,
+but like most other days,
+the vast majority of the population is able to carry out their intentions.
+It&rsquo;s even difficult to detect rapidly changing variables
+which might appear random.
+The cultural and economic context have been slowly evolving over years.
+The media environment has been built up over months leading up to it.
+Individual&rsquo;s political views move slowly as
+they are predominantly a product of deeply rooted
+influences, including family upbringing, income, ethnicity, religion, and education.</p>
 
-<p>You might argue this isn&rsquo;t what is really meant when &ldquo;chance&rdquo; is talked about in elections.
-Journalists aren&rsquo;t implying they function like a lottery.
-The percentages they throw around are confidence intervals.
-Pollsters can&rsquo;t talk to everyone in the country, so they talk to a
+<p>If the unlucky dice roll doesn&rsquo;t hold up to a little scrutiny, then why is this view so popular?
+Perhaps it is because its message avoids uncomfortable conclusions.
+If it was just bad lack, then
+it was nobody&rsquo;s fault.
+We still have the popular ides.
+It&rsquo;s not even clear that our strategy must change to win next time.
+The alternatives are much harder to look at.</p>
+
+<p>Hold on a minute.
+Perhaps this is all a misunderstanding.
+People don&rsquo;t actually believe elections function like a lottery.
+When journalists use percentages they are just referring to the confidence intervals
+of polls.
+Pollsters want to survey public opinion.
+But, they can&rsquo;t talk to everyone in the country, so they talk to a
 sample, and then use probability to guess how likely it is that
 this sample represents the whole population.
-It&rsquo;s basic statistics.</p>
+It&rsquo;s basic statistics (as described in this <a href="https://www.pewresearch.org/fact-tank/2016/11/09/why-2016-election-polls-missed-their-mark/">Pew Research article</a>).</p>
 
-<p>But, even if the numbers come from such methods,
-this is not how they are presented by journalists and
-otherwise intelligent and &ldquo;scientific&rdquo; people don&rsquo;t understand them that way either.
-If so, they would be much more concerned about finding specific gaps between the sample and population
-instead of wondering what the odds look like on their bet.
-Just look at how prevalent the random model is in these examples:</p>
+<p>This may correctly describe where the numbers come from.
+Perhaps in a back office somewhere, there actually is a Ph.D
+in Stats coolly scrutinizing surveying models.
+But this is clearly not how these figures are interpreted
+ by journalists and otherwise intelligent or
+scientific people.
+If it was, they  would be concerned with potential gaps
+between sample and population, instead of calculating their odds.
+Look at how randomness and chance is implied in the following popular media:</p>
 
-<p><strong>Election as a Pachinko Machine (1)</strong></p>
+<p><strong>Election as a Pachinko/Plinko Machine</strong></p>
+
+<p>From: <a href="https://presidential-plinko.com/">presidential-plinko.com</a>,
+a site created by a Northwestern University professor.</p>
 
 <p><img src="pachinko.png" alt="pachinko machine" /></p>
 
-<p>Let&rsquo;s hope the people making these promotions
-aren&rsquo;t the same as those making the models.</p>
-
 <p><strong>Election as an Unlucky Dice Roll</strong></p>
+
+<p>From Paul Graham&rsquo;s Twitter, a popular figure in tech and startups.</p>
 
 <p><img src="random_roll.png" alt="random roll" /></p>
 
-<p>Unlucky again?</p>
+<p><strong>20% is still 1 in 5</strong></p>
 
-<p><strong>A Small Probability is still a Possibility</strong></p>
+<p>A comment on the Silicon Valley forum &ldquo;Hacker News&rdquo;.</p>
 
 <p><img src="math.png" alt="math" /></p>
 
-<p>Perhaps students need fewer stats classes and more critical thinking.</p>
+<p><strong>The unlikely combination</strong></p>
 
-<h3>Our Cultural of Randomness</h3>
+<p>From <a href="https://www.reuters.com/article/us-usa-election-poll/clinton-has-90-percent-chance-of-winning-reuters-ipsos-states-of-the-nation-idUSKBN1322J1">Reuters</a>.</p>
 
-<p>Questionable applications of random thinking aren&rsquo;t confined to politics.
-This reflects an underlying cultural trust and belief in the power of statistics.
-At first glance it appear to fit with our love of science and intelligence.
-Just look at all the numbers, equations, and graph.
-Everyone knows smart people use data to make decisions and
-it overcomes biases.
-Didn&rsquo;t you watch Money Ball?</p>
+<p><img src="reuters.png" alt="reuters" /></p>
 
-<p>But this belief actually begins with our our basic physical view;
-the world is atoms crashing into each other in the void,
-and at the atomic level quantum events are happening which we don&rsquo;t understand.
-Fundamentally, the  future is indefinite, uncertain, and hazy.
-We can&rsquo;t really plan or predict it.
-Sometimes we can setup Fleming or Darwinian-like projects to tip chance
-in our favor,
-but the best thing to do is leave all your options open to respond to unforeseen conditions.
-This indefinite attitude permeates our world with &ldquo;lean startups&rdquo;,
-index funds, zero interest, zero savings, extracurricular, and no planning. (2)</p>
+<p>If so many smart people are doing inappropriate probabilistic thinking in this area,
+are there others where we might be making similar mistakes?</p>
 
-<p>But let&rsquo;s examine this views underlying underlying premise.
-How many things in our world are actually random?
-If you believe basic physics, it doesn&rsquo;t appear anything at the scale of everyday life is really random.
-Every physical action is driven by cause and effect, which can be described
-at the human scale can be accurately using deterministic Newtonian relationships.</p>
+<h3>A Cultural Belief in Randomness</h3>
 
-<p>In computer programs it&rsquo;s not even possible to obtain data which is truly random.
-Usually it&rsquo;s just a <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">function</a> which is hard to predict, and uses varying
-inputs like time of data.
-Better sources sample from physical motion, like air vibrations.
-When random functions aren&rsquo;t random enough,
-hackers can break <a href="https://en.wikipedia.org/wiki/Random_number_generator_attack">encryption</a>.</p>
+<p>Stats is  at the forefront of business, marketing, medicine, sports, finance, academia, and science.
+Many of it&rsquo;s concrete applications are no doubt useful and appropriate.
+But, our society&rsquo;s interest in it goes well beyond it&rsquo;s technical or economic usefulness.
+Its popularity is partially an extension of our love for science and logic.
+Just look at all the numbers, equations, and graphs!
+But, that also isn&rsquo;t enough to explain its significance.
+Consider the following ideas prominent in popular culture:</p>
 
-<p>Just like the 2016 election, it doesn&rsquo;t take scrutiny to realize that most subjects of statistical study
-are not actually driven by chance.</p>
+<ul>
+<li>Don&rsquo;t plan too far into the future, or commit to any one thing in your career.
+Nobody knows what the world will look like the future (see &ldquo;Zero to One&rdquo; chapter 6 for more on these ideas).</li>
+<li>Scientific discovery is mostly good luck.
+The best we can do is setup Fleming or Darwinian style projects
+to tip chance in our favor.</li>
+<li>Stats and data are the way smart people make decisions and overcomes biases.
+Don&rsquo;t blinded by personal experience and intuition. Haven&rsquo;t you seen Money Ball?</li>
+<li>Nobody knows which business ventures will be successful, just try a bunch of them.
+Invest in startup incubators or index funds.</li>
+<li>The universe is just atoms crashing into each other in the void,
+combined with strange quantum uncertainty.
+Who knows what will happen.
+It might even form a new universe.</li>
+<li>Nobody knows how to solve hard computer science problems like computer vision,
+or understanding natural language.
+If we correlate a bunch of data with a machine learning
+system, it will probably do figure out what&rsquo;s going on.</li>
+</ul>
+
+
+<p>If we apply the same step-by-step analysis
+as we did with the election, these ideas immediately begin to seem
+ less plausible, or at least in need of some qualification and refinement.
+Perhaps the cultural prevalence of randomness nudges us to reach for that option more
+often than alternatives.
+Contributing to this bias is the fact that randomness can provide us with comfortable answers to hard questions,
+or mask the fact that the underlying mechanisms are not well understood.</p>
 
 <h3>When is Probability Useful?</h3>
 
-<p>That is not to suggest that the entire field is misguided.
-Probability itself is a sound mathematical model, central
-to scientific inquiry.
-But, if the required axiom of having a random variable
-is virtually always false, then why should we ever hope to apply it
-in the real world?</p>
+<p>Let&rsquo;s step back a bit.
+Probability itself is a sound mathematical model.
+Just because an underlying process is not random,
+does not mean that probability cannot offer an accurate description
+or be a useful tool.
+Sometimes statistics is the best way to talk about complicated deterministic systems.</p>
 
-<p>We have already talked about one use case.
-Reasoning about a population from a sample.
-Ignoring the missing principle of uniformity in nature, and whether
-distributions are correct, this is still a helpful way to study
-large groups.</p>
+<p>For example, statistics can be used in physics to describe
+the motion of bodies, which can otherwise be accurately described
+by deterministic cause and effect.
+A gas might be modeled as a cloud of individual particles, each
+of which is well understood, but there may just be too many
+of them to keep track of.
+Because, the task is overwhelming, and we care most about the global behavior,
+ we settle for partial information (see <a href="https://en.wikipedia.org/wiki/Kinetic_theory_of_gases">Wikipedia</a>).</p>
 
-<p>Another use case is when there are just too many variables to understand.
-When we have a cause and effect theory, but too many input variables,
-it&rsquo;s overwhelming to use, so we settle for partial information.
-Consider a dice roll.
-Through classical mechanics we can understand gravity, the force of the throw, the friction in the air,
+<p>Consider even a dice roll.
+With Newtonian mechanics we can understand gravity, the force of the throw, the friction in the air,
 the impact on the table,
-and with all this make an accurate description of the outcome.
+and with all this make an accurate prediction of the outcome.
 But no human can capture all those parameters in a split second and apply them.
-Without a controlled environment for study probability is a good model.</p>
+Without a controlled environment for study, probability is a good model.</p>
 
-<p>However, statistical physical models don&rsquo;t just making random assignments.
-They tightly constrain the probability with deterministic mathematics,
-such as using regular formulas for area and force. (3)
-Furthermore, they never imply an underlying law of randomness.
-Rather they are useful compromises with tolerable inaccuracies.</p>
+<p>Computers despite being artificially deterministic, benefit
+greatly from probability.
+Random numbers generated on a computer are usually just <a href="https://en.wikipedia.org/wiki/Pseudorandom_number_generator">functions</a> which are difficult to predict.
+Despite this, they can compute and solve problems using probability (see <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo methods</a>).</p>
 
-<p>The most common use case for statistics,
-and the one that needs to be scrutinized the most,
-is when you don&rsquo;t really
-understand cause and effect relationships.
-Without a workable theory of nature, stats act as an adhoc placeholder.
-Data gets mapped to distributions, and patterns get correlated,
-without considering how the underlying objects works.</p>
-
-<p>When this is your only option, it&rsquo;s probably better than nothing.
-But, you have to be honest about the limitations.
-You definitely shouldn&rsquo;t be surprised to find &ldquo;black swans&rdquo;
-when all you did is plot a bell curve,
-and hope everything else follows uniformly.</p>
-
-<p>Consider two fields almost synonymous with stats; economics and psychology.
-Does anyone have a clear picture of how markets function,
-or the causes of inflation?
-Can anyone give an account of why people think and believe what they do?
-Of course not, and the popular theories change rapidly and dramatically.
-There are are a lot of variables in these domains
-too, so perhaps probability models are unavoidable.
-But clearly they are lacking in explanatory theories.
-Maybe a scientific theory isn&rsquo;t even possible.</p>
+<p>The difference then between helpful and misleading attributions of randomness,
+is of course how closely the model actually resembles reality.
+Statistical models in physics don&rsquo;t just start by assuming processes are random.
+They construct deterministic relationships between the elements; the energy, the area, the force,
+ and then insert a tiny amount of probability to account for the arts that are too complex.
+The random processes are tightly constrained by the physical laws.
+Furthermore, they can usually quantify the information lost by assuming randomness.</p>
 
 <h3>A Universal Way of Understanding</h3>
 
-<p>In <a href="http://classics.mit.edu/Plato/republic.11.x.html">The Republic X</a>, Plato observes a related attitude in painting and poetry.
-He describes their practice as giving an appearance of understanding through shallow, and quickly made presentations:</p>
+<p>It may seem like the only conclusion we can draw is,
+&ldquo;lazily constructed models give poor results&rdquo;.
+But, this analysis also reveals how backwards common statistical practices is.
+Statistics is the go-to tool when we have no ideas what&rsquo;s going on.
+Fields like politics, financial markets, and human behavior come to mind.
+Instead of starting with well understood systems and then carefully relaxing
+assumptions and summarizing details,
+Data is automatically correlated,
+and everything is basically assumed to follow random distributions.
+Randomness replaces cause and effect,
+instead of working in concert with it.</p>
+
+<p>The sophistication of the math involved,
+disguises all this.
+But, is it any surprise that we observe &ldquo;black swan&rdquo; events when we assume
+everything uniformly follows a bell curve?</p>
+
+<p>In <a href="http://classics.mit.edu/Plato/republic.11.x.html">The Republic X</a>, Plato observes a related attitude in painting and poetry:</p>
 
 <blockquote><p>The imitator, I said, is a long way off the truth, and can do all things because he lightly touches on a small part of them, and that part an image.
 For example: A painter will paint a cobbler, carpenter, or any other artist, though he knows nothing of their arts; and, if he is a good artist, he may deceive children or simple persons, when he shows them his picture of a carpenter from a distance, and they will fancy that they are looking at a real carpenter.</p>
@@ -905,7 +928,7 @@ For example: A painter will paint a cobbler, carpenter, or any other artist, tho
 <p>Statistics students and professionals hold the same remarkable belief about their own field today.
 They don&rsquo;t need to study any subject or &ldquo;applications&rdquo;, besides statistics itself.
 Their statistical knowledge is immediately transferable to
-understanding any problem thrown their way, whether in tech, business, politics, finance, or healthcare.
+understanding any problem thrown their way.
 It&rsquo;s a universal framework for understanding.
 This makes it the perfect career in the culture of randomness, and ironically
 minimize the need to make predictions about the future.</p>
@@ -914,20 +937,10 @@ minimize the need to make predictions about the future.</p>
 Can you understand voting patterns without understanding what
 is happening in people&rsquo;s lives?
 Can you understand psychology without thinking, observing, and talking to people?
-Lack of basic knowledge and experience leave a lot to be desired.
-In these areas, as in politics, we can conclude that probability and statistics are poor substitutes
+In these areas, as in politics, we can conclude that probability and statistics are being used as poor substitutes
 for explanatory theory.</p>
 
-<p><strong>Notes</strong></p>
-
-<p>(1) Pachinko might be a good model to predict whether an INDIVIDUAL voter will make it to the voting
-location, as intended. Each peg represents an event encouraging or discouraging them (medical emergencies, flat tires, relationship trouble).
-But these don&rsquo;t happen very often and the vast majority of those determined follow through with their intentions.</p>
-
-<p>(2) For an exploration of these ideas see Zero To One by Peter Thiel.</p>
-
-<p>(3) For a specific examples see the derivations for the equations of <a href="https://en.wikipedia.org/wiki/Kinetic_theory_of_gases">motion of gasses</a>
-or how probability is used to <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">estimating integrals</a>.</p>
+<p><strong>Update 09/25/2021:</strong> Heavily edited the second half to clarify intended message. The election discussion is largely the same.</p>
 
  ]]></description>
 </item>
