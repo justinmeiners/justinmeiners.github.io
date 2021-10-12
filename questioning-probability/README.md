@@ -6,18 +6,18 @@ Questioning Probability
 ### Are Elections Actually Random?
 
 A popular narrative explaining the outcome of the 2016 election is Hilary Clinton was just unlucky.
-On election night, the odds were in her favor.
-But when the dice were cast she unfortunately rolled snake eyes.
-If the election were just run another day, she would win.
+On election night, the odds were in her favor,
+but when the dice were cast she unfortunately rolled snake eyes.
+In a weird way, if the election were just run another day, she would win.
 
 The underlying assumption is that elections are sort of random.
 But, how similar is winning an election to playing roulette?
 Let's briefly relate what actually happens on voting day.
-People who wish to vote, visit a voting location.
+People who want to vote, visit a voting location.
 They select a name either by pushing a button or writing it in.
 Later, the votes are tallied and grouped by region and a winner is announced.
 Where is the randomness?
-At each step of the process it's observable cause and effect.
+At each step of the process it's simple cause and effect.
 
 An individual might have an unexpected accident, preventing them
 from voting,
@@ -27,7 +27,7 @@ It's even difficult to detect rapidly changing variables
 which might appear random.
 The cultural and economic context have been slowly evolving over years.
 The media environment has been built up over months leading up to it.
-Individual's political views move slowly as 
+Individual's political views move slowly, as 
 they are predominantly a product of deeply rooted
 influences, including family upbringing, income, ethnicity, religion, and education.
 

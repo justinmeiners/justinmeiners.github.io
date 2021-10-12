@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sun, 10 Oct 2021 20:49:55 </lastBuildDate>
+<lastBuildDate>Mon, 11 Oct 2021 21:46:33 </lastBuildDate>
 <item>
 <pubDate>Sun, 19 Sep 2021 00:00:00 </pubDate>
 <title>Classic Colors</title>
@@ -743,18 +743,18 @@ such as the chapter on <a href="https://en.wikipedia.org/wiki/Seifert%E2%80%93va
 <h3>Are Elections Actually Random?</h3>
 
 <p>A popular narrative explaining the outcome of the 2016 election is Hilary Clinton was just unlucky.
-On election night, the odds were in her favor.
-But when the dice were cast she unfortunately rolled snake eyes.
-If the election were just run another day, she would win.</p>
+On election night, the odds were in her favor,
+but when the dice were cast she unfortunately rolled snake eyes.
+In a weird way, if the election were just run another day, she would win.</p>
 
 <p>The underlying assumption is that elections are sort of random.
 But, how similar is winning an election to playing roulette?
 Let&rsquo;s briefly relate what actually happens on voting day.
-People who wish to vote, visit a voting location.
+People who want to vote, visit a voting location.
 They select a name either by pushing a button or writing it in.
 Later, the votes are tallied and grouped by region and a winner is announced.
 Where is the randomness?
-At each step of the process it&rsquo;s observable cause and effect.</p>
+At each step of the process it&rsquo;s simple cause and effect.</p>
 
 <p>An individual might have an unexpected accident, preventing them
 from voting,
@@ -764,7 +764,7 @@ It&rsquo;s even difficult to detect rapidly changing variables
 which might appear random.
 The cultural and economic context have been slowly evolving over years.
 The media environment has been built up over months leading up to it.
-Individual&rsquo;s political views move slowly as
+Individual&rsquo;s political views move slowly, as
 they are predominantly a product of deeply rooted
 influences, including family upbringing, income, ethnicity, religion, and education.</p>
 
