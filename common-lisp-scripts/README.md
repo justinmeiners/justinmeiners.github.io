@@ -103,8 +103,8 @@ Here is an example build process:
 
        #!/usr/bin/sbcl --script
        (load "/usr/local/lib/myapp/bundle.lisp")
-       (asdf:load-system "yourapp")
-       (yourapp:do-stuff)
+       (asdf:load-system "myapp")
+       (myapp:do-stuff)
 
 [buildapp]: https://www.xach.com/lisp/buildapp/
 [small-cli]: https://stevelosh.com/blog/2021/03/small-common-lisp-cli-programs/

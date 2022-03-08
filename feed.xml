@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Mon, 07 Mar 2022 23:06:17 </lastBuildDate>
+<lastBuildDate>Mon, 07 Mar 2022 23:09:53 </lastBuildDate>
 <item>
 <pubDate>Mon, 07 Mar 2022 00:00:00 </pubDate>
 <title>Literate programming is much more than commenting code</title>
@@ -122,8 +122,8 @@ For example:</p>
 
 <pre><code>#!/usr/bin/sbcl --script
 (load "/usr/local/lib/myapp/bundle.lisp")
-(asdf:load-system "yourapp")
-(yourapp:do-stuff)
+(asdf:load-system "myapp")
+(myapp:do-stuff)
 </code></pre></li>
 </ol>
 
