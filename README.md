@@ -16,6 +16,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Project I made and tutorials teaching you how to make cool stuff.
 
+- [03/07/2022 - Literate programming is much more than commenting code](https://justinmeiners.github.io/literate-programming/)
 - [03/05/2022 - Deploying Common Lisp Scripts](common-lisp-scripts)
 - [09/19/2021 - Classic Colors](https://github.com/justinmeiners/classic-colors)
 - [07/31/2021 - Efficient Programming with Components](https://justinmeiners.github.io/efficient-programming-with-components/)

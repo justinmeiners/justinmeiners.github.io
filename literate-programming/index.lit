@@ -1,0 +1,199 @@
+# Literate programming is much more than commenting code
+
+**03/07/22**
+
+Most programmers haven't heard of [literate programming][literate-programming],
+and the few that have tend to think it means writing a lot of comments around your code.
+However, simply explaining code with prose, *does not* constitute literate programming.
+Consider the following quote from it's inventor Donald Knuth:
+
+>  Some of my major programs could not have been written with any other methodology that I've ever heard of.
+> The complexity was simply too daunting for my limited brain to handle;
+> without literate programming, the whole enterprise would have flopped miserably.
+> ... Literate programming is what you need to rise above the ordinary level of achievement
+
+Does this extraordinary leap in effectiveness sound like something that comes from re-explaining what code does?
+I didn't think so.
+
+The real advantages of literate programming come from the following principles. 
+
+1. Code should be written for humans not machines.
+
+2. Program designers utilize many types of information, not just code.
+
+Literate programming systems help programmers apply these principles
+by providing two standard operations **tangle** and **weave** which
+ manipulate and organize source code.
+
+## Tangle
+
+Literate programs are written in plain text documents,
+but between the traditional prose, blocks of code (in any language) are interleaved.
+For example:
+
+--- test subsets
+console.log( subsets([1, 2, 3, 4]) );
+---
+
+They are similar to founded on the markdown documents, but with an important addition.
+In a literate program, blocks of code have *identifiers*, and they can *reference* each other.
+Each reference modifiers a prior block, or includes it at the specification location.
+
+The operation **tangle** resolves all these inclusions and produces normal source code to be read by the compiler.
+
+### Example
+
+Let's try it out.
+In the block above we introduced a `subsets` function, also know as the powerset:
+\begin{equation}
+   \mathcal{P}(A) = \{ S \text{ is a set } \colon S \subseteq A \}
+\end{equation}
+
+Implementing it can be a little bit tricky.
+If you have never done it before, I recommend you write out some examples
+and paper and see if you can figure it out.
+
+\begin{align}
+    \mathcal{P}(\{1, 2, 3\}) = \{ &\{1, 2, 3\}, \\
+                                  &\{1, 2\}, \{1, 3\}, \{2, 3\}, \\
+                                  &\{1\}, \{2\}, \{3\}, \\
+                                  &\emptyset \} \\
+\end{align}
+    
+
+The key insight, is that if we take an element out of the original set,
+and all the subsets which contain it, we can get back
+the full subsets, by making a copy of each other subset and inserting
+the element back in.
+In other words, the number of subsets *doubles* with each element in the set:
+
+\begin{equation}
+    |\mathcal{P}(A)| = 2^{|A|}
+\end{equation}
+
+Here is rough outline in code:
+
+--- subsets.js
+function subsets(set) {
+    @{base case}
+    @{remove element and compute subsets of smaller set}
+    return @{subsets without element}
+        .concat( @{subsets with element} );
+}
+
+@{test subsets}
+---
+
+This a recursive function, so we need a base case.
+If the input set is empty, its only subset is the empty set:
+
+--- base case
+if (set.length == 0) { return [[]]; }
+---
+
+We use recursion by removing one element and computing the subsets of that array:
+
+--- remove element and compute subsets of smaller set
+const element = set.pop();
+const smaller = subsets(set);
+---
+
+All the smaller subsets are still subsets of our original set, so we want to include those.
+--- subsets without element
+smaller
+---
+
+But, we are missing all the subsets involving `element`. We simply
+add `element` in to each set.
+
+--- subsets with element
+smaller.map(s => s.concat([element]))
+---
+
+That's all!
+If we were to apply **tangle** to the [source](index.lit) it would produce a single file [subsets.js](src/subsets.js).
+
+Block types aren't limited to a single language either.
+Here is how to run it in your command line:
+
+--- test command
+node subsets.js
+---
+
+## Discussion
+
+Of course, the example above goes into much detail than is helpful for most production code.
+It is just meant to illustrate how dividing code into blocks can make them significantly more readable,
+with logical explanation along the way, and a little bit of analysis.
+
+At the micro-level we can overcome a lot of limitations imposed by the language syntax,
+kind of like a powerful macro system.
+IN the example we break out small sub-expressions, even from the middle of statement,
+to explain further, or to make things more readable.
+
+Some other use cases include:
+
+- separating inline SQL queries from string literals
+- avoiding forward declarations in `C`.
+- breaking up large switch cases.
+- separating error handling from main logic.
+
+More importantly, at the macro level we can control the overall presentation of the program.
+This is difficult to convey in a brief article,
+but think of it like writing code as a book or article.
+You can introduce your code with an overview,
+take time to develop the most important ideas and characters,
+gradually build up to the big picture, 
+and then maybe fill in some extra details.
+
+Consider the last time you started working on a large code base someone else wrote.
+It was probably overwhelming, especially considering how much of modern code is boiler plate, and interfacing between systems.
+Even with a well-written README what you probably wanted to know is:
+
+- What's most important and what should be read first?
+- What are they key data structures and algorithms?
+- How is data stored?
+- Which files boiler plate that I can ignore? 
+
+Literate programs allow you to answer these questions naturally. 
+Once again, it's difficult to convey.
+See the end for sample example programs you can read.
+
+## Weave
+
+The **weave** operation generates documentation files from the literate source code.
+This is a nicely formatted document like the one you are reading right now!
+This presents the code in a readable form, 
+
+If you are like me, you probably maintain some kind of architecture document relating to project.
+Not, all of this content is appropriate to include in the source code, but a lot of it is,
+and the literate **weave** operation let's you do just that.
+
+Here are some examples of media you can include, with a specific use case I have wanted:
+
+- diagrams and images (instead of the ASCII kind). Illustrate what's happening in a test case.
+- graphs and plots. Illustrate what a function looks like.
+- math formulas and equations. Analyze an algorithm.
+- tables of data. Record survey data that justifies a decision made in code.
+- screenshots. Show the bug this section of code fixes.
+- example inputs and outputs. Show how to use a function.
+
+It's important to note how this is different from tools which generate interface "documentation"
+from source code. Literate programs usually include the *entire* source, not just interface.
+Since it focuses on prose, it's much more natural to include other media formats.
+You aren't littering comments with awkward media references.
+
+## Tools
+
+To get started you will need a literate programming tool of which there are many.
+I recently wrote one called [srcweave][srcweave] which you are reading from now.
+I previously used  [Literate][literate] which is still a great system.
+
+For aspiring grand-masters there is also [Knuth's WEB][web] or the C variant.
+and you can read the [TeX source][tex-source] as an example.
+
+[literate-programming]: https://en.wikipedia.org/wiki/Literate_programming
+[web]: https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en
+[tex-source]: (https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en)
+[srcweave]: https://github.com/justinmeiners/srcweave
+[literate]: https://zyedidia.github.io/literate/
