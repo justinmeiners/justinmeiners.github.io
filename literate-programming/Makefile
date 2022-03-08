@@ -1,12 +1,15 @@
 .PHONY: all main clean
 
-all: source docs/index.html
+all: source index.html README.html
 
 source:
 	srcweave --tangle src/ index.lit
 
-docs/index.html: index.lit
+index.html: index.lit
 	srcweave --format srcweave-format --weave ./ $<
+
+README.html: index.lit
+	srcweave --weave ./ $<
 
 clean:
 	rm -f index.html
