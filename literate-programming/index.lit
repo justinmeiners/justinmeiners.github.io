@@ -5,12 +5,12 @@
 Most programmers haven't heard of [literate programming][literate-programming],
 and the few that have tend to think it means writing a lot of comments around your code.
 However, simply explaining code with prose, *does not* constitute literate programming.
-Consider the following quote from it's inventor Donald Knuth:
+Consider the following quote from it's inventor:
 
 >  Some of my major programs could not have been written with any other methodology that I've ever heard of.
 > The complexity was simply too daunting for my limited brain to handle;
 > without literate programming, the whole enterprise would have flopped miserably.
-> ... Literate programming is what you need to rise above the ordinary level of achievement
+> ... Literate programming is what you need to rise above the ordinary level of achievement -- Donald Knuth
 
 Does this extraordinary leap in effectiveness sound like something that comes from re-explaining what code does?
 I didn't think so.
