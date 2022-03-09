@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Mon, 07 Mar 2022 23:19:19 </lastBuildDate>
+<lastBuildDate>Tue, 08 Mar 2022 20:11:34 </lastBuildDate>
 <item>
 <pubDate>Mon, 07 Mar 2022 00:00:00 </pubDate>
 <title>Literate programming is much more than commenting code</title>
@@ -29,7 +29,7 @@ without literate programming, the whole enterprise would have flopped miserably.
 <p>Does this extraordinary leap in effectiveness sound like something that comes from re-explaining what code does?
 I didn&rsquo;t think so.</p>
 
-<p>The real advantages of literate programming come from the following principles.</p>
+<p>The real advantages of literate programming come from two principles.:</p>
 
 <ol>
 <li><p>Code should be written for humans not machines.</p></li>
@@ -53,14 +53,15 @@ For example:</p>
 <strong class="block-title"><em><a id="btest_subsets:34" href="#btest_subsets:34">test subsets</a></em></strong></span>
 <pre class="prettyprint"><code class="">console.log( subsets([1, 2, 3, 4]) );
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:76" title="index.lit:77 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
 
 
-<p>They are similar to founded on the markdown documents, but with an important addition.
+<p>You can think of them like markdown documents, but with an important addition.
 In a literate program, blocks of code have <em>identifiers</em>, and they can <em>reference</em> each other.
-Each reference modifiers a prior block, or includes it at the specification location.</p>
+Each reference modifies the contents of a prior block,
+or includes it at the specificied location.</p>
 
-<p>The operation <strong>tangle</strong> resolves all these inclusions and produces normal source code to be read by the compiler.</p>
+<p>The operation <strong>tangle</strong> resolves all these references and produces normal source code to be read by the compiler.</p>
 
 <h3>Example</h3>
 
@@ -93,12 +94,12 @@ In other words, the number of subsets <em>doubles</em> with each element in the 
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bsubsets.js:76" href="#bsubsets.js:76">subsets.js</a></em></strong></span>
+<strong class="block-title"><em><a id="bsubsets.js:77" href="#bsubsets.js:77">subsets.js</a></em></strong></span>
 <pre class="prettyprint"><code class="">function subsets(set) {
-    <em class="block-link nocode" title="index.lit:91"><a href="#bbase_case:90">@{base case}</a></em>
-    <em class="block-link nocode" title="index.lit:97"><a href="#bremove_element_and_compute_subsets_of_smaller_set:96">@{remove element and compute subsets of smaller set}</a></em>
-    return <em class="block-link nocode" title="index.lit:103"><a href="#bsubsets_without_element:102">@{subsets without element}</a></em>
-        .concat( <em class="block-link nocode" title="index.lit:110"><a href="#bsubsets_with_element:109">@{subsets with element}</a></em> );
+    <em class="block-link nocode" title="index.lit:92"><a href="#bbase_case:91">@{base case}</a></em>
+    <em class="block-link nocode" title="index.lit:98"><a href="#bremove_element_and_compute_subsets_of_smaller_set:97">@{remove element and compute subsets of smaller set}</a></em>
+    return <em class="block-link nocode" title="index.lit:104"><a href="#bsubsets_without_element:103">@{subsets without element}</a></em>
+        .concat( <em class="block-link nocode" title="index.lit:111"><a href="#bsubsets_with_element:110">@{subsets with element}</a></em> );
 }
 
 <em class="block-link nocode" title="index.lit:35"><a href="#btest_subsets:34">@{test subsets}</a></em>
@@ -111,31 +112,31 @@ If the input set is empty, its only subset is the empty set:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bbase_case:90" href="#bbase_case:90">base case</a></em></strong></span>
+<strong class="block-title"><em><a id="bbase_case:91" href="#bbase_case:91">base case</a></em></strong></span>
 <pre class="prettyprint"><code class="">if (set.length == 0) { return [[]]; }
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:76" title="index.lit:77 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
 
 
 <p>We use recursion by removing one element and computing the subsets of that array:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bremove_element_and_compute_subsets_of_smaller_set:96" href="#bremove_element_and_compute_subsets_of_smaller_set:96">remove element and compute subsets of smaller set</a></em></strong></span>
+<strong class="block-title"><em><a id="bremove_element_and_compute_subsets_of_smaller_set:97" href="#bremove_element_and_compute_subsets_of_smaller_set:97">remove element and compute subsets of smaller set</a></em></strong></span>
 <pre class="prettyprint"><code class="">const element = set.pop();
 const smaller = subsets(set);
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:76" title="index.lit:77 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
 
 
 <p>All the smaller subsets are still subsets of our original set, so we want to include those.</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bsubsets_without_element:102" href="#bsubsets_without_element:102">subsets without element</a></em></strong></span>
+<strong class="block-title"><em><a id="bsubsets_without_element:103" href="#bsubsets_without_element:103">subsets without element</a></em></strong></span>
 <pre class="prettyprint"><code class="">smaller
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:76" title="index.lit:77 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
 
 
 <p>But, we are missing all the subsets involving <code>element</code>. We simply
@@ -143,21 +144,22 @@ add <code>element</code> in to each set.</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bsubsets_with_element:109" href="#bsubsets_with_element:109">subsets with element</a></em></strong></span>
+<strong class="block-title"><em><a id="bsubsets_with_element:110" href="#bsubsets_with_element:110">subsets with element</a></em></strong></span>
 <pre class="prettyprint"><code class="">smaller.map(s =&gt; s.concat([element]))
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:76" title="index.lit:77 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
 
 
 <p>That&rsquo;s all!
-If we were to apply <strong>tangle</strong> to the <a href="index.lit">source</a> it would produce a single file <a href="src/subsets.js">subsets.js</a>.</p>
+Applying <strong>tangle</strong> to the <a href="index.lit">literate</a> file produces a single source file <a href="src/subsets.js">subsets.js</a>.</p>
 
-<p>Block types aren&rsquo;t limited to a single language either.
+<p>A typical literate file produces many source files.
+Block types aren&rsquo;t limited to a single language either.
 Here is how to run it in your command line:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="btest_command:119" href="#btest_command:119">test command</a></em></strong></span>
+<strong class="block-title"><em><a id="btest_command:122" href="#btest_command:122">test command</a></em></strong></span>
 <pre class="prettyprint"><code class="">node subsets.js
 </code></pre>
 </div>
@@ -174,7 +176,7 @@ with logical explanation along the way, and a little bit of analysis.</p>
 
 <p>At the micro-level we can overcome a lot of limitations imposed by the language syntax,
 kind of like a powerful macro system.
-IN the example we break out small sub-expressions, even from the middle of statement,
+In the example we break out small sub-expressions, even from the middle of statement,
 to explain further, or to make things more readable.</p>
 
 <p>Some other use cases include:</p>
@@ -214,28 +216,29 @@ See the end for sample example programs you can read.</p>
 <h2>3. Weave<a id="s0:2"></a></h2>
 
 
-<p>The <strong>weave</strong> operation generates documentation files from the literate source code.
+<p>The <strong>weave</strong> operation generates documentation files from the literate file.
 This is a nicely formatted document like the one you are reading right now!
 This presents the code in a readable form,</p>
 
-<p>If you are like me, you probably maintain some kind of architecture document relating to project.
+<p>If you are like me, you probably maintain some kind of design document recording decisions make
+during the project and data to provide justifications.
 Not, all of this content is appropriate to include in the source code, but a lot of it is,
 and the literate <strong>weave</strong> operation let&rsquo;s you do just that.</p>
 
-<p>Here are some examples of media you can include, with a specific use case I have wanted:</p>
+<p>Here are some examples of media you can include, as well as a specific use case I have desired in the past:</p>
 
 <ul>
-<li>diagrams and images (instead of the ASCII kind). Illustrate what&rsquo;s happening in a test case.</li>
+<li>diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases.</li>
 <li>graphs and plots. Illustrate what a function looks like.</li>
 <li>math formulas and equations. Analyze an algorithm.</li>
 <li>tables of data. Record survey data that justifies a decision made in code.</li>
 <li>screenshots. Show the bug this section of code fixes.</li>
-<li>example inputs and outputs. Show how to use a function.</li>
+<li>example inputs and outputs. Show how to use a pieces of code.</li>
 </ul>
 
 
-<p>It&rsquo;s important to note how this is different from tools which generate interface &ldquo;documentation&rdquo;
-from source code. Literate programs usually include the <em>entire</em> source, not just interface.
+<p>It&rsquo;s important to note how this is different from tools which generate interface &ldquo;documentation&rdquo; from source code.
+Literate programs usually include the <em>entire</em> source, not just interfaces.
 Since it focuses on prose, it&rsquo;s much more natural to include other media formats.
 You aren&rsquo;t littering comments with awkward media references.</p>
 
@@ -244,10 +247,10 @@ You aren&rsquo;t littering comments with awkward media references.</p>
 
 <p>To get started you will need a literate programming tool of which there are many.
 I recently wrote one called <a href="https://github.com/justinmeiners/srcweave">srcweave</a> which you are reading from now.
-I previously used  <a href="https://zyedidia.github.io/literate/">Literate</a> which is still a great system.</p>
+I previously used <a href="https://zyedidia.github.io/literate/">Literate</a> which is still a great system.</p>
 
-<p>For aspiring grand-masters there is also <a href="https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en">Knuth&rsquo;s WEB</a> or the C variant.
-and you can read the <a href="(https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en)">TeX source</a> as an example.</p>
+<p>For aspiring grand-masters there is also <a href="https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en">Knuth&rsquo;s WEB</a>.
+The <a href="(https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en)">TeX source</a> is written in it and available to read.</p>
 
  ]]></description>
 </item>

@@ -15,7 +15,7 @@ Consider the following quote from it's inventor:
 Does this extraordinary leap in effectiveness sound like something that comes from re-explaining what code does?
 I didn't think so.
 
-The real advantages of literate programming come from the following principles. 
+The real advantages of literate programming come from two principles.:
 
 1. Code should be written for humans not machines.
 
@@ -35,11 +35,12 @@ For example:
 console.log( subsets([1, 2, 3, 4]) );
 ---
 
-They are similar to founded on the markdown documents, but with an important addition.
+You can think of them like markdown documents, but with an important addition.
 In a literate program, blocks of code have *identifiers*, and they can *reference* each other.
-Each reference modifiers a prior block, or includes it at the specification location.
+Each reference modifies the contents of a prior block,
+or includes it at the specificied location.
 
-The operation **tangle** resolves all these inclusions and produces normal source code to be read by the compiler.
+The operation **tangle** resolves all these references and produces normal source code to be read by the compiler.
 
 ### Example
 
@@ -111,8 +112,10 @@ smaller.map(s => s.concat([element]))
 ---
 
 That's all!
-If we were to apply **tangle** to the [source](index.lit) it would produce a single file [subsets.js](src/subsets.js).
+Applying **tangle** to the [literate](index.lit) file produces a single source file [subsets.js](src/subsets.js).
 
+
+A typical literate file produces many source files.
 Block types aren't limited to a single language either.
 Here is how to run it in your command line:
 
@@ -128,7 +131,7 @@ with logical explanation along the way, and a little bit of analysis.
 
 At the micro-level we can overcome a lot of limitations imposed by the language syntax,
 kind of like a powerful macro system.
-IN the example we break out small sub-expressions, even from the middle of statement,
+In the example we break out small sub-expressions, even from the middle of statement,
 to explain further, or to make things more readable.
 
 Some other use cases include:
@@ -161,25 +164,26 @@ See the end for sample example programs you can read.
 
 ## Weave
 
-The **weave** operation generates documentation files from the literate source code.
+The **weave** operation generates documentation files from the literate file.
 This is a nicely formatted document like the one you are reading right now!
 This presents the code in a readable form, 
 
-If you are like me, you probably maintain some kind of architecture document relating to project.
+If you are like me, you probably maintain some kind of design document recording decisions make
+during the project and data to provide justifications.
 Not, all of this content is appropriate to include in the source code, but a lot of it is,
 and the literate **weave** operation let's you do just that.
 
-Here are some examples of media you can include, with a specific use case I have wanted:
+Here are some examples of media you can include, as well as a specific use case I have desired in the past:
 
-- diagrams and images (instead of the ASCII kind). Illustrate what's happening in a test case.
+- diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases. 
 - graphs and plots. Illustrate what a function looks like.
 - math formulas and equations. Analyze an algorithm.
 - tables of data. Record survey data that justifies a decision made in code.
 - screenshots. Show the bug this section of code fixes.
-- example inputs and outputs. Show how to use a function.
+- example inputs and outputs. Show how to use a pieces of code.
 
-It's important to note how this is different from tools which generate interface "documentation"
-from source code. Literate programs usually include the *entire* source, not just interface.
+It's important to note how this is different from tools which generate interface "documentation" from source code.
+Literate programs usually include the *entire* source, not just interfaces.
 Since it focuses on prose, it's much more natural to include other media formats.
 You aren't littering comments with awkward media references.
 
@@ -187,10 +191,10 @@ You aren't littering comments with awkward media references.
 
 To get started you will need a literate programming tool of which there are many.
 I recently wrote one called [srcweave][srcweave] which you are reading from now.
-I previously used  [Literate][literate] which is still a great system.
+I previously used [Literate][literate] which is still a great system.
 
-For aspiring grand-masters there is also [Knuth's WEB][web] or the C variant.
-and you can read the [TeX source][tex-source] as an example.
+For aspiring grand-masters there is also [Knuth's WEB][web].
+The [TeX source][tex-source] is written in it and available to read.
 
 [literate-programming]: https://en.wikipedia.org/wiki/Literate_programming
 [web]: https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en
