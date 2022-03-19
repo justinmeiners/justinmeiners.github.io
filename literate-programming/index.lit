@@ -45,7 +45,7 @@ The operation **tangle** resolves all these references and produces normal sourc
 ### Example
 
 Let's try it out.
-In the block above we introduced a `subsets` function, also know as the powerset:
+In the block above we introduced a `subsets` function, also known as the powerset:
 \begin{equation}
    \mathcal{P}(A) = \{ S \text{ is a set } \colon S \subseteq A \}
 \end{equation}
@@ -125,9 +125,10 @@ node subsets.js
 
 ## Discussion
 
-Of course, the example above goes into more detail than is helpful for most production code.
-It is just meant to illustrate how dividing code into blocks can make them significantly more readable,
-with logical explanation along the way, and a little bit of analysis.
+Of course, the example above goes into more detail, and is separated into more blocks,
+than is helpful for most production code.
+It is just meant to illustrate how a little explanation, analysis,
+and division into logical parts, can make code significantly more readable.
 
 At the micro-level we can overcome a lot of limitations imposed by the language syntax,
 kind of like a powerful macro system.
@@ -151,16 +152,17 @@ and then maybe fill in some extra details.
 
 Consider the last time you started working on a large code base someone else wrote.
 It was probably overwhelming, especially considering how much of modern code is boiler plate, and interfacing between systems.
-Even with a well-written README, you probably wanted to know:
+You probably wanted to know:
 
-- What code most important and what should be read first?
+- What code is most important and should be read first?
 - What are they key data structures and algorithms?
 - How is data stored?
 - Which files are boiler plate that I can ignore? 
 
+A well-written README can point you to some files to get started,
+but it won't isolate the core concepts from all the other code
+details surrounding them.
 Literate programs allow you to answer these questions naturally. 
-Once again, it's difficult to convey.
-See the end for sample example programs you can read.
 
 ## Weave
 
@@ -177,9 +179,9 @@ Here are some examples of media you can include, as well as a specific use case 
 
 - Diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases. 
 - Graphs and plots. Illustrate what a function looks like.
-- Math formulas and equations. Analyze an algorithm.
+- Math formulas and equations. Analyze the complexity of an algorithm.
 - Tables of data. Record survey data that justifies a decision made in code.
-- Screenshots. Show the bug this section of code fixes.
+- Screenshots. Show a bug which is fixed by a particular section of code.
 - Example inputs and outputs. Show how to use a pieces of code.
 
 It's important to note how this is different from tools which generate interface "documentation" from source code.
@@ -187,17 +189,38 @@ Literate programs usually include the *entire* source, not just interfaces.
 Since it focuses on prose, it's much more natural to include other media formats.
 You aren't littering comments with awkward media references.
 
-## Tools
+## Getting started
 
+I have told you a bit about why I like Literate programming,
+but to really understand how 
+it benefits your code read some examples, or better yet,
+try it on your next project.
 To get started you will need a literate programming tool of which there are many.
-I recently wrote one called [srcweave][srcweave] which I used to generate the document you are now reading.
-I previously used [Literate][literate] which is still a great system.
+Here 
 
-For aspiring grand-masters there is also [Knuth's WEB][web].
-The [TeX source][tex-source] is written in it and available to read.
+### srcweave
+
+I recently wrote [srcweave][srcweave] which was used to write this article you are reading now.
+See my article ["Write your own Proof-of-Work Blockchain"][tiny-blockchain] for another example.
+
+### Literate
+
+[Literate][literate] is the system I used for several years, before writing my own.
+It is self hosting, which I find pretty cool, so you can read it's [own source code][literate-source].
+
+### web
+
+Donald Knuth wrote the original literate programming tools [web][web] and cweb.
+Of course, they output TeX instead of HTML for documentation.
+I don't know anyone else who actually uses his tools, since TeX is more involved than most people need,
+ but they are still worth learning from. 
+The [source for TeX][tex-source] is written in it, and is famous for having
+very few bugs and being extremely reliable.
 
 [literate-programming]: https://en.wikipedia.org/wiki/Literate_programming
 [web]: https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en
-[tex-source]: (https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en)
+[tex-source]: https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en
 [srcweave]: https://github.com/justinmeiners/srcweave
 [literate]: https://zyedidia.github.io/literate/
+[literate-source]: https://zyedidia.github.io/literate/literate-source/
+[tiny-blockchain]: https://justinmeiners.github.io/tiny-blockchain/
