@@ -92,7 +92,7 @@ or includes it at the specificied location.</p>
 <h3>Example</h3>
 
 <p>Let&rsquo;s try it out.
-In the block above we introduced a <code>subsets</code> function, also know as the powerset:</p>
+In the block above we introduced a <code>subsets</code> function, also known as the powerset:</p>
 
 <div class="math-block">\begin{equation}   \mathcal{P}(A) = \{ S \text{ is a set } \colon S \subseteq A \}\end{equation}</div>
 
@@ -196,9 +196,10 @@ Here is how to run it in your command line:</p>
 <h2>2. Discussion<a id="s0:1"></a></h2>
 
 
-<p>Of course, the example above goes into more detail than is helpful for most production code.
-It is just meant to illustrate how dividing code into blocks can make them significantly more readable,
-with logical explanation along the way, and a little bit of analysis.</p>
+<p>Of course, the example above goes into more detail, and is separated into more blocks,
+than is helpful for most production code.
+It is just meant to illustrate how a little explanation, analysis,
+and division into logical parts, can make code significantly more readable.</p>
 
 <p>At the micro-level we can overcome a lot of limitations imposed by the language syntax,
 kind of like a powerful macro system.
@@ -225,19 +226,20 @@ and then maybe fill in some extra details.</p>
 
 <p>Consider the last time you started working on a large code base someone else wrote.
 It was probably overwhelming, especially considering how much of modern code is boiler plate, and interfacing between systems.
-Even with a well-written README, you probably wanted to know:</p>
+You probably wanted to know:</p>
 
 <ul>
-<li>What code most important and what should be read first?</li>
+<li>What code is most important and should be read first?</li>
 <li>What are they key data structures and algorithms?</li>
 <li>How is data stored?</li>
 <li>Which files are boiler plate that I can ignore?</li>
 </ul>
 
 
-<p>Literate programs allow you to answer these questions naturally.
-Once again, it&rsquo;s difficult to convey.
-See the end for sample example programs you can read.</p>
+<p>A well-written README can point you to some files to get started,
+but it won&rsquo;t isolate the core concepts from all the other code
+details surrounding them.
+Literate programs allow you to answer these questions naturally.</p>
 
 <h2>3. Weave<a id="s0:2"></a></h2>
 
@@ -256,9 +258,9 @@ and the literate <strong>weave</strong> operation let&rsquo;s you do just that.<
 <ul>
 <li>Diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases.</li>
 <li>Graphs and plots. Illustrate what a function looks like.</li>
-<li>Math formulas and equations. Analyze an algorithm.</li>
+<li>Math formulas and equations. Analyze the complexity of an algorithm.</li>
 <li>Tables of data. Record survey data that justifies a decision made in code.</li>
-<li>Screenshots. Show the bug this section of code fixes.</li>
+<li>Screenshots. Show a bug which is fixed by a particular section of code.</li>
 <li>Example inputs and outputs. Show how to use a pieces of code.</li>
 </ul>
 
@@ -268,14 +270,33 @@ Literate programs usually include the <em>entire</em> source, not just interface
 Since it focuses on prose, it&rsquo;s much more natural to include other media formats.
 You aren&rsquo;t littering comments with awkward media references.</p>
 
-<h2>4. Tools<a id="s0:3"></a></h2>
+<h2>4. Getting started<a id="s0:3"></a></h2>
 
 
-<p>To get started you will need a literate programming tool of which there are many.
-I recently wrote one called <a href="https://github.com/justinmeiners/srcweave">srcweave</a> which I used to generate the document you are now reading.
-I previously used <a href="https://zyedidia.github.io/literate/">Literate</a> which is still a great system.</p>
+<p>I have told you a bit about why I like Literate programming,
+but to really understand how
+it benefits your code read some examples, or better yet,
+try it on your next project.
+To get started you will need a literate programming tool of which there are many.
+Here</p>
 
-<p>For aspiring grand-masters there is also <a href="https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en">Knuth&rsquo;s WEB</a>.
-The <a href="(https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en)">TeX source</a> is written in it and available to read.</p>
+<h3>srcweave</h3>
+
+<p>I recently wrote <a href="https://github.com/justinmeiners/srcweave">srcweave</a> which was used to write this article you are reading now.
+See my article <a href="https://justinmeiners.github.io/tiny-blockchain/">&ldquo;Write your own Proof-of-Work Blockchain&rdquo;</a> for another example.</p>
+
+<h3>Literate</h3>
+
+<p><a href="https://zyedidia.github.io/literate/">Literate</a> is the system I used for several years, before writing my own.
+It is self hosting, which I find pretty cool, so you can read it&rsquo;s <a href="https://zyedidia.github.io/literate/literate-source/">own source code</a>.</p>
+
+<h3>web</h3>
+
+<p>Donald Knuth wrote the original literate programming tools <a href="https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en">web</a> and cweb.
+Of course, they output TeX instead of HTML for documentation.
+I don&rsquo;t know anyone else who actually uses his tools, since TeX is more involved than most people need,
+ but they are still worth learning from.
+The <a href="https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en">source for TeX</a> is written in it, and is famous for having
+very few bugs and being extremely reliable.</p>
 </body>
 </html>
