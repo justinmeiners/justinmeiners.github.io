@@ -55,7 +55,7 @@ without literate programming, the whole enterprise would have flopped miserably.
 <p>Does this extraordinary leap in effectiveness sound like something that comes from re-explaining what code does?
 I didn&rsquo;t think so.</p>
 
-<p>The real advantages of literate programming come from two principles.:</p>
+<p>The real advantages of literate programming come from two principles:</p>
 
 <ol>
 <li><p>Code should be written for humans not machines.</p></li>
@@ -99,7 +99,7 @@ In the block above we introduced a <code>subsets</code> function, also know as t
 
 <p>Implementing it can be a little bit tricky.
 If you have never done it before, I recommend you write out some examples
-and paper and see if you can figure it out.</p>
+on paper and see if you can figure it out.</p>
 
 <div class="math-block">\begin{align}    \mathcal{P}(\{1, 2, 3\}) = \{ &\{1, 2, 3\}, \\
                                   &\{1, 2\}, \{1, 3\}, \{2, 3\}, \\
@@ -196,7 +196,7 @@ Here is how to run it in your command line:</p>
 <h2>2. Discussion<a id="s0:1"></a></h2>
 
 
-<p>Of course, the example above goes into much detail than is helpful for most production code.
+<p>Of course, the example above goes into more detail than is helpful for most production code.
 It is just meant to illustrate how dividing code into blocks can make them significantly more readable,
 with logical explanation along the way, and a little bit of analysis.</p>
 
@@ -208,10 +208,10 @@ to explain further, or to make things more readable.</p>
 <p>Some other use cases include:</p>
 
 <ul>
-<li>separating inline SQL queries from string literals</li>
-<li>avoiding forward declarations in <code>C</code>.</li>
-<li>breaking up large switch cases.</li>
-<li>separating error handling from main logic.</li>
+<li>Separating inline SQL queries from string literals.</li>
+<li>Avoiding forward declarations in <code>C</code>.</li>
+<li>Breaking up large switch cases.</li>
+<li>Separating error handling from main logic.</li>
 </ul>
 
 
@@ -225,13 +225,13 @@ and then maybe fill in some extra details.</p>
 
 <p>Consider the last time you started working on a large code base someone else wrote.
 It was probably overwhelming, especially considering how much of modern code is boiler plate, and interfacing between systems.
-Even with a well-written README what you probably wanted to know is:</p>
+Even with a well-written README, you probably wanted to know:</p>
 
 <ul>
-<li>What&rsquo;s most important and what should be read first?</li>
+<li>What code most important and what should be read first?</li>
 <li>What are they key data structures and algorithms?</li>
 <li>How is data stored?</li>
-<li>Which files boiler plate that I can ignore?</li>
+<li>Which files are boiler plate that I can ignore?</li>
 </ul>
 
 
@@ -254,12 +254,12 @@ and the literate <strong>weave</strong> operation let&rsquo;s you do just that.<
 <p>Here are some examples of media you can include, as well as a specific use case I have desired in the past:</p>
 
 <ul>
-<li>diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases.</li>
-<li>graphs and plots. Illustrate what a function looks like.</li>
-<li>math formulas and equations. Analyze an algorithm.</li>
-<li>tables of data. Record survey data that justifies a decision made in code.</li>
-<li>screenshots. Show the bug this section of code fixes.</li>
-<li>example inputs and outputs. Show how to use a pieces of code.</li>
+<li>Diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases.</li>
+<li>Graphs and plots. Illustrate what a function looks like.</li>
+<li>Math formulas and equations. Analyze an algorithm.</li>
+<li>Tables of data. Record survey data that justifies a decision made in code.</li>
+<li>Screenshots. Show the bug this section of code fixes.</li>
+<li>Example inputs and outputs. Show how to use a pieces of code.</li>
 </ul>
 
 
@@ -272,7 +272,7 @@ You aren&rsquo;t littering comments with awkward media references.</p>
 
 
 <p>To get started you will need a literate programming tool of which there are many.
-I recently wrote one called <a href="https://github.com/justinmeiners/srcweave">srcweave</a> which you are reading from now.
+I recently wrote one called <a href="https://github.com/justinmeiners/srcweave">srcweave</a> which I used to generate the document you are now reading.
 I previously used <a href="https://zyedidia.github.io/literate/">Literate</a> which is still a great system.</p>
 
 <p>For aspiring grand-masters there is also <a href="https://ctan.org/tex-archive/systems/knuth/dist/web?lang=en">Knuth&rsquo;s WEB</a>.

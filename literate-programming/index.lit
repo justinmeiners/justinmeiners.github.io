@@ -15,7 +15,7 @@ Consider the following quote from it's inventor:
 Does this extraordinary leap in effectiveness sound like something that comes from re-explaining what code does?
 I didn't think so.
 
-The real advantages of literate programming come from two principles.:
+The real advantages of literate programming come from two principles:
 
 1. Code should be written for humans not machines.
 
@@ -52,7 +52,7 @@ In the block above we introduced a `subsets` function, also know as the powerset
 
 Implementing it can be a little bit tricky.
 If you have never done it before, I recommend you write out some examples
-and paper and see if you can figure it out.
+on paper and see if you can figure it out.
 
 \begin{align}
     \mathcal{P}(\{1, 2, 3\}) = \{ &\{1, 2, 3\}, \\
@@ -125,7 +125,7 @@ node subsets.js
 
 ## Discussion
 
-Of course, the example above goes into much detail than is helpful for most production code.
+Of course, the example above goes into more detail than is helpful for most production code.
 It is just meant to illustrate how dividing code into blocks can make them significantly more readable,
 with logical explanation along the way, and a little bit of analysis.
 
@@ -136,10 +136,10 @@ to explain further, or to make things more readable.
 
 Some other use cases include:
 
-- separating inline SQL queries from string literals
-- avoiding forward declarations in `C`.
-- breaking up large switch cases.
-- separating error handling from main logic.
+- Separating inline SQL queries from string literals.
+- Avoiding forward declarations in `C`.
+- Breaking up large switch cases.
+- Separating error handling from main logic.
 
 More importantly, at the macro level we can control the overall presentation of the program.
 This is difficult to convey in a brief article,
@@ -151,12 +151,12 @@ and then maybe fill in some extra details.
 
 Consider the last time you started working on a large code base someone else wrote.
 It was probably overwhelming, especially considering how much of modern code is boiler plate, and interfacing between systems.
-Even with a well-written README what you probably wanted to know is:
+Even with a well-written README, you probably wanted to know:
 
-- What's most important and what should be read first?
+- What code most important and what should be read first?
 - What are they key data structures and algorithms?
 - How is data stored?
-- Which files boiler plate that I can ignore? 
+- Which files are boiler plate that I can ignore? 
 
 Literate programs allow you to answer these questions naturally. 
 Once again, it's difficult to convey.
@@ -175,12 +175,12 @@ and the literate **weave** operation let's you do just that.
 
 Here are some examples of media you can include, as well as a specific use case I have desired in the past:
 
-- diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases. 
-- graphs and plots. Illustrate what a function looks like.
-- math formulas and equations. Analyze an algorithm.
-- tables of data. Record survey data that justifies a decision made in code.
-- screenshots. Show the bug this section of code fixes.
-- example inputs and outputs. Show how to use a pieces of code.
+- Diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases. 
+- Graphs and plots. Illustrate what a function looks like.
+- Math formulas and equations. Analyze an algorithm.
+- Tables of data. Record survey data that justifies a decision made in code.
+- Screenshots. Show the bug this section of code fixes.
+- Example inputs and outputs. Show how to use a pieces of code.
 
 It's important to note how this is different from tools which generate interface "documentation" from source code.
 Literate programs usually include the *entire* source, not just interfaces.
@@ -190,7 +190,7 @@ You aren't littering comments with awkward media references.
 ## Tools
 
 To get started you will need a literate programming tool of which there are many.
-I recently wrote one called [srcweave][srcweave] which you are reading from now.
+I recently wrote one called [srcweave][srcweave] which I used to generate the document you are now reading.
 I previously used [Literate][literate] which is still a great system.
 
 For aspiring grand-masters there is also [Knuth's WEB][web].
