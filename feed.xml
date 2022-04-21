@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sun, 27 Mar 2022 14:38:06 </lastBuildDate>
+<lastBuildDate>Wed, 20 Apr 2022 22:41:31 </lastBuildDate>
 <item>
 <pubDate>Mon, 07 Mar 2022 00:00:00 </pubDate>
 <title>Literate programming is much more than commenting code</title>
@@ -409,6 +409,274 @@ For example:</p>
 <pubDate>Wed, 28 Jul 2021 00:00:00 </pubDate>
 <title>Almost Solving the Halting Problem</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/almost-solving-the-halting-problem/halting-problem.pdf</guid>
+</item>
+<item>
+<pubDate>Mon, 14 Jun 2021 00:00:00 </pubDate>
+<title>Swift Proposal: Balanced Binary Reduction</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/swift-balanced-reduce</guid>
+<description><![CDATA[ 
+<h1>Swift Proposal: Balanced Binary Reduction</h1>
+
+<p><strong>By:</strong> Justin Meiners
+<strong>06/14/2021</strong></p>
+
+<h2>Introduction</h2>
+
+<p>Swift&rsquo;s <code>reduce</code> can be used to accumulate elements in a sequence.
+For example:</p>
+
+<pre><code>[1.0, 2.0, 3.0, 4.0].reduce(0.0, +)
+</code></pre>
+
+<p>If we visualize the expression tree for this operation
+it&rsquo;s essentially linear.
+You can think of it as a binary tree which is completely unbalanced.</p>
+
+<pre><code> -----3.0----6.0---10.0
+/     /      /    /
+1.0   2.0   3.0  4.0
+</code></pre>
+
+<p>Assuming the binary operation is associative then we can choose which
+order to evalulate arguments in.
+For example, we could image a function <code>balancedReduce</code> which rearranges
+the order of evaluation to the following:</p>
+
+<pre><code>      10.0
+    /      \
+   /         \
+  3.0       7.0
+ /  \      /    \
+1.0  2.0  3.0  4.0
+</code></pre>
+
+<p>We haven&rsquo;t changed the result at all, just the order it&rsquo;s evaluated in.
+It&rsquo;s mathematically equivalent.
+However, there are lot&rsquo;s
+of good computational reasons why one might want to do this.</p>
+
+<h2>Example Applications</h2>
+
+<p>These are just a few to illustrate it is a general problem:</p>
+
+<ol>
+<li><p>Adding up many floating point results (as in my example above).
+Adding small numbers to larger numbers produced poor numerical results.
+Given a long enough list of values of similar magnitutdes
+this is guarenteed to happen.</p>
+
+<p>In contrast a balanced evaluation of such values will
+only add similarly sized values. (Intermediate results which are
+the result of adding equal numbers of values together).</p></li>
+<li><p>Merge sort can be written by applying the binary operation
+of &ldquo;merge sorted list&rdquo; to a sequence of lists:</p>
+
+<pre><code>[ [a1], [a2], ... [an] ]
+</code></pre>
+
+<p> If you do this with <code>reduce</code> it is essentially insertion sort,
+ one element is inserted into the growing list at a time.
+ If you use a <code>balancedReduce</code> it will only merge lists
+ that are roughly the same size, giving a proper
+ <code>O(n log(n))</code> merge.</p></li>
+<li><p>It can be used to solve the problem of finding the smallest
+element, and second smallest element, in a sequence
+in the optimal number of comparisons.
+(Described in 5.3.3 of Volume 3 of Art of Computer Programming).</p></li>
+</ol>
+
+
+<h2>Proposed changes.</h2>
+
+<p>This capability can be added with a simple extension to <code>Sequences</code>
+of <code>Equatable</code> types.</p>
+
+<pre><code>extension Sequence where Element: Equatable {
+    func balancedReduce(
+        zero: Element,
+        operation op: (Element, Element) -&gt; Element
+    ) -&gt; Element{
+        var counter = Array(repeating: zero, count: 32)
+
+        for x in self {
+            let carry = BinaryCounter.add(to: &amp;counter,
+                                          x: x,
+                                          zero: zero,
+                                          operation: op)
+
+            assert(carry == zero, "reduced too many things")
+        }
+
+        return BinaryCounter.reduce(counter: &amp;counter,
+                                    zero: zero,
+                                    operation: op)
+    }
+}
+
+struct BinaryCounter {
+    private init() {}
+
+    static func add&lt;C: MutableCollection&gt;(
+        to counter: inout C,
+        x: C.Element,
+        zero: C.Element,
+        operation op: (C.Element, C.Element) -&gt; C.Element
+    ) -&gt; C.Element where C.Element: Equatable {
+
+        var i = counter.startIndex
+        let end = counter.endIndex
+
+        var carry = x
+        while i != end {
+            if counter[i] == zero {
+                counter[i] = carry
+                return zero
+            }
+
+            carry = op(counter[i], carry)
+            counter[i] = zero
+            i = counter.index(after: i)
+        }
+
+        return carry
+    }
+
+    static func reduce&lt;C: MutableCollection&gt;(
+        counter: inout C,
+        zero: C.Element,
+        operation op: (C.Element, C.Element) -&gt; C.Element
+    ) -&gt; C.Element where C.Element: Equatable {
+
+        var i = counter.startIndex
+        let end = counter.endIndex
+
+        // find first non-zero
+        while i != end &amp;&amp; counter[i] == zero {
+            i = counter.index(after: i)
+        }
+
+        if i == end {
+            return zero
+        }
+
+        var x = counter[i]
+        i = counter.index(after: i)
+        assert(x != zero)
+
+        while i != end {
+            if counter[i] != zero {
+                x = op(x, counter[i])
+            }
+            i = counter.index(after: i)
+        }
+
+        return x
+    }
+}
+</code></pre>
+
+<p>The implentation is very efficent, adding very few additional
+computaitons and using an additional piece of memory, roughly
+of size <code>log(n)</code>.</p>
+
+<h2>Application examples</h2>
+
+<p>This implementation of merge sort
+is just for fun to show how it works.</p>
+
+<pre><code>func mergeSorted&lt;T&gt;(
+    _ a: [T],
+    _ b: [T]
+) -&gt; [T] where T: Comparable  {
+    var i = a.startIndex
+    var j = b.startIndex
+
+    var out: [T] = []
+
+    while i != a.endIndex &amp;&amp; j != b.endIndex {
+        if b[j] &lt; a[i] {
+            out.append(b[j])
+            j = a.index(after: j)
+        } else {
+            out.append(a[i])
+            i = a.index(after: i)
+        }
+    }
+
+    if j != a.endIndex {
+        out.append(contentsOf: b.suffix(from: j))
+    } else {
+        out.append(contentsOf: a.suffix(from: i))
+    }
+
+    return out
+}
+
+func mergeSort&lt;S: Sequence&gt;(
+    _ items: S
+) -&gt; [S.Element] where S.Element: Comparable {
+
+    let singletons: [[S.Element]] = items.map { [$0] }
+    let zero: [S.Element] = []
+
+    return singletons.balancedFold(zero: zero, operation: mergeSorted)
+}
+</code></pre>
+
+<h2>Questions/Concerns</h2>
+
+<p><strong>It&rsquo;s too theoretical</strong></p>
+
+<p>All of the theory is hidden inside,
+outside it looks like just <code>fold</code>/<code>reduce</code>.
+If you don&rsquo;t know what it does, it still gives expected results.</p>
+
+<p>Furthmore, it can be benefecial even if you don&rsquo;t
+copmletely understand it.
+For example, advice could be given to &ldquo;use this one to add up large lists of <code>float</code>&rdquo;
+and it would benefit them.</p>
+
+<p><strong>The zero parameter is weird. Should it be nil instead?</strong></p>
+
+<p>I am unsure.
+My assumption was that introducing <code>nil</code> in the intermediate
+computation adds a lot of boxing/unboxing.</p>
+
+<p><strong>The name is bad/wrong</strong></p>
+
+<p>I am not attached to the name and happy to hear recommendations.</p>
+
+<p><strong>Can we make the 32/64 parameter less arbitary?</strong></p>
+
+<p>Of course <code>2^64</code> is the max of a 64 bit integer.
+Arrays of more than <code>2^64</code> elements are probably already disallowed.
+That&rsquo;s assuming every element is a byte,
+so <code>2^32</code> seems like a reasonable upper bound assumption for the size
+of a sequence.</p>
+
+<p>It could be a parameter, although this seems like a messy detail
+to expose.</p>
+
+<h2>References</h2>
+
+<p>I learned about this techinque from Alex Stepanov, the author
+of C++ STL.
+It is described in the book <a href="http://elementsofprogramming.com/">&ldquo;Elements of Programming&rdquo;</a>
+chapter 11.2.</p>
+
+<p>There is a related concept in C++.
+<a href="https://en.cppreference.com/w/cpp/algorithm/accumulate">std::accumlate</a>
+does a normal left fold,
+<a href="https://en.cppreference.com/w/cpp/algorithm/reduce">std::reduce</a>
+is allowed to associate its arguments
+in any order it prefers.
+It additionally requires the operation is commutative,
+which I do not think is necessary for this.
+It appears <code>std::reduce</code> is primarily to facilitate parallel
+computation, but it demonstrates two similar operations
+whose results only differ on their association order.</p>
+
+ ]]></description>
 </item>
 <item>
 <pubDate>Mon, 03 May 2021 00:00:00 </pubDate>

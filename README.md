@@ -20,6 +20,7 @@ Project I made and tutorials teaching you how to make cool stuff.
 - [03/05/2022 - Deploying Common Lisp Scripts](common-lisp-scripts)
 - [09/19/2021 - Classic Colors](https://github.com/justinmeiners/classic-colors)
 - [07/31/2021 - Efficient Programming with Components](https://justinmeiners.github.io/efficient-programming-with-components/)
+- [06/14/2021 - Swift Proposal: Balanced Binary Reduction](swift-balanced-reduce)
 - [12/27/2020 - Advent of Code 2020 Day 18: Rethinking Operator Precedence](aoc-2020-18)
 - [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19)
 - [10/07/2020 - Derivative Map Tool](https://github.com/justinmeiners/derivative-map-tool)
