@@ -16,6 +16,7 @@ Feel free to contact me at ![justin's email](mail.gif).
 
 Project I made and tutorials teaching you how to make cool stuff.
 
+- [04/21/2022 - Why Train When You Can Optimize](https://justinmeiners.github.io/why-train-when-you-can-optimize/)
 - [03/07/2022 - Literate programming is much more than commenting code](literate-programming)
 - [03/05/2022 - Deploying Common Lisp Scripts](common-lisp-scripts)
 - [09/19/2021 - Classic Colors](https://github.com/justinmeiners/classic-colors)
