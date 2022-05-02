@@ -60,8 +60,8 @@ a:visited {
 
 /* code blocks */
 
-code, {
-    font-size: 11pt;
+code {
+    font-size: 12pt;
     font-family: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
 }
 
