@@ -112,7 +112,7 @@ but the universal property tells us it is always there.
 Next time you an encounter a commutative diagram proof, try a few examples
 to figure out what basic idea it is telling you.
 
-**Exercise:** Prove that `h` is unique. No other function could make the diagram commute.
+**Exercise:** Prove that `h` is unique. In other words, no other function could make the diagram commute.
 
 
 ## Further Reading
@@ -122,41 +122,19 @@ such properties at a higher level of abstraction than set theory.
 From a category theory perspective the quotient set `X/~` is the co-equalizer
 or co-limit of the diagram projecting and equivalent pair to it's parts.
 
-You can read more about category theory from Topoi by Robert Goldblatt.
+The book Topoi by Robert Goldblatt offers a fairly comprehensive look at category
+theory, starting at a basic understanding of sets and number theory.
 
-[![Topoi Goldblatt](topoi.jpg)][4]
-
-
-Free groups provide another elementary example of universal properties.
-You can read about them in chapter 6.3 of Abstract Algebra by Dummit and Foote.
-
-[![Dummit and Foote](dummit_and_foote.jpg)][2]
+![Topoi Goldblatt](topoi.jpg)]
 
 Quotient spaces are studied in depth in Topology by Munkres.
 
-[![Munkres Topology](munkres.jpg)][3]
+![Munkres Topology](munkres.jpg)]
 
- The later chapter on Algebraic Topology have
+The later chapter on Algebraic Topology have
 More elaborate constructions.
 These gave me a lot of practice with commutative diagrams,
-such as the chapter on [Seifert-Van Kampen's][1] theorem.
+such as the chapter on [Seifert-Van Kampen's](https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem) theorem.
 
 ![van-kampen](van-kampen.png)
-
-
-[1]: https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem
-[2]: https://www.amazon.com/gp/product/0471433349/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0471433349&linkCode=as2&tag=jmeiners-20&linkId=4295d44052521c73c93e090190c032f0
-[3]: https://www.amazon.com/gp/product/0134689518/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0134689518&linkCode=as2&tag=jmeiners-20&linkId=a1ca862d48cd664489c7179c1f7bfdaf
-[4]: https://www.amazon.com/gp/product/B00DP7UMC6/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B00DP7UMC6&linkCode=as2&tag=jmeiners-20&linkId=c7f03020c8207f7d6ba3dc63bb0be29f
-
-
-
-
-
-
-
-
-
-
-
 

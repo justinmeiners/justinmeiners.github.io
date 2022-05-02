@@ -4,11 +4,16 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Thu, 21 Apr 2022 18:05:37 </lastBuildDate>
+<lastBuildDate>Sun, 01 May 2022 22:18:02 </lastBuildDate>
 <item>
 <pubDate>Thu, 21 Apr 2022 00:00:00 </pubDate>
-<title>Why Train When You Can Optimize</title>
+<title>Why Train When You Can Optimize?</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/why-train-when-you-can-optimize/</guid>
+</item>
+<item>
+<pubDate>Mon, 07 Mar 2022 00:00:00 </pubDate>
+<title>srcweave: A literate programming system for any language</title>
+<guid isPermaLink="true">https://github.com/justinmeiners/srcweave/</guid>
 </item>
 <item>
 <pubDate>Mon, 07 Mar 2022 00:00:00 </pubDate>
@@ -1363,7 +1368,7 @@ but the universal property tells us it is always there.</p>
 <p>Next time you an encounter a commutative diagram proof, try a few examples
 to figure out what basic idea it is telling you.</p>
 
-<p><strong>Exercise:</strong> Prove that <code>h</code> is unique. No other function could make the diagram commute.</p>
+<p><strong>Exercise:</strong> Prove that <code>h</code> is unique. In other words, no other function could make the diagram commute.</p>
 
 <h2>Further Reading</h2>
 
@@ -1372,20 +1377,16 @@ such properties at a higher level of abstraction than set theory.
 From a category theory perspective the quotient set <code>X/~</code> is the co-equalizer
 or co-limit of the diagram projecting and equivalent pair to it&rsquo;s parts.</p>
 
-<p>You can read more about category theory from Topoi by Robert Goldblatt.</p>
+<p>The book Topoi by Robert Goldblatt offers a fairly comprehensive look at category
+theory, starting at a basic understanding of sets and number theory.</p>
 
-<p><a href="https://www.amazon.com/gp/product/B00DP7UMC6/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=B00DP7UMC6&amp;linkCode=as2&amp;tag=jmeiners-20&amp;linkId=c7f03020c8207f7d6ba3dc63bb0be29f"><img src="topoi.jpg" alt="Topoi Goldblatt" /></a></p>
-
-<p>Free groups provide another elementary example of universal properties.
-You can read about them in chapter 6.3 of Abstract Algebra by Dummit and Foote.</p>
-
-<p><a href="https://www.amazon.com/gp/product/0471433349/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0471433349&amp;linkCode=as2&amp;tag=jmeiners-20&amp;linkId=4295d44052521c73c93e090190c032f0"><img src="dummit_and_foote.jpg" alt="Dummit and Foote" /></a></p>
+<p><img src="topoi.jpg" alt="Topoi Goldblatt" />]</p>
 
 <p>Quotient spaces are studied in depth in Topology by Munkres.</p>
 
-<p><a href="https://www.amazon.com/gp/product/0134689518/ref=as_li_tl?ie=UTF8&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0134689518&amp;linkCode=as2&amp;tag=jmeiners-20&amp;linkId=a1ca862d48cd664489c7179c1f7bfdaf"><img src="munkres.jpg" alt="Munkres Topology" /></a></p>
+<p><img src="munkres.jpg" alt="Munkres Topology" />]</p>
 
-<p> The later chapter on Algebraic Topology have
+<p>The later chapter on Algebraic Topology have
 More elaborate constructions.
 These gave me a lot of practice with commutative diagrams,
 such as the chapter on <a href="https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem">Seifert-Van Kampen&rsquo;s</a> theorem.</p>
@@ -1611,11 +1612,6 @@ for explanatory theory.</p>
 <p><strong>Update 09/25/2021:</strong> Heavily edited the second half to clarify intended message. The election discussion is largely the same.</p>
 
  ]]></description>
-</item>
-<item>
-<pubDate>Wed, 07 Oct 2020 00:00:00 </pubDate>
-<title>Derivative Map Tool</title>
-<guid isPermaLink="true">https://github.com/justinmeiners/derivative-map-tool</guid>
 </item>
 <item>
 <pubDate>Sat, 26 Sep 2020 00:00:00 </pubDate>
@@ -2170,11 +2166,6 @@ Expertise is also a subject for another day.</p></li>
 <pubDate>Sun, 28 Jul 2019 00:00:00 </pubDate>
 <title>Write Your Own Proof-of-Work Blockchain</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/tiny-blockchain/</guid>
-</item>
-<item>
-<pubDate>Sat, 29 Jun 2019 00:00:00 </pubDate>
-<title>text2image</title>
-<guid isPermaLink="true">https://github.com/justinmeiners/text2image</guid>
 </item>
 <item>
 <pubDate>Sat, 08 Jun 2019 00:00:00 </pubDate>
@@ -3082,7 +3073,7 @@ See his <a href="https://gist.github.com/Dobiasd/fa27e3efb8b08fc81791d7f8e51ac5c
 </item>
 <item>
 <pubDate>Thu, 01 Jun 2017 00:00:00 </pubDate>
-<title>Shamans: A 3D Turn-based Strategy Game for iPad</title>
+<title>Shamans: A 3D Turn-based Strategy Game</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/shamans/</guid>
 </item>
 <item>
@@ -3289,11 +3280,6 @@ The next natural step would be to bind a painting to a skeleton for animation.</
  ]]></description>
 </item>
 <item>
-<pubDate>Tue, 01 Dec 2015 00:00:00 </pubDate>
-<title>Molecule Viewer</title>
-<guid isPermaLink="true">https://github.com/justinmeiners/molecule-viewer</guid>
-</item>
-<item>
 <pubDate>Thu, 15 Oct 2015 00:00:00 </pubDate>
 <title>Old Artwork</title>
 <guid isPermaLink="true">https://justinmeiners.github.io/old-artwork/</guid>
@@ -3306,33 +3292,34 @@ The next natural step would be to bind a painting to a skeleton for animation.</
 
 <h3>Moon Rover</h3>
 
-<p><img src="rover1.png" alt="moon rover 1" /> <img src="rover2.png" alt="moon rover 2" /></p>
+<p><span><img src="rover1.png" alt="moon rover 1" /> <img src="rover2.png" alt="moon rover 2" /></span></p>
 
 <h3>Low-poly Cargo Ship</h3>
 
-<p><img src="cargo_ship1.png" alt="cargo ship 1" /> <img src="cargo_ship2.png" alt="cargo ship 2" /></p>
+<p><span><img src="cargo_ship1.png" alt="cargo ship 1" /> <img src="cargo_ship2.png" alt="cargo ship 2" /></span></p>
 
-<p><img src="cargo_ship4.png" alt="cargo ship 4" /> <img src="cargo_ship3.png" alt="cargo ship 3" /></p>
+<p><span><img src="cargo_ship4.png" alt="cargo ship 4" /> <img src="cargo_ship3.png" alt="cargo ship 3" /></span></p>
 
 <h3>Space Invader Sculpt</h3>
 
 <p>While working at Infuse Medical, I taught a course on 3D programming with OpenGL. As part of my course we created a small space invaders clone. Another developer created the low-poly model for the alien, which I use to create the high resolution sculpt shown below. Occlusion maps were generated from the sculpt for the game.</p>
 
-<p><img src="space_invaders1.png" alt="alien 1" /> <img src="space_invaders2.png" alt="alien 2" />
-<img src="space_invaders_ipad1.png" alt="space invaders ipad" /> <img src="space_invaders_ipad2.png" alt="space invaders ipad" /></p>
+<p><span><img src="space_invaders1.png" alt="alien 1" /> <img src="space_invaders2.png" alt="alien 2" /></span></p>
+
+<p><span><img src="space_invaders_ipad1.png" alt="space invaders ipad" /> <img src="space_invaders_ipad2.png" alt="space invaders ipad" /></span></p>
 
 <h3>Low-poly Radio</h3>
 
-<p><img src="radio1.png" alt="radio 1" /> <img src="radio2.png" alt="radio 2" /> <img src="radio3.png" alt="radio 4" /></p>
+<p><span><img src="radio1.png" alt="radio 1" /> <img src="radio2.png" alt="radio 2" /> <img src="radio3.png" alt="radio 4" /></span></p>
 
 <h3>Pixel Art</h3>
 
-<p><em>
-<img alt="knight pixel art" src="knight_pixel.png" class="pixel-art"/>
-<img alt="alien pixel art" src="alien_pixel.png" class="pixel-art"/>
-<img alt="rocket pixel art" src="rocket_pixel.png" class="pixel-art"/>
-<img alt="owl pixel art" src="owl.png" class="pixel-art"/>
-</em></p>
+<p><span>
+<img width="200" style="image-rendering: pixelated;" alt="knight pixel art" src="knight_pixel.png"/>
+<img width="200" style="image-rendering: pixelated;" alt="alien pixel art" src="alien_pixel.png"/>
+<img width="200" style="image-rendering: pixelated;" alt="rocket pixel art" src="rocket_pixel.png"/>
+<img width="200" style="image-rendering: pixelated;" alt="owl pixel art" src="owl.png"/>
+</span></p>
 
 <h3>Another Ship</h3>
 
@@ -3391,24 +3378,9 @@ The next natural step would be to bind a painting to a skeleton for animation.</
 <guid isPermaLink="true">https://github.com/justinmeiners/c-craft</guid>
 </item>
 <item>
-<pubDate>Sat, 20 Jul 2013 00:00:00 </pubDate>
-<title>IOCC Death Star</title>
-<guid isPermaLink="true">https://github.com/justinmeiners/ioccc-death-star</guid>
-</item>
-<item>
 <pubDate>Tue, 02 Jul 2013 00:00:00 </pubDate>
 <title>Image Sequence Streaming</title>
 <guid isPermaLink="true">https://github.com/justinmeiners/image-sequence-streaming</guid>
-</item>
-<item>
-<pubDate>Wed, 22 May 2013 00:00:00 </pubDate>
-<title>Mode 7</title>
-<guid isPermaLink="true">https://github.com/justinmeiners/mode-7</guid>
-</item>
-<item>
-<pubDate>Sun, 07 Apr 2013 00:00:00 </pubDate>
-<title>C Foundation</title>
-<guid isPermaLink="true">https://github.com/justinmeiners/c-foundation</guid>
 </item>
 <item>
 <pubDate>Tue, 08 Jan 2013 00:00:00 </pubDate>
