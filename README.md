@@ -17,7 +17,7 @@ If you are interested in my professional experience, see my [CV](files/cv.pdf).
 
 ## Projects
 
-I have dedicated some significant effort into creating and releasing useful pieces of writing and software.
+This is work I have dedicated some significant effort into creating and releasing.
 
 - [04/21/2022 - Why Train When You Can Optimize?](https://justinmeiners.github.io/why-train-when-you-can-optimize/)
 - [03/07/2022 - srcweave: A literate programming system for any language](https://github.com/justinmeiners/srcweave/)
