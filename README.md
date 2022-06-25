@@ -42,6 +42,7 @@ You can also find smaller projects and experiments at my [GitHub page](https://g
 I hope to share insights, experiences, and occasionally answer some questions.
 Writing is informal and sometimes unpolished.
 
+- [06/25/2022 - A simple mesh adjacency data structure](mesh-adjacency-trick)
 - [03/07/2022 - Literate programming is much more than commenting code](literate-programming)
 - [03/05/2022 - Deploying Common Lisp Scripts](common-lisp-scripts)
 - [07/28/2021 - Almost Solving the Halting Problem](almost-solving-the-halting-problem/halting-problem.pdf)

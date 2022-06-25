@@ -4,7 +4,175 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sat, 07 May 2022 15:24:51 </lastBuildDate>
+<lastBuildDate>Sat, 25 Jun 2022 14:46:19 </lastBuildDate>
+<item>
+<pubDate>Sat, 25 Jun 2022 00:00:00 </pubDate>
+<title>A simple mesh adjacency data structure</title>
+<guid isPermaLink="true">https://justinmeiners.github.io/mesh-adjacency-trick</guid>
+<description><![CDATA[ 
+<h1>A simple mesh adjacency data structure</h1>
+
+<p><strong>06/25/2022</strong></p>
+
+<p>Are you in need of a complex mesh data structure like <a href="https://kaba.hilvi.org/homepage/blog/halfedge/halfedge.htm">half edge</a> or <a href="https://wiki.blender.org/wiki/Source/Modeling/BMesh/Design">bmesh</a>?
+Here is a trick to try that may save you some energy.
+Using the face indices (which map faces to vertices) construct a <strong>multi-map</strong> which goes the reverse direction (mapping vertices to faces).
+This facilitates most traversals efficiently and is sufficient for many mesh processing problems.</p>
+
+<h2>Motivation</h2>
+
+<p>The standard way to store a 3D mesh is an  <strong>indexed triangle mesh</strong>
+which looks something like the following:</p>
+
+<pre><code>vec3_t* vertices;
+uint32_t indices;
+</code></pre>
+
+<p>Each element of <code>indices</code> refers to an element in the <code>vertices</code> array,
+and is the corner of a face.
+For a triangle mesh, every 3 elements of <code>indices</code> constitutes a face.
+The main advantage of this structure is it allows vertex information to be shared between faces,
+given that faces are often conjoined.</p>
+
+<p>The essential topology of the mesh is all here.
+But it is not efficient to query.
+Mesh processing usually involves traversing the mesh in a logical and local manner, including:</p>
+
+<ul>
+<li>finding the faces a vertex belongs to</li>
+<li>finding the neighboring faces for a given face.</li>
+</ul>
+
+
+<p>To do this efficiently we need to add an <strong>adjacency data structure</strong> that stores local connections, such as the two examples mentioned previously.
+As <a href="https://fgiesen.wordpress.com/2012/02/21/half-edge-based-mesh-representations-theory/">Fabien describes</a>, implementing these is challenging project.
+There are a lot of invariants to keep track of.
+It will probably be buggy the first time around.
+Furthermore it often imposes restrictions on the kinds of meshes you can work with
+(eg. closed manifolds, manifolds with boundary, etc).</p>
+
+<p>Can we get away with anything simpler and easier?</p>
+
+<h2>Inverting the index</h2>
+
+<p>Given a face we can already lookup which vertices it contains.</p>
+
+<p><img src="face_to_vertex.png" alt="face to vertex" /></p>
+
+<p>What&rsquo;s missing is the ability to go the other direction,
+finding the faces each vertex belongs to.</p>
+
+<p><img src="vertex_to_face.png" alt="vertex to face" /></p>
+
+<p>If we can achieve this, then all other queries become possible.
+For example, to find neighboring faces of a face:</p>
+
+<ul>
+<li>lookup each vertex in the face</li>
+<li>for each vertex found, lookup each face it&rsquo;s a part of.</li>
+</ul>
+
+
+<p>The challenge is a face has a fixed number of corners,
+and each corner references exactly one vertex.
+But a vertex can belong to any number of faces.
+This suggests the need for a growing storage mechanism, or a linked structure,
+which come with complexity or performance headaches.</p>
+
+<p>Alternatively, consider the mesh <code>indices</code> as a function <code>g : F -&gt; V</code>, mapping face (corner) indices to vertex indices.
+We are storing this function in it&rsquo;s Cartesian product form <code>g \subseq F x V</code> as a list of pairs!
+Because <code>g</code> is not <code>1-1</code>, it&rsquo;s not an invertible.
+But, we can still just flip it around to form a reverse relation <code>g' : V -&gt; F</code>.
+For each pair <code>(f, v)</code> just replace it with <code>(v, f)</code>.</p>
+
+<h2>Implementing a reverse index</h2>
+
+<p>This new relation constitutes a <strong>multi-map</strong> structure which maps vertex indices to face corner indices.
+Multi maps can be implemented efficiently as an array of sorted pairs <code>[(vertex, face)]</code>,
+where each vertex and face can be appear as many times as needed.</p>
+
+<pre><code>using ReverseIndex = std::pair&lt;uint32_t, uint32_t&gt;;
+ReverseIndex* reverse_indices = ...;
+</code></pre>
+
+<p>To look up the faces a vertex belongs to, simply binary search the array.
+For example, to compute <code>degree</code>:</p>
+
+<pre><code>struct reverse_index_less {
+    bool operator()(const ReverseIndex&amp; x, const ReverseIndex&amp; y) {
+        return lhs.first &lt; rhs.first;
+    }
+}
+
+int degree(uint32_t v0)
+{
+     auto lookup = std::make_pair(v0, 0);
+     auto range = std::equal_range(reverse_indicies, reverse_indicies + n, lookup, reverse_index_less());
+     return (int)(last - first);
+}
+</code></pre>
+
+<p>Or to compute vertex normals from face normals:</p>
+
+<pre><code>vec3_t average_normal(uint32_t v0, vec3_t* face_normals)
+{
+     auto lookup = std::make_pair(v0, 0);
+     auto i = std::lower_bound(reverse_indicies, reverse_indicies + n, lookup);
+
+     vec3_t n;
+
+     while (i != reverse_indices + n &amp;&amp; i-&gt;first == v0) {
+        uint32_t face_index = (i-&gt;second) / 3;
+        n += face_normals[face_index];
+        ++i;
+     }
+
+     return n.normalized();
+}
+</code></pre>
+
+<p>To construct the index you just need to sort.</p>
+
+<pre><code>ReverseIndex* reverse_indices = new ReverseIndex[index_count];
+
+for (int i = 0; i &lt; index_count; ++i) {
+    reverse_indices[i] = std::make_pair(indices[i], i);
+}
+
+std::sort(reverse_indices, reverse_indices + index_count);
+</code></pre>
+
+<h2>Analysis</h2>
+
+<p>It&rsquo;s easy to implement, but what else are we losing?
+Let&rsquo;s summarize some of it&rsquo;s characteristics:</p>
+
+<ul>
+<li><p>The additional reverse index uses 2x the memory as the index buffer.
+It is very convenient because it can be constructed alongside an indexed triangle mesh with no other modifications.</p></li>
+<li><p>Construction is very fast because sorting is fast.
+Creating a complex linked structure will almost certainly be slower,
+and require an intermediate hash map step.</p></li>
+<li><p>Works for all meshes and triangle soups. No restriction to manifolds.</p></li>
+<li><p>Looking up a face for a vertex is <code>O(log(n))</code> time.
+Note that this is still fast (16 steps for 64k elements),
+but not constant.</p></li>
+<li><p>It&rsquo;s a little cumbersome to write some operations.</p></li>
+<li><p>It doesn&rsquo;t help with edits like deletions and merges.
+A lot of these operations work well with half-edges
+which may be why you use.</p>
+
+<p>Suppose we want to delete a vertex.
+Removing elements from either the index or reverse index array is inefficient.
+It&rsquo;s probably best to mark them with a flag and clean them up later.</p>
+
+<p>If the faces in the index are marked deleted, then the entries in the
+reverse index should be left.</p></li>
+</ul>
+
+
+ ]]></description>
+</item>
 <item>
 <pubDate>Thu, 21 Apr 2022 00:00:00 </pubDate>
 <title>Why Train When You Can Optimize?</title>
