@@ -2,10 +2,10 @@
 
 **06/25/2022**
 
-Are you in need of a complex mesh data structure like [half edge][half-edge2] or [bmesh][bmesh]?
-Here is a trick to try that may save you some energy. 
-Using the face indices (which map faces to vertices) construct a **multi-map** which goes the reverse direction (mapping vertices to faces).
-This facilitates most traversals efficiently and is sufficient for many mesh processing problems.
+Considering a complex mesh data structure like [half edge][half-edge2] or [bmesh][bmesh]?
+Here is a trick that may save you some energy. 
+Face indices (which map faces to vertices) can be transformed into a **multi-map** which goes the reverse direction (mapping vertices to faces).
+This can be used to perform adjacency traversals efficiently and is sufficient for many mesh processing problems.
 
 [half-edge1]: https://fgiesen.wordpress.com/2012/02/21/half-edge-based-mesh-representations-theory/
 [half-edge2]: https://kaba.hilvi.org/homepage/blog/halfedge/halfedge.htm
@@ -72,7 +72,7 @@ For each pair `(f, v)` just replace it with `(v, f)`.
 
 ## Implementing a reverse index
 
-This new relation constitutes a **multi-map** structure which maps vertex indices to face corner indices.
+This new relation constitutes a **multi-map** which maps vertex indices to face corner indices.
 Multi maps can be implemented efficiently as an array of sorted pairs `[(vertex, face)]`,
 where each vertex and face can be appear as many times as needed.
 
@@ -84,7 +84,7 @@ For example, to compute `degree`:
 
     struct reverse_index_less {
         bool operator()(const ReverseIndex& x, const ReverseIndex& y) {
-            return lhs.first < rhs.first;
+            return x.first < rhs.y;
         }
     }
 
@@ -92,7 +92,7 @@ For example, to compute `degree`:
     {
          auto lookup = std::make_pair(v0, 0);
          auto range = std::equal_range(reverse_indicies, reverse_indicies + n, lookup, reverse_index_less());
-         return (int)(last - first);
+         return (int)(range.second - range.first);
     }
 
 Or to compute vertex normals from face normals:
@@ -127,21 +127,8 @@ To construct the index you just need to sort.
 
 ## Analysis
 
-It's easy to implement, but what else are we losing?
-Let's summarize some of it's characteristics:
-
-- The additional reverse index uses 2x the memory as the index buffer.
-  It is very convenient because it can be constructed alongside an indexed triangle mesh with no other modifications.
-
-- Construction is very fast because sorting is fast.
-  Creating a complex linked structure will almost certainly be slower,
-  and require an intermediate hash map step.
-
-- Works for all meshes and triangle soups. No restriction to manifolds.
-
-- Looking up a face for a vertex is `O(log(n))` time.
-  Note that this is still fast (16 steps for 64k elements),
-  but not constant.
+It's easy to implement, but what are we missing?
+Let's summarize some of it's limitations:
 
 - It's a little cumbersome to write some operations.
 
@@ -156,4 +143,20 @@ Let's summarize some of it's characteristics:
   If the faces in the index are marked deleted, then the entries in the 
   reverse index should be left.
   
-  
+- Looking up a face for a vertex is `O(log(n))` time.
+  Note that this is still fast (16 steps for 64k elements),
+  but not constant.
+
+
+However, besides it's simplicity it has a few additional strengths:
+
+- The additional reverse index add only 2x the memory of the index buffer.
+  It is very convenient because it can be constructed alongside an indexed triangle mesh with no other modifications to the original data.
+
+- Construction is very fast because sorting is fast.
+  Creating a complex linked structure will almost certainly be slower,
+  and require an intermediate hash map step.
+
+- Works for all meshes and triangle soups. No restriction to manifolds.
+
+ 

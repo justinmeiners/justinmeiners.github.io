@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://justinmeiners.github.io/</link>
-<lastBuildDate>Sat, 25 Jun 2022 14:46:19 </lastBuildDate>
+<lastBuildDate>Sat, 25 Jun 2022 20:45:30 </lastBuildDate>
 <item>
 <pubDate>Sat, 25 Jun 2022 00:00:00 </pubDate>
 <title>A simple mesh adjacency data structure</title>
@@ -14,10 +14,10 @@
 
 <p><strong>06/25/2022</strong></p>
 
-<p>Are you in need of a complex mesh data structure like <a href="https://kaba.hilvi.org/homepage/blog/halfedge/halfedge.htm">half edge</a> or <a href="https://wiki.blender.org/wiki/Source/Modeling/BMesh/Design">bmesh</a>?
-Here is a trick to try that may save you some energy.
-Using the face indices (which map faces to vertices) construct a <strong>multi-map</strong> which goes the reverse direction (mapping vertices to faces).
-This facilitates most traversals efficiently and is sufficient for many mesh processing problems.</p>
+<p>Considering a complex mesh data structure like <a href="https://kaba.hilvi.org/homepage/blog/halfedge/halfedge.htm">half edge</a> or <a href="https://wiki.blender.org/wiki/Source/Modeling/BMesh/Design">bmesh</a>?
+Here is a trick that may save you some energy.
+Face indices (which map faces to vertices) can be transformed into a <strong>multi-map</strong> which goes the reverse direction (mapping vertices to faces).
+This can be used to perform adjacency traversals efficiently and is sufficient for many mesh processing problems.</p>
 
 <h2>Motivation</h2>
 
@@ -87,7 +87,7 @@ For each pair <code>(f, v)</code> just replace it with <code>(v, f)</code>.</p>
 
 <h2>Implementing a reverse index</h2>
 
-<p>This new relation constitutes a <strong>multi-map</strong> structure which maps vertex indices to face corner indices.
+<p>This new relation constitutes a <strong>multi-map</strong> which maps vertex indices to face corner indices.
 Multi maps can be implemented efficiently as an array of sorted pairs <code>[(vertex, face)]</code>,
 where each vertex and face can be appear as many times as needed.</p>
 
@@ -100,7 +100,7 @@ For example, to compute <code>degree</code>:</p>
 
 <pre><code>struct reverse_index_less {
     bool operator()(const ReverseIndex&amp; x, const ReverseIndex&amp; y) {
-        return lhs.first &lt; rhs.first;
+        return x.first &lt; rhs.y;
     }
 }
 
@@ -108,7 +108,7 @@ int degree(uint32_t v0)
 {
      auto lookup = std::make_pair(v0, 0);
      auto range = std::equal_range(reverse_indicies, reverse_indicies + n, lookup, reverse_index_less());
-     return (int)(last - first);
+     return (int)(range.second - range.first);
 }
 </code></pre>
 
@@ -144,19 +144,10 @@ std::sort(reverse_indices, reverse_indices + index_count);
 
 <h2>Analysis</h2>
 
-<p>It&rsquo;s easy to implement, but what else are we losing?
-Let&rsquo;s summarize some of it&rsquo;s characteristics:</p>
+<p>It&rsquo;s easy to implement, but what are we missing?
+Let&rsquo;s summarize some of it&rsquo;s limitations:</p>
 
 <ul>
-<li><p>The additional reverse index uses 2x the memory as the index buffer.
-It is very convenient because it can be constructed alongside an indexed triangle mesh with no other modifications.</p></li>
-<li><p>Construction is very fast because sorting is fast.
-Creating a complex linked structure will almost certainly be slower,
-and require an intermediate hash map step.</p></li>
-<li><p>Works for all meshes and triangle soups. No restriction to manifolds.</p></li>
-<li><p>Looking up a face for a vertex is <code>O(log(n))</code> time.
-Note that this is still fast (16 steps for 64k elements),
-but not constant.</p></li>
 <li><p>It&rsquo;s a little cumbersome to write some operations.</p></li>
 <li><p>It doesn&rsquo;t help with edits like deletions and merges.
 A lot of these operations work well with half-edges
@@ -168,6 +159,21 @@ It&rsquo;s probably best to mark them with a flag and clean them up later.</p>
 
 <p>If the faces in the index are marked deleted, then the entries in the
 reverse index should be left.</p></li>
+<li><p>Looking up a face for a vertex is <code>O(log(n))</code> time.
+Note that this is still fast (16 steps for 64k elements),
+but not constant.</p></li>
+</ul>
+
+
+<p>However, besides it&rsquo;s simplicity it has a few additional strengths:</p>
+
+<ul>
+<li><p>The additional reverse index add only 2x the memory of the index buffer.
+It is very convenient because it can be constructed alongside an indexed triangle mesh with no other modifications to the original data.</p></li>
+<li><p>Construction is very fast because sorting is fast.
+Creating a complex linked structure will almost certainly be slower,
+and require an intermediate hash map step.</p></li>
+<li><p>Works for all meshes and triangle soups. No restriction to manifolds.</p></li>
 </ul>
 
 
