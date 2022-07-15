@@ -41,7 +41,7 @@ For machine learning the answer is a bit of linear algebra and multivariable cal
 evidenced by the many blog post promising to get readers up to speed.
 This math is (should be) covered by every computer science degree
 and has remained the same for at least 50 years,
-down to the presentations and illustrations used to [teach it][1]. 
+down to the presentations and illustrations used to [teach it][1].
 [Neural networks][5] themselves have been around for a [long time][6],
 although less mainstream.
 
@@ -58,8 +58,8 @@ might be enough for 90% of applications.
 But it's going to be really hard, if you can't understand a wikipedia page about [polynomials][7].
 
 I don't mean to suggest that these skills make an expert.
-General theory is a longshot from research or novel contributions to the field. 
-Nor is it sufficient to be a good programmer; learning linear algebra does not immediately 
+General theory is a longshot from research or novel contributions to the field.
+Nor is it sufficient to be a good programmer; learning linear algebra does not immediately
 make you good at writing machine learning programs (and scientists write some terrible code!).
 Rather this is the "hard stuff" that prevents programmers from getting into these fields.
 Once you know it, the other details are approachable. (2)
@@ -69,7 +69,7 @@ to graphics, you will find similar applications
 of rather unextraordinary math and science.
 Many programmers ask, how I can I predict what skills will be important in the future?
 What do I need to learn to have a successful career?
-Few can predict what specific trends will take off, but I 
+Few can predict what specific trends will take off, but I
 bet whatever is important in the future is going to require understanding
 those broad areas of computer science.
 Keep practicing and specializing in the area you work in, but if you regularly refresh and
@@ -105,7 +105,7 @@ we continuosuly revisit the same core subjects, over and over, in pursuit of mas
 1. It doesn't have to come from a university, and a majority
 of those who study STEM seem to lose it after going through the motions.
 
-2. A great example of this is the 
+2. A great example of this is the
 popular book [SICP][8]. In just a few hundred
 pages it covers several major areas of CS and more
 than most programmers understand in their whole career.
@@ -122,9 +122,9 @@ Expertise is also a subject for another day.
 
 [1]: https://www.youtube.com/watch?v=wsOoClvZmic
 [2]: https://teachyourselfcs.com/
-[3]: https://justinmeiners.github.io/tiny-blockchain/
+[3]: https://www.jmeiners.com/tiny-blockchain/
 [4]: https://v8.dev/blog
-[5]: https://justinmeiners.github.io/neural-nets-sim/
+[5]: https://www.jmeiners.com/neural-nets-sim/
 [6]: https://en.wikipedia.org/wiki/Perceptrons_(book)
 [7]: https://en.wikipedia.org/wiki/Horner%27s_method
 [8]: https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html
