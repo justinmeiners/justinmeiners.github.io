@@ -7,7 +7,7 @@ One of my favorite courses in college was
 philosophy of language.
 Along with interesting philosphy
 it introduced me to the foundations of math project
-which has since become one of my 
+which has since become one of my
 favorite subjects to learn about.
 
 Some of my favorite books of all time come out of this interest.
@@ -29,12 +29,12 @@ By: [Apostolos Doxiadis][l1]
 
 ![logicomix](logicomix.jpg)
 
-Logicomix is actually a comic book! 
+Logicomix is actually a comic book!
 It tells an engaging historical narrative about the search for the foundations of math
-and the birth of analytic philosophy, in the early 20th century. 
+and the birth of analytic philosophy, in the early 20th century.
 
 It introduces you to all the major characters
-such as Gödel, Russel, Frege, and Wittgenstein and 
+such as Gödel, Russel, Frege, and Wittgenstein and
 motivates the kinds of problems they were trying to solve.
 The book also explores how these ideas connect to modern computer science.
 
@@ -49,7 +49,7 @@ By: [Douglas Hofstadter][geb-1]
 
 ![godel escher bach](geb.jpg)
 
-You probably have seen this work recommended elsewhere. 
+You probably have seen this work recommended elsewhere.
 Gödel, Escher, Bach really deserves all the praise that it gets.
 
 Hofstadter covers an enormous range of topics
@@ -107,7 +107,7 @@ By: [Marvin Minsky][mm-1]
 
 Marvin Minsky is an incredibly clear and deep writer.
 In this work he provides a mathematical framework
-for thinking about mechanical machines and develops the 
+for thinking about mechanical machines and develops the
 theory of computation.
 
 This book teaches you all you need to know about Turing machines, finite state, and neural networks.
@@ -123,7 +123,7 @@ I read it from my university's library. If that is not an option, I recommend yo
 If anyone knows of a place where I can reasonably purchase this book, let me know.
 
 [mm-1]: https://en.wikipedia.org/wiki/Marvin_Minsky
-[mm-2]: https://justinmeiners.github.io/neural-nets-sim/
+[mm-2]: https://www.jmeiners.com/neural-nets-sim/
 
 ### Structure and Interpretation of Computer Programs
 
@@ -140,7 +140,7 @@ its full inter-workings from the ground up.
 
 If you want to be a professional programmer,
 this may be the only book you need to study.
-What other book teaches you to write a symbolic differentiator, 
+What other book teaches you to write a symbolic differentiator,
 interpreter, circuit simulator, and compiler?
 
 Most of the material is mixed in the [excercises][sicp-2]
@@ -163,9 +163,9 @@ By: [Pavel Pudlak][f1]
 ![logical foundations of math](logical_foundations.jpg)
 
 This book is a massive and dense survey of topics including
-formal systems, set theory, abstract algebra, computability theory, 
-analysis of algorithms, and quantum computing. 
-The first chapter covered almost everything I had learned about 
+formal systems, set theory, abstract algebra, computability theory,
+analysis of algorithms, and quantum computing.
+The first chapter covered almost everything I had learned about
 algebra and meta-mathematics in my entire undergraduate degree!
 
 Pudlak does a fantastic job of balancing technical

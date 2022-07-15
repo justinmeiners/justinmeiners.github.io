@@ -30,9 +30,9 @@ Consider the following features:
     it's probably much closer to Java.
     But, for a high-level, dynamic, language, [it's pretty fast][lisp-benchmark].
 - **Design:** Lisp is well designed and founded on solid computer science principles.
-  It has a focused selection of features and an elegant evaluation model which make it easy to 
+  It has a focused selection of features and an elegant evaluation model which make it easy to
   write and compose functionality.
-  
+
 You might think this list of features isn't remarkable or unique to Lisp.
 That's certainly true.
 C did them first, and established them as the recipe for releasing a successful language.
@@ -46,14 +46,14 @@ Take Python for example. It's well designed, has great books and documentation, 
 It has an [elegant design][norvig-python] inspired by Lisp.
 But, is it standardized? Not really. They have a spec, but it only has one defacto implementation
 and changes all the time.
-Whatever the CPython project chooses to do defines the language. 
+Whatever the CPython project chooses to do defines the language.
 Alternative implementations exist, but they all have compatibility compromises.
 Python is also not very efficient.
 You can use a [JIT][pypy] implementation which makes it tolerable,
 but that has its own quirks, and you can't use many libraries with it.
 
 Lisp and C aren't the only languages with all these benefits,
-but there aren't as many as you think. 
+but there aren't as many as you think.
 Since Lisp has these great features and a design I enjoy using and studying
 it's become my go-to language.
 
@@ -67,7 +67,7 @@ specific advice for reliable unix software.
 [2]: https://en.wikipedia.org/wiki/Homoiconicity
 [norvig-python]: https://norvig.com/python-lisp.html
 [lisp-benchmark]: https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/lisp.html
-[5]: https://justinmeiners.github.io/think-in-math/
+[5]: https://www.jmeiners.com/think-in-math/
 [pypy]: https://www.pypy.org
 [begriff-stable]: https://begriffs.com/posts/2020-08-31-portable-stable-software.html
 [clhs]: http://www.lispworks.com/documentation/lw50/CLHS/Front/index.htm

@@ -60,7 +60,7 @@ on paper and see if you can figure it out.
                                   &\{1\}, \{2\}, \{3\}, \\
                                   &\emptyset \} \\
 \end{align}
-    
+
 
 The key insight, is that if we take an element out of the original set,
 and all the subsets which contain it, we can get back
@@ -147,7 +147,7 @@ This is difficult to convey in a brief article,
 but think of it like writing code as a book or article.
 You can introduce your code with an overview,
 take time to develop the most important ideas and characters,
-gradually build up to the big picture, 
+gradually build up to the big picture,
 and then maybe fill in some extra details.
 
 Consider the last time you started working on a large code base someone else wrote.
@@ -157,18 +157,18 @@ You probably wanted to know:
 - What code is most important and should be read first?
 - What are they key data structures and algorithms?
 - How is data stored?
-- Which files are boiler plate that I can ignore? 
+- Which files are boiler plate that I can ignore?
 
 A well-written README can point you to some files to get started,
 but it won't isolate the core concepts from all the other code
 details surrounding them.
-Literate programs allow you to answer these questions naturally. 
+Literate programs allow you to answer these questions naturally.
 
 ## Weave
 
 The **weave** operation generates documentation files from the literate file.
 This is a nicely formatted document like the one you are reading right now!
-This presents the code in a readable form, 
+This presents the code in a readable form,
 
 If you are like me, you probably maintain some kind of design document recording decisions make
 during the project and data to provide justifications.
@@ -177,7 +177,7 @@ and the literate **weave** operation let's you do just that.
 
 Here are some examples of media you can include, as well as a specific use case I have desired in the past:
 
-- Diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases. 
+- Diagrams and images (instead of the ASCII kind). Illustrate a suite of test cases.
 - Graphs and plots. Illustrate what a function looks like.
 - Math formulas and equations. Analyze the complexity of an algorithm.
 - Tables of data. Record survey data that justifies a decision made in code.
@@ -192,11 +192,11 @@ You aren't littering comments with awkward media references.
 ## Getting started
 
 I have told you a bit about why I like Literate programming,
-but to really understand how 
+but to really understand how
 it benefits your code read some examples, or better yet,
 try it on your next project.
 To get started you will need a literate programming tool of which there are many.
-Here 
+Here
 
 ### srcweave
 
@@ -213,7 +213,7 @@ It is self hosting, which I find pretty cool, so you can read it's [own source c
 Donald Knuth wrote the original literate programming tools [web][web] and cweb.
 Of course, they output TeX instead of HTML for documentation.
 I don't know anyone else who actually uses his tools, since TeX is more involved than most people need,
- but they are still worth learning from. 
+ but they are still worth learning from.
 The [source for TeX][tex-source] is written in it, and is famous for having
 very few bugs and being extremely reliable.
 
@@ -223,4 +223,4 @@ very few bugs and being extremely reliable.
 [srcweave]: https://github.com/justinmeiners/srcweave
 [literate]: https://zyedidia.github.io/literate/
 [literate-source]: https://zyedidia.github.io/literate/literate-source/
-[tiny-blockchain]: https://justinmeiners.github.io/tiny-blockchain/
+[tiny-blockchain]: https://www.jmeiners.com/tiny-blockchain/

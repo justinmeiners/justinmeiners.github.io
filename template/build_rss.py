@@ -6,7 +6,7 @@ from datetime import datetime
 from operator import itemgetter
 
 RFC_FORMAT="%a, %d %b %Y %H:%M:%S %z"
-SITE='https://justinmeiners.github.io/'
+SITE='https://www.jmeiners.com/'
 
 entries = []
 with open("README.md", 'r') as f:
@@ -50,6 +50,3 @@ for e in entries:
     w('</item>\n')
 
 w('</channel></rss>')
-
-
-
