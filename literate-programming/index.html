@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
 <title>Literate programming is much more than commenting code</title>
 <link rel="stylesheet" href="google-code-prettify/prettify.css">
 <link rel="stylesheet" href="styles/prettify-theme.css">
@@ -76,10 +77,10 @@ For example:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="btest_subsets:34" href="#btest_subsets:34">test subsets</a></em></strong></span>
+<strong class="block-title"><em><a id="test-subsets-block-1" href="#test-subsets-block-1">test subsets</a></em></strong></span>
 <pre class="prettyprint"><code class="">console.log( subsets([1, 2, 3, 4]) );
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
 
 
 <p>You can think of them like markdown documents, but with an important addition.
@@ -94,17 +95,17 @@ or includes it at the specificied location.</p>
 <p>Let&rsquo;s try it out.
 In the block above we introduced a <code>subsets</code> function, also known as the powerset:</p>
 
-<div class="math-block">\begin{equation}   \mathcal{P}(A) = \{ S \text{ is a set } \colon S \subseteq A \}\end{equation}</div>
+<div class="math-block"><code>\begin{equation}   \mathcal{P}(A) = \{ S \text{ is a set } \colon S \subseteq A \}\end{equation}</code></div>
 
 
 <p>Implementing it can be a little bit tricky.
 If you have never done it before, I recommend you write out some examples
 on paper and see if you can figure it out.</p>
 
-<div class="math-block">\begin{align}    \mathcal{P}(\{1, 2, 3\}) = \{ &\{1, 2, 3\}, \\
+<div class="math-block"><code>\begin{align}    \mathcal{P}(\{1, 2, 3\}) = \{ &\{1, 2, 3\}, \\
                                   &\{1, 2\}, \{1, 3\}, \{2, 3\}, \\
                                   &\{1\}, \{2\}, \{3\}, \\
-                                  &\emptyset \} \\\end{align}</div>
+                                  &\emptyset \} \\\end{align}</code></div>
 
 
 <p>The key insight, is that if we take an element out of the original set,
@@ -113,22 +114,22 @@ the full subsets, by making a copy of each other subset and inserting
 the element back in.
 In other words, the number of subsets <em>doubles</em> with each element in the set:</p>
 
-<div class="math-block">\begin{equation}    |\mathcal{P}(A)| = 2^{|A|}\end{equation}</div>
+<div class="math-block"><code>\begin{equation}    |\mathcal{P}(A)| = 2^{|A|}\end{equation}</code></div>
 
 
 <p>Here is rough outline in code:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bsubsets.js:77" href="#bsubsets.js:77">subsets.js</a></em></strong></span>
+<strong class="block-title"><em><a id="subsets.js-block-3" href="#subsets.js-block-3">subsets.js</a></em></strong></span>
 <pre class="prettyprint"><code class="">function subsets(set) {
-    <em class="block-link nocode" title="index.lit:92"><a href="#bbase_case:91">@{base case}</a></em>
-    <em class="block-link nocode" title="index.lit:98"><a href="#bremove_element_and_compute_subsets_of_smaller_set:97">@{remove element and compute subsets of smaller set}</a></em>
-    return <em class="block-link nocode" title="index.lit:104"><a href="#bsubsets_without_element:103">@{subsets without element}</a></em>
-        .concat( <em class="block-link nocode" title="index.lit:111"><a href="#bsubsets_with_element:110">@{subsets with element}</a></em> );
+    <em class="block-link nocode" title=""><a href="#base-case-block-5">@{base case}</a></em>
+    <em class="block-link nocode" title=""><a href="#remove-element-and-compute-subsets-of-smaller-set-block-7">@{remove element and compute subsets of smaller set}</a></em>
+    return <em class="block-link nocode" title=""><a href="#subsets-without-element-block-9">@{subsets without element}</a></em>
+        .concat( <em class="block-link nocode" title=""><a href="#subsets-with-element-block-11">@{subsets with element}</a></em> );
 }
 
-<em class="block-link nocode" title="index.lit:35"><a href="#btest_subsets:34">@{test subsets}</a></em>
+<em class="block-link nocode" title=""><a href="#test-subsets-block-1">@{test subsets}</a></em>
 </code></pre>
 </div>
 
@@ -138,31 +139,31 @@ If the input set is empty, its only subset is the empty set:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bbase_case:91" href="#bbase_case:91">base case</a></em></strong></span>
+<strong class="block-title"><em><a id="base-case-block-5" href="#base-case-block-5">base case</a></em></strong></span>
 <pre class="prettyprint"><code class="">if (set.length == 0) { return [[]]; }
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
 
 
 <p>We use recursion by removing one element and computing the subsets of that array:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bremove_element_and_compute_subsets_of_smaller_set:97" href="#bremove_element_and_compute_subsets_of_smaller_set:97">remove element and compute subsets of smaller set</a></em></strong></span>
+<strong class="block-title"><em><a id="remove-element-and-compute-subsets-of-smaller-set-block-7" href="#remove-element-and-compute-subsets-of-smaller-set-block-7">remove element and compute subsets of smaller set</a></em></strong></span>
 <pre class="prettyprint"><code class="">const element = set.pop();
 const smaller = subsets(set);
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
 
 
 <p>All the smaller subsets are still subsets of our original set, so we want to include those.</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bsubsets_without_element:103" href="#bsubsets_without_element:103">subsets without element</a></em></strong></span>
+<strong class="block-title"><em><a id="subsets-without-element-block-9" href="#subsets-without-element-block-9">subsets without element</a></em></strong></span>
 <pre class="prettyprint"><code class="">smaller
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
 
 
 <p>But, we are missing all the subsets involving <code>element</code>. We simply
@@ -170,10 +171,10 @@ add <code>element</code> in to each set.</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="bsubsets_with_element:110" href="#bsubsets_with_element:110">subsets with element</a></em></strong></span>
+<strong class="block-title"><em><a id="subsets-with-element-block-11" href="#subsets-with-element-block-11">subsets with element</a></em></strong></span>
 <pre class="prettyprint"><code class="">smaller.map(s =&gt; s.concat([element]))
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#bsubsets.js:77" title="index.lit:78 subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
 
 
 <p>That&rsquo;s all!
@@ -185,7 +186,7 @@ Here is how to run it in your command line:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="btest_command:122" href="#btest_command:122">test command</a></em></strong></span>
+<strong class="block-title"><em><a id="test-command-block-13" href="#test-command-block-13">test command</a></em></strong></span>
 <pre class="prettyprint"><code class="">node subsets.js
 </code></pre>
 </div>
@@ -283,7 +284,7 @@ Here</p>
 <h3>srcweave</h3>
 
 <p>I recently wrote <a href="https://github.com/justinmeiners/srcweave">srcweave</a> which was used to write this article you are reading now.
-See my article <a href="https://justinmeiners.github.io/tiny-blockchain/">&ldquo;Write your own Proof-of-Work Blockchain&rdquo;</a> for another example.</p>
+See my article <a href="https://www.jmeiners.com/tiny-blockchain/">&ldquo;Write your own Proof-of-Work Blockchain&rdquo;</a> for another example.</p>
 
 <h3>Literate</h3>
 
