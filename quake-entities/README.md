@@ -13,7 +13,7 @@ to create interactive scenarios.
 
 In this article I want to provide a brief overview of the Quake entity system and its design (for Quake generally, not just Quake 1).
 Of particular interest to me is it's similarity to the UNIX philosophy.
-Both designs can be summarized as a kind of monostic, with one basic concept and a language (the shell) for combining simple behaviors in emergent ways.
+Both designs can be summarized as having one primary substance (a unifying concept) and a language (the shell) for combining simple behaviors in emergent ways.
 
 [source-engine]: https://developer.valvesoftware.com/wiki/SDK_Docs
 [quake-3-networking]: https://fabiensanglard.net/quake3/network.php
@@ -134,7 +134,7 @@ to work the same for all of them, instead of synchronizing each type separately.
 The tradeoff is entities are not always well defined.
 The only way to know what properties are available, and what they do, is to follow convention (or read the source code).
 
-Perhaps the biggest advantage of monism (when it works) is it significantly reduces cognitive load for everyone, but especially designers.
+Perhaps the biggest advantage is it significantly reduces cognitive load for everyone, but especially designers.
 When you have a complex set of categories, you have to think really hard about where every feature belongs.
 You also spend a lot of energy refactoring components to accommodate new features.
 Here you have no choice.
