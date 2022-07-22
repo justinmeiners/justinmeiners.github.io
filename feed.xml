@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com/</link>
-<lastBuildDate>Thu, 14 Jul 2022 23:12:33 </lastBuildDate>
+<lastBuildDate>Thu, 21 Jul 2022 20:37:16 </lastBuildDate>
 <item>
 <pubDate>Sat, 25 Jun 2022 00:00:00 </pubDate>
 <title>A simple mesh adjacency data structure</title>
@@ -435,8 +435,7 @@ You aren&rsquo;t littering comments with awkward media references.</p>
 but to really understand how
 it benefits your code read some examples, or better yet,
 try it on your next project.
-To get started you will need a literate programming tool of which there are many.
-Here</p>
+To get started you will need a literate programming tool of which there are many.</p>
 
 <h3>srcweave</h3>
 
