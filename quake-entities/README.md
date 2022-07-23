@@ -199,7 +199,8 @@ You can think of these entities like electronic logic gates.
 They allow the level designer to script together interesting scenarios and actions, from simple parts.
 For example, in the image there is a `func_button` whose output is linked to a `trigger_counter`.
 That `trigger_counter` also has an output linked to the door.
-The counter counts down by a specified duration (in this case 3 seconds) and then fires, opening a door.
+The counter increments each time it receives an event. When it reaches it's threshold it fires.
+In this case, after all three buttons are pressed, a door will open.
 
 ![quake func button and trigger counter](button_and_trigger.png)
 
