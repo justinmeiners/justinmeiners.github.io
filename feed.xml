@@ -4,7 +4,293 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com/</link>
-<lastBuildDate>Thu, 21 Jul 2022 20:42:50 </lastBuildDate>
+<lastBuildDate>Sat, 23 Jul 2022 13:37:44 </lastBuildDate>
+<item>
+<pubDate>Thu, 21 Jul 2022 00:00:00 </pubDate>
+<title>The Quake entity system: shell scripting for games</title>
+<guid isPermaLink="true">https://www.jmeiners.com/quake-entities</guid>
+<description><![CDATA[ 
+<h1>The Quake entity system: shell scripting for games</h1>
+
+<p><strong>By: Justin Meiners</strong></p>
+
+<p><strong>07/20/2022</strong></p>
+
+<p>The Quake engine has influenced an incredible number of games through direct licensing (games like Half-Life and Jedi Knights 2),
+modders bringing its concepts to other studios, and competitors trying to best it (especially Unreal).
+Most of what&rsquo;s been written about it focuses on the <a href="https://www.bluesnews.com/abrash/contents.shtml">3D graphics</a>, or client/server <a href="https://fabiensanglard.net/quake3/network.php">networking</a>.
+But, much overlooked is the innovative entity system which allows the game to simulate objects and level designers
+to create interactive scenarios.</p>
+
+<p>In this article I want to provide a brief overview of the Quake entity system and its design (for Quake generally, not just Quake 1).
+Of particular interest to me is it&rsquo;s similarity to the UNIX philosophy.
+Both designs can be summarized as having one primary substance (a unifying concept) and a language (the shell) for combining simple behaviors in emergent ways.</p>
+
+<h2>Brushes</h2>
+
+<p>Before describing the entity system, there is an important technical concept to cover.
+A <em>brush</em> is a 3D solid shape defined by a set of 3 or more 3D planes.
+The solid is defined to be the volume enclosed by the 3D planes (also known as the intersection of half-spaces).
+It&rsquo;s not hard to show that a brush must be a convex shape.</p>
+
+<p><img src="brush_sample.png" alt="quake brush sample" /></p>
+
+<p>Brushes are useful for a few reasons:</p>
+
+<ul>
+<li>They are easy to edit and UV map, especially for making architecture-like features (a triangle mesh is more detailed, but also more work).</li>
+<li>They have nice mathematical properties. They are fully enclosed , We can compute collisions with them easily.</li>
+<li>They are convenient for computing BSP trees, which make rendering possible.</li>
+</ul>
+
+
+<p>We think of brushes as a solid, but a brush can also be converted into a 3D triangle mesh for rendering.
+One way to do this is to intersect the planes together, 3 at time, to create a vertex.
+This requires solving a linear system.
+Then for each plane the list of vertices lying in the plane can be assembled into a polygon.</p>
+
+<p><img src="intersect_planes.png" alt="intersect planes" /></p>
+
+<h2>The categories</h2>
+
+<p>Quake divides the game world into a few simple categories.
+At the top-level everything is either static or dynamic.
+The static part mostly consists of scenery and the basic geometric area that makes up the levels.
+The scenery is composed mostly of brushes.
+The bulk of this is described by the singular <code>worldspawn</code> object in <a href="https://quakewiki.org/wiki/Quake_Map_Format"><code>.map</code></a> files, although some other <code>.map</code> entries are also static.</p>
+
+<p><img src="level.png" alt="quake level" /></p>
+
+<p>In an ideal world, nothing in the game would be static, so players would be free to interact with everything
+(and it would make editing the level easier).
+However, levels are static for performance reasons.
+To render at real-time speeds, a bunch of data needs to be pre-computed, including BSP tree and lightmaps.
+Generally, the scenery occupies most of the screen, so some of the pre-computing is a tradeoff favoring quality over interactivity.
+For example, lightmapping/surface caching pre-computes higher quality lighting and shadows for the scenery.</p>
+
+<p>Everything else in the world is dynamic.
+All the dynamic things are called <em>entities</em>, and represent individual movable objects in the world.
+The entities include characters, bullets, weapons, etc.</p>
+
+<p>Entities are divided further into two kinds.
+The first are <em>solid entities</em> which are represented by a union of brushes.
+Their shape can be edited right in the level editor, so they can take on different forms as needed,
+like a door, trigger, or platform.</p>
+
+<p><img src="platform.png" alt="quake solid  entity" /></p>
+
+<p>The other kind are <em>point entities</em> and are represented by traditional triangle meshes.
+While solid entities can be modified for each instance, point entities are much less flexible.
+For example, the ammo pickups or characters have one standard model and always look the same.</p>
+
+<p><img src="character.png" alt="quake character" /></p>
+
+<p>All entities have spawn properties to configure their behaviour.
+These are specified as key/value strings in the level editor,  and each kind of entity can choose which to read and how to interpret them.
+For example, a property might specify which sound is played when the door is opened.</p>
+
+<p><img src="properties.png" alt="quake properties" /></p>
+
+<p>The <a href="https://github.com/id-Software/Quake-III-Arena/blob/dbe4ddb10315479fc00086f08e25d968b4b43c49/code/game/g_spawn.c#L99">Quake 3</a> source explains properties well. Quake 1 is more convoluted as entities are written in <code>.qc</code> files.</p>
+
+<h2>Everything is one thing.</h2>
+
+<p>It is not uncommon for games (then or now) to have complex object and behaviour hierarchies following object oriented or <a href="https://cowboyprogramming.com/2007/01/05/evolve-your-heirachy/">component based</a> design.
+Quake rejects all that and ascribes to something like the UNIX mantra: &ldquo;everything is a file&rdquo;.
+In UNIX this means programs are files, data is files, network interfaces are files, even hardware devices are files.
+When everything is the same you only need one interface to communicate.
+Since most programs simply read and write data, treating the sources and destinations as a file works pretty well.
+Want to get input from a hardware device? Read from it like a file.
+Everything becomes unified.</p>
+
+<p>For the most part, it works well.
+Sometimes the concept is pushed too far and very &ldquo;special files&rdquo; need to be treated carefully.</p>
+
+<p>In Quake everything dynamic is an entity.
+In fact, each entity is an instance of the same <a href="https://github.com/id-Software/Quake/blob/master/QW/server/progdefs.h">big struct</a>
+containing a field for everything an object might need in the game.
+Here is a small part, to give you an idea of what&rsquo;s included:</p>
+
+<pre><code>typedef struct
+{
+    float   modelindex;
+    vec3_t  absmin;
+    vec3_t  absmax;
+    float   ltime;
+    float   lastruntime;
+    float   movetype;
+    float   solid;
+    vec3_t  origin;
+    ...
+    string_t    noise2;
+    string_t    noise3;
+} entvars_t;
+</code></pre>
+
+<p>Obviously, each entity type does not utilize all the fields.
+But, since gameplay tends to be the smallest part of the games workload, the wasted space is not a problem.
+Entities just ignore what they don&rsquo;t use.</p>
+
+<p>Quake&rsquo;s simple design provides similar unification benefits as UNIX.
+The primitive operations, creating, destroying, communicating, are all the same.
+Many entities need similar physics, and they can trivially share that functionality.
+All the entities need to be networked, and this allows the networking algorithm
+to work the same for all of them, instead of synchronizing each type separately.</p>
+
+<p>The tradeoff is entities are not always well defined.
+The only way to know what properties are available, and what they do, is to follow convention (or read the source code).</p>
+
+<p>Perhaps the biggest advantage is it significantly reduces cognitive load for everyone, but especially designers.
+When you have a complex set of categories, you have to think really hard about where every feature belongs.
+You also spend a lot of energy refactoring components to accommodate new features.
+Here you have no choice.
+Figure out how to make it out of entity, or don&rsquo;t do it.
+Functionality ends up being reused automatically.</p>
+
+<p>This is might be a general rule.
+If you can think of one primary element that unifies your software, you should probably use it.
+The challenge is actually understanding your problem well enough to discover that unifying concept.</p>
+
+<h2>Means of combination</h2>
+
+<p>UNIX acknowledges a basic fact about software: programming is expensive and takes a lot of time,
+but at the same time computers still need to be able to perform many different tasks.
+How can we minimize the amount of code that needs to be written, while maximizing usefulness?
+UNIX addresses this by first cutting the list of needed programs down to an essential core.
+Then it simplifies even further, by mandating that each program should only perform one simple task, such as extracting a line from a file.</p>
+
+<p>On their own, these tiny programs don&rsquo;t seem terribly useful.
+On Windows you would expect a lot more from a program than just being able to count characters in a file!
+For UNIX, the power comes from the shell, which is an interactive terminal and language for orchestrating programs.
+The shell provides operations, and means for combining the functionality of programs together.
+Simple programs to be chained together in complex ways.
+Suddenly a file downloader, an HTML converter, and a text editor, can be combined to make a web browser.
+Programs are often useful in ways the original designer never anticipated.</p>
+
+<p>The Quake Entity system takes the same approach.
+Engineering is slow (especially for 3D games), but game and level designers need to be able to make a lot of content,
+and iterate on their ideas quality.
+They need to be able to open a door when the player presses a button, or trick the player, and spawn entities instead.
+How can they do all of this, without resorting to programming?</p>
+
+<p>Quake provides an event system which allows entities to send messages to each other.
+Entities that send events have a <code>targetname</code> property which can refer to another entity.
+Entities that receive events are then configured to respond.</p>
+
+<p><img src="entities.png" alt="quake entities" /></p>
+
+<p>Event producing entities include:</p>
+
+<ul>
+<li><code>func_button</code>:  A solid entity representing a button the player can press.</li>
+<li><code>trigger_once</code>: A solid entity that triggers an event when the player intersects it.</li>
+</ul>
+
+
+<p>Event receiving events include:</p>
+
+<ul>
+<li><code>func_plat</code>: A solid entity representing a platform that can raise or lower.</li>
+<li><code>func_door</code>: A solid entity that moves over an opening.</li>
+<li><code>light_flouro</code>: A point entity  that can be turned on and off.</li>
+</ul>
+
+
+<p>An event system on it&rsquo;s own doesn&rsquo;t sound groundbreaking.
+Every GUI builder let&rsquo;s you link button actions.
+The interesting part is the role of the entity in this system.
+Entities are not just game objects, they can also represent abstract concepts.
+An invisible entity can be used as an intermediary between and input and output.
+Here they can use logic to filter and redirect events.</p>
+
+<p>You can think of these entities like electronic logic gates.
+They allow the level designer to script together interesting scenarios and actions, from simple parts.
+For example, in the image there is a <code>func_button</code> whose output is linked to a <code>trigger_counter</code>.
+That <code>trigger_counter</code> also has an output linked to the door.
+The counter counts down by a specified duration (in this case 3 seconds) and then fires, opening a door.</p>
+
+<p><img src="button_and_trigger.png" alt="quake func button and trigger counter" /></p>
+
+<p>Abstract entities are also more than just pure functions.
+It turns out abstract things often have state and modeling them as living in th world
+can be helpful.</p>
+
+<p>The fact that the abstract entities actually occupy space, provides an interesting advantage over text-based scripting languages.
+The designer can associate the logic of the level with the elements that are controlled.
+Placing a <code>trigger_counter</code> next to a button suggests the two work together.
+Anyone who want to know how a piece of the level works, can just look at it, and see which entities to inspect.
+Form follows function.</p>
+
+<h2>Separation of concerns</h2>
+
+<p>Consider how you might program a 3D button for a video game like Quake.
+You might start with a 3D model of the button, then add an animation for when it is pressed.
+Next you figure out how to read keyboard input to trigger the animation, and call a function when its triggered.
+All of it works!
+But what if you want several button appearances?
+You might provide some animation options, and some options to set the model, etc.
+What if you sometimes want a sound to play?
+The complexity grows with each feature.</p>
+
+<p>The quake entity system recognizes that most of this functionality is orthogonal.
+From a pure gameplay perspective, a button is just an area the player can provide keyboard input to
+(most gameplay systems are much simpler than they appear).
+Also, many different things need to play sounds and trigger animations.
+Instead of combining this into one object, let&rsquo;s separate this into a sound playing entity, an animation entity, and a button input entity.
+To create a button in the game, we can combine this network of gameplay entities,
+and then can place it over any 3D model that represents the button.</p>
+
+<p>This is classic separation of concerns, which is a hallmark of good software design.
+It&rsquo;s a form of the <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">model view controller</a> pattern, but for games.
+Besides further flexibility, it forces the designer to better organize and clearly understand what they actually want to accomplish.</p>
+
+<p>Quake doesn&rsquo;t normally decompose things quite this far (partially due to limited tooling), but the principle
+is used in other ways, and in other games.</p>
+
+<h2>Progression</h2>
+
+<p>One measure of a good design is how well it ages over time.
+It may work for the original task, but how does it address new demands and changing needs?
+UNIX has of course evolved from the 60s into modern Linux, the backbone of the Internet,
+and arguably where all the interesting OS work happens.
+Linux still retains the original concepts and even many of the original programs.</p>
+
+<p>We already know Quake engine is a part of many modern games.
+A very successful example is Valve&rsquo;s <a href="https://developer.valvesoftware.com/wiki/SDK_Docs">Source Engine</a> which is a natural progression from Quake to modern technology, while still retaining its core concepts.
+In 2022, it&rsquo;s showing its age, but it has been working for a long time!
+Almost all of the original quake entities are present in Source (<code>func_button</code>, <code>func_train</code>, etc).
+These original entities  have been enhanced, a whole collection of new entities have been added
+(see a <a href="https://developer.valvesoftware.com/wiki/List_of_entities">full list</a>).
+But, largely the  Source engine looks a lot like the Quake engine, it just provides more detail
+and systems.</p>
+
+<p>Here is an example which shows how sophisticated these entity systems have become.
+In the image below is an interactive <a href="https://developer.valvesoftware.com/wiki/Keypad">keypad</a> made by a Source community member.
+Here is their description of how it works:</p>
+
+<blockquote><p> It includes visual and audio responses to any 4-digit code. If the code is correct, it opens the door, plays an accepted sound, and blinks a green light. Otherwise, it plays a reject sound and blinks a red light.</p></blockquote>
+
+<p><img src="source_keypad.jpg" alt="source engine keypad prefab" /></p>
+
+<p>As you can see, it&rsquo;s made up from a ton of entities.
+Here are just a few:</p>
+
+<ol>
+<li><code>func_button</code>. One for each button on the keypad. 11 total.</li>
+<li><code>func_detail</code> the model of the keypad.</li>
+<li><code>prop_dynamic</code> the door model which opens.</li>
+<li><code>func_door</code> the logical entity that controls the doors motion.</li>
+<li><code>logic_case</code> stores the sequence of 4 expected numbers, and the events for successful code.</li>
+<li><code>logic_timer</code> resets the keypad entry after a period of inactivity.</li>
+<li>2x <code>ambient_generic</code>. Used to play the success or reject sounds.</li>
+<li>&hellip; 23 total entities!</li>
+</ol>
+
+
+<p>This shows just how powerful the Quake entity system can be!</p>
+
+ ]]></description>
+</item>
 <item>
 <pubDate>Sat, 25 Jun 2022 00:00:00 </pubDate>
 <title>A simple mesh adjacency data structure</title>

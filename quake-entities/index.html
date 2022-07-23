@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<title>The Quake entity system: shell scripting for games.</title>
+<title>The Quake entity system: shell scripting for games</title>
 <link rel="stylesheet" href="/template/style.css">
 <link rel="alternate" title="RSS feed" type="application/rss+xml" href="/feed.xml">
 </head>
@@ -14,7 +14,7 @@
 <a style="margin-left: 16px" href="/feed.xml">Rss</a>
 </p>
 
-<h1>The Quake entity system: shell scripting for games.</h1>
+<h1>The Quake entity system: shell scripting for games</h1>
 
 <p><strong>By: Justin Meiners</strong></p>
 
@@ -34,8 +34,8 @@ Both designs can be summarized as having one primary substance (a unifying conce
 
 <p>Before describing the entity system, there is an important technical concept to cover.
 A <em>brush</em> is a 3D solid shape defined by a set of 3 or more 3D planes.
-The solid is defined to be all the volume which is behind <em>all</em> of the 3D planes (also known as the intersection of half-spaces).
-It&rsquo;s not hard to show that a fully enclosed brush must be a convex shape.</p>
+The solid is defined to be the volume enclosed by the 3D planes (also known as the intersection of half-spaces).
+It&rsquo;s not hard to show that a brush must be a convex shape.</p>
 
 <p><img src="brush_sample.png" alt="quake brush sample" /></p>
 
@@ -48,7 +48,7 @@ It&rsquo;s not hard to show that a fully enclosed brush must be a convex shape.<
 </ul>
 
 
-<p>We think of brushes as a solid, but we can also convert a brush into a 3D triangle mesh for rendering.
+<p>We think of brushes as a solid, but a brush can also be converted into a 3D triangle mesh for rendering.
 One way to do this is to intersect the planes together, 3 at time, to create a vertex.
 This requires solving a linear system.
 Then for each plane the list of vertices lying in the plane can be assembled into a polygon.</p>

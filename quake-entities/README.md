@@ -1,4 +1,4 @@
-The Quake entity system: shell scripting for games.
+The Quake entity system: shell scripting for games
 ===========================================
 
 **By: Justin Meiners**
@@ -23,8 +23,8 @@ Both designs can be summarized as having one primary substance (a unifying conce
 
 Before describing the entity system, there is an important technical concept to cover.
 A *brush* is a 3D solid shape defined by a set of 3 or more 3D planes.
-The solid is defined to be all the volume which is behind *all* of the 3D planes (also known as the intersection of half-spaces).
-It's not hard to show that a fully enclosed brush must be a convex shape.
+The solid is defined to be the volume enclosed by the 3D planes (also known as the intersection of half-spaces).
+It's not hard to show that a brush must be a convex shape.
 
 ![quake brush sample](brush_sample.png)
 
@@ -34,7 +34,7 @@ Brushes are useful for a few reasons:
 - They have nice mathematical properties. They are fully enclosed , We can compute collisions with them easily.
 - They are convenient for computing BSP trees, which make rendering possible.
 
-We think of brushes as a solid, but we can also convert a brush into a 3D triangle mesh for rendering.
+We think of brushes as a solid, but a brush can also be converted into a 3D triangle mesh for rendering.
 One way to do this is to intersect the planes together, 3 at time, to create a vertex.
 This requires solving a linear system.
 Then for each plane the list of vertices lying in the plane can be assembled into a polygon.
