@@ -5,7 +5,7 @@ The Quake entity system: shell scripting for games
 
 **07/20/2022**
 
-The Quake engine has influenced an incredible number of games through direct licensing (games like Half-Life and Jedi Knights 2),
+The Quake engine has influenced an incredible number of games through direct licensing (games like Half-Life and Star Wars: Jedi Knights),
 modders bringing its concepts to other studios, and competitors trying to best it (especially Unreal).
 Most of what's been written about it focuses on the [3D graphics][abrash-graphics], or client/server [networking][quake-3-networking].
 But, much overlooked is the innovative entity system which allows the game to simulate objects and level designers
