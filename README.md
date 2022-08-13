@@ -77,3 +77,4 @@ Sites I preserve for learning and historical purposes.
 - [Radiosity (By: Hugo Elias)](https://www.jmeiners.com/Hugo-Elias-Radiosity)
 - [SGI STL Documentation](https://www.jmeiners.com/sgi-stl-docs/)
 - [SGI STL Source](https://github.com/justinmeiners/sgi-stl)
+- [Structure and Interpretation of Computer Programs (original HTML)](https://www.jmeiners.com/sicp-html-original/book.html)
