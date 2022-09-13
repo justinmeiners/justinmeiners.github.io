@@ -19,6 +19,7 @@ If you are interested in my professional experience, see my [CV](files/cv.pdf).
 
 This is work I have dedicated some significant effort into creating and releasing.
 
+- [09/12/2022 - Volcano Drop (js13kgames entry)](https://js13kgames.com/entries/volcano-drop)
 - [04/21/2022 - Why Train When You Can Optimize?](https://www.jmeiners.com/why-train-when-you-can-optimize/)
 - [03/07/2022 - srcweave: A literate programming system for any language](https://github.com/justinmeiners/srcweave/)
 - [09/19/2021 - Classic Colors](https://github.com/justinmeiners/classic-colors)
