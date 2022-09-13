@@ -42,15 +42,15 @@ You can also find smaller projects and experiments at my [GitHub page](https://g
 
 I hope to share insights, experiences, and occasionally answer some questions. My writing is informal and sometimes unpolished.
 
-- [07/21/2022 - The Quake entity system: shell scripting for games](quake-entities)
-- [06/25/2022 - A simple mesh adjacency data structure](mesh-adjacency-trick)
-- [03/07/2022 - Literate programming is much more than commenting code](literate-programming)
-- [03/05/2022 - Deploying Common Lisp Scripts](common-lisp-scripts)
+- [07/21/2022 - The Quake entity system: shell scripting for games](quake-entities/)
+- [06/25/2022 - A simple mesh adjacency data structure](mesh-adjacency-trick/)
+- [03/07/2022 - Literate programming is much more than commenting code](literate-programming/)
+- [03/05/2022 - Deploying Common Lisp Scripts](common-lisp-scripts/)
 - [07/28/2021 - Almost Solving the Halting Problem](almost-solving-the-halting-problem/halting-problem.pdf)
-- [06/14/2021 - Swift Proposal: Balanced Binary Reduction](swift-balanced-reduce)
+- [06/14/2021 - Swift Proposal: Balanced Binary Reduction](swift-balanced-reduce/)
 - [05/03/2021 - Three Myths About Passive Investing](three-myths-passive-investing/)
-- [12/27/2020 - Advent of Code 2020 Day 18: Rethinking Operator Precedence](aoc-2020-18)
-- [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19)
+- [12/27/2020 - Advent of Code 2020 Day 18: Rethinking Operator Precedence](aoc-2020-18/)
+- [12/19/2020 - Advent of Code 2020 Day 19: An Easy way to do Part 2](aoc-2020-19/)
 - [11/15/2020 - The Universal Property of Quotients](universal-property-quotients/)
 - [10/08/2020 - Questioning Probablity](questioning-probability/)
 - [09/26/2020 - Understanding LINQ GroupBy](understanding-groupby/)
@@ -78,3 +78,4 @@ Sites I preserve for learning and historical purposes.
 - [Radiosity (By: Hugo Elias)](https://www.jmeiners.com/Hugo-Elias-Radiosity)
 - [SGI STL Documentation](https://www.jmeiners.com/sgi-stl-docs/)
 - [SGI STL Source](https://github.com/justinmeiners/sgi-stl)
+- [Structure and Interpretation of Computer Programs (original HTML)](https://www.jmeiners.com/sicp-html-original/book.html)
