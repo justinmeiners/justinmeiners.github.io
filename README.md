@@ -46,7 +46,7 @@ I hope to share insights, experiences, and occasionally answer some questions. M
 - [06/25/2022 - A simple mesh adjacency data structure](mesh-adjacency-trick/)
 - [03/07/2022 - Literate programming is much more than commenting code](literate-programming/)
 - [03/05/2022 - Deploying Common Lisp Scripts](common-lisp-scripts/)
-- [07/28/2021 - Almost Solving the Halting Problem](almost-solving-the-halting-problem/halting-problem.pdf)
+- [07/28/2021 - Almost Solving the Halting Problem](almost-solving-the-halting-problem/)
 - [06/14/2021 - Swift Proposal: Balanced Binary Reduction](swift-balanced-reduce/)
 - [05/03/2021 - Three Myths About Passive Investing](three-myths-passive-investing/)
 - [12/27/2020 - Advent of Code 2020 Day 18: Rethinking Operator Precedence](aoc-2020-18/)

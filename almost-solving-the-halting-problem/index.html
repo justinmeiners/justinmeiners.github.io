@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title># Almost Solving the Halting Problem</title>
+<link rel="stylesheet" href="/template/style.css">
+<link rel="alternate" title="RSS feed" type="application/rss+xml" href="/feed.xml">
+</head>
+<body>
+<p>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="https://github.com/justinmeiners">GitHub</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+</p>
+
+<h1>Almost Solving the Halting Problem</h1>
+
+<p>By: <a href="https://github.com/justinmeiners">Justin Meiners</a></p>
+
+<p>The halting problem is to devise a method that can determine whether a given
+Turing machine terminates in a finite amount of time. It is well-known to be
+undecidable; no such method exists.</p>
+
+<p>So if you ever come across a proof that solves it, you better be concerned.
+In my master&rsquo;s thesis, I did just that. It turns out I didn&rsquo;t make a major
+mistake, but I discovered that incompatibility is quite a subtle thing. The
+details of the particular problem aren&rsquo;t important. They can be explained by
+studying Turing machines themselves.</p>
+
+<p>A Turing machine has a tape, a read/write head, and a finite state machine
+controlling the head:</p>
+
+<p><img src="turing-machine.png" alt="a depiction of a turing machine" /></p>
+
+<p>My idea for solving the halting problem was to run the machine for some large
+number of steps, then stop and conclude anything that runs longer must not
+terminate. You might say there is no way to determine such a bound, but there
+actually is.</p>
+
+<p>A Turing machine has only finitely many non-blank squares. For a fixed state
+machine <code>Q</code> and alphabet <code>S</code>, define <code>A(n, Q, S)</code> to be the set of Turing
+machines in <code>Q</code> and <code>S</code> that halt and have exactly <code>n</code> non-blank squares. There
+are at most <code>|S|^n</code> of these, so <code>A(n, Q, S)</code> is a finite set. So if we then let
+<code>l(t)</code> be the number of steps <code>t</code> runs, <code>{ l(t) : t in A(n, Q, S) }</code> is finite
+and thus has a maximum <code>M</code>.</p>
+
+<p>So given any Turing machine with this criteria, we can run it for <code>M</code> steps, and
+if it goes longer, then we know it will never terminate! We can even define a
+function <code>f(S, Q, N)</code> which is the approximate <code>M</code> value for our inputs!</p>
+
+<p>So why can&rsquo;t we do this? Well, we would actually have to be able to compute <code>f</code>
+with a procedure. Even easier, just compute a function that bounds <code>f</code>. Since it
+is impossible, we must conclude that <code>f</code> is larger than any of the functions we
+can compute. Polynomials, exponentials, none are big enough. Maybe our program
+could include a lookup table, but this would require infinite space and is not a
+method at all.</p>
+
+<p>This shows us that uncomputability is primarily a problem of growing too
+quickly, not any kind of tricky correspondence. This also suggests why the
+Ackermann function requires more sophisticated models of computation.</p>
+
+<h2>References</h2>
+
+<p>Minsky Computation: finite and infinite machines. Chapter 8.</p>
+</body>
+</html>
