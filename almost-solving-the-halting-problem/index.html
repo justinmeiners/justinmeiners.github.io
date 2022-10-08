@@ -19,17 +19,17 @@
 <p>By: <a href="https://github.com/justinmeiners">Justin Meiners</a></p>
 
 <p>The halting problem is to devise a method that can determine whether a given
-Turing machine terminates, in a finite amount of time. It is well-known to be
+Turing machine terminates in a finite amount of time. It is well-known to be
 undecidable; no such method exists.
 Naturally, if you ever write a proof that implies how to solve it, there is reason for concern.</p>
 
-<p>In writing my master&rsquo;s thesis, I unfortunatly did just that.
+<p>In doing research for my master&rsquo;s thesis, I unfortunatly did just that.
 It took quite a bit of reading and discussion to detect what went wrong.
-It turns out, I didn&rsquo;t make any major mistakes.
-Instead, I learned that the difference
+It turns out I didn&rsquo;t make any major mistakes,
+but I learned that the difference
 between computability and incomputability is quite subtle.
-I wanted to share this insight to give others a better
-sense of what it means for a function to be incomputable.</p>
+I wanted to share this insight into what it means
+for a function to be incomputable.</p>
 
 <p>My thesis focused on braid group algebra, and reasoning about
 how a particular property of braids can be computed.
@@ -43,7 +43,7 @@ I will explain a similar problem using Turing Machines directly.</p>
 <ul>
 <li>An infinitely long tape, divided into cells.
 Each cell has a symbol written on it.
-This symbol comes from a finite alphabet <code>S</code> (often <code>{ 0, 1 }</code> where <code>0</code> is &ldquo;blank&rdquo;).</li>
+This symbol comes from a finite alphabet <code>S</code> (often <code>{ 0, 1 }</code> where <code>0</code> can be called &ldquo;blank&rdquo;).</li>
 <li>A read/write head positioned over a particular cell on the tape.</li>
 <li>A controller that moves the tape and reads and writes symbols.
 The controller is a finite state machine <code>Q</code>.</li>
@@ -52,9 +52,17 @@ The controller is a finite state machine <code>Q</code>.</li>
 
 <p><img src="turing-machine.png" alt="a depiction of a turing machine" /></p>
 
-<p>The read/write head reads a symbol, and passes that as a input to the controller.
-The controller can then replace the symbol, transition to a new state, and shift the tape by a finite amount.
-Which symbol to write and where to transition to is entirely determined by the controllers
+<p>The read/write head sends the current symbol to the controller.
+The controller can then:</p>
+
+<ol>
+<li>replace the symbol.</li>
+<li>transition to a new state.</li>
+<li>shift the tape by a finite amount.</li>
+</ol>
+
+
+<p>Which symbol to write and where to transition to is entirely determined by the controller&rsquo;s
 state and the symbol read.</p>
 
 <p>For answering questions about computability and complexity it doesn&rsquo;t matter how many symbols
@@ -64,13 +72,14 @@ the alphabet has, or how complex the finite state machine is.</p>
 
 <p>How do we go about determining whether a Turing machine will halt?
 Here is the basic idea: run the machine for a large number of steps.
-If it runs a longer than our allotted budget, it probably won&rsquo;t terminate!</p>
+If it runs for longer than we expected, it probably won&rsquo;t terminate!</p>
 
 <p>Ok, that&rsquo;s  obvious and not very helpful. &ldquo;probably won&rsquo;t&rdquo; isn&rsquo;t good enough.
 The whole difficulty is that the machine might run longer than we expect and still terminate.
-But, what if we could actually determine what that threshold is?
+We might just need to run it a little bit longer.
+But, what if we could determine <em>exactly</em> what that threshold is?
 In other words, what if there was a number of steps that any terminating machine will not exceed?
-It might seem likethere is no way to determine such a bound, but it actually is pretty straightforward.</p>
+It might seem like there is no way to determine such a bound, but it actually is pretty straightforward.</p>
 
 <p>We can estimate how long a Turing machine will run, based on it&rsquo;s &ldquo;complexity&rdquo;.
 In computer science we often think longer programs are more complex.
@@ -79,11 +88,19 @@ to run and work with.</p>
 
 <p>A Turing machine has only finitely many non-blank squares.
 For a fixed state machine <code>Q</code> and alphabet <code>S</code>, define <code>A(n, Q, S)</code> to be the set of Turing
-machines in <code>Q</code> and <code>S</code> that halt and have exactly <code>n</code> non-blank squares (here <code>n</code> can be thought of as an estimate on program length).
-There are at most <code>|S|^n</code> machines of this kind.
-So <code>A(n, Q, S)</code> is a finite set.
-If we then let <code>l(t)</code> be the number of steps <code>t</code> runs,
-<code>{ l(t) : t in A(n, Q, S) }</code> is finite and thus has a maximum <code>M</code>.</p>
+machines in <code>Q</code> and <code>S</code> that:</p>
+
+<ul>
+<li>halt</li>
+<li>have exactly <code>n</code> non-blank squares.
+(<code>n</code> can be thought of as an estimate on program length).</li>
+</ul>
+
+
+<p>There are at most <code>|S|^n</code> machines of this kind.
+Therefore <code>A(n, Q, S)</code> is a finite set.
+If we then let <code>l(T)</code> be the number of steps machine <code>T</code> runs in, before termination,
+<code>{ l(T) : T in A(n, Q, S) }</code> is finite and thus has a maximum <code>M</code>.</p>
 
 <p>So given any Turing machine with this particular controller and configuration,
 we can run it for <code>M</code> steps, and if it goes longer, then we <em>know</em> it will never terminate!
