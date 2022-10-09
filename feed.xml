@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com/</link>
-<lastBuildDate>Wed, 05 Oct 2022 00:12:55 </lastBuildDate>
+<lastBuildDate>Sat, 08 Oct 2022 12:09:08 </lastBuildDate>
 <item>
 <pubDate>Mon, 12 Sep 2022 00:00:00 </pubDate>
 <title>Volcano Drop (js13kgames entry)</title>
@@ -891,49 +891,116 @@ For example:</p>
 
 <p>The halting problem is to devise a method that can determine whether a given
 Turing machine terminates in a finite amount of time. It is well-known to be
-undecidable; no such method exists.</p>
+undecidable; no such method exists.
+Naturally, if you ever write a proof that implies how to solve it, there is reason for concern.</p>
 
-<p>So if you ever come across a proof that solves it, you better be concerned.
-In my master&rsquo;s thesis, I did just that. It turns out I didn&rsquo;t make a major
-mistake, but I discovered that incompatibility is quite a subtle thing. The
-details of the particular problem aren&rsquo;t important. They can be explained by
-studying Turing machines themselves.</p>
+<p>In doing research for my master&rsquo;s thesis, I unfortunatly did just that.
+It took quite a bit of reading and discussion to detect what went wrong.
+It turns out I didn&rsquo;t make any major mistakes,
+but I learned that the difference
+between computability and incomputability is quite subtle.
+I wanted to share this insight into what it means
+for a function to be incomputable.</p>
 
-<p>A Turing machine has a tape, a read/write head, and a finite state machine
-controlling the head:</p>
+<p>My thesis focused on braid group algebra, and reasoning about
+how a particular property of braids can be computed.
+Since this is a specialized topic and the details aren&rsquo;t important,
+I will explain a similar problem using Turing Machines directly.</p>
+
+<h2>Turing machine</h2>
+
+<p>A Turing machine consists of:</p>
+
+<ul>
+<li>An infinitely long tape, divided into cells.
+Each cell has a symbol written on it.
+This symbol comes from a finite alphabet <code>S</code> (often <code>{ 0, 1 }</code> where <code>0</code> can be called &ldquo;blank&rdquo;).</li>
+<li>A read/write head positioned over a particular cell on the tape.</li>
+<li>A controller that moves the tape and reads and writes symbols.
+The controller is a finite state machine <code>Q</code>.</li>
+</ul>
+
 
 <p><img src="turing-machine.png" alt="a depiction of a turing machine" /></p>
 
-<p>My idea for solving the halting problem was to run the machine for some large
-number of steps, then stop and conclude anything that runs longer must not
-terminate. You might say there is no way to determine such a bound, but there
-actually is.</p>
+<p>The read/write head sends the current symbol to the controller.
+The controller can then:</p>
 
-<p>A Turing machine has only finitely many non-blank squares. For a fixed state
-machine <code>Q</code> and alphabet <code>S</code>, define <code>A(n, Q, S)</code> to be the set of Turing
-machines in <code>Q</code> and <code>S</code> that halt and have exactly <code>n</code> non-blank squares. There
-are at most <code>|S|^n</code> of these, so <code>A(n, Q, S)</code> is a finite set. So if we then let
-<code>l(t)</code> be the number of steps <code>t</code> runs, <code>{ l(t) : t in A(n, Q, S) }</code> is finite
-and thus has a maximum <code>M</code>.</p>
+<ol>
+<li>replace the symbol.</li>
+<li>transition to a new state.</li>
+<li>shift the tape by a finite amount.</li>
+</ol>
 
-<p>So given any Turing machine with this criteria, we can run it for <code>M</code> steps, and
-if it goes longer, then we know it will never terminate! We can even define a
-function <code>f(S, Q, N)</code> which is the approximate <code>M</code> value for our inputs!</p>
 
-<p>So why can&rsquo;t we do this? Well, we would actually have to be able to compute <code>f</code>
-with a procedure. Even easier, just compute a function that bounds <code>f</code>. Since it
-is impossible, we must conclude that <code>f</code> is larger than any of the functions we
-can compute. Polynomials, exponentials, none are big enough. Maybe our program
-could include a lookup table, but this would require infinite space and is not a
-method at all.</p>
+<p>Which symbol to write and where to transition to is entirely determined by the controller&rsquo;s
+state and the symbol read.</p>
 
-<p>This shows us that uncomputability is primarily a problem of growing too
-quickly, not any kind of tricky correspondence. This also suggests why the
-Ackermann function requires more sophisticated models of computation.</p>
+<p>For answering questions about computability and complexity it doesn&rsquo;t matter how many symbols
+the alphabet has, or how complex the finite state machine is.</p>
+
+<h2>Estimaing the number of operations</h2>
+
+<p>How do we go about determining whether a Turing machine will halt?
+Here is the basic idea: run the machine for a large number of steps.
+If it runs for longer than we expected, it probably won&rsquo;t terminate!</p>
+
+<p>Ok, that&rsquo;s  obvious and not very helpful. &ldquo;probably won&rsquo;t&rdquo; isn&rsquo;t good enough.
+The whole difficulty is that the machine might run longer than we expect and still terminate.
+We might just need to run it a little bit longer.
+But, what if we could determine <em>exactly</em> what that threshold is?
+In other words, what if there was a number of steps that any terminating machine will not exceed?
+It might seem like there is no way to determine such a bound, but it actually is pretty straightforward.</p>
+
+<p>We can estimate how long a Turing machine will run, based on it&rsquo;s &ldquo;complexity&rdquo;.
+In computer science we often think longer programs are more complex.
+Similarly a Turing machine with a lot of information on the tape has a &ldquo;long program&rdquo;
+to run and work with.</p>
+
+<p>A Turing machine has only finitely many non-blank squares.
+For a fixed state machine <code>Q</code> and alphabet <code>S</code>, define <code>A(n, Q, S)</code> to be the set of Turing
+machines in <code>Q</code> and <code>S</code> that:</p>
+
+<ul>
+<li>halt</li>
+<li>have exactly <code>n</code> non-blank squares.
+(<code>n</code> can be thought of as an estimate on program length).</li>
+</ul>
+
+
+<p>There are at most <code>|S|^n</code> machines of this kind.
+Therefore <code>A(n, Q, S)</code> is a finite set.
+If we then let <code>l(T)</code> be the number of steps machine <code>T</code> runs in, before termination,
+<code>{ l(T) : T in A(n, Q, S) }</code> is finite and thus has a maximum <code>M</code>.</p>
+
+<p>So given any Turing machine with this particular controller and configuration,
+we can run it for <code>M</code> steps, and if it goes longer, then we <em>know</em> it will never terminate!
+We can even define a function <code>f_{S, Q}(n)</code> which is the approximate <code>M</code> value for our inputs!
+In fact, we don&rsquo;t care about <code>f</code> in particular,
+ANY function which is stricly larger than <code>f</code> will do.</p>
+
+<h2>Incomputability</h2>
+
+<p>So why can&rsquo;t we do this?
+Well to know when to stop running, we would actually have to be able to compute the bound <code>f</code> in the real world.
+In other words, we need an <em>effective procedure</em> or algorithm for computing <code>f</code>.
+Since there is no way to solve the halting problem,
+the only conclusion is that <code>f</code> grows faster than any function that can be computed in the real world.
+Even though we can write programs to compute polynomials, exponentials, none of them grow fast enough.
+Perhaps you could compute a lookup table to store this bound, but that would also require infinite space.</p>
+
+<p>This shows us that uncomputability is primarily a problem of growth rates, not any kind
+of tricky function definition.
+Some functions just grow too quickly to be computed by a machine.</p>
+
+<p>Note that the same limitation occurs for less sophisticated models of computation.
+The <a href="https://en.wikipedia.org/wiki/Ackermann_function">Ackermann function</a> is a classic
+example of a function which requires the full power of a Turing machine to compute.
+This is due to its fast rate of growth.</p>
 
 <h2>References</h2>
 
-<p>Minsky Computation: finite and infinite machines. Chapter 8.</p>
+<p>Minsky. Computation: Finite and Infinite Machines. Chapter 8.</p>
 
  ]]></description>
 </item>
