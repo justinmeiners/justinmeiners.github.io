@@ -4,14 +4,14 @@ Thinking styles from math
 **11/18/2022**
 
 A surprising lesson I learned from graduate school is that math is just very different than everything else I have tried learning in the past.
-It has it's own style of thinking that has grown to be my [primary method](/think-in-math/) for solving hard problems. 
+It has it's own style of thinking that has become my [primary method](/think-in-math/) for solving hard problems. 
 But, coming from a background in professional software development for years before, I expected a lot more of my core engineering skills to carry over.
 Here I want to discuss some differences I noticed and their implications.
 
 ## Debugging and Proving
 
 Debugging programs taught me to check my work with a radically empirical approach.
-When something isn't working as expected, I "turn off" that part of my brain that makes assumptions about what it should be doing, and just directly examine the behavior of the program.
+When something isn't working as expected, I "turn off" that part of my brain that makes assumptions about what it should be doing, and directly examine the behavior of the program.
 Usually it starts with, "does this line ever get called?", and grows increasingly more skeptical, "does 2+2 really equal 4?".
 When the problem is tricky, no question is too stupid to ask.
 The goal is to quickly find the gap in my mental model and accommodate it.
@@ -21,7 +21,7 @@ Beginners struggle with debugging because they aren't as skeptical.
 They feel the computer is doing impossible or magical things outside their control.
 Perhaps it's uncomfortable or unintuitive for them to question their understanding when it's already shaky.
 
-However, this skill of "turning off" your judgment and only observing gets you almost nowhere in math.
+However, this skill of "turning off" your judgment and observing gets you almost nowhere in math.
 Proving a theorem is all about building up new information from facts you know.
 You have to look at it a conceptual object and assert with confidence, "This fits into X category. I know X category has this property. Therefore... ".
 It's an active thinking process that takes constant energy and work.
@@ -33,7 +33,7 @@ You don't just happen to hold a true opinion, but can explain, at increasing lev
 
 There is still an experimental aspect to math (some mathematicians prefer more experimentation than others), it just isn't like
 interacting with a computer and passively observing output.
-When you don't know where to go on a problem, you study examples and try to discern patterns.
+When you don't know where to go, you study examples and try to discern patterns.
 This is very engaging work as you must be the one to construct the examples.
 The most insight comes from exotic examples, that push things to the extreme, and take some creativity to come up with.
 
@@ -52,7 +52,7 @@ In each iteration, they determine components that worked and components that did
 of keeping what worked and fortifying or replacing the broken stuff.
 
 Mathematicians obviously try a lot of potential solutions, but rarely is it componentized in the same way.
-Either the whole approach worked or not.
+Either the whole approach works or not.
 The solution usually comes in the form of a key discovery, or a sudden flash of insight, after a lot of thought and experimentation.
 This insight reveals the inter workings of the problem.
 
