@@ -12,9 +12,9 @@ Feel free to contact me at: <span>![justin's email](mail.png)</span>
 
 Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
 I also have a Master's degree in math where I studied topology.
-If you are interested in my professional experience, see my [CV](files/cv.pdf).
-I am currently an AR/VR Software Engineer at [Apple](https://www.apple.com/),
+I am currently a Software Engineer at [Apple](https://www.apple.com/),
 but I do not write about my employer's business.
+If you are interested in my professional experience, see my [CV](files/cv.pdf).
 
 ## Projects
 
