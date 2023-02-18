@@ -1,20 +1,20 @@
-Justin Meiners
-==============
+![son](splash/2023_02_son.jpg)
 
-![finger painting](finger_painting.jpg)
-
-Welcome to my personal site!
-I enjoy learning, especially about computers, math, and philosophy.
-Creating projects is my preferred way to learn and have fun.
+My name is Justin Meiners and welcome to my website!
+I love learning and creating new projects.
+I hope to share some of them with you.
 Feel free to contact me at: <span>![justin's email](mail.png)</span>
 
-## Work
+## Background
 
-Throughout my career I have worked in many different areas of software including mobile, web, computer graphics, and cryptocurrency.
-I also have a Master's degree in math where I studied topology.
-I am currently a Software Engineer at [Apple](https://www.apple.com/),
-but I do not write about my employer's business.
-If you are interested in my professional experience, see my [CV](files/cv.pdf).
+Here is a little about my background and interests:
+
+- I am a Software Engineer at [Apple](https://www.apple.com/) (but I do not write about my employer's business).
+- I first learned to program in 2008 using Objective-C and Cocoa/NextStep. My favorite languages are C and Lisp.
+- I have a Master's degree in math. I am familar with many areas at an "advanced undergrad" level, but my best subjects are Real Analysis and Topology.
+- My software usually involves math such as 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
+- I like 3D modeling and texturing, but I am not much of an artist.
+- I enjoy reading philosophy, especially Early Modern and Ancient Greek. Plato is my favorite. 
 
 ## Projects
 
@@ -39,9 +39,9 @@ This is work I have dedicated some significant effort into creating and releasin
 
 You can also find smaller projects and experiments at my [GitHub page](https://github.com/justinmeiners).
 
-## Blog
+## Notes
 
-I hope to share insights, experiences, and occasionally answer some questions. My writing is informal and sometimes unpolished.
+I hope to share insights, experiences, and occasionally answer some questions. This writing is informal and sometimes unpolished.
 
 - [11/18/2022 - Thinking styles from math](thinking-styles/)
 - [07/21/2022 - The Quake entity system: shell scripting for games](quake-entities/)
