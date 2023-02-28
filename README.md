@@ -16,7 +16,7 @@ Here is a little about my background and interests:
 - I first learned to program in 2008 using Objective-C and Cocoa/NextStep. My favorite languages are C and Lisp.
 - I have a Master's degree in math. I am familar with many areas at an "advanced undergrad" level, but my best subjects are Real Analysis and Topology.
 - My software usually involves math such as 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
-- I like 3D modeling and texturing, but I am not much of an artist.
+- I like 3D modeling and texturing. I learned on anim8or and now use Blender. But I am not much of an artist.
 - I enjoy reading philosophy, especially Early Modern and Ancient Greek. Plato is my favorite. 
 
 ## Projects
