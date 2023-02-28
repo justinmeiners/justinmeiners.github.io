@@ -4,9 +4,16 @@ ALL_MD=$(find * -type f -name '*.md')
 
 for MD in $ALL_MD
 do 
-    # build HTML
+    # Use a fallback title if the page doesn't open with a title
+    TITLE="$(head -n 1 $MD)"
+    TITLE_PREFIX="$(echo "$TITLE" | cut -c 1)"
 
-    TITLE=$(head -n 1 $MD)
+    if [ "$TITLE_PREFIX" = '!' ] || [ "$TITLE_PREFIX" = '#' ]
+    then
+        TITLE="Justin Meiners"
+    fi
+
+    # build HTML
     BODY_HTML="$(dirname $MD)/README.html"
     HTML="$(dirname $MD)/index.html"
 

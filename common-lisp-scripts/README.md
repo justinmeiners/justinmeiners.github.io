@@ -2,19 +2,19 @@ Deploying Common Lisp Scripts
 --------------------------
 **3/05/22**
 
-Lisp is an excellent scripting language and can fill many of the same needs as Python or Perl,
-but with all the Lisp benefits, like performance.
-To facilitate this, Common Lisp implementations usually provide a scripting mode 
-for writing "shebang" style scripts which are interpreted
-by the lisp system. For example:
+Common Lisp is an excellent scripting language that can serve a similar role as Python or Perl, but with all the Lisp goodies, like great performance and macros.
+For these use cases, Common Lisp implementations usually provide a "script mode".
+This mode can be invoked by making a `.lisp` script executable and adding a "shebang" interpreter specification.
+For example:
 
     #!/usr/bin/sbcl --script
     (write-string "Hello, World!")
 
-This works well, right up until you need to include dependencies. Then things get messy.
-I researched the myriad of attempts to solve this and uncovered a good solution.
+This setup works well, right up until you need to load a dependency.
+Then things get messy.
+After researching a myriad of bad ways to solve this, I finally uncovered a good solution.
 
-**TLDR:** Quicklisp's [bundle-systems][ql-bundle] wraps all your code and libraries into a folder that can be loaded by an executable lisp script. (Experienced lisper's can skip to "Solution" below.)
+**TLDR:** Quicklisp's [bundle-systems][ql-bundle] command copies all your code and libraries into a single folder that can be loaded by an executable lisp script with `asdf:load-system`. (Experienced lisper's can skip to "Solution" below.)
 
 ## quickload
 

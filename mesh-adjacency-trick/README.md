@@ -1,4 +1,5 @@
-# A simple mesh adjacency data structure
+A simple mesh adjacency data structure
+======================
 
 **06/25/2022**
 

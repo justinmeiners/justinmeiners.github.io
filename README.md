@@ -1,9 +1,9 @@
+![monster](splash/2023_03_monster.png)
+
 Justin Meiners
 ==============
 
-![son](splash/2023_02_son.jpg)
-
-My name is Justin Meiners and welcome to my website!
+Welcome to my personal website!
 I love learning and creating new projects.
 I hope to share some of them with you.
 Feel free to contact me at: <span>![justin's email](mail.png)</span>

@@ -18,20 +18,20 @@
 
 <p><strong>3/05/22</strong></p>
 
-<p>Lisp is an excellent scripting language and can fill many of the same needs as Python or Perl,
-but with all the Lisp benefits, like performance.
-To facilitate this, Common Lisp implementations usually provide a scripting mode
-for writing &ldquo;shebang&rdquo; style scripts which are interpreted
-by the lisp system. For example:</p>
+<p>Common Lisp is an excellent scripting language that can serve a similar role as Python or Perl, but with all the Lisp goodies, like great performance and macros.
+For these use cases, Common Lisp implementations usually provide a &ldquo;script mode&rdquo;.
+This mode can be invoked by making a <code>.lisp</code> script executable and adding a &ldquo;shebang&rdquo; interpreter specification.
+For example:</p>
 
 <pre><code>#!/usr/bin/sbcl --script
 (write-string "Hello, World!")
 </code></pre>
 
-<p>This works well, right up until you need to include dependencies. Then things get messy.
-I researched the myriad of attempts to solve this and uncovered a good solution.</p>
+<p>This setup works well, right up until you need to load a dependency.
+Then things get messy.
+After researching a myriad of bad ways to solve this, I finally uncovered a good solution.</p>
 
-<p><strong>TLDR:</strong> Quicklisp&rsquo;s <a href="https://www.quicklisp.org/beta/bundles.html">bundle-systems</a> wraps all your code and libraries into a folder that can be loaded by an executable lisp script. (Experienced lisper&rsquo;s can skip to &ldquo;Solution&rdquo; below.)</p>
+<p><strong>TLDR:</strong> Quicklisp&rsquo;s <a href="https://www.quicklisp.org/beta/bundles.html">bundle-systems</a> command copies all your code and libraries into a single folder that can be loaded by an executable lisp script with <code>asdf:load-system</code>. (Experienced lisper&rsquo;s can skip to &ldquo;Solution&rdquo; below.)</p>
 
 <h2>quickload</h2>
 
