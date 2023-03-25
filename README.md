@@ -1,4 +1,4 @@
-![monster](splash/2023_03_monster.png)
+![deconvolution](splash/2023_04_deconvolution.png)
 
 Justin Meiners
 ==============

@@ -21,6 +21,10 @@ foreach (@all_md) {
 
 	say $title;
 
+	if ($title =~ /^(!|#).*/) {
+		$title = "Justin Meiners";
+	}
+
   local $ENV{TITLE} = $title;
 
   $ENV{MD} = $_;
