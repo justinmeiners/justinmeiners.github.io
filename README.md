@@ -12,7 +12,7 @@ Feel free to contact me at: <span>![justin's email](mail.png)</span>
 
 Here is a little about my background and interests:
 
-- I am a Software Engineer at [Apple](https://www.apple.com/) (but I do not write about my employer's business).
+- I am a Software Engineer at [Apple](https://www.apple.com/) (I do not write about my employer's business or products).
 - I first learned to program in 2008 using Objective-C and Cocoa/NextStep. My favorite languages are C and Lisp.
 - I have a Master's degree in math. I am familar with many areas at an "advanced undergrad" level, but my best subjects are Real Analysis and Topology.
 - My software usually involves math such as 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
