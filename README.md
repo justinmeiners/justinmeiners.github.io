@@ -1,4 +1,4 @@
-![deconvolution](splash/2023_04_deconvolution.png)
+![aoe2](splash/2023_05_aoe.png)
 
 Justin Meiners
 ==============
