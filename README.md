@@ -1,4 +1,4 @@
-![aoe2](splash/2023_05_aoe.png)
+![colorado bike ride](splash/2023_06_raccoon.jpg)
 
 Justin Meiners
 ==============
