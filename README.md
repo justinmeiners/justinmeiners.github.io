@@ -12,11 +12,11 @@ Feel free to contact me at: <span>![justin's email](mail.png)</span>
 
 Here is a little about my background and interests:
 
-- I first learned to program in 2008 using Objective-C and Cocoa/NextStep. My favorite languages are C and Lisp.
-- I am a Software Engineer at [Apple](https://www.apple.com/) (I do not write about my employer's business or products).
-- I have a Master's degree in math. I am familar with many areas at an "advanced undergrad" level, but my best subjects are Real Analysis and Topology.
-- I write software in a variety of technical domains including 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
-- I like 3D modeling and texturing. I learned from anim8or and now use Blender. But I am not much of an artist.
+- I first learned to program in 2008 using Objective-C and Cocoa/NextStep. My favorite languages are C and Common Lisp.
+- I am a Software Engineer at [Apple](https://www.apple.com/) (But I do not write about my employer's products or business).
+- I have a Master's degree in math. I am familar with many topics at an "advanced undergrad" level, but know must about real analysis and topology.
+- I write software in fairly technical domains like 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
+- I like 3D modeling and texturing. I learned by tinkering with [anim8or](https://www.anim8or.com) and now use Blender. However, I am not a very good artist.
 - I enjoy reading philosophy, especially Early Modern and Ancient Greek. Plato is my favorite. 
 
 ## Projects
