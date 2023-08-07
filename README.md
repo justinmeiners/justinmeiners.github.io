@@ -1,4 +1,4 @@
-![colorado bike ride](splash/2023_06_raccoon.jpg)
+![moire pattern](splash/2023_08_moire.png)
 
 Justin Meiners
 ==============
