@@ -1,7 +1,8 @@
-Justin Meiners
-==============
 
 ![moire pattern](splash/2023_08_moire.png)
+
+Justin Meiners
+==============
 
 Welcome to my personal website!
 I love learning and creating new projects.
