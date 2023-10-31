@@ -1,5 +1,5 @@
 
-![moire pattern](splash/2023_08_moire.png)
+![3d shapes](splash/2023_11_shapes.png)
 
 Justin Meiners
 ==============
@@ -13,12 +13,12 @@ Feel free to contact me at: <span>![justin's email](mail.png)</span>
 
 Here is a little about my background and interests:
 
-- I first learned to program in 2008 using [Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html) and Cocoa/NextStep. My favorite languages are C and Lisp.
-- I have a Master's degree in math. I am familar with many topics at an "advanced undergrad" level, but know must about real analysis and topology.
-- I am a Software Engineer at [Apple](https://www.apple.com/) (But I do not write about my employer's products or business).
-- In my career I write technical software in domains like 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
-- I like 3D modeling and texturing. I learned by tinkering with [anim8or](https://www.anim8or.com) and now use Blender. However, I am not a very good artist.
-- I enjoy reading philosophy, especially Early Modern and Ancient Greek. Plato is my favorite. 
+- I first learned to program in 2008 using [Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html) and Cocoa/NextStep thanks to the [CMSEC](https://en.wikipedia.org/wiki/Christa_McAuliffe_Space_Education_Center). My favorite languages are C and Lisp.
+- I have a Master's degree in math. I am familar with many topics at an "advanced undergrad" level, but my strongest areas are real analysis and topology.
+- I am a Software Engineer in the Vision Products Group at [Apple](https://www.apple.com/) (But I do not write about my employer's products or business).
+- I write technical software in areas including 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
+- I like 3D modeling and texturing, but I am not a very good artist. I learned by tinkering with [anim8or](https://www.anim8or.com). Now I use Blender. However, I am not a very good artist.
+- I enjoy reading philosophy which overlaps my interest in math and logic. Plato is my favorite. 
 
 ## Projects
 
