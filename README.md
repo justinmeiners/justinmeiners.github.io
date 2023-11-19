@@ -20,6 +20,8 @@ Here is a little about my background and interests:
 - I like 3D modeling and texturing, but I am not a very good artist. I learned by tinkering with [anim8or](https://www.anim8or.com). Now I use Blender. However, I am not a very good artist.
 - I enjoy reading philosophy which overlaps my interest in math and logic. Plato is my favorite. 
 
+![project euler](https://projecteuler.net/profile/justinmeiners.png)
+
 ## Projects
 
 This is work I have dedicated some significant effort into creating and releasing.
