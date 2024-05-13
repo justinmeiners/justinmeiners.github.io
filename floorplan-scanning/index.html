@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Justin Meiners</title>
+<link rel="stylesheet" href="/template/style.css">
+<link rel="alternate" title="RSS feed" type="application/rss+xml" href="/feed.xml">
+</head>
+<body>
+<p>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="https://github.com/justinmeiners">GitHub</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+</p>
+
+<h1>Building Scanning Patents</h1>
+
+<p>At a previous startup, I invented an Augmented Reality (AR) system for scanning buildings,
+and automatically extracting floor plans from scans.
+Recently a few of the patents I wrote were published, and I wanted to share those, with a brief summary.</p>
+
+<h2>Capturing Environmental Features Using 2D and 3D Scans</h2>
+
+<p><a href="https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20230083703">US-20230083703-A1</a></p>
+
+<p><img src="ar-scan.png" alt="ar scan" /></p>
+
+<p>This describes an augumented reality workflow for capturing a 3D mesh of an environment, and recording points of interest.
+A key idea is to capture all the user interactions and raw 3D data first.
+Later in a post-process step, we determine user intent and relative positioning using complete global ifnormation.</p>
+
+<h2>Floor Plan Extraction</h2>
+
+<p><a href="https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20240005570">US-20240005570-A1</a></p>
+
+<p><img src="possible-scans.png" alt="possible-scans" /></p>
+
+<p>Once we have a 3D scan of an environment, how do we go about turning this into a 2D floor plan?
+Floor plans are conceptual, rather than objective, and so are guided by user input.
+This invention describes both an augmented reality workflow and an algorithm for processing that input.
+It turns out, doing this perfectly is likely NP-complete, but this proper understanding guides effective heuristics.</p>
+
+<h2>Aligning Polygon-like Representations With Inaccuracies</h2>
+
+<p><a href="https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/20230334200">US-20230334200-A1</a></p>
+
+<p><img src="align-shapes.png" alt="align shapes" /></p>
+
+<p>Scan measurements contain error, and the real world is imperfect.
+How can we correct the alignment of complex floor plan shapes with minimal distortion?
+One answer is to simultaneously move all points of the floor plan in a <a href="/why-train-when-you-can-optimize/">multi-variable optimization</a> approach.</p>
+</body>
+</html>

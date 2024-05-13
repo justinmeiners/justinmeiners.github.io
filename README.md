@@ -49,6 +49,7 @@ You can also find smaller projects and experiments at my [GitHub page](https://g
 
 I hope to share insights, experiences, and occasionally answer some questions. This writing is informal and sometimes unpolished.
 
+- [05/12/2024 - Building Scanning Patents](floorplan-scanning/)
 - [11/18/2022 - Thinking styles from math](thinking-styles/)
 - [07/21/2022 - The Quake entity system: shell scripting for games](quake-entities/)
 - [06/25/2022 - A simple mesh adjacency data structure](mesh-adjacency-trick/)
