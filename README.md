@@ -13,14 +13,16 @@ Feel free to contact me at: <span>![justin's email](mail.png)</span>
 
 Here is a little about my background and interests:
 
-- I first learned to program in 2008 using [Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html) and Cocoa/NextStep thanks to the [CMSEC](https://en.wikipedia.org/wiki/Christa_McAuliffe_Space_Education_Center). My favorite languages are C and Lisp.
-- I have a Master's degree in math. I am familar with many topics at an "advanced undergrad" level, but my strongest areas are real analysis and topology.
-- I am a Software Engineer in the Vision Products Group at [Apple](https://www.apple.com/) (But I do not write about my employer's products or business).
-- I write technical software in areas including 3D graphics, numerical methods, optimization, combinatorics, signal processing, etc.
-- I like 3D modeling and texturing, but I am not a very good artist. I learned by tinkering with [anim8or](https://www.anim8or.com). Now I use Blender. However, I am not a very good artist.
-- I enjoy reading philosophy which overlaps my interest in math and logic. Plato is my favorite. 
+- I first learned to program in 2008 using [Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html) and Cocoa/NextStep thanks to the [CMSEC](https://en.wikipedia.org/wiki/Christa_McAuliffe_Space_Education_Center).
+- I am a Software Engineer in the Vision Products Group at [Apple](https://www.apple.com/) (I do not write about my employer's products or business).
+- My best effort at a professional title is "computer vision generalist". My skills include 3D rendering, GPUs, numerical methods, optimization, combinatorics, signal processing, etc.
+- I have a Master's degree in math and view it as a lifelong pursuit. I have broad knowledge at the "advanced undergrad" level with more depth in real analysis and topology.
 
-![project euler](https://projecteuler.net/profile/justinmeiners.png)
+    ![project euler](https://projecteuler.net/profile/justinmeiners.png)
+
+- I like 3D modeling and texturing, but I am not much of a visual artist. I learned by tinkering with [anim8or](https://www.anim8or.com). Now I use Blender. However, I am not a very good artist.
+- I enjoy reading philosophy, especially Plato and Aristotle.
+
 
 ## Projects
 
