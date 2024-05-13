@@ -1,111 +1,124 @@
 Deploying Common Lisp Scripts
---------------------------
+----------------------------
 **3/05/22**
 
-Common Lisp is an excellent scripting language that can serve a similar role as Python or Perl, but with all the Lisp goodies, like great performance and macros.
-For these use cases, Common Lisp implementations usually provide a "script mode".
-This mode can be invoked by making a `.lisp` script executable and adding a "shebang" interpreter specification.
-For example:
+The popular advice for deploying Common Lisp is to [dump an image][save-image] (eg. `save-lisp-and-die`).
+This works for large applications, but is cumbersome if you just want to write small scripts.
+There is no reqason why Lisp can't be used just like Perl or Python:
+install *a single lisp interpreter*  on your system (`/usr/local/bin/sbcl`) and  *write, run and deploy scripts* from source freely.
+
+A step in the right direction is a `.lisp` file with anappropriate shebang.
+Here is `sbcl`:
 
     #!/usr/bin/sbcl --script
     (write-string "Hello, World!")
+    
+But you'll run into a few roadblocks if try to take this further.
+How do we include other source files without knowing their instllation path?
+How do we load libraries?
+Do we ask the user to install QuickLisp and load them here?
 
-This setup works well, right up until you need to load a dependency.
-Then things get messy.
-After researching a myriad of bad ways to solve this, I finally uncovered a good solution.
+Here is the secret answer to all of these questions: 
 
-**TLDR:** Quicklisp's [bundle-systems][ql-bundle] command copies all your code and libraries into a single folder that can be loaded by an executable lisp script with `asdf:load-system`. (Experienced lisper's can skip to "Solution" below.)
+**TLDR:** Hidden in QuickLisp is the **[bundle-systems][ql-bundle]** command.
+It downloads your project dependencies into a standlone folder and also creates a `bundle.lisp` script in the root for loading.
+All you need is `(load bundle.lisp)` and then you can use `asdf:load-system` to include dependencies transitively.
+It's entirely self contained. No more QuickLisp.
 
-## quickload
+### Example
 
-[quicklisp][ql] is the standard way to download and manage libraries.
-To load one with `ql:quickload` or `asdf:load-system` you must already have quicklisp loaded.
-If the user added it to their startup time (`.sbclrc`), then it will be available automatically. 
-However, `sbcl --script` specifically ignores the `.sbclrc` because it's just intended for writing small scripts,
-and initializing a user environment for this purpose is a little much.
+This example prepares an `asdf` project (containing your source) with all it's dependencies,
+and installs an executable in a system path:
 
-So, at the beginning of your script, you might try to load quicklisp manually.
-You could assume it is in `~/quicklisp` or try to locate it elsewhere, but then 
-you might as well just find and load `.sbclrc`.
-None of these sound like reliable or nice solutions.
+1. Create a bundle containing your QuickLisp dependencies:
 
-Even if you work something out,
-quicklisp is really for downloading dependencies, not using them.
-Besides adding some overhead to startup,
-imagine if python's `import` started downloading an arbitrary version of a library at run time.
-What if the user updates their quicklisp distribution and your code isn't compatible with new changes? 
+        (ql:bundle-systems (list "alexandria" "cl-ppcre" ...) :to "bundle/")
 
-See this comment from Reddit user [eayse][reddit]:
+2. Create a `.asd` file describing your project and dependencies (see [Defining Systems with defsystem][asdf]):
 
-> I advocate the habit of installing things with ql:quickload, but after initial installation, using asdf:load-system to actually bring the systems into memory.
-> After all missing dependencies have been satisfied by network installations from the distributions configured in Quicklisp, ql:quickload just thunks down to ASDF.
+        (asdf:defsystem "myapp"
+            :depends-on (:alexandria :cl-ppcre ...)
+            :build-pathname "myapp"
+            :components (
+                (:file "...")
+                ...))
 
+3. Copy your application source in the bundle, in a folder alongside it's dependencies:
 
-## Saving an image
+        mkdir -p bundle/local-projects/myapp
+        cp *.lisp bundle/local-projects/myapp
+        cp *.asd bundle/local-projects/myapp
 
-The recommended way to deploy large Common Lisp applications is to load all your source and libraries and [save an image][save-image].
-This is a good solution for many deployments (especially backend web applications),
-but is not great for scripts. 
+3. Install the bundle in a system path:
 
-The image is an snapshot of the entire lisp system, including compiler, so they tend to be large (> 50 mb for sbcl).
-Leaving behind large executables for each script on the system is not polite.
-There are approaches to mitigate this and implementations vary.
+        cp -r bundle/ /user/local/lib/myapp
 
-Besides size, this approach also has  maintenance problems.
-After install, the user now has a lisp system on their system frozen in time.
-It may have security issues, bugs, etc, and these don't get updated with the system package manager.
-In general Lisp should work like every other language implementation.
+4. Create a launch script in `/usr/local/bin/` which loads the `bundle.lisp` and the asd system:
 
-See also:
+        #!/usr/bin/sbcl --script
+        (load "/usr/local/lib/myapp/bundle.lisp")
+        (asdf:load-system "myapp")
+        (myapp:do-stuff)
 
-- [buildapp][buildapp]
-- asdf:make
+That's all! When the script is run for the first time `sbcl` will compile into `.fasl` files,
+and then load these on subsequent runs.
 
-## Other approaches
+Consider automating these steps for your project, such as with `make install`. 
 
-**Roswell**
+## Other advice you might hear
 
-[Roswell][roswell] is advertised as a solution.
-I need users to install another tool besides quicklisp? 
-If it's not downloading dependencies (quicklisp), and it's not building them (asdf),
-then what does it do? 
-Why do I have to learn a non-lisp based scripting language to use it?
+There are a myriad of articles that claim to solve this problem.
+But after much research and trial and error, I found none of them to be satisfactory.
+
+### Saving an Image
+
+[Saving an image][save-image] can be a good solution such as when deploying an entire web application to a server.
+But be warned that the image is a large binary, containing the entire Lisp compile  and your program's soruce.
+For `sbcl` this is about 50 MB.
+
+If you want to use this for every small Lisp script you write, you'll end up littering them all over the system.
+In addition to size concens, it's not very maintainable.
+Each installation becomes an isolated Lisp frozen in time.
+To apply security updates or bug fixes in sbcl, you will need to track down and rebuild each Lisp program individually.
+
+### QuickLisp? 
+
+Imagine if calling `import` in Python started downloading code from the internet!
+For security, and dependency management in production, its generally a good idea to separate downloading libraries,
+from actually linking with them. 
+
+In Common Lisp we have a standard tool `asdf` which solves the inclusion problem, and is included in most distributions,
+On the other hand, [quicklisp][ql] is really a tool for discovering and downloading Lisp libraries.
+It's great!
+But you shouldn't really be distributed with your software.
+
+Reddit user [eayse][reddit] explains this well:
+
+> I advocate the habit of installing things with `ql:quickload`, but after initial installation, using `asdf:load-system` to actually bring the systems into memory.
+> After all missing dependencies have been satisfied by network installations from the distributions configured in Quicklisp, `ql:quickload` just thunks down to ASDF.
+
+Note that QuickLisp also distributes libraries as a rolling release of all the latest tags.
+You will need to pin it to a specific commit hash to get a precise snapshot in time. 
+
+If you do try to include QuickLisp directly you will face the headache of trying to locate and load it
+either through `.sbclrc` or a system path.
+
+### Roswell?
+
+[Roswell][roswell] is advertised as a solution, but it's possibly the most un-Lispy tool I have ever saeen.
+It doesn't download dependencies, or help you build them.
+What does it do? Help you download sbcl?
+Why do I have to learn a new config file syntax instead of using s-expressions?
 *sigh*.
 
+## Busybox style
 
-**busybox style executable sharing**
+The overhead of dumping an image can be shared by many scripts if you put them all in the same executable.
+This technique is described for Lisp by [Fare][busybox] and [Steve][small-cli].
 
-If you have a lot of scripts you can save on space
-by putting them in the same executable.
-See [Fare's article][busybox] and [Steve's][small-cli].
-This only solves the disk problem, and assumes we have a lot of scripts.
-User's of a lisp program shouldn't have to care about this.
+Disk usage looks better, but now all the scripts are coupled, and must be distributed together.
 
-## Solution
-
-Quicklisp's [bundle-systems][ql-bundle] downloads the libraries you specify,
-and places them into a standalone package, with a script to configure `asdf` to find the systems.
-Here is an example build process:
-
-1. Create a bundle:
-
-       (ql:bundle-systems (list "alexandria" "cl-ppcre" ...) :to "build/")
-
-2. Copy your application's asdf system (along with source) into `build/local-projects/myapp`
-
-       cp *.lisp build/local-projects/myapp
-       cp *.asd build/local-projects/myapp
-
-3. Install `build` in `usr/local/lib/myapp`.
-
-4. Install launch script in `usr/local/bin/` which loads the bundle and starts the script.
-   For example:
-
-       #!/usr/bin/sbcl --script
-       (load "/usr/local/lib/myapp/bundle.lisp")
-       (asdf:load-system "myapp")
-       (myapp:do-stuff)
-
+[asdf]: https://asdf.common-lisp.dev/asdf.html#Defining-systems-with-defsystem
 [buildapp]: https://www.xach.com/lisp/buildapp/
 [small-cli]: https://stevelosh.com/blog/2021/03/small-common-lisp-cli-programs/
 [ql-bundle]: https://www.quicklisp.org/beta/bundles.html
@@ -114,3 +127,4 @@ Here is an example build process:
 [roswell]: https://roswell.github.io/Roswell-as-a-Scripting-Environment.html
 [busybox]: https://fare.livejournal.com/184127.html
 [ql]: https://www.quicklisp.org/beta/
+

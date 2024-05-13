@@ -18,113 +18,125 @@
 
 <p><strong>3/05/22</strong></p>
 
-<p>Common Lisp is an excellent scripting language that can serve a similar role as Python or Perl, but with all the Lisp goodies, like great performance and macros.
-For these use cases, Common Lisp implementations usually provide a &ldquo;script mode&rdquo;.
-This mode can be invoked by making a <code>.lisp</code> script executable and adding a &ldquo;shebang&rdquo; interpreter specification.
-For example:</p>
+<p>The popular advice for deploying Common Lisp is to <a href="https://lispcookbook.github.io/cl-cookbook/scripting.html">dump an image</a> (eg. <code>save-lisp-and-die</code>).
+This works for large applications, but is cumbersome if you just want to write small scripts.
+There is no reqason why Lisp can&rsquo;t be used just like Perl or Python:
+install <em>a single lisp interpreter</em>  on your system (<code>/usr/local/bin/sbcl</code>) and  <em>write, run and deploy scripts</em> from source freely.</p>
+
+<p>A step in the right direction is a <code>.lisp</code> file with anappropriate shebang.
+Here is <code>sbcl</code>:</p>
 
 <pre><code>#!/usr/bin/sbcl --script
 (write-string "Hello, World!")
 </code></pre>
 
-<p>This setup works well, right up until you need to load a dependency.
-Then things get messy.
-After researching a myriad of bad ways to solve this, I finally uncovered a good solution.</p>
+<p>But you&rsquo;ll run into a few roadblocks if try to take this further.
+How do we include other source files without knowing their instllation path?
+How do we load libraries?
+Do we ask the user to install QuickLisp and load them here?</p>
 
-<p><strong>TLDR:</strong> Quicklisp&rsquo;s <a href="https://www.quicklisp.org/beta/bundles.html">bundle-systems</a> command copies all your code and libraries into a single folder that can be loaded by an executable lisp script with <code>asdf:load-system</code>. (Experienced lisper&rsquo;s can skip to &ldquo;Solution&rdquo; below.)</p>
+<p>Here is the secret answer to all of these questions:</p>
 
-<h2>quickload</h2>
+<p><strong>TLDR:</strong> Hidden in QuickLisp is the <strong><a href="https://www.quicklisp.org/beta/bundles.html">bundle-systems</a></strong> command.
+It downloads your project dependencies into a standlone folder and also creates a <code>bundle.lisp</code> script in the root for loading.
+All you need is <code>(load bundle.lisp)</code> and then you can use <code>asdf:load-system</code> to include dependencies transitively.
+It&rsquo;s entirely self contained. No more QuickLisp.</p>
 
-<p><a href="https://www.quicklisp.org/beta/">quicklisp</a> is the standard way to download and manage libraries.
-To load one with <code>ql:quickload</code> or <code>asdf:load-system</code> you must already have quicklisp loaded.
-If the user added it to their startup time (<code>.sbclrc</code>), then it will be available automatically.
-However, <code>sbcl --script</code> specifically ignores the <code>.sbclrc</code> because it&rsquo;s just intended for writing small scripts,
-and initializing a user environment for this purpose is a little much.</p>
+<h3>Example</h3>
 
-<p>So, at the beginning of your script, you might try to load quicklisp manually.
-You could assume it is in <code>~/quicklisp</code> or try to locate it elsewhere, but then
-you might as well just find and load <code>.sbclrc</code>.
-None of these sound like reliable or nice solutions.</p>
-
-<p>Even if you work something out,
-quicklisp is really for downloading dependencies, not using them.
-Besides adding some overhead to startup,
-imagine if python&rsquo;s <code>import</code> started downloading an arbitrary version of a library at run time.
-What if the user updates their quicklisp distribution and your code isn&rsquo;t compatible with new changes?</p>
-
-<p>See this comment from Reddit user <a href="https://old.reddit.com/r/lisp/comments/iai2ab/repairing_asdf_package_storage/g1pnxdt/">eayse</a>:</p>
-
-<blockquote><p>I advocate the habit of installing things with ql:quickload, but after initial installation, using asdf:load-system to actually bring the systems into memory.
-After all missing dependencies have been satisfied by network installations from the distributions configured in Quicklisp, ql:quickload just thunks down to ASDF.</p></blockquote>
-
-<h2>Saving an image</h2>
-
-<p>The recommended way to deploy large Common Lisp applications is to load all your source and libraries and <a href="https://lispcookbook.github.io/cl-cookbook/scripting.html">save an image</a>.
-This is a good solution for many deployments (especially backend web applications),
-but is not great for scripts.</p>
-
-<p>The image is an snapshot of the entire lisp system, including compiler, so they tend to be large (> 50 mb for sbcl).
-Leaving behind large executables for each script on the system is not polite.
-There are approaches to mitigate this and implementations vary.</p>
-
-<p>Besides size, this approach also has  maintenance problems.
-After install, the user now has a lisp system on their system frozen in time.
-It may have security issues, bugs, etc, and these don&rsquo;t get updated with the system package manager.
-In general Lisp should work like every other language implementation.</p>
-
-<p>See also:</p>
-
-<ul>
-<li><a href="https://www.xach.com/lisp/buildapp/">buildapp</a></li>
-<li>asdf:make</li>
-</ul>
-
-
-<h2>Other approaches</h2>
-
-<p><strong>Roswell</strong></p>
-
-<p><a href="https://roswell.github.io/Roswell-as-a-Scripting-Environment.html">Roswell</a> is advertised as a solution.
-I need users to install another tool besides quicklisp?
-If it&rsquo;s not downloading dependencies (quicklisp), and it&rsquo;s not building them (asdf),
-then what does it do?
-Why do I have to learn a non-lisp based scripting language to use it?
-<em>sigh</em>.</p>
-
-<p><strong>busybox style executable sharing</strong></p>
-
-<p>If you have a lot of scripts you can save on space
-by putting them in the same executable.
-See <a href="https://fare.livejournal.com/184127.html">Fare&rsquo;s article</a> and <a href="https://stevelosh.com/blog/2021/03/small-common-lisp-cli-programs/">Steve&rsquo;s</a>.
-This only solves the disk problem, and assumes we have a lot of scripts.
-User&rsquo;s of a lisp program shouldn&rsquo;t have to care about this.</p>
-
-<h2>Solution</h2>
-
-<p>Quicklisp&rsquo;s <a href="https://www.quicklisp.org/beta/bundles.html">bundle-systems</a> downloads the libraries you specify,
-and places them into a standalone package, with a script to configure <code>asdf</code> to find the systems.
-Here is an example build process:</p>
+<p>This example prepares an <code>asdf</code> project (containing your source) with all it&rsquo;s dependencies,
+and installs an executable in a system path:</p>
 
 <ol>
-<li><p>Create a bundle:</p>
+<li><p>Create a bundle containing your QuickLisp dependencies:</p>
 
-<pre><code>(ql:bundle-systems (list "alexandria" "cl-ppcre" ...) :to "build/")
+<pre><code> (ql:bundle-systems (list "alexandria" "cl-ppcre" ...) :to "bundle/")
 </code></pre></li>
-<li><p>Copy your application&rsquo;s asdf system (along with source) into <code>build/local-projects/myapp</code></p>
+<li><p>Create a <code>.asd</code> file describing your project and dependencies (see <a href="https://asdf.common-lisp.dev/asdf.html#Defining-systems-with-defsystem">Defining Systems with defsystem</a>):</p>
 
-<pre><code>cp *.lisp build/local-projects/myapp
-cp *.asd build/local-projects/myapp
+<pre><code> (asdf:defsystem "myapp"
+     :depends-on (:alexandria :cl-ppcre ...)
+     :build-pathname "myapp"
+     :components (
+         (:file "...")
+         ...))
 </code></pre></li>
-<li><p>Install <code>build</code> in <code>usr/local/lib/myapp</code>.</p></li>
-<li><p>Install launch script in <code>usr/local/bin/</code> which loads the bundle and starts the script.
-For example:</p>
+<li><p>Copy your application source in the bundle, in a folder alongside it&rsquo;s dependencies:</p>
 
-<pre><code>#!/usr/bin/sbcl --script
-(load "/usr/local/lib/myapp/bundle.lisp")
-(asdf:load-system "myapp")
-(myapp:do-stuff)
+<pre><code> mkdir -p bundle/local-projects/myapp
+ cp *.lisp bundle/local-projects/myapp
+ cp *.asd bundle/local-projects/myapp
+</code></pre></li>
+<li><p>Install the bundle in a system path:</p>
+
+<pre><code> cp -r bundle/ /user/local/lib/myapp
+</code></pre></li>
+<li><p>Create a launch script in <code>/usr/local/bin/</code> which loads the <code>bundle.lisp</code> and the asd system:</p>
+
+<pre><code> #!/usr/bin/sbcl --script
+ (load "/usr/local/lib/myapp/bundle.lisp")
+ (asdf:load-system "myapp")
+ (myapp:do-stuff)
 </code></pre></li>
 </ol>
 
+
+<p>That&rsquo;s all! When the script is run for the first time <code>sbcl</code> will compile into <code>.fasl</code> files,
+and then load these on subsequent runs.</p>
+
+<p>Consider automating these steps for your project, such as with <code>make install</code>.</p>
+
+<h2>Other advice you might hear</h2>
+
+<p>There are a myriad of articles that claim to solve this problem.
+But after much research and trial and error, I found none of them to be satisfactory.</p>
+
+<h3>Saving an Image</h3>
+
+<p><a href="https://lispcookbook.github.io/cl-cookbook/scripting.html">Saving an image</a> can be a good solution such as when deploying an entire web application to a server.
+But be warned that the image is a large binary, containing the entire Lisp compile  and your program&rsquo;s soruce.
+For <code>sbcl</code> this is about 50 MB.</p>
+
+<p>If you want to use this for every small Lisp script you write, you&rsquo;ll end up littering them all over the system.
+In addition to size concens, it&rsquo;s not very maintainable.
+Each installation becomes an isolated Lisp frozen in time.
+To apply security updates or bug fixes in sbcl, you will need to track down and rebuild each Lisp program individually.</p>
+
+<h3>QuickLisp?</h3>
+
+<p>Imagine if calling <code>import</code> in Python started downloading code from the internet!
+For security, and dependency management in production, its generally a good idea to separate downloading libraries,
+from actually linking with them.</p>
+
+<p>In Common Lisp we have a standard tool <code>asdf</code> which solves the inclusion problem, and is included in most distributions,
+On the other hand, <a href="https://www.quicklisp.org/beta/">quicklisp</a> is really a tool for discovering and downloading Lisp libraries.
+It&rsquo;s great!
+But you shouldn&rsquo;t really be distributed with your software.</p>
+
+<p>Reddit user <a href="https://old.reddit.com/r/lisp/comments/iai2ab/repairing_asdf_package_storage/g1pnxdt/">eayse</a> explains this well:</p>
+
+<blockquote><p>I advocate the habit of installing things with <code>ql:quickload</code>, but after initial installation, using <code>asdf:load-system</code> to actually bring the systems into memory.
+After all missing dependencies have been satisfied by network installations from the distributions configured in Quicklisp, <code>ql:quickload</code> just thunks down to ASDF.</p></blockquote>
+
+<p>Note that QuickLisp also distributes libraries as a rolling release of all the latest tags.
+You will need to pin it to a specific commit hash to get a precise snapshot in time.</p>
+
+<p>If you do try to include QuickLisp directly you will face the headache of trying to locate and load it
+either through <code>.sbclrc</code> or a system path.</p>
+
+<h3>Roswell?</h3>
+
+<p><a href="https://roswell.github.io/Roswell-as-a-Scripting-Environment.html">Roswell</a> is advertised as a solution, but it&rsquo;s possibly the most un-Lispy tool I have ever saeen.
+It doesn&rsquo;t download dependencies, or help you build them.
+What does it do? Help you download sbcl?
+Why do I have to learn a new config file syntax instead of using s-expressions?
+<em>sigh</em>.</p>
+
+<h2>Busybox style</h2>
+
+<p>The overhead of dumping an image can be shared by many scripts if you put them all in the same executable.
+This technique is described for Lisp by <a href="https://fare.livejournal.com/184127.html">Fare</a> and <a href="https://stevelosh.com/blog/2021/03/small-common-lisp-cli-programs/">Steve</a>.</p>
+
+<p>Disk usage looks better, but now all the scripts are coupled, and must be distributed together.</p>
 </body>
 </html>
