@@ -10,9 +10,9 @@ Recently a few of the patents I wrote were published, and I wanted to share thos
 
 ![ar scan](ar-scan.png)
 
-This describes an augumented reality workflow for capturing a 3D mesh of an environment, and recording points of interest.
+This describes an augmented reality workflow for capturing a 3D mesh of an environment, and recording points of interest.
 A key idea is to capture all the user interactions and raw 3D data first.
-Later in a post-process step, we determine user intent and relative positioning using complete global ifnormation.
+Later in a post-process step, we determine user intent and relative positioning using complete global information.
 
 ## Floor Plan Extraction 
 
@@ -54,7 +54,7 @@ One answer is to simultaneously move all points of the floor plan in a [multi-va
 
 ![wall 2D](wall-2d.png)
 
-Along with the shape of the building, we are also interested in the aperatures of each room.
+Along with the shape of the building, we are also interested in the apertures of each room.
 The polygonal shape tells us where the walls are in 3D.
 We can then render the  portion of the 3D mesh corresponding to each wall, and detect cutouts in the rendered image.
 This transforms a complex 3D detection problem into a traditional 2D computer vision problem.

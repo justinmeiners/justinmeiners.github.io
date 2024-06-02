@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com</link>
-<lastBuildDate>Sun, 02 Jun 2024 01:25:02 +0000</lastBuildDate>
+<lastBuildDate>Sun, 02 Jun 2024 05:06:32 +0000</lastBuildDate>
 <item>
 <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
 <title>Building Scanning Patents</title>
@@ -22,9 +22,9 @@ Recently a few of the patents I wrote were published, and I wanted to share thos
 
 <p><img src="ar-scan.png" alt="ar scan" /></p>
 
-<p>This describes an augumented reality workflow for capturing a 3D mesh of an environment, and recording points of interest.
+<p>This describes an augmented reality workflow for capturing a 3D mesh of an environment, and recording points of interest.
 A key idea is to capture all the user interactions and raw 3D data first.
-Later in a post-process step, we determine user intent and relative positioning using complete global ifnormation.</p>
+Later in a post-process step, we determine user intent and relative positioning using complete global information.</p>
 
 <h2>Floor Plan Extraction</h2>
 
@@ -66,7 +66,7 @@ One answer is to simultaneously move all points of the floor plan in a <a href="
 
 <p><img src="wall-2d.png" alt="wall 2D" /></p>
 
-<p>Along with the shape of the building, we are also interested in the aperatures of each room.
+<p>Along with the shape of the building, we are also interested in the apertures of each room.
 The polygonal shape tells us where the walls are in 3D.
 We can then render the  portion of the 3D mesh corresponding to each wall, and detect cutouts in the rendered image.
 This transforms a complex 3D detection problem into a traditional 2D computer vision problem.
