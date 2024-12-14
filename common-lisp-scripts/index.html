@@ -37,7 +37,7 @@ How do you load libraries such as through QuickLisp?</p>
 
 <p>The solution? (<strong>TLDR</strong>) QuickLisp has a command for downloading libraries and exporting them called <strong><a href="https://www.quicklisp.org/beta/bundles.html">ql:bundle-systems</a></strong>.
 It creates a single folder with an index file called <code>bundle.lisp</code>.
-After running <code>(load bundle.lisp)</code> each of your dependencies is available to be loaded with <code>asdf:load-system</code>.</p>
+After running <code>(load bundle.lisp)</code>, all of your dependencies are available to be load via <code>asdf:load-system</code>.</p>
 
 <h2>How to use <code>ql:bundle-system</code></h2>
 
