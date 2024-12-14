@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com</link>
-<lastBuildDate>Sat, 14 Dec 2024 06:44:21 +0000</lastBuildDate>
+<lastBuildDate>Sat, 14 Dec 2024 06:45:26 +0000</lastBuildDate>
 <item>
 <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
 <title>Building Scanning Patents</title>
@@ -964,16 +964,16 @@ Here I&rsquo;ll explain how to do that.</p>
 
 <p>But you&rsquo;ll quickly run into a few roadblocks.
 How do you include other source files without knowing their installation path?
-How do you load libraries such as through QuickLisp?</p>
+How do you load libraries such as through Quicklisp?</p>
 
-<p>The solution? (<strong>TLDR</strong>) QuickLisp has a command for downloading libraries and exporting them called <strong><a href="https://www.quicklisp.org/beta/bundles.html">ql:bundle-systems</a></strong>.
+<p>The solution? (<strong>TLDR</strong>) Quicklisp has a command for downloading libraries and exporting them called <strong><a href="https://www.quicklisp.org/beta/bundles.html">ql:bundle-systems</a></strong>.
 It creates a single folder with an index file called <code>bundle.lisp</code>.
 After running <code>(load bundle.lisp)</code>, all of your dependencies are available to be load via <code>asdf:load-system</code>.</p>
 
 <h2>How to use <code>ql:bundle-system</code></h2>
 
 <ol>
-<li><p>Create a bundle containing your QuickLisp dependencies:</p>
+<li><p>Create a bundle containing your Quicklisp dependencies:</p>
 
 <pre><code> (ql:bundle-systems (list "alexandria" "cl-ppcre" ...) :to "bundle/")
 </code></pre>
@@ -1049,17 +1049,17 @@ Your computer becomes littered with a bunch of independent copies of Lisp.
 If you want to update <code>sbcl</code> you need to track down all your old images, delete them, and rebuild new ones.
 Images files are also notoriously large (~50 MB for <code>sbcl</code>).</p>
 
-<h3>Using QuickLisp in scripts</h3>
+<h3>Using Quicklisp in scripts</h3>
 
-<p>Can you make a shebang script that loads code with QuickLisp?
+<p>Can you make a shebang script that loads code with Quicklisp?
 You certainly can, but first note that <code>sbcl --script</code> will skip Lisp your system configuration (<code>.sbclrc</code>),
-so you need to hard code a path to load QuickLisp.</p>
+so you need to hard code a path to load Quicklisp.</p>
 
 <p>But now imaging if calling <code>import</code> in a Python started downloading code from the internet!
 That&rsquo;s a security and reliability nightmare.
-But that&rsquo;s how QuickLisp works!</p>
+But that&rsquo;s how Quicklisp works!</p>
 
-<p>That&rsquo;s because QuickLisp isn&rsquo;t intended to be a library loader.
+<p>That&rsquo;s because Quicklisp isn&rsquo;t intended to be a library loader.
 It&rsquo;s a tool for downloading and <em>discovering</em> libraries.
 But it shouldn&rsquo;t be included with your program.</p>
 
@@ -1067,11 +1067,11 @@ But it shouldn&rsquo;t be included with your program.</p>
 It&rsquo;s the standard way to describe and load libraries,
 and it&rsquo;s already included in most distributions.</p>
 
-<p>Note that QuickLisp is also organized as a rolling release like your operating system.
-Rather than picking out individual library version tags, you pick a QuickLisp version which
+<p>Note that Quicklisp is also organized as a rolling release like your operating system.
+Rather than picking out individual library version tags, you pick a Quicklisp version which
 is a snapshot in time of all the libraries that aims to be compatible.</p>
 
-<p>To reiterate the relationship between QuickLisp and <code>asdf</code>,
+<p>To reiterate the relationship between Quicklisp and <code>asdf</code>,
 I will borrow an explanation from Reddit user <a href="https://old.reddit.com/r/lisp/comments/iai2ab/repairing_asdf_package_storage/g1pnxdt/">eayse</a>:</p>
 
 <blockquote><p>I advocate the habit of installing things with <code>ql:quickload</code>, but after initial installation, using <code>asdf:load-system</code> to actually bring the systems into memory.

@@ -16,15 +16,15 @@ A step in the right direction is a `.lisp` file with an appropriate shebang:
     
 But you'll quickly run into a few roadblocks.
 How do you include other source files without knowing their installation path?
-How do you load libraries such as through QuickLisp?
+How do you load libraries such as through Quicklisp?
 
-The solution? (**TLDR**) QuickLisp has a command for downloading libraries and exporting them called **[ql:bundle-systems][ql-bundle]**.
+The solution? (**TLDR**) Quicklisp has a command for downloading libraries and exporting them called **[ql:bundle-systems][ql-bundle]**.
 It creates a single folder with an index file called `bundle.lisp`.
 After running `(load bundle.lisp)`, all of your dependencies are available to be load via `asdf:load-system`.
 
 ## How to use `ql:bundle-system`
 
-1. Create a bundle containing your QuickLisp dependencies:
+1. Create a bundle containing your Quicklisp dependencies:
 
         (ql:bundle-systems (list "alexandria" "cl-ppcre" ...) :to "bundle/")
 
@@ -97,17 +97,17 @@ Your computer becomes littered with a bunch of independent copies of Lisp.
 If you want to update `sbcl` you need to track down all your old images, delete them, and rebuild new ones.
 Images files are also notoriously large (~50 MB for `sbcl`).
 
-### Using QuickLisp in scripts
+### Using Quicklisp in scripts
 
-Can you make a shebang script that loads code with QuickLisp?
+Can you make a shebang script that loads code with Quicklisp?
 You certainly can, but first note that `sbcl --script` will skip Lisp your system configuration (`.sbclrc`),
-so you need to hard code a path to load QuickLisp. 
+so you need to hard code a path to load Quicklisp. 
 
 But now imaging if calling `import` in a Python started downloading code from the internet!
 That's a security and reliability nightmare.
-But that's how QuickLisp works!
+But that's how Quicklisp works!
 
-That's because QuickLisp isn't intended to be a library loader. 
+That's because Quicklisp isn't intended to be a library loader. 
 It's a tool for downloading and *discovering* libraries.
 But it shouldn't be included with your program.
 
@@ -115,11 +115,11 @@ You should be using `asdf` for that instead.
 It's the standard way to describe and load libraries,
 and it's already included in most distributions.
 
-Note that QuickLisp is also organized as a rolling release like your operating system.
-Rather than picking out individual library version tags, you pick a QuickLisp version which 
+Note that Quicklisp is also organized as a rolling release like your operating system.
+Rather than picking out individual library version tags, you pick a Quicklisp version which 
 is a snapshot in time of all the libraries that aims to be compatible.
 
-To reiterate the relationship between QuickLisp and `asdf`,
+To reiterate the relationship between Quicklisp and `asdf`,
 I will borrow an explanation from Reddit user [eayse][reddit]: 
 
 > I advocate the habit of installing things with `ql:quickload`, but after initial installation, using `asdf:load-system` to actually bring the systems into memory.
