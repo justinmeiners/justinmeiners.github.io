@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Grid Neighbors</title>
+<link rel="stylesheet" href="/template/style.css">
+<link rel="alternate" title="RSS feed" type="application/rss+xml" href="/feed.xml">
+</head>
+<body>
+<p>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="https://github.com/justinmeiners">GitHub</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+</p>
+
+<h1>Grid Neighbors</h1>
+
+<p><strong>10/27/22</strong></p>
+
+<p>Suppose we need to iterate over the neighbors of a cell in a 2D grid:</p>
+
+<pre><code>* * *
+* - *
+* * *
+</code></pre>
+
+<p>This can be done with the following well known pattern:</p>
+
+<pre><code>void all_neighbors() {
+    for (int i = -1; i &lt;= 1; ++i) {
+        for (int j = -1; j &lt;= 1; ++j) {
+            if (i == 0 &amp;&amp; j == 0) continue;
+            std::cout &lt;&lt; i &lt;&lt; ", " &lt;&lt; j &lt;&lt; std::endl;
+        }
+    }
+}
+</code></pre>
+
+<p>But what if we just want to iterate the horizontal and vertical neighbors, skipping the diagonal?</p>
+
+<pre><code>   *
+ * - *
+   *
+</code></pre>
+
+<p>Most programs explicilty repeat the operation 4 times, or use a table.
+But there is a trick to do it in a loop.
+Think of the neighbor as a vector offset, and then rotate it 90 degrees, 4 times.</p>
+
+<pre><code>template &lt;typename I&gt;
+void rotate_2d(I&amp; a, I&amp; b) {
+    std::swap(a, b);
+    b = -b;
+}
+
+void direct_neighbors() {
+    int i = 1;
+    int j = 0;
+    for (int k = 0; k &lt; 4; ++k) {
+        std::cout &lt;&lt; i &lt;&lt; ", " &lt;&lt; j &lt;&lt; std::endl;
+        rotate_2d(i, j);
+    }
+}
+</code></pre>
+
+<p>Try it out!</p>
+
+<pre><code>int main() {
+    std::cout &lt;&lt; "diagonal" &lt;&lt; std::endl;
+    all_neighbors();
+    std::cout &lt;&lt; "square" &lt;&lt; std::endl;
+    direct_neighbors();
+}
+</code></pre>
+</body>
+</html>

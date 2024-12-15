@@ -53,6 +53,7 @@ I hope to share insights, experiences, and occasionally answer some questions. T
 
 - [05/12/2024 - Building Scanning Patents](floorplan-scanning/)
 - [11/18/2022 - Thinking styles from math](thinking-styles/)
+- [10/27/2022 - Iterating grid cell neighbors](grid-neighbors/)
 - [07/21/2022 - The Quake entity system: shell scripting for games](quake-entities/)
 - [06/25/2022 - A simple mesh adjacency data structure](mesh-adjacency-trick/)
 - [03/07/2022 - Literate programming is much more than commenting code](literate-programming/)

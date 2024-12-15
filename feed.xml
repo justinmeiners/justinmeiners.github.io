@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com</link>
-<lastBuildDate>Sun, 15 Dec 2024 02:57:03 +0000</lastBuildDate>
+<lastBuildDate>Sun, 15 Dec 2024 03:04:55 +0000</lastBuildDate>
 <item>
 <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
 <title>Building Scanning Patents</title>
@@ -196,6 +196,72 @@ Do we want to work hard to get better?
 There seems to be an attitude of avoiding learning at all costs, because it doesn&rsquo;t directly count as productivity.
 Why don&rsquo;t we embrace curiosity and practice as a separate and worthwhile activity?
 Why don&rsquo;t we make a systematic study of the programs that have come before?</p>
+]]></description>
+</item>
+<item>
+<pubDate>Thu, 27 Oct 2022 00:00:00 +0000</pubDate>
+<title>Iterating grid cell neighbors</title>
+<guid isPermaLink="true">https://www.jmeiners.com/grid-neighbors/</guid>
+<description><![CDATA[
+<h1>Grid Neighbors</h1>
+
+<p><strong>10/27/22</strong></p>
+
+<p>Suppose we need to iterate over the neighbors of a cell in a 2D grid:</p>
+
+<pre><code>* * *
+* - *
+* * *
+</code></pre>
+
+<p>This can be done with the following well known pattern:</p>
+
+<pre><code>void all_neighbors() {
+    for (int i = -1; i &lt;= 1; ++i) {
+        for (int j = -1; j &lt;= 1; ++j) {
+            if (i == 0 &amp;&amp; j == 0) continue;
+            std::cout &lt;&lt; i &lt;&lt; ", " &lt;&lt; j &lt;&lt; std::endl;
+        }
+    }
+}
+</code></pre>
+
+<p>But what if we just want to iterate the horizontal and vertical neighbors, skipping the diagonal?</p>
+
+<pre><code>   *
+ * - *
+   *
+</code></pre>
+
+<p>Most programs explicilty repeat the operation 4 times, or use a table.
+But there is a trick to do it in a loop.
+Think of the neighbor as a vector offset, and then rotate it 90 degrees, 4 times.</p>
+
+<pre><code>template &lt;typename I&gt;
+void rotate_2d(I&amp; a, I&amp; b) {
+    std::swap(a, b);
+    b = -b;
+}
+
+void direct_neighbors() {
+    int i = 1;
+    int j = 0;
+    for (int k = 0; k &lt; 4; ++k) {
+        std::cout &lt;&lt; i &lt;&lt; ", " &lt;&lt; j &lt;&lt; std::endl;
+        rotate_2d(i, j);
+    }
+}
+</code></pre>
+
+<p>Try it out!</p>
+
+<pre><code>int main() {
+    std::cout &lt;&lt; "diagonal" &lt;&lt; std::endl;
+    all_neighbors();
+    std::cout &lt;&lt; "square" &lt;&lt; std::endl;
+    direct_neighbors();
+}
+</code></pre>
 ]]></description>
 </item>
 <item>
