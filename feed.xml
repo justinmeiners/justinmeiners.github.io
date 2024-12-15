@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com</link>
-<lastBuildDate>Sun, 15 Dec 2024 03:04:55 +0000</lastBuildDate>
+<lastBuildDate>Sun, 15 Dec 2024 03:13:02 +0000</lastBuildDate>
 <item>
 <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
 <title>Building Scanning Patents</title>
@@ -3023,6 +3023,68 @@ understanding of fundamental computer science.
 Expertise is also a subject for another day.</p></li>
 </ol>
 
+]]></description>
+</item>
+<item>
+<pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
+<title>MultiplyPoint3x4 in Unity</title>
+<guid isPermaLink="true">https://www.jmeiners.com/unity-fast-multiply/</guid>
+<description><![CDATA[
+<h1>MultiplyPoint3x4 in Unity</h1>
+
+<p><strong>01/21/2020</strong></p>
+
+<p>What is the difference between MultiplyPoint and MultiplyPoint3x4 in Unity3D?</p>
+
+<p>What steps of a matrix multiplication could Unity possibly be skipping to make an optimization?
+The optimization is possible because a scaling and rotation needs only a 3x3 matrix and another vector for the translation,
+so part of the full 4x4 matrix is unused and can be ignored.</p>
+
+<p>Here is the source code taken from the decompilation <a href="https://github.com/jameslinden/unity-decompiled/blob/master/UnityEngine/UnityEngine/Matrix4x4.cs">here</a>:</p>
+
+<pre><code>public Vector3 MultiplyPoint(Vector3 v)
+{
+    Vector3 vector3;
+    vector3.x =  ( m00 *  v.x +  m01 *  v.y +  m02 *  v.z) + m03;
+    vector3.y =  ( m10 *  v.x +  m11 *  v.y +  m12 *  v.z) + m13;
+    vector3.z =  ( m20 *  v.x +  m21 *  v.y +  m22 *  v.z) + m23;
+    float num = 1f / ( ( m30 *  v.x +  m31 *  v.y +  m32 *  v.z) + m33); // this is 1/1=1 when m30, m31, m32 = 0 and m33 = 1
+    vector3.x *= num; // so then multiplying by 1 is pointless..
+    vector3.y *= num;
+    vector3.z *= num;
+    return vector3;
+}
+</code></pre>
+
+<p>This is a full 4x4 * 4x1 matrix multiplication, and then scaling the x y z of the result by the w of the result.</p>
+
+<pre><code> | m_0_0 m_0_1 m_0_2 m_0_3 |     | x |
+ | m_1_0 m_1_1 m_1_2 m_1_3 |  *  | y |
+ | m_2_0 m_2_1 m_2_2 m_2_3 |     | z |
+ | m_3_0 m_3_1 m_3_2 m_3_3 |     | 1 |
+</code></pre>
+
+<p>This <code>w</code> necessary for projective transformations, but not for rotation and scaling.
+This is why they have the faster 3x4 version.
+It assumes the <code>w</code> component of each column is 0 and skips that bottom row of multiplication and scaling, because the resulting <code>w</code> is always 1.</p>
+
+<pre><code>public Vector3 MultiplyPoint3x4(Vector3 v)
+{
+    Vector3 vector3;
+    vector3.x =  ( m00 *  v.x +  m01 *  v.y +  m02 *  v.z) + m03;
+    vector3.y =  ( m10 *  v.x +  m11 *  v.y +  m12 *  v.z) + m13;
+    vector3.z =  ( m20 *  v.x +  m21 *  v.y +  m22 *  v.z) + m23;
+    return vector3;
+}
+</code></pre>
+
+<p>This function is equivalent to multiplying matrices which look like:</p>
+
+<pre><code> | m_0_0 m_0_1 m_0_2 m_0_3 |     | x |
+ | m_1_0 m_1_1 m_1_2 m_1_3 |  *  | y |
+ | m_2_0 m_2_1 m_2_2 m_2_3 |     | z |
+ | 0     0     0     1     |     | 1 |
+</code></pre>
 ]]></description>
 </item>
 <item>

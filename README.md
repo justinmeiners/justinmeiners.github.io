@@ -70,6 +70,7 @@ I hope to share insights, experiences, and occasionally answer some questions. T
 - [05/24/2020 - Boring Benefits of Lisp](boring-benefits-of-lisp/)
 - [04/12/2020 - 10 Hard Decisions: A Model for Programmer Productivity](10-hard-decisions/)
 - [01/23/2020 - Keeping Up-to-Date](keeping-up-to-date/)
+- [01/21/2020 - MultiplyPoint3x4 in Unity](unity-fast-multiply/)
 - [06/08/2019 - Think in Math. Write in Code.](think-in-math/)
 - [04/14/2019 - Foundations of Math Reading List](foundations-of-math-reading/)
 - [05/12/2019 - Notes On Vector Libraries](vector-libs/)
