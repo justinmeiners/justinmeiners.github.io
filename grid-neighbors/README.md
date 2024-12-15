@@ -1,5 +1,5 @@
-Grid Neighbors
-==============
+Iterating grid cell neighbors
+===========================
 **10/27/22**
 
 Suppose we need to iterate over the neighbors of a cell in a 2D grid:

@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com</link>
-<lastBuildDate>Sun, 15 Dec 2024 03:13:02 +0000</lastBuildDate>
+<lastBuildDate>Sun, 15 Dec 2024 03:14:56 +0000</lastBuildDate>
 <item>
 <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
 <title>Building Scanning Patents</title>
@@ -203,7 +203,7 @@ Why don&rsquo;t we make a systematic study of the programs that have come before
 <title>Iterating grid cell neighbors</title>
 <guid isPermaLink="true">https://www.jmeiners.com/grid-neighbors/</guid>
 <description><![CDATA[
-<h1>Grid Neighbors</h1>
+<h1>Iterating grid cell neighbors</h1>
 
 <p><strong>10/27/22</strong></p>
 
