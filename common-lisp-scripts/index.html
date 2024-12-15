@@ -18,12 +18,11 @@
 
 <p><strong>3/05/22</strong></p>
 
-<p>You want a Common Lisp workflow that&rsquo;s just like Python or Perl,
-so you can write scripts!
+<p>Do you want a Common Lisp workflow like Python or Perl?
 No dumping images, or complex deployments.
 Just install <em>a single lisp interpreter</em> on your computer (<code>/usr/local/bin/sbcl</code>) and
 <em>write, run, and share</em> source files.
-Here I&rsquo;ll explain how to do that.</p>
+I&rsquo;ve done a lot of research and I&rsquo;m here to explain how to get exactly that.</p>
 
 <p>A step in the right direction is a <code>.lisp</code> file with an appropriate shebang:</p>
 
@@ -31,15 +30,21 @@ Here I&rsquo;ll explain how to do that.</p>
 (write-string "Hello, World!")
 </code></pre>
 
-<p>But you&rsquo;ll quickly run into a few roadblocks.
+<p>It can be run with</p>
+
+<pre><code>$ ./hello.lisp
+</code></pre>
+
+<p>But you&rsquo;ll quickly run into roadblocks after &ldquo;Hello, World!&rdquo;.
 How do you include other source files without knowing their installation path?
-How do you load libraries such as through Quicklisp?</p>
+How do you load libraries?</p>
 
-<p>The solution? (<strong>TLDR</strong>) Quicklisp has a command for downloading libraries and exporting them called <strong><a href="https://www.quicklisp.org/beta/bundles.html">ql:bundle-systems</a></strong>.
+<p>The solution is a Quicklisp command for downloading libraries and exporting them called <strong><a href="https://www.quicklisp.org/beta/bundles.html">ql:bundle-systems</a></strong>.
 It creates a single folder with an index file called <code>bundle.lisp</code>.
-After running <code>(load bundle.lisp)</code>, all of your dependencies are available to be load via <code>asdf:load-system</code>.</p>
+After running <code>(load bundle.lisp)</code>, all of your dependencies are available to be load via <code>asdf:load-system</code>.
+The result is entirely self-contained.</p>
 
-<h2>How to use <code>ql:bundle-system</code></h2>
+<h2>Example using <code>ql:bundle-system</code></h2>
 
 <ol>
 <li><p>Create a bundle containing your Quicklisp dependencies:</p>
@@ -49,7 +54,7 @@ After running <code>(load bundle.lisp)</code>, all of your dependencies are avai
 
 <p> This <code>bundle/</code> folder will contain  <code>alexandria</code> and <code>cl-ppcre</code>, along with their transitive dependencies.
  Each package will be organized as its own an <code>asdf</code> system.</p></li>
-<li><p>Create an <code>.asd</code> file describing your project and its (See <a href="https://asdf.common-lisp.dev/asdf.html#Defining-systems-with-defsystem">defsystem docs</a> for details).</p>
+<li><p>Create an <code>.asd</code> file describing your project and its dependencies (see <a href="https://asdf.common-lisp.dev/asdf.html#Defining-systems-with-defsystem">defsystem docs</a> for details).</p>
 
 <pre><code> (asdf:defsystem "my-lisp-program"
      :depends-on (:alexandria :cl-ppcre ...)
@@ -60,7 +65,7 @@ After running <code>(load bundle.lisp)</code>, all of your dependencies are avai
 </code></pre>
 
 <p> The <code>:depends-on</code> list must only reference systems which were downloaded by <code>ql:bundle-systems</code>.</p></li>
-<li><p>Copy your application source in the bundle:</p>
+<li><p>Copy your application source into the bundle:</p>
 
 <pre><code> $ mkdir -p bundle/local-projects/my-lisp-program
  $ cp *.lisp bundle/local-projects/my-lisp-program
@@ -68,7 +73,7 @@ After running <code>(load bundle.lisp)</code>, all of your dependencies are avai
 </code></pre>
 
 <p> Now your code is just another <code>asdf:system</code>, alongside the others.</p></li>
-<li><p>Install the bundle in a global system path:</p>
+<li><p>Install the bundle in a global system path. I prefer <code>/usr/local/lib</code>:</p>
 
 <pre><code> $ cp -r bundle/ /usr/local/lib/my-lisp-program
 </code></pre></li>
@@ -95,8 +100,12 @@ After running <code>(load bundle.lisp)</code>, all of your dependencies are avai
 <p>That&rsquo;s all! Consider automating these steps for your project, such as with <code>make install</code>.</p>
 
 <p>The first time you run the script you may see a long log
-as <code>sbcl</code> compiles the code into <code>.fasl</code> files.
-These will be used for faster loads on subsequent runs.</p>
+as <code>sbcl</code> compiles the code into <code>.fasl</code> files, for faster subsequent runs.</p>
+
+<h3>Further guidance</h3>
+
+<p>I use this approach in <a href="https://github.com/justinmeiners/srcweave">srcweave</a>.
+Take a look at the make file for a real-world example.</p>
 
 <h2>Why other solutions didn&rsquo;t work for me</h2>
 
@@ -121,7 +130,7 @@ Images files are also notoriously large (~50 MB for <code>sbcl</code>).</p>
 <h3>Using Quicklisp in scripts</h3>
 
 <p>Can you make a shebang script that loads code with Quicklisp?
-You certainly can, but first note that <code>sbcl --script</code> will skip Lisp your system configuration (<code>.sbclrc</code>),
+You certainly can, but first note that <code>sbcl --script</code> will skip loading your system configuration (<code>.sbclrc</code>),
 so you need to hard code a path to load Quicklisp.</p>
 
 <p>But now imaging if calling <code>import</code> in a Python started downloading code from the internet!
@@ -130,7 +139,7 @@ But that&rsquo;s how Quicklisp works!</p>
 
 <p>That&rsquo;s because Quicklisp isn&rsquo;t intended to be a library loader.
 It&rsquo;s a tool for downloading and <em>discovering</em> libraries.
-But it shouldn&rsquo;t be included with your program.</p>
+But it shouldn&rsquo;t be distributed in your source code.</p>
 
 <p>You should be using <code>asdf</code> for that instead.
 It&rsquo;s the standard way to describe and load libraries,
@@ -140,8 +149,7 @@ and it&rsquo;s already included in most distributions.</p>
 Rather than picking out individual library version tags, you pick a Quicklisp version which
 is a snapshot in time of all the libraries that aims to be compatible.</p>
 
-<p>To reiterate the relationship between Quicklisp and <code>asdf</code>,
-I will borrow an explanation from Reddit user <a href="https://old.reddit.com/r/lisp/comments/iai2ab/repairing_asdf_package_storage/g1pnxdt/">eayse</a>:</p>
+<p>To reiterate, I will share an explanation from Reddit user <a href="https://old.reddit.com/r/lisp/comments/iai2ab/repairing_asdf_package_storage/g1pnxdt/">eayse</a>:</p>
 
 <blockquote><p>I advocate the habit of installing things with <code>ql:quickload</code>, but after initial installation, using <code>asdf:load-system</code> to actually bring the systems into memory.
 After all missing dependencies have been satisfied by network installations from the distributions configured in Quicklisp, <code>ql:quickload</code> just thunks down to ASDF.</p></blockquote>
@@ -159,7 +167,7 @@ Why is part of it written in C?
 
 <p>The overhead of dumping an image can be shared by putting many scripts into a single image, instead of making an image for each.
 I call this &ldquo;Busybox style&rdquo; because it was popularized in C by the <a href="https://fare.livejournal.com/184127.html">Busybox</a> project.
-For a Common Lisp tutorial, see <a href="https://stevelosh.com/blog/2021/03/small-common-lisp-cli-programs/">Steve &rsquo;s article</a>.</p>
+For a Common Lisp tutorial, see <a href="https://stevelosh.com/blog/2021/03/small-common-lisp-cli-programs/">Steve&rsquo;s article</a>.</p>
 
 <p>This certainly solves some of the disk usage problems.
 But it&rsquo;s kind of a crutch, and the workflow is just not as good as Python.</p>

@@ -2,27 +2,31 @@ Deploying Common Lisp Scripts
 ----------------------------
 **3/05/22**
 
-You want a Common Lisp workflow that's just like Python or Perl,
-so you can write scripts!
+Do you want a Common Lisp workflow like Python or Perl?
 No dumping images, or complex deployments.
 Just install *a single lisp interpreter* on your computer (`/usr/local/bin/sbcl`) and 
 *write, run, and share* source files.
-Here I'll explain how to do that.
+I've done a lot of research and I'm here to explain how to get exactly that.
 
 A step in the right direction is a `.lisp` file with an appropriate shebang:
 
     #!/usr/bin/sbcl --script
     (write-string "Hello, World!")
-    
-But you'll quickly run into a few roadblocks.
-How do you include other source files without knowing their installation path?
-How do you load libraries such as through Quicklisp?
 
-The solution? (**TLDR**) Quicklisp has a command for downloading libraries and exporting them called **[ql:bundle-systems][ql-bundle]**.
+It can be run with
+
+    $ ./hello.lisp
+    
+But you'll quickly run into roadblocks after "Hello, World!".
+How do you include other source files without knowing their installation path?
+How do you load libraries?
+
+The solution is a Quicklisp command for downloading libraries and exporting them called **[ql:bundle-systems][ql-bundle]**.
 It creates a single folder with an index file called `bundle.lisp`.
 After running `(load bundle.lisp)`, all of your dependencies are available to be load via `asdf:load-system`.
+The result is entirely self-contained.
 
-## How to use `ql:bundle-system`
+## Example using `ql:bundle-system`
 
 1. Create a bundle containing your Quicklisp dependencies:
 
@@ -31,7 +35,7 @@ After running `(load bundle.lisp)`, all of your dependencies are available to be
     This `bundle/` folder will contain  `alexandria` and `cl-ppcre`, along with their transitive dependencies.
     Each package will be organized as its own an `asdf` system.
 
-2. Create an `.asd` file describing your project and its (See [defsystem docs][asdf] for details).
+2. Create an `.asd` file describing your project and its dependencies (see [defsystem docs][asdf] for details).
 
         (asdf:defsystem "my-lisp-program"
             :depends-on (:alexandria :cl-ppcre ...)
@@ -42,7 +46,7 @@ After running `(load bundle.lisp)`, all of your dependencies are available to be
 
     The `:depends-on` list must only reference systems which were downloaded by `ql:bundle-systems`. 
 
-3. Copy your application source in the bundle:
+3. Copy your application source into the bundle:
 
         $ mkdir -p bundle/local-projects/my-lisp-program
         $ cp *.lisp bundle/local-projects/my-lisp-program
@@ -50,7 +54,7 @@ After running `(load bundle.lisp)`, all of your dependencies are available to be
 
     Now your code is just another `asdf:system`, alongside the others.
 
-3. Install the bundle in a global system path:
+3. Install the bundle in a global system path. I prefer `/usr/local/lib`:
 
         $ cp -r bundle/ /usr/local/lib/my-lisp-program
 
@@ -74,8 +78,12 @@ After running `(load bundle.lisp)`, all of your dependencies are available to be
 That's all! Consider automating these steps for your project, such as with `make install`. 
 
 The first time you run the script you may see a long log
-as `sbcl` compiles the code into `.fasl` files.
-These will be used for faster loads on subsequent runs.
+as `sbcl` compiles the code into `.fasl` files, for faster subsequent runs.
+
+### Further guidance
+
+I use this approach in [srcweave](https://github.com/justinmeiners/srcweave).
+Take a look at the make file for a real-world example.
 
 ## Why other solutions didn't work for me 
 
@@ -100,7 +108,7 @@ Images files are also notoriously large (~50 MB for `sbcl`).
 ### Using Quicklisp in scripts
 
 Can you make a shebang script that loads code with Quicklisp?
-You certainly can, but first note that `sbcl --script` will skip Lisp your system configuration (`.sbclrc`),
+You certainly can, but first note that `sbcl --script` will skip loading your system configuration (`.sbclrc`),
 so you need to hard code a path to load Quicklisp. 
 
 But now imaging if calling `import` in a Python started downloading code from the internet!
@@ -109,7 +117,7 @@ But that's how Quicklisp works!
 
 That's because Quicklisp isn't intended to be a library loader. 
 It's a tool for downloading and *discovering* libraries.
-But it shouldn't be included with your program.
+But it shouldn't be distributed in your source code.
 
 You should be using `asdf` for that instead.
 It's the standard way to describe and load libraries,
@@ -119,8 +127,7 @@ Note that Quicklisp is also organized as a rolling release like your operating s
 Rather than picking out individual library version tags, you pick a Quicklisp version which 
 is a snapshot in time of all the libraries that aims to be compatible.
 
-To reiterate the relationship between Quicklisp and `asdf`,
-I will borrow an explanation from Reddit user [eayse][reddit]: 
+To reiterate, I will share an explanation from Reddit user [eayse][reddit]: 
 
 > I advocate the habit of installing things with `ql:quickload`, but after initial installation, using `asdf:load-system` to actually bring the systems into memory.
 > After all missing dependencies have been satisfied by network installations from the distributions configured in Quicklisp, `ql:quickload` just thunks down to ASDF.
@@ -138,7 +145,7 @@ Why is part of it written in C?
 
 The overhead of dumping an image can be shared by putting many scripts into a single image, instead of making an image for each.
 I call this "Busybox style" because it was popularized in C by the [Busybox][busybox] project.
-For a Common Lisp tutorial, see [Steve 's article][small-cli].
+For a Common Lisp tutorial, see [Steve's article][small-cli].
 
 This certainly solves some of the disk usage problems.
 But it's kind of a crutch, and the workflow is just not as good as Python. 

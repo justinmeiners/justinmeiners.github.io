@@ -3,161 +3,161 @@ A simple mesh adjacency data structure
 
 **06/25/2022**
 
-Considering a complex mesh data structure like [half edge][half-edge2] or [bmesh][bmesh]?
-Here is a trick that may save you some energy. 
-Face indices (which map faces to vertices) can be transformed into a **multi-map** which goes the reverse direction (mapping vertices to faces).
-This can be used to perform adjacency traversals efficiently and is sufficient for many mesh processing problems.
+Do you need a mesh adjacency structure?
+Are you considering implementing [half edge][half-edge2] or [bmesh][bmesh]?
+Here is a trick to consider first, that may save you some energy.
+
+Take your mesh's indices array and reverse it:
+
+    // f -> v
+    uint32_t *index_to_vert = indices;
+
+    // v -> f:
+    multimap<uint32_t, uint32_t> vert_to_index;
+    for (size_t i = 0; i < index_count; ++i)
+    {
+        vert_to_index.insert(make_pair(index_to_vert[i], i));
+    }
+
+This [multimap](https://en.cppreference.com/w/cpp/container/multimap) can handle most mesh traversal queries efficiently,
+such as:
+
+    // return number of faces a vertex belongs to
+    size_t degree(uint32_t vert)
+    {
+        auto range = vert_to_index.equal_range(vert);
+        return (size_t)(range.second - range.first);
+    }
+
+### Details
+
+So what's going on here?
+The original `indices` can be thought of as a map from faces to vertices (technically 3 indices for each triangle, but that's the idea). 
+
+![face to vertex](face_to_vertex.png)
+
+This new multimap goes in the opposite direction.
+It maps vertices to faces. 
+Because a single vertex may be shared between faces, the map does not have unique keys (hence `multi-`).
+
+![vertex to face](vertex_to_face.png)
+
+It is a little more cumbersome to write certain operations.
+But this is mostly a matter of writing a few good helper functions.
+Let's look at one more:
+
+    vector<uint32_t> neighboring_faces(uint32_t face_index)
+    {
+        vector<uint32_t> neighbors;
+        for (uint32_t f = 0; f < 3; ++f)
+        {
+            // visit vertex in this face
+            uint32_t vert_index = indices[face_index * 3 + f];
+
+            // find attached faces
+            auto range = verts_to_faces.equal_range(vert_index);
+            for_each(range.begin(), range.end(), [](auto i) {
+                uint32_t neighbor_face_index = i / 3;
+                if (neighbor_face_index == face_index) return;
+
+                neighbors.push_back(neighbor_face_index);
+            });
+        }
+
+        return neighbors;
+        // TODO: remove duplicate results
+        // TODO: you want to allocate a new vector for this. It's for illustrative purposes.
+    }
+
+### What are it's limitations?
+
+This data structure is an easy to implement solution for traversing a mesh.
+But if you need to *edit* the mesh, it usually won't help. 
+Addding or remove a mesh element typically requires rebuilding part of the multimap, which is inefficient, and tedious.
+As [Fabien describes][half-edge1], it's hard enough to maintain the invariants of a 3D mesh during editing, without this extra work.
+
+Some editing algorithms may skim by.
+One technique is to use the multimap to visit the mesh, marking which faces and vertices to delete,
+and then throwing away the multimap and applying the changes.
+
+It's probably less efficient than a half-edge mesh, which maintains direct pointers.
+But the algorithmic complexity should be the same.
+
+### No manifold requirements 
+
+This technique has another advantageous property that's worth calling out.
+Adjacency structures typically impose additional mathematical requirements on the mesh structure.
+These can be tedious to verify, and hard to fix if the mesh wasn't constructed with them in mind.
+For example half-edges only work if the mesh is a [*2-manifold with boundary*][manifold],
+consequently edges have at most 2 faces attached.
+
+But the multimap has no such requirement!
+It can be constructed for any indexed triangle soup!
+
+One caveat to is that several mesh processing algorithms still assume similar requirements,
+so watch out for that.
+
+### What if you can't use multimap?
+
+The C++ **std::multimap** is a pretty complex data structure on its own,
+and most standard libraries don't have an equivalent. 
+So is it just hiding all the complexity?
+No! You can implement a cheap version using a sorted array and binary search.
+
+The construction is very similar, but we sort at the end:
+
+    uint32_t *index_to_vert = indices;
+
+    using ReverseIndex = pair<uint32_t, uint32_t>;
+    ReverseIndex* vert_to_index = new ReverseIndex[index_count];
+
+    for (uint32_t i = 0; i < index_count; ++i) {
+        vert_to_index[i] = make_pair(index_to_vert[i], i);
+    }
+
+    sort(vert_to_face, vert_to_face + index_count);
+
+Note that `index_to_vert` and `vert_to_index` have the same size.
+
+The purpose of sorting is to enable binary search
+(see [`lower_bound`][lower_bound], [`upper_bound`][upper_bound], and [`equal_range`][equal_range]).
+The cost of a binary is `O(log(n))` which in practice is not much different than `O(1)`
+(you can binary search a billion records in 32 steps).
+
+Here is an example:
+
+    // compute a smooth vertex normal
+    vec3 average_normal(uint32_t v0)
+    {
+        auto key = make_pair(v0, 0);
+        auto i = lower_bound(vert_to_face, vert_to_face + n, key);
+
+        vec3 n;
+
+        while (i != vert_to_face + n && i->first == v0)
+        {
+            uint32_t face_index = (i->second) / 3;
+            n += face_normals[face_index];
+            ++i;
+        }
+        return n.normalized();
+     }
+
+
+Hope that helps!
+
+I have one other reason for liking this simple array representation.
+In mathematical terms *functions* are sets of pairs.
+Indicies is a subset of the cartresion product `F x V`.
+The reverse index is build by swapping pairs from this set construction.
+This new set is a subset of `V x F` and weakens from *function* to a  *relation*.
 
 [half-edge1]: https://fgiesen.wordpress.com/2012/02/21/half-edge-based-mesh-representations-theory/
 [half-edge2]: https://kaba.hilvi.org/homepage/blog/halfedge/halfedge.htm
 [bmesh]: https://wiki.blender.org/wiki/Source/Modeling/BMesh/Design
-
-## Motivation
-
-The standard way to store a 3D mesh is an  **indexed triangle mesh** 
-which looks something like the following:
-
-    vec3_t* vertices;
-    uint32_t indices;
-
-Each element of `indices` refers to an element in the `vertices` array,
-and is the corner of a face.
-For a triangle mesh, every 3 elements of `indices` constitutes a face.
-The main advantage of this structure is it allows vertex information to be shared between faces,
-given that faces are often conjoined.
-
-The essential topology of the mesh is all here.
-But it is not efficient to query.
-Mesh processing usually involves traversing the mesh in a logical and local manner, including:
-
-- finding the faces a vertex belongs to
-- finding the neighboring faces for a given face.
-
-To do this efficiently we need to add an **adjacency data structure** that stores local connections, such as the two examples mentioned previously.
-As [Fabien describes][half-edge1], implementing these is challenging project.
-There are a lot of invariants to keep track of.
-It will probably be buggy the first time around.
-Furthermore it often imposes restrictions on the kinds of meshes you can work with
-(eg. closed manifolds, manifolds with boundary, etc).
-
-Can we get away with anything simpler and easier?
-
-## Inverting the index 
-
-Given a face we can already lookup which vertices it contains.
-
-![face to vertex](face_to_vertex.png)
-
-What's missing is the ability to go the other direction,
-finding the faces each vertex belongs to.
-
-![vertex to face](vertex_to_face.png)
-
-If we can achieve this, then all other queries become possible.
-For example, to find neighboring faces of a face:
-
-- lookup each vertex in the face
-- for each vertex found, lookup each face it's a part of.
-
-The challenge is a face has a fixed number of corners,
-and each corner references exactly one vertex.
-But a vertex can belong to any number of faces.
-This suggests the need for a growing storage mechanism, or a linked structure,
-which come with complexity or performance headaches.
-
-Alternatively, consider the mesh `indices` as a function `g : F -> V`, mapping face (corner) indices to vertex indices. 
-We are storing this function in it's Cartesian product form `g \subseq F x V` as a list of pairs!
-Because `g` is not `1-1`, it's not an invertible.
-But, we can still just flip it around to form a reverse relation `g' : V -> F`.
-For each pair `(f, v)` just replace it with `(v, f)`.
-
-## Implementing a reverse index
-
-This new relation constitutes a **multi-map** which maps vertex indices to face corner indices.
-Multi maps can be implemented efficiently as an array of sorted pairs `[(vertex, face)]`,
-where each vertex and face can be appear as many times as needed.
-
-    using ReverseIndex = std::pair<uint32_t, uint32_t>;
-    ReverseIndex* reverse_indices = ...;
-  
-To look up the faces a vertex belongs to, simply binary search the array.
-For example, to compute `degree`:
-
-    struct reverse_index_less {
-        bool operator()(const ReverseIndex& x, const ReverseIndex& y) {
-            return x.first < rhs.y;
-        }
-    }
-
-    int degree(uint32_t v0)
-    {
-         auto lookup = std::make_pair(v0, 0);
-         auto range = std::equal_range(reverse_indicies, reverse_indicies + n, lookup, reverse_index_less());
-         return (int)(range.second - range.first);
-    }
-
-Or to compute vertex normals from face normals:
-
-    vec3_t average_normal(uint32_t v0, vec3_t* face_normals)
-    {
-         auto lookup = std::make_pair(v0, 0);
-         auto i = std::lower_bound(reverse_indicies, reverse_indicies + n, lookup);
-
-         vec3_t n;
-
-         while (i != reverse_indices + n && i->first == v0) {
-            uint32_t face_index = (i->second) / 3;
-            n += face_normals[face_index];
-            ++i;
-         }
-
-         return n.normalized();
-    }
-
-
-To construct the index you just need to sort. 
-
-    ReverseIndex* reverse_indices = new ReverseIndex[index_count];
-
-    for (int i = 0; i < index_count; ++i) {
-        reverse_indices[i] = std::make_pair(indices[i], i);
-    }
-
-    std::sort(reverse_indices, reverse_indices + index_count);
-
-
-## Analysis
-
-It's easy to implement, but what are we missing?
-Let's summarize some of it's limitations:
-
-- It's a little cumbersome to write some operations.
-
-- It doesn't help with edits like deletions and merges.
-  A lot of these operations work well with half-edges
-  which may be why you use.
-
-  Suppose we want to delete a vertex.
-  Removing elements from either the index or reverse index array is inefficient.
-  It's probably best to mark them with a flag and clean them up later.
-
-  If the faces in the index are marked deleted, then the entries in the 
-  reverse index should be left.
-  
-- Looking up a face for a vertex is `O(log(n))` time.
-  Note that this is still fast (16 steps for 64k elements),
-  but not constant.
-
-
-However, besides it's simplicity it has a few additional strengths:
-
-- The additional reverse index add only 2x the memory of the index buffer.
-  It is very convenient because it can be constructed alongside an indexed triangle mesh with no other modifications to the original data.
-
-- Construction is very fast because sorting is fast.
-  Creating a complex linked structure will almost certainly be slower,
-  and require an intermediate hash map step.
-
-- Works for all meshes and triangle soups. No restriction to manifolds.
-
+[multimap]: https://en.cppreference.com/w/cpp/container/multimap
+[manifold]: https://en.wikipedia.org/wiki/Manifold#Manifold_with_boundary
+[equal_range]: https://en.cppreference.com/w/cpp/algorithm/equal_range
+[lower_bound]: https://en.cppreference.com/w/cpp/algorithm/lower_bound
+[upper_bound]: https://en.cppreference.com/w/cpp/algorithm/upper_bound
  
