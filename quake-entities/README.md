@@ -5,15 +5,19 @@ The Quake entity system: shell scripting for games
 
 **07/20/2022**
 
-The Quake engine has influenced an incredible number of games through direct licensing (games like Half-Life and Star Wars: Jedi Knights),
-modders bringing its concepts to other studios, and competitors trying to best it (especially Unreal).
-Most of what's been written about it focuses on the [3D graphics][abrash-graphics], or client/server [networking][quake-3-networking].
-But, much overlooked is the innovative entity system which allows the game to simulate objects and level designers
-to create interactive scenarios.
+The Quake Engine has had an incredible influence on game technology.
+It was heavily licensed, including hit titles like Half-Life, Call of Duty, and Star Wars: Jedi Knights.
+Perhaps most impactful is the many developers who learned to make games by modding it,
+and brought its principles to other studios and engines.
 
-In this article I want to provide a brief overview of the Quake entity system and its design (for Quake generally, not just Quake 1).
-Of particular interest to me is it's similarity to the UNIX philosophy.
-Both designs can be summarized as having one primary substance (a unifying concept) and a language (the shell) for combining simple behaviors in emergent ways.
+Most of what's been written about the Quake Engine focuses on the [3D rendering technology][abrash-graphics], or [multiplayer networking][quake-3-networking].
+But, much overlooked is the innovative *entity system*,
+the paradigm that allows level designers to craft dynamic interactions, without writing code.
+
+In this article I want to provide a brief overview of the Quake entity system and its design principles.
+Of particular interest to me is it's similarity to the design philosophy behind UNIX.
+Both designs can be summarized as having one primary substance (files in UNIX)
+and a language for combining simple behaviors in emergent ways (the shell) .
 
 [source-engine]: https://developer.valvesoftware.com/wiki/SDK_Docs
 [quake-3-networking]: https://fabiensanglard.net/quake3/network.php
@@ -21,23 +25,23 @@ Both designs can be summarized as having one primary substance (a unifying conce
 
 ## Brushes
 
-Before describing the entity system, there is an important technical concept to cover.
-A *brush* is a 3D solid shape defined by a set of 3 or more 3D planes.
-The solid is defined to be the volume enclosed by the 3D planes (also known as the intersection of half-spaces).
+Before getting too far into entities, we need to cover an important technical concept.
+A *brush* is a 3D hape defined by a set of 3 or more planes in the 3D
+The solid is defined to be the volume enclosed by the planes (also known as the intersection of half-spaces).
 It's not hard to show that a brush must be a convex shape.
 
 ![quake brush sample](brush_sample.png)
 
 Brushes are useful for a few reasons:
 
-- They are easy to edit and UV map, especially for making architecture-like features (a triangle mesh is more detailed, but also more work).
-- They have nice mathematical properties. They are fully enclosed , We can compute collisions with them easily.
-- They are convenient for computing BSP trees, which make rendering possible.
+- They are easy to edit and texture map. This works especially well for architecture-like models.
+- They have nice mathematical properties, making it easy to reason about collisions.
+- They are convenient for computing BSP trees, which made efficient rendering possible.
 
-We think of brushes as a solid, but a brush can also be converted into a 3D triangle mesh for rendering.
-One way to do this is to intersect the planes together, 3 at time, to create a vertex.
-This requires solving a linear system.
-Then for each plane the list of vertices lying in the plane can be assembled into a polygon.
+Brushes can be converted into a 3D triangle mesh for rendering,
+by interesting the planes together.
+Take 3 planes at a time, solve the linear system of the 3 plane equations, and you get a vertex.
+The full list of vertices lying in a plane can then be assembled into a polygon.
 
 ![intersect planes](intersect_planes.png)
 
