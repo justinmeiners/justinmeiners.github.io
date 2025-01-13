@@ -1,15 +1,16 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
 <channel>
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
-<link>https://www.jmeiners.com</link>
-<lastBuildDate>Sun, 15 Dec 2024 03:45:37 +0000</lastBuildDate>
+<link>https://jmeiners.com</link>
+<lastBuildDate>Sun, 12 Jan 2025 21:18:09 -0700</lastBuildDate>
 <item>
 <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
 <title>Building Scanning Patents</title>
-<guid isPermaLink="true">https://www.jmeiners.com/floorplan-scanning/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/floorplan-scanning/</guid>
+<description>
+<![CDATA[
 <h1>Building Scanning Patents</h1>
 
 <p>At a previous startup, I invented an Augmented Reality (AR) system for scanning buildings,
@@ -71,13 +72,15 @@ The polygonal shape tells us where the walls are in 3D.
 We can then render the  portion of the 3D mesh corresponding to each wall, and detect cutouts in the rendered image.
 This transforms a complex 3D detection problem into a traditional 2D computer vision problem.
 These 2D detections are then projected back into 3D features on the wall.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Fri, 18 Nov 2022 00:00:00 +0000</pubDate>
 <title>Thinking styles from math</title>
-<guid isPermaLink="true">https://www.jmeiners.com/thinking-styles/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/thinking-styles/</guid>
+<description>
+<![CDATA[
 <h1>Thinking styles from math</h1>
 
 <p><strong>11/18/2022</strong></p>
@@ -196,13 +199,15 @@ Do we want to work hard to get better?
 There seems to be an attitude of avoiding learning at all costs, because it doesn&rsquo;t directly count as productivity.
 Why don&rsquo;t we embrace curiosity and practice as a separate and worthwhile activity?
 Why don&rsquo;t we make a systematic study of the programs that have come before?</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Thu, 27 Oct 2022 00:00:00 +0000</pubDate>
 <title>Iterating grid cell neighbors</title>
-<guid isPermaLink="true">https://www.jmeiners.com/grid-neighbors/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/grid-neighbors/</guid>
+<description>
+<![CDATA[
 <h1>Iterating grid cell neighbors</h1>
 
 <p><strong>10/27/22</strong></p>
@@ -262,7 +267,8 @@ void direct_neighbors() {
     direct_neighbors();
 }
 </code></pre>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Mon, 12 Sep 2022 00:00:00 +0000</pubDate>
@@ -272,8 +278,9 @@ void direct_neighbors() {
 <item>
 <pubDate>Thu, 21 Jul 2022 00:00:00 +0000</pubDate>
 <title>The Quake entity system: shell scripting for games</title>
-<guid isPermaLink="true">https://www.jmeiners.com/quake-entities/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/quake-entities/</guid>
+<description>
+<![CDATA[
 <h1>The Quake entity system: shell scripting for games</h1>
 
 <p><strong>By: Justin Meiners</strong></p>
@@ -557,13 +564,15 @@ Here are just a few:</p>
 
 
 <p>This shows just how powerful the Quake entity system can be!</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sat, 25 Jun 2022 00:00:00 +0000</pubDate>
 <title>A simple mesh adjacency data structure</title>
-<guid isPermaLink="true">https://www.jmeiners.com/mesh-adjacency-trick/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/mesh-adjacency-trick/</guid>
+<description>
+<![CDATA[
 <h1>A simple mesh adjacency data structure</h1>
 
 <p><strong>06/25/2022</strong></p>
@@ -637,7 +646,7 @@ Let&rsquo;s look at one more:</p>
 }
 </code></pre>
 
-<h3>What are it&rsquo;s limitations?</h3>
+<h3>What are its limitations?</h3>
 
 <p>This data structure is an easy to implement solution for traversing a mesh.
 But if you need to <em>edit</em> the mesh, it usually won&rsquo;t help.
@@ -720,7 +729,8 @@ In mathematical terms <em>functions</em> are sets of pairs.
 Indicies is a subset of the cartresion product <code>F x V</code>.
 The reverse index is build by swapping pairs from this set construction.
 This new set is a subset of <code>V x F</code> and weakens from <em>function</em> to a  <em>relation</em>.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
@@ -729,16 +739,12 @@ This new set is a subset of <code>V x F</code> and weakens from <em>function</em
 </item>
 <item>
 <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
-<title>srcweave: A literate programming system for any language</title>
-<guid isPermaLink="true">https://github.com/justinmeiners/srcweave/</guid>
-</item>
-<item>
-<pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
 <title>Literate programming is much more than commenting code</title>
-<guid isPermaLink="true">https://www.jmeiners.com/literate-programming/</guid>
-<description><![CDATA[
-<!-- Generated by srcweave https://github.com/justinmeiners/srcweave -->
-<h1>Literate programming is much more than commenting code<a id="c0"></a></h1>
+<guid isPermaLink="true">https://jmeiners.com/literate-programming/</guid>
+<description>
+<![CDATA[
+<!-- Generated by srcweave. https://github.com/justinmeiners/srcweave -->
+<h1 id="literate-programming-is-much-more-than-commenting-code">Literate programming is much more than commenting code</h1>
 
 
 <p><strong>03/07/22</strong></p>
@@ -768,7 +774,7 @@ I didn&rsquo;t think so.</p>
 by providing two standard operations <strong>tangle</strong> and <strong>weave</strong> which
  manipulate and organize source code.</p>
 
-<h2>1. Tangle<a id="s0:0"></a></h2>
+<h2 id="tangle">Tangle</h2>
 
 
 <p>Literate programs are written in plain text documents,
@@ -777,10 +783,10 @@ For example:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="test-subsets-block-1" href="#test-subsets-block-1">test subsets</a></em></strong></span>
+<strong class="block-title"><em><a id=":test-subsets" href="#:test-subsets">test subsets</a></em></strong></span>
 <pre class="prettyprint"><code class="">console.log( subsets([1, 2, 3, 4]) );
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#:subsets.js" title="subsets.js">1</a> </small></p></div>
 
 
 <p>You can think of them like markdown documents, but with an important addition.
@@ -821,15 +827,15 @@ In other words, the number of subsets <em>doubles</em> with each element in the 
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="subsets.js-block-3" href="#subsets.js-block-3">subsets.js</a></em></strong></span>
+<strong class="block-title"><em><a id=":subsets.js" href="#:subsets.js">subsets.js</a></em></strong></span>
 <pre class="prettyprint"><code class="">function subsets(set) {
-    <em class="block-link nocode" title=""><a href="#base-case-block-5">@{base case}</a></em>
-    <em class="block-link nocode" title=""><a href="#remove-element-and-compute-subsets-of-smaller-set-block-7">@{remove element and compute subsets of smaller set}</a></em>
-    return <em class="block-link nocode" title=""><a href="#subsets-without-element-block-9">@{subsets without element}</a></em>
-        .concat( <em class="block-link nocode" title=""><a href="#subsets-with-element-block-11">@{subsets with element}</a></em> );
+    <em class="block-link nocode"><a href="#:base-case">@{base case}</a></em>
+    <em class="block-link nocode"><a href="#:remove-element-and-compute-subsets-of-smaller-set">@{remove element and compute subsets of smaller set}</a></em>
+    return <em class="block-link nocode"><a href="#:subsets-without-element">@{subsets without element}</a></em>
+        .concat( <em class="block-link nocode"><a href="#:subsets-with-element">@{subsets with element}</a></em> );
 }
 
-<em class="block-link nocode" title=""><a href="#test-subsets-block-1">@{test subsets}</a></em>
+<em class="block-link nocode"><a href="#:test-subsets">@{test subsets}</a></em>
 </code></pre>
 </div>
 
@@ -839,31 +845,31 @@ If the input set is empty, its only subset is the empty set:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="base-case-block-5" href="#base-case-block-5">base case</a></em></strong></span>
+<strong class="block-title"><em><a id=":base-case" href="#:base-case">base case</a></em></strong></span>
 <pre class="prettyprint"><code class="">if (set.length == 0) { return [[]]; }
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#:subsets.js" title="subsets.js">1</a> </small></p></div>
 
 
 <p>We use recursion by removing one element and computing the subsets of that array:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="remove-element-and-compute-subsets-of-smaller-set-block-7" href="#remove-element-and-compute-subsets-of-smaller-set-block-7">remove element and compute subsets of smaller set</a></em></strong></span>
+<strong class="block-title"><em><a id=":remove-element-and-compute-subsets-of-smaller-set" href="#:remove-element-and-compute-subsets-of-smaller-set">remove element and compute subsets of smaller set</a></em></strong></span>
 <pre class="prettyprint"><code class="">const element = set.pop();
 const smaller = subsets(set);
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#:subsets.js" title="subsets.js">1</a> </small></p></div>
 
 
 <p>All the smaller subsets are still subsets of our original set, so we want to include those.</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="subsets-without-element-block-9" href="#subsets-without-element-block-9">subsets without element</a></em></strong></span>
+<strong class="block-title"><em><a id=":subsets-without-element" href="#:subsets-without-element">subsets without element</a></em></strong></span>
 <pre class="prettyprint"><code class="">smaller
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#:subsets.js" title="subsets.js">1</a> </small></p></div>
 
 
 <p>But, we are missing all the subsets involving <code>element</code>. We simply
@@ -871,10 +877,10 @@ add <code>element</code> in to each set.</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="subsets-with-element-block-11" href="#subsets-with-element-block-11">subsets with element</a></em></strong></span>
+<strong class="block-title"><em><a id=":subsets-with-element" href="#:subsets-with-element">subsets with element</a></em></strong></span>
 <pre class="prettyprint"><code class="">smaller.map(s =&gt; s.concat([element]))
 </code></pre>
-<p class="block-usages"><small>Used by <a href="#subsets.js-block-3" title="subsets.js">1</a> </small></p></div>
+<p class="block-usages"><small>Used by <a href="#:subsets.js" title="subsets.js">1</a> </small></p></div>
 
 
 <p>That&rsquo;s all!
@@ -886,7 +892,7 @@ Here is how to run it in your command line:</p>
 
 <div class="code-block">
 <span class="block-header">
-<strong class="block-title"><em><a id="test-command-block-13" href="#test-command-block-13">test command</a></em></strong></span>
+<strong class="block-title"><em><a id=":test-command" href="#:test-command">test command</a></em></strong></span>
 <pre class="prettyprint"><code class="">node subsets.js
 </code></pre>
 </div>
@@ -894,7 +900,7 @@ Here is how to run it in your command line:</p>
 
 
 
-<h2>2. Discussion<a id="s0:1"></a></h2>
+<h2 id="discussion">Discussion</h2>
 
 
 <p>Of course, the example above goes into more detail, and is separated into more blocks,
@@ -942,7 +948,7 @@ but it won&rsquo;t isolate the core concepts from all the other code
 details surrounding them.
 Literate programs allow you to answer these questions naturally.</p>
 
-<h2>3. Weave<a id="s0:2"></a></h2>
+<h2 id="weave">Weave</h2>
 
 
 <p>The <strong>weave</strong> operation generates documentation files from the literate file.
@@ -971,7 +977,7 @@ Literate programs usually include the <em>entire</em> source, not just interface
 Since it focuses on prose, it&rsquo;s much more natural to include other media formats.
 You aren&rsquo;t littering comments with awkward media references.</p>
 
-<h2>4. Getting started<a id="s0:3"></a></h2>
+<h2 id="getting-started">Getting started</h2>
 
 
 <p>I have told you a bit about why I like Literate programming,
@@ -998,13 +1004,15 @@ I don&rsquo;t know anyone else who actually uses his tools, since TeX is more in
  but they are still worth learning from.
 The <a href="https://ctan.org/tex-archive/systems/knuth/dist/tex?lang=en">source for TeX</a> is written in it, and is famous for having
 very few bugs and being extremely reliable.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sat, 05 Mar 2022 00:00:00 +0000</pubDate>
 <title>Deploying Common Lisp Scripts</title>
-<guid isPermaLink="true">https://www.jmeiners.com/common-lisp-scripts/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/common-lisp-scripts/</guid>
+<description>
+<![CDATA[
 <h2>Deploying Common Lisp Scripts</h2>
 
 <p><strong>3/05/22</strong></p>
@@ -1162,7 +1170,8 @@ For a Common Lisp tutorial, see <a href="https://stevelosh.com/blog/2021/03/smal
 
 <p>This certainly solves some of the disk usage problems.
 But it&rsquo;s kind of a crutch, and the workflow is just not as good as Python.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
@@ -1177,8 +1186,9 @@ But it&rsquo;s kind of a crutch, and the workflow is just not as good as Python.
 <item>
 <pubDate>Wed, 28 Jul 2021 00:00:00 +0000</pubDate>
 <title>Almost Solving the Halting Problem</title>
-<guid isPermaLink="true">https://www.jmeiners.com/almost-solving-the-halting-problem/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/almost-solving-the-halting-problem/</guid>
+<description>
+<![CDATA[
 <h1>Almost Solving the Halting Problem</h1>
 
 <p>By: <a href="https://github.com/justinmeiners">Justin Meiners</a></p>
@@ -1295,13 +1305,15 @@ This is due to its fast rate of growth.</p>
 <h2>References</h2>
 
 <p>Minsky. Computation: Finite and Infinite Machines. Chapter 8.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Mon, 14 Jun 2021 00:00:00 +0000</pubDate>
 <title>Swift Proposal: Balanced Binary Reduction</title>
-<guid isPermaLink="true">https://www.jmeiners.com/swift-balanced-reduce/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/swift-balanced-reduce/</guid>
+<description>
+<![CDATA[
 <h1>Swift Proposal: Balanced Binary Reduction</h1>
 
 <p><strong>By:</strong> Justin Meiners
@@ -1562,13 +1574,15 @@ which I do not think is necessary for this.
 It appears <code>std::reduce</code> is primarily to facilitate parallel
 computation, but it demonstrates two similar operations
 whose results only differ on their association order.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
-<title>Three Myths About Passive Investing</title>
-<guid isPermaLink="true">https://www.jmeiners.com/three-myths-passive-investing/</guid>
-<description><![CDATA[
+<title>Three Myths about Passive Investing</title>
+<guid isPermaLink="true">https://jmeiners.com/three-myths-passive-investing/</guid>
+<description>
+<![CDATA[
 <h1>Three Myths about Passive Investing</h1>
 
 <p><strong>5/3/2021</strong></p>
@@ -1731,7 +1745,8 @@ What are good strategies for purchasing and rebalancing?
 Are there other funds I should consider in my portfolio?
 Are there investment opportunities in my local community?
 All of these questions are worth considering slowly and methodically.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Tue, 06 Apr 2021 00:00:00 +0000</pubDate>
@@ -1741,8 +1756,9 @@ All of these questions are worth considering slowly and methodically.</p>
 <item>
 <pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate>
 <title>Advent of Code 2020 Day 18: Rethinking Operator Precedence</title>
-<guid isPermaLink="true">https://www.jmeiners.com/aoc-2020-18/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/aoc-2020-18/</guid>
+<description>
+<![CDATA[
 <h1>Advent of Code 2020 Day 18: Rethinking Operator Precedence</h1>
 
 <p><strong>12/27/20</strong></p>
@@ -1883,13 +1899,15 @@ the list itself.</p>
 and returns expressions that are simpler, while <code>eval-expr</code> always returns a number.
 Note that this works for any number of operators and adjusting
 precedence is as simple as changing the order of the <code>'(+ *)</code> list.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
 <title>Advent of Code 2020 Day 19: An Easy way to do Part 2</title>
-<guid isPermaLink="true">https://www.jmeiners.com/aoc-2020-19/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/aoc-2020-19/</guid>
+<description>
+<![CDATA[
 <h1>Advent of Code 2020 Day 19: An Easy way to do Part 2</h1>
 
 <p><strong>12/19/20</strong></p>
@@ -2118,13 +2136,15 @@ some of it is a little ugly.</p>
                              (not (eval-rule (coerce string 'list) (aref all-rules 0) all-rules)))))
       inputs))
 </code></pre>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 15 Nov 2020 00:00:00 +0000</pubDate>
 <title>The Universal Property of Quotients</title>
-<guid isPermaLink="true">https://www.jmeiners.com/universal-property-quotients/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/universal-property-quotients/</guid>
+<description>
+<![CDATA[
 <h1>The Universal Property of Quotients</h1>
 
 <p><strong>11/15/20</strong></p>
@@ -2265,13 +2285,15 @@ These gave me a lot of practice with commutative diagrams,
 such as the chapter on <a href="https://en.wikipedia.org/wiki/Seifert%E2%80%93van_Kampen_theorem">Seifert-Van Kampen&rsquo;s</a> theorem.</p>
 
 <p><img src="van-kampen.png" alt="van-kampen" /></p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Thu, 08 Oct 2020 00:00:00 +0000</pubDate>
-<title>Questioning Probablity</title>
-<guid isPermaLink="true">https://www.jmeiners.com/questioning-probability/</guid>
-<description><![CDATA[
+<title>Questioning Probability</title>
+<guid isPermaLink="true">https://jmeiners.com/questioning-probability/</guid>
+<description>
+<![CDATA[
 <h1>Questioning Probability</h1>
 
 <p><strong>10/8/20</strong></p>
@@ -2482,13 +2504,15 @@ In these areas, as in politics, we can conclude that probability and statistics 
 for explanatory theory.</p>
 
 <p><strong>Update 09/25/2021:</strong> Heavily edited the second half to clarify intended message. The election discussion is largely the same.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sat, 26 Sep 2020 00:00:00 +0000</pubDate>
 <title>Understanding LINQ GroupBy</title>
-<guid isPermaLink="true">https://www.jmeiners.com/understanding-groupby/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/understanding-groupby/</guid>
+<description>
+<![CDATA[
 <h1>Understanding LINQ GroupBy</h1>
 
 <p><strong>09/26/20</strong></p>
@@ -2664,18 +2688,15 @@ This is a general technique which can solve a lot of algorithm problems (See <a 
 
 <p><strong>Note:</strong> this is almost certainly NOT how LINQ is exactly implemented (<code>TKey</code> is only required to have equality testing, not <code>IComparable</code>),
 but their approach is similar.</p>
-]]></description>
-</item>
-<item>
-<pubDate>Sat, 12 Sep 2020 00:00:00 +0000</pubDate>
-<title>Gesture Recognition with Line Integrals</title>
-<guid isPermaLink="true">https://www.jmeiners.com/gesture-recognition/</guid>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
 <title>Boring Benefits of Lisp</title>
-<guid isPermaLink="true">https://www.jmeiners.com/boring-benefits-of-lisp/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/boring-benefits-of-lisp/</guid>
+<description>
+<![CDATA[
 <h1>Boring Benefits of Lisp</h1>
 
 <p><strong>10/07/20</strong></p>
@@ -2741,13 +2762,15 @@ it&rsquo;s become my go-to language.</p>
 specific advice for reliable unix software.</p>
 
 <p><strong>Update: 09/23/21</strong>: Edited to clarify intended message.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 12 Apr 2020 00:00:00 +0000</pubDate>
 <title>10 Hard Decisions: A Model for Programmer Productivity</title>
-<guid isPermaLink="true">https://www.jmeiners.com/10-hard-decisions/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/10-hard-decisions/</guid>
+<description>
+<![CDATA[
 <h1>10 Hard Decisions: A Model for Programmer Productivity</h1>
 
 <p><strong>09/26/20</strong></p>
@@ -2898,13 +2921,15 @@ but for a new task, Why would you rob a programmer of this opportunity by playin
 musical chairs?</p></li>
 </ol>
 
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Thu, 23 Jan 2020 00:00:00 +0000</pubDate>
-<title>Keeping Up-to-Date</title>
-<guid isPermaLink="true">https://www.jmeiners.com/keeping-up-to-date/</guid>
-<description><![CDATA[
+<title>Keeping Up-to-date</title>
+<guid isPermaLink="true">https://jmeiners.com/keeping-up-to-date/</guid>
+<description>
+<![CDATA[
 <h2>Keeping Up-to-date</h2>
 
 <p><strong>1/23/2020</strong></p>
@@ -3027,13 +3052,15 @@ understanding of fundamental computer science.
 Expertise is also a subject for another day.</p></li>
 </ol>
 
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Tue, 21 Jan 2020 00:00:00 +0000</pubDate>
 <title>MultiplyPoint3x4 in Unity</title>
-<guid isPermaLink="true">https://www.jmeiners.com/unity-fast-multiply/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/unity-fast-multiply/</guid>
+<description>
+<![CDATA[
 <h1>MultiplyPoint3x4 in Unity</h1>
 
 <p><strong>01/21/2020</strong></p>
@@ -3089,7 +3116,8 @@ It assumes the <code>w</code> component of each column is 0 and skips that botto
  | m_2_0 m_2_1 m_2_2 m_2_3 |     | z |
  | 0     0     0     1     |     | 1 |
 </code></pre>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 28 Jul 2019 00:00:00 +0000</pubDate>
@@ -3099,8 +3127,9 @@ It assumes the <code>w</code> component of each column is 0 and skips that botto
 <item>
 <pubDate>Sat, 08 Jun 2019 00:00:00 +0000</pubDate>
 <title>Think in Math. Write in Code.</title>
-<guid isPermaLink="true">https://www.jmeiners.com/think-in-math/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/think-in-math/</guid>
+<description>
+<![CDATA[
 <h2>Think in Math. Write in Code.</h2>
 
 <p><strong>6/8/19</strong></p>
@@ -3390,13 +3419,15 @@ Perhaps the greatest benefit was that after writing it, I was able to quickly re
 
 <p>I hope that thinking in the language of math will bring similar benefits to your projects!
 Note that this example is only one style of utilizing mathematical thinking.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 12 May 2019 00:00:00 +0000</pubDate>
-<title>Notes On Vector Libraries</title>
-<guid isPermaLink="true">https://www.jmeiners.com/vector-libs/</guid>
-<description><![CDATA[
+<title>Notes on Vector Libraries</title>
+<guid isPermaLink="true">https://jmeiners.com/vector-libs/</guid>
+<description>
+<![CDATA[
 <h1>Notes on Vector Libraries</h1>
 
 <p><strong>05/12/2019</strong></p>
@@ -3695,13 +3726,15 @@ above to write to tailor make vector functions as needed.</p>
 It focuses on C++ and has a few other handy tips.
 You can also read a <a href="https://github.com/arkanis/single-header-file-c-libs/issues/3">discussion</a>
 which led to these notes.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
-<title>Foundations of Math Reading List</title>
-<guid isPermaLink="true">https://www.jmeiners.com/foundations-of-math-reading/</guid>
-<description><![CDATA[
+<title>Foundation of Math Reading List</title>
+<guid isPermaLink="true">https://jmeiners.com/foundations-of-math-reading/</guid>
+<description>
+<![CDATA[
 <h2>Foundation of Math Reading List</h2>
 
 <p><strong>04/13/2019</strong></p>
@@ -3863,13 +3896,15 @@ and really understand what he means.</p>
 
 <p>If you read through the other books, and have technical knowledge
 you should be well prepared.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Fri, 22 Feb 2019 00:00:00 +0000</pubDate>
 <title>The Skills Poor Programmers Lack</title>
-<guid isPermaLink="true">https://www.jmeiners.com/the-skills-programmers-lack/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/the-skills-programmers-lack/</guid>
+<description>
+<![CDATA[
 <h2>The Skills Poor Programmers Lack</h2>
 
 <p><strong>02/22/2019</strong></p>
@@ -3969,11 +4004,12 @@ See his <a href="https://gist.github.com/Dobiasd/fa27e3efb8b08fc81791d7f8e51ac5c
 <li><p>Once again, this is just an example. Switching on type may be perfectly appropriate.</p></li>
 </ol>
 
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 13 Jan 2019 00:00:00 +0000</pubDate>
-<title>McCulloch & Pitts Neural Net Simulator</title>
+<title>McCulloch &amp; Pitts Neural Net Simulator</title>
 <guid isPermaLink="true">https://www.jmeiners.com/neural-nets-sim/</guid>
 </item>
 <item>
@@ -4004,8 +4040,9 @@ See his <a href="https://gist.github.com/Dobiasd/fa27e3efb8b08fc81791d7f8e51ac5c
 <item>
 <pubDate>Mon, 01 May 2017 00:00:00 +0000</pubDate>
 <title>Modern OpenGL</title>
-<guid isPermaLink="true">https://www.jmeiners.com/modern-opengl/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/modern-opengl/</guid>
+<description>
+<![CDATA[
 <h2>Modern OpenGL</h2>
 
 <p>These are notes sent to a friend, not a formal article.
@@ -4086,13 +4123,15 @@ Then for each model you need to construct a new model matrix, describing its cur
 <li><a href="https://paroj.github.io/gltut/">Learning Modern 3D Graphics Programming</a></li>
 </ul>
 
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Thu, 10 Nov 2016 00:00:00 +0000</pubDate>
-<title>HoloLens Impressions</title>
-<guid isPermaLink="true">https://www.jmeiners.com/hololens-impressions/</guid>
-<description><![CDATA[
+<title>HoloLens First Impressions</title>
+<guid isPermaLink="true">https://jmeiners.com/hololens-impressions/</guid>
+<description>
+<![CDATA[
 <h2>HoloLens First Impressions</h2>
 
 <p><strong>11/10/2016</strong></p>
@@ -4116,13 +4155,15 @@ Then for each model you need to construct a new model matrix, describing its cur
 <p>Since the entire system is contained within the headset, its GPU is more comparable to a mobile phone than a desktop machine. While not weak, the hardware feels a bit under powered. The frame rate cuts to about 30 frames, with roughly 50k triangles across 25 draw calls. I don&rsquo;t expect a ton here, but a bit faster would be nice. In my experience an iPad 2 has better GPU performance, but probably does a lot less background work. Given that I only tested in Unity, it is possible that using native C++ and Direct X would be a dramatic improvement. If you are using Unity be sure to use the optimized shaders found in <a href="https://github.com/Microsoft/HoloToolkit-Unity">Microsoft&rsquo;s Holokit</a>, and be conscious of batches.</p>
 
 <p>The shortcomings above can hopefully be addressed in future iterations of the hardware. In its current form, it is still a fundamentally innovative platform and I am excited to continue developing for it.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Sun, 30 Oct 2016 00:00:00 +0000</pubDate>
 <title>3D Paint</title>
-<guid isPermaLink="true">https://www.jmeiners.com/3d-paint/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/3d-paint/</guid>
+<description>
+<![CDATA[
 <h2>3D Paint </h2>
 
 <p><strong>10/30/16</strong></p>
@@ -4199,13 +4240,15 @@ The order in which the nodes of a stroke are rendered is still important to ensu
 I think the technique itself is very interesting and has great potential. It would be interesting to make a small game, or animation centered around the technique since the artwork is so easy and natural to produce.
 Because it requires no textures, other than the small brushes, its memory usage is also very small, while its vertex requirements are similar to triangle meshes.
 The next natural step would be to bind a painting to a skeleton for animation.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Thu, 15 Oct 2015 00:00:00 +0000</pubDate>
 <title>Old Artwork</title>
-<guid isPermaLink="true">https://www.jmeiners.com/old-artwork/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/old-artwork/</guid>
+<description>
+<![CDATA[
 <h2>Old Artwork</h2>
 
 <p><strong>10/15/2015</strong></p>
@@ -4246,13 +4289,15 @@ The next natural step would be to bind a painting to a skeleton for animation.</
 <h3>Another Ship</h3>
 
 <p><img src="another_ship.png" alt="another ship" /></p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Fri, 09 Oct 2015 00:00:00 +0000</pubDate>
 <title>Old Games</title>
-<guid isPermaLink="true">https://www.jmeiners.com/old-games/</guid>
-<description><![CDATA[
+<guid isPermaLink="true">https://jmeiners.com/old-games/</guid>
+<description>
+<![CDATA[
 <h2>Old Games</h2>
 
 <p><strong>10/09/2015</strong></p>
@@ -4290,7 +4335,8 @@ The next natural step would be to bind a painting to a skeleton for animation.</
 <p><img src="strategy.jpg" alt="strategy screenshot" /></p>
 
 <p>A prototype of a strategy game for iOS.</p>
-]]></description>
+]]>
+</description>
 </item>
 <item>
 <pubDate>Tue, 20 Aug 2013 00:00:00 +0000</pubDate>
