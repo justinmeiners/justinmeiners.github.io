@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SITE="https://jmeiners.com"
+SITE="https://www.jmeiners.com"
 
 title_of_html() {
     # query first h1 or h2 element
