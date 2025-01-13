@@ -1,5 +1,6 @@
 <item>
 <pubDate>$DATE</pubDate>
 <title>$TITLE</title>
-<guid isPermaLink="true">$LINK</guid>
+<guid>$LINK</guid>
+<link>$LINK</link>
 <description><![CDATA[
