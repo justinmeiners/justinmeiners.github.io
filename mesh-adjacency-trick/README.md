@@ -69,7 +69,7 @@ Let's look at one more:
         // TODO: you want to allocate a new vector for this. It's for illustrative purposes.
     }
 
-### What are it's limitations?
+### What are its limitations?
 
 This data structure is an easy to implement solution for traversing a mesh.
 But if you need to *edit* the mesh, it usually won't help. 
