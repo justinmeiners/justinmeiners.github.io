@@ -4,7 +4,7 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com</link>
-<lastBuildDate>Sun, 12 Jan 2025 21:52:56 -0700</lastBuildDate>
+<lastBuildDate>Sun, 12 Jan 2025 22:13:31 -0700</lastBuildDate>
 <item>
 <pubDate>Sun, 12 May 2024 00:00:00 +0000</pubDate>
 <title>Building Scanning Patents</title>
@@ -741,6 +741,7 @@ This new set is a subset of <code>V x F</code> and weakens from <em>function</em
 <pubDate>Thu, 21 Apr 2022 00:00:00 +0000</pubDate>
 <title>Why Train When You Can Optimize?</title>
 <guid isPermaLink="true">https://www.jmeiners.com/why-train-when-you-can-optimize/</guid>
+<description>Learn multi-variable optimization by creating a drawing assistant. No deep learning required!</description>
 </item>
 <item>
 <pubDate>Mon, 07 Mar 2022 00:00:00 +0000</pubDate>
@@ -4045,6 +4046,7 @@ See his <a href="https://gist.github.com/Dobiasd/fa27e3efb8b08fc81791d7f8e51ac5c
 <pubDate>Sun, 16 Dec 2018 00:00:00 +0000</pubDate>
 <title>Write your Own Virtual Machine</title>
 <guid isPermaLink="true">https://www.jmeiners.com/lc3-vm/</guid>
+<description>Write your own virtual machine for the LC-3 computer!</description>
 </item>
 <item>
 <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
