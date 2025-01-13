@@ -1,4 +1,5 @@
-# Building Scanning Patents
+Building Scanning Patents
+========================
 
 At a previous startup, I invented an Augmented Reality (AR) system for scanning buildings,
 and automatically extracting floor plans from scans.

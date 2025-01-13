@@ -1,6 +1,6 @@
 .PHONY: all main clean
 
-all: source index.html README.html
+all: source index.html body.html
 
 source:
 	srcweave --tangle src/ index.lit
@@ -8,10 +8,10 @@ source:
 index.html: index.lit
 	srcweave --format srcweave-format --weave ./ $<
 
-README.html: index.lit
+body.html: index.lit
 	mkdir -p temp
 	srcweave --weave temp/ $<
-	mv temp/index.html README.html
+	mv temp/index.html body.html
 	rm -rf temp
 
 clean:
