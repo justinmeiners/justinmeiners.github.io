@@ -1,6 +1,6 @@
 <item>
 <pubDate>$DATE</pubDate>
 <title>$TITLE</title>
-<guid>$LINK</guid>
-<link>$LINK</link>
+<guid>https://www.jmeiners.com/$LINK</guid>
+<link>https://www.jmeiners.com/$LINK</link>
 <description><![CDATA[

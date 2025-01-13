@@ -1,7 +1,5 @@
 #!/bin/sh
 
-SITE="https://www.jmeiners.com"
-
 title_of_html() {
     # query first h1 or h2 element
     NS='http://www.w3.org/1999/xhtml'
@@ -47,7 +45,7 @@ rss_items() {
         DATE_FILE="$D/date.txt"
 
         export TITLE="$(title_of_html "$BODY")"
-        export LINK="$SITE/$(echo "$D" | cut -c 3-)/"
+        export LINK="$(echo "$D" | cut -c 3-)/"
         export DATE="$(head -n 1 "$DATE_FILE")"
 
         if [ -z "$DATE" ] 
