@@ -92,3 +92,4 @@ Sites I preserve for learning and historical purposes.
 - [SGI STL Documentation](https://www.jmeiners.com/sgi-stl-docs/)
 - [SGI STL Source](https://github.com/justinmeiners/sgi-stl)
 - [Structure and Interpretation of Computer Programs (original HTML)](https://www.jmeiners.com/sicp-html-original/book.html)
+- [Structure and Interpretation of Classical Mechanics (2nd edition, HTML)](https://www.jmeiners.com/sicm-2-html/book.html)
