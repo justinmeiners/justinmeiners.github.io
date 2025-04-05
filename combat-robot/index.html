@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Combat Robot</title>
+<link rel="stylesheet" href="/template/style.css">
+<link rel="alternate" title="RSS feed" type="application/rss+xml" href="/feed.xml">
+</head>
+<body>
+<p>
+<a href="/">Home</a>
+<a style="margin-left: 16px" href="https://github.com/justinmeiners">GitHub</a>
+<a style="margin-left: 16px" href="/feed.xml">Rss</a>
+</p>
+
+<h1>Combat Robot</h1>
+
+<p><strong>04/05/2025</strong></p>
+
+<p>As a kid, I loved getting books from the library about combat robots.
+I was always interested in tools and building things,
+but the idea of making a robot was just a little more exciting than making furniture.</p>
+
+<p><img src="building_bots.jpg" alt="Buildings Bots. William Gurstelle." />
+<img src="build_your_own_combat_robot.jpg" alt="Build your own Combat Robot. Pete Miles. Tom Carroll" /></p>
+
+<p>Learning about robots introduced me to new building techniques,
+but unfortunately actually making a combat robot, was just not very accessible at the time.
+Welding? Car batteries? Wheel-chair motors?
+It&rsquo;s a tough sell for parents and suburban neighbors.</p>
+
+<p>After 20 years, the hobby has gotten a lot more accessible, thanks to 3D printers,
+but also improvements in batteries, motors, and radio.
+The whole process is smaller, cheaper, and easier to assemble,
+so that even local schools have robot making programs.</p>
+
+<p>Recently a friend (who is a 3D printer enthusiast) invited me to make a 150g robot for a small community event,
+and I had a great time.
+We didn&rsquo;t do anything extraordinary,
+but I wanted to share a little bit about the project.
+My takeaway, is this can be a great hobby
+for learning about electronics and mechanics,
+especially for kids.</p>
+
+<p><img src="robot.jpg" alt="before battle" /></p>
+
+<h3>Design</h3>
+
+<p>At 150g most robots use a body that&rsquo;s 3D-printed or adapted from an RC cars.
+To keep weight low, they typically only have 2 wheels.
+The main design decision to make is how your robot will attack.
+Most of your weight and body will arrange itself around that.</p>
+
+<p>Spinning weapons are the most popular.
+It&rsquo;s a simple and effective design that&rsquo;s <em>really</em> hard to beat.
+But we wanted to try something a little different.
+We found an idea online about a <a href="https://www.youtube.com/watch?v=63BY414Va0E">spring loaded flipper</a>.
+The spring is loaded by lifting an arm using a &ldquo;snail cam&rdquo; which can be rotated continuously.</p>
+
+<p>We had high hopes of having multiple weapons,
+but as these things tend to go, you must simplify and cut scope as you go.</p>
+
+<h3>Cam</h3>
+
+<p>The main part I worked on is the flipping arm and snail cam.
+It&rsquo;s designed with an increasing, but decelerating slope,
+so that the work required by the motor stays constant.</p>
+
+<p>My first attempt was to cut one with a hand saw from UHMW polyethylene.
+They may not look excellent, but should work, after a little sanding.</p>
+
+<p><img src="plastic_cams.jpg" alt="plastic snail cam" /></p>
+
+<p>We found the 3D printing was sturdy and smooth enough,
+so we chose that instead.
+I wrote a python script to generate the basic curve in Blender,
+and then used simple boolean cuts to get all the parts we need.</p>
+
+<p><img src="cam_boolean.png" alt="cam" />
+<img src="cam.png" alt="cam" /></p>
+
+<h3>Electronics</h3>
+
+<p>N20 is a popular style of motor for this size.
+Apparently they vary greatly in quality and specification.
+We just got a few cheap ones on Amazon.
+I like that you can order them with a small gearbox targeted for a specific RPM,
+so it&rsquo;s easy to get the torque/speed you need.
+For example, the cam uses a much lower RPM than wheel motors.</p>
+
+<p><img src="motor.jpg" alt="n20 motor" /></p>
+
+<p>The radio receiver, and motor controllers are available as a single board.
+Just wire the motors to the appropriate terminals.
+The model we used is called &ldquo;Malenki Nano&rdquo; which is very popular.
+Connecting the receiver to a controller was as easy too.</p>
+
+<p><img src="wiring.jpg" alt="Wiring to malenki nano" /></p>
+
+<h3>Body</h3>
+
+<p>The body was drawn in a traditional CAD program.
+It went through many iterations and printings as we tried to fit everything in.
+Here are a few techniques we found helpful:</p>
+
+<ol>
+<li><p>Attach components with zip ties. It makes it easy to move parts between bodies, and is very sturdy.
+Just add holes for them in your CAD design.</p></li>
+<li><p>Prototype parts in cardboard first. If you have a simple base, it&rsquo;s easy to tape on pieces to see how they will fit.</p></li>
+<li><p>Use fast and cheap printer settings until the final revision (and it&rsquo;s always one more than you think).</p></li>
+</ol>
+
+
+<p><img src="fit_check.jpg" alt="fit check" /></p>
+
+<h3>Battle</h3>
+
+<p>The event was very casual and had a positive atmosphere.
+People were open about showing their robots and learning from each other.
+Ages varied greatly, with some younger kids, teenagers, and a few Dad&rsquo;s joining their sons.</p>
+
+<p>A pro stopped by to show off his full-size robot!</p>
+
+<p><img src="pro.jpg" alt="pro robot" /></p>
+
+<p>In our first (and only) battle we took a few big hits from a spinning blade.
+Luckily none of our major parts were damaged.
+So we should be ready to try again after printing a new body.</p>
+
+<p><img src="robot_after.jpg" alt="after battle" /></p>
+</body>
+</html>
