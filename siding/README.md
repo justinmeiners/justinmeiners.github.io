@@ -1,4 +1,4 @@
-Replacing HardBoard Siding
+Replacing hardboard siding
 ==========================
 **06/21/2025**
 
