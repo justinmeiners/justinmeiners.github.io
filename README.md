@@ -51,6 +51,7 @@ You can also find smaller projects and experiments at my [GitHub page](https://g
 
 I hope to share insights, experiences, and occasionally answer some questions. This writing is informal and sometimes unpolished.
 
+- [06/21/2025 - Replacing hardboard siding](siding/)
 - [04/05/2025 - Combat Robot](combat-robot/)
 - [05/12/2024 - Building Scanning Patents](floorplan-scanning/)
 - [11/18/2022 - Thinking styles from math](thinking-styles/)
