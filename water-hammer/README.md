@@ -20,7 +20,7 @@ Here is how that went.
 
 ![water hammer arrestor](arrestor.jpg)
 
-**Disclaimer:** I am an occasional DIYer not a professional plumber. My intent is to share my exprience with the hope that it might be helpful for you.
+**Disclaimer:** I am an occasional DIYer, not a professional plumber. My intent is to share my exprience with the hope that it might be helpful for you.
 
 ## Plan
 
