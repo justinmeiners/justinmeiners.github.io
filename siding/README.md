@@ -97,4 +97,4 @@ I also took time to cleanup up the old boards and seams were not replaced.
 
 ![painting](painting.jpg)
 
-All done! Thanks to my family members for all their help.
+All done! Thanks to my family for all their help!
