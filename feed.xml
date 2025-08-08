@@ -4,7 +4,115 @@
 <title>Justin Meiners Site</title>
 <description>Welcome to my personal site about programming, math, and philosophy!</description>
 <link>https://www.jmeiners.com</link>
-<lastBuildDate>Sat, 02 Aug 2025 17:56:40 -0600</lastBuildDate>
+<lastBuildDate>Thu, 07 Aug 2025 18:06:34 -0600</lastBuildDate>
+<item>
+<pubDate>Sat, 02 Aug 2025 00:00:00 +0000</pubDate>
+<title>Water Hammer Arrestor</title>
+<guid>https://www.jmeiners.com/water-hammer/</guid>
+<link>https://www.jmeiners.com/water-hammer/</link>
+<description>
+<![CDATA[
+<h1>Water Hammer Arrestor</h1>
+
+<p><strong>08/02/25</strong></p>
+
+<p>I&rsquo;m back with another house maintenance project (and not talking about computer technology).</p>
+
+<p>My irrigation system has been making awful water hammer noises.
+It&rsquo;s so bad, that I haven&rsquo;t felt comfortable watering my lawn, due to fear of damaging the plumbing.
+Here are the symptoms of my problem:</p>
+
+<ol>
+<li>Only occurs when a valve opens, not when it closes. (fast moving water slamming into a valve is a common problem).</li>
+<li>Occurs regardless of how long the sprinkler has been on. I can close a valve, and reopen it 10 seconds later and it&rsquo;s the same.</li>
+<li>Severity varies across different zones. Zones closer to the manifold seem worse.</li>
+</ol>
+
+
+<p>These rule out most of the quick water hammer fixes,
+for example adding a delay between zone activation doesn&rsquo;t help.
+So I determined the best solution was to install a water hammer arrestor.
+Here is how that went.</p>
+
+<p><img src="arrestor.jpg" alt="water hammer arrestor" /></p>
+
+<p><strong>Disclaimer:</strong> I am an occasional DIYer, not a professional plumber. My intent is to share my exprience with the hope that it might be helpful for you.</p>
+
+<h2>Plan</h2>
+
+<p><img src="box1.jpg" alt="manifold box" /></p>
+
+<p>I want to insert the arrestor as close as possible to the manifold,
+so it provides benefit for all zones, and protects as much of the plumbing as possible.
+Unfortunately, the sprinkler box is out of space, so I needed to dig up and insert on to the incoming line.</p>
+
+<p><img src="pipe1.jpg" alt="pipe" /></p>
+
+<p>I also want make enough space for a new box to house the arrestor, so I can access it later.</p>
+
+<p>There are quite a few positions and orientations to consider.
+Vertical orientation seems natural, but the arrestor is actually too long, and so I chose to lay it horizontally (OK for this model).
+I could replace the elbow with a tee to get shock absorption at the corner, but I don&rsquo;t want to rebuild the manifold connection.</p>
+
+<p><img src="placement.jpg" alt="placement" /></p>
+
+<h2>Attempt 1</h2>
+
+<p>So I cut the pipe, attached the tee, and put it all together.
+The elbow with the threaded manifold connection gives me an advantage.
+I can connect this piece last and avoid the challenge of connecting two pieces of PVC.
+(This is classic plumbing problem where there is insufficient space to slide a coupling on to both sides.).</p>
+
+<p><img src="attempt1.jpg" alt="attempt 1" /></p>
+
+<p>My expectation was that the threaded piece would haves some give and allow me to easily connect back to the manifold.
+But that was not the case.
+With everything assembled, the pipe and the manifold were offset from each other by about 1/8",
+and there was absolutely no give.</p>
+
+<p><img src="offset.jpg" alt="offset" /></p>
+
+<p>I was completely out of luck.
+Not anticipating this problem was an <em>amateur</em> mistake.</p>
+
+<h2>Attempt 2</h2>
+
+<p>I needed to try again.
+I researched alternative ways to join the pipe (and avoid the same problem), but none looked better than my initial idea.</p>
+
+<p>So I cut the tee and redid it all.
+This time I was extra careful, and measured everything with the elbow piece attached to the manifold.
+On the final assembly step, I connected the elbow and threaded it to the manifold with the cement wet.
+This was tricky because I had about 5 seconds to insert the piece, rotate it into position through the box,
+and get the threads aligned.
+One trick that helped was inserting a piece of plastic underneath the connection to keep them out of the mud.</p>
+
+<p><img src="attempt2.jpg" alt="attempt 2" /></p>
+
+<p>It all worked out!</p>
+
+<h2>Arrestor assembly</h2>
+
+<p>Although not strictly necessary, I attached a PVC 40 nipple rather than threading the arrestor directly into the tee.
+Brass into PVC connections are less reliable, and I want to protect the tee&rsquo;s threads if I need to replace in the future.</p>
+
+<p>I filled the arrestor box with gravel and cut a block for the weight to rest on.</p>
+
+<p><img src="arrestor_assembly.jpg" alt="water hammer arrestor in box" /></p>
+
+<h2>Results</h2>
+
+<p>I was pleasantly surprised with how well this little part works.
+3 of my zones are completely quiet, and 1 has small bump when it starts.</p>
+
+<p><img src="final.jpg" alt="final box" /></p>
+
+<p>(Yes, I spilled PVC primer all over my lid.)</p>
+
+<p>Thanks to ChatGPT for all the plumbing advice!</p>
+]]>
+</description>
+</item>
 <item>
 <pubDate>Sun, 22 Jun 2025 00:00:00 +0000</pubDate>
 <title>Replacing hardboard siding</title>
