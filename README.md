@@ -1,5 +1,5 @@
 
-![3d shapes](splash/2023_11_shapes.png)
+![me](splash/2025_08_me.jpg)
 
 Justin Meiners
 ==============
@@ -9,13 +9,11 @@ I love learning and creating new projects.
 I hope to share some of them with you.
 Feel free to contact me at: <span>![justin's email](mail.png)</span>
 
-## Background
-
-Here is a little about my background and interests:
+## Interests
 
 - I first learned to program in 2008 using [Objective-C](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjectiveC/Introduction/introObjectiveC.html) and Cocoa/NextStep thanks to the [CMSEC](https://en.wikipedia.org/wiki/Christa_McAuliffe_Space_Education_Center).
 - I am a Software Engineer in the Vision Products Group at [Apple](https://www.apple.com/) (I do not write about my employer's products or business).
-- My best effort at a professional title is "computer vision generalist". My skills include 3D rendering, GPUs, numerical methods, optimization, combinatorics, signal processing, etc.
+- My best effort at a professional title is "computer vision/graphics engineer". My skills include 3D rendering, GPUs, numerical methods, optimization, combinatorics, signal processing, etc.
 - I have a Master's degree in math and view it as a lifelong pursuit. I have broad knowledge at the "advanced undergrad" level with more depth in real analysis and topology.
 
     ![project euler](https://projecteuler.net/profile/justinmeiners.png)
@@ -51,9 +49,6 @@ You can also find smaller projects and experiments at my [GitHub page](https://g
 
 I hope to share insights, experiences, and occasionally answer some questions. This writing is informal and sometimes unpolished.
 
-- [08/02/2025 - Water hammer arrestor](water-hammer/)
-- [06/21/2025 - Replacing hardboard siding](siding/)
-- [04/05/2025 - Combat Robot](combat-robot/)
 - [05/12/2024 - Building Scanning Patents](floorplan-scanning/)
 - [11/18/2022 - Thinking styles from math](thinking-styles/)
 - [10/27/2022 - Iterating grid cell neighbors](grid-neighbors/)
@@ -83,6 +78,14 @@ I hope to share insights, experiences, and occasionally answer some questions. T
 - [10/30/2016 - 3D Paint](3d-paint/)
 - [10/15/2015 - Old Artwork](old-artwork/)
 - [10/09/2015 - Old Games](old-games/)
+
+## DIY
+
+Taking care of my stuff and learning new skills along the way.
+
+- [08/02/2025 - Water hammer arrestor](water-hammer/)
+- [06/21/2025 - Replacing hardboard siding](siding/)
+- [04/05/2025 - Combat Robot](combat-robot/)
 
 ## Archives
 
