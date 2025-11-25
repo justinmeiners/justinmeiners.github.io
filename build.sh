@@ -16,7 +16,7 @@ md_pages() {
     do
         D="$(dirname "$MD")"
         BODY="$D/README.body.html"
-        markdown "$MD" > "$BODY"
+        markdown -f footnotes "$MD" > "$BODY"
 
         HTML="$D/index.html"
         export TITLE="$(title_of_html "$BODY")"
@@ -74,7 +74,7 @@ rss_feed() {
     for ITEM in $ALL_ITEMS
     do
         RFC_DATE="$(date_from_item "$ITEM")"
-        FNAME="temp_feed/$(gdate -d "$RFC_DATE" +%s)"
+        FNAME="temp_feed/$(date -d "$RFC_DATE" +%s)"
         echo "$ITEM"
         cat "$ITEM" > "$FNAME"
     done

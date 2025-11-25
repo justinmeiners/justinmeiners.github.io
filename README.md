@@ -49,6 +49,7 @@ You can also find smaller projects and experiments at my [GitHub page](https://g
 
 I hope to share insights, experiences, and occasionally answer some questions. This writing is informal and sometimes unpolished.
 
+- [11/24/2025 - Take your time](take-your-time/)
 - [05/12/2024 - Building Scanning Patents](floorplan-scanning/)
 - [11/18/2022 - Thinking styles from math](thinking-styles/)
 - [10/27/2022 - Iterating grid cell neighbors](grid-neighbors/)
