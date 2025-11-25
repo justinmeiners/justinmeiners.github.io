@@ -31,7 +31,7 @@ The knowledge I am describing is math and science!
 For software it consists of [computer science subjects][2] like OS theory, algorithms, software design, logic,
 and calculus.
 Because many programmers lack this, they struggle with change, and feel pressure
-to keep up with trends. (1)
+to keep up with trends. [^1]
 
 Don't believe me?
 Take a look at the hottest "new" areas of tech
@@ -62,7 +62,7 @@ General theory is a longshot from research or novel contributions to the field.
 Nor is it sufficient to be a good programmer; learning linear algebra does not immediately
 make you good at writing machine learning programs (and scientists write some terrible code!).
 Rather this is the "hard stuff" that prevents programmers from getting into these fields.
-Once you know it, the other details are approachable. (2)
+Once you know it, the other details are approachable. [^2]
 
 If you analyze other software advances from the past, from database theory
 to graphics, you will find similar applications
@@ -74,7 +74,7 @@ bet whatever is important in the future is going to require understanding
 those broad areas of computer science.
 Keep practicing and specializing in the area you work in, but if you regularly refresh and
 broaden your base of fundamentals
-you will be prepared to learn anything new that starts to look interesting. (3)
+you will be prepared to learn anything new that starts to look interesting. [^3]
 
 Understanding fundamentals gives programmers another significant advantage.
 They know what problems have been solved before.
@@ -102,10 +102,10 @@ Rather than building and encyclopediac knowledge of novelties
  and press releases,
 we continuosuly revisit the same core subjects, over and over, in pursuit of mastery.
 
-1. It doesn't have to come from a university, and a majority
+[^1]: It doesn't have to come from a university, and a majority
 of those who study STEM seem to lose it after going through the motions.
 
-2. A great example of this is the
+[^2]: A great example of this is the
 popular book [SICP][8]. In just a few hundred
 pages it covers several major areas of CS and more
 than most programmers understand in their whole career.
@@ -114,7 +114,7 @@ for a general audience.
 It relies on the reader having a solid undergraduate understanding of another
 area of math or science as an MIT student would have.
 
-3. Experts in a very particular system
+[^3] Experts in a very particular system
 (for example OpenCL or [V8 internals][4]) can be extremely valuable.
 But, most of them only get that level of depth with a solid
 understanding of fundamental computer science.
